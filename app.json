@@ -1,0 +1,89 @@
+{
+  "id": "844e2ad9-7d1b-4dcf-9154-786f9ad55e59",
+  "name": "Pushkar BC Template",
+  "publisher": "SDM",
+  "version": "1.0.0.8",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "target": "Cloud",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "07729019-da51-4639-a987-3db38ccc62c7",
+      "name": "India Charge Group",
+      "publisher": "Microsoft",
+      "version": "26.0.30643.32695"
+    },
+    {
+      "id": "2dc39818-e0f0-42b6-99eb-ba29dc5f4102",
+      "name": "India Gate Entry",
+      "publisher": "Microsoft",
+      "version": "26.0.30643.32695"
+    },    {
+      "id": "db643212-b7fb-4dd4-b5a8-cb44ac714461",
+      "name": "India GST",
+      "publisher": "Microsoft",
+      "version": "26.0.30643.33900"
+    },
+    {
+      "id": "050f6146-bffd-40de-942c-d0dd510ec20f",
+      "name": "India Reports",
+      "publisher": "Microsoft",
+      "version": "26.0.30643.32695"
+    },
+    {
+      "id": "c1eafb3f-e397-468e-bdb4-ecc5c317ca00",
+      "name": "Tax Engine",
+      "publisher": "Microsoft",
+      "version": "26.0.30643.32842"
+    },
+    {
+      "id": "d3c551dd-5903-4194-b153-04ced9d29a2c",
+      "name": "India Tax Base",
+      "publisher": "Microsoft",
+      "version": "26.0.30643.33284"
+    },
+    {
+      "id": "eae5779e-7797-4c4c-977e-7516652b7a65",
+      "name": "India TDS",
+      "publisher": "Microsoft",
+      "version": "26.0.30643.34008"
+    },
+
+    {
+      "id": "eddcf82e-482c-49d1-836b-ad0284f2c5b0",
+      "name": "India TCS",
+      "publisher": "Microsoft",
+      "version": "26.0.30643.33900"
+    },
+    {
+      "id": "f1d9b696-156b-4251-b542-34e549fa80e9",
+      "name": "India Voucher Interface",
+      "publisher": "Microsoft",
+      "version": "26.0.30643.32695"
+    }
+    
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "26.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50149
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "15.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}

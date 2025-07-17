@@ -1,4 +1,4 @@
-report 50102 GatePassOutwardReport
+report 50104 GatePassOutwardReport
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;

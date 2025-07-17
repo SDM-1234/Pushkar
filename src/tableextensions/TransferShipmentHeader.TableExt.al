@@ -10,23 +10,23 @@ tableextension 50108 TransferShipmentHeader extends "Transfer Shipment Header"
         {
             Caption = 'Item No.';
             DataClassification = CustomerContent;
+            Editable = false;
         }
         field(50101; "Unit of Measure"; Code[20])
         {
             Caption = 'Unit of Measure';
             DataClassification = CustomerContent;
+            Editable = false;
         }
-        field(50102; "Quantity"; Code[20])
+        field(50102; "Quantity"; Decimal)
         {
-            Caption = 'Unit of Measure';
+            Caption = 'Quantity';
             DataClassification = CustomerContent;
+            Editable = false;
         }
-        field(50103; "Applies-to No."; Code[50])
+        field(50103; "Assign Shipment to FG"; Boolean)
         {
-            Caption = 'Applies-to No.';
-
+            Caption = 'Assign Shipment to FG';
         }
-
     }
-
 }

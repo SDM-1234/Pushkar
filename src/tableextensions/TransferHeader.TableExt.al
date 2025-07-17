@@ -17,7 +17,7 @@ tableextension 50107 TransferHeader extends "Transfer Header"
         field(50101; "Unit of Measure"; Code[20])
         {
             Caption = 'Unit of Measure';
-            TableRelation = "Unit of Measure".Code;
+            TableRelation = "Item Unit of Measure".Code where("Item No." = field("Item No."));
             DataClassification = CustomerContent;
         }
         field(50102; "Quantity"; Decimal)

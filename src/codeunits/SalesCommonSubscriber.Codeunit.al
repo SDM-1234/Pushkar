@@ -1,6 +1,7 @@
 namespace Pushkar.Pushkar;
 using Microsoft.Sales.Document;
 using Microsoft.Sales.Posting;
+using Microsoft.Inventory.Transfer;
 using Microsoft.Sales.History;
 using Microsoft.Inventory.Ledger;
 
@@ -60,4 +61,5 @@ codeunit 50100 SalesCommonSubscriber
             end;
         end;
     end;
+
 }

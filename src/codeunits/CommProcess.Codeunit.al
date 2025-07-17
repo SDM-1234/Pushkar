@@ -1,4 +1,4 @@
-codeunit 50101 CommProcess
+codeunit 50102 CommProcess
 {
     trigger OnRun()
     begin
@@ -6,22 +6,22 @@ codeunit 50101 CommProcess
 
     procedure CreatePostSaleJson(recpostsale: Record "Sales Invoice Header")
     var
-        salejsonobj: JsonObject;
+        recCompinfo: Record "Company Information";
+        reccustledent: Record "Cust. Ledger Entry";
+        recdetgstledent: Record "Detailed GST Ledger Entry";
+        recpostsaleline: Record "Sales Invoice Line";
         Tempblop: Codeunit "Temp Blob";
+        salejsonobj: JsonObject;
         InsStream: InStream;
         OutStream: OutStream;
-        FileName: Text;
-        recpostsaleline: Record "Sales Invoice Line";
-        recCompinfo: Record "Company Information";
-        recdetgstledent: Record "Detailed GST Ledger Entry";
-        decInvoiceAmt: Decimal;
         decCGSTAmt: Decimal;
-        decSGSTAmt: Decimal;
-        decIGSTAmt: Decimal;
         decCGSTPer: Decimal;
-        decSGSTPer: Decimal;
+        decIGSTAmt: Decimal;
         decIGSTPer: Decimal;
-        reccustledent: Record "Cust. Ledger Entry";
+        decInvoiceAmt: Decimal;
+        decSGSTAmt: Decimal;
+        decSGSTPer: Decimal;
+        FileName: Text;
         txtdate: Text;
     begin
         Clear(decCGSTAmt);
@@ -102,9 +102,9 @@ codeunit 50101 CommProcess
 
     procedure fnRemovedecimals(txtVal: Text) txtResult: Text
     var
+        intCheck1: Integer;
         intCheck: Integer;
         intVal1: Integer;
-        intCheck1: Integer;
         txtVal1: Text;
     begin
         Clear(intCheck);

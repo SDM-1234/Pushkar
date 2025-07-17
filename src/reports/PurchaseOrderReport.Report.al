@@ -1,4 +1,4 @@
-report 50101 "Purchase Order Report"
+report 50103 "Purchase Order Report"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;

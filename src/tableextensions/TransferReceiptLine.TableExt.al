@@ -6,10 +6,9 @@ tableextension 50106 TransferReceiptLine extends "Transfer Receipt Line"
 {
     fields
     {
-        field(50100; "Posted Transfer Shipment"; Code[20])
+        field(50105; "Posted Transfer Shipment Nos."; Text[2048])
         {
             Caption = 'Posted Transfer Shipment No.';
-            TableRelation = "Transfer Shipment Header"."No.";
             DataClassification = CustomerContent;
         }
     }

@@ -36,6 +36,12 @@ tableextension 50101 SalesShipmentHeader extends "Sales Shipment Header"
             Caption = 'Sales Invoice Posting Date';
             DataClassification = CustomerContent;
         }
+        field(50110; "PS Vehicle No."; Code[20])
+        {
+            Caption = 'Vehicle Num';
+            DataClassification = CustomerContent;
+        }
+
     }
 
 }

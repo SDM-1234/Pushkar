@@ -13,6 +13,13 @@ tableextension 50107 TransferHeader extends "Transfer Header"
             Caption = 'Item No.';
             TableRelation = Item."No.";
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            var
+                RecItem: Record Item;
+            begin
+                RecItem.Get("Item No.");
+                Description := RecItem.Description;
+            end;
         }
         field(50101; "Unit of Measure"; Code[20])
         {
@@ -26,5 +33,13 @@ tableextension 50107 TransferHeader extends "Transfer Header"
             BlankZero = true;
             DataClassification = CustomerContent;
         }
+        field(50103; Description; Text[100])
+        {
+            OptimizeForTextSearch = true;
+            DataClassification = CustomerContent;
+
+        }
+
+
     }
 }

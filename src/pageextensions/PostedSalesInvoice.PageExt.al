@@ -19,6 +19,5 @@ pageextension 50126 PostedSalesInvoice extends "Posted Sales Invoice"
         }
     }
     var
-        myInt: Integer;
         objcucomprocess: Codeunit CommProcess;
 }

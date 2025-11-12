@@ -8,6 +8,17 @@ pageextension 50121 PostedTransferReceipt extends "Posted Transfer Receipt"
     {
         addafter("Transfer-from Code")
         {
+            field("Item No."; Rec."Item No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Item No. field.', Comment = '%';
+            }
+            field(Description; Rec.Description)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Description field.', Comment = '%';
+            }
+
             field("Unit of Measure"; Rec."Unit of Measure")
             {
                 ApplicationArea = All;
@@ -18,11 +29,12 @@ pageextension 50121 PostedTransferReceipt extends "Posted Transfer Receipt"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Unit of Measure field.', Comment = '%';
             }
-            field("Item No."; Rec."Item No.")
+            field("External Document No."; Rec."External Document No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Item No. field.', Comment = '%';
+                ToolTip = 'Specifies the value of the External Document No. field.', Comment = '%';
             }
+
         }
     }
 }

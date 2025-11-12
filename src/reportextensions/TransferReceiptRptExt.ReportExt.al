@@ -1,5 +1,5 @@
 
-reportextension 50100 TransferReceiptRptExt extends "Transfer Receipt"
+reportextension 50104 TransferReceiptRptExt extends "Transfer Receipt"
 {
     dataset
     {
@@ -20,24 +20,32 @@ reportextension 50100 TransferReceiptRptExt extends "Transfer Receipt"
                 _qty := 0;
                 _AvgQty := 0;
                 CovertQty := 0;
-                ItemLedgerEntry.reset;
+                ItemLedgerEntry.reset();
                 item.SetRange("No.", "Transfer Receipt Line"."Item No.");
                 Item.SetRange("Gen. Prod. Posting Group", 'RAW MATERIAL');
                 if Item.Find('-') then begin
-                    ItemLedgerEntry.SetFilter("Location Code", "Transfer Receipt Line"."Transfer-from Code");
-                    ItemLedgerEntry.SetRange("Global Dimension 1 Code", "Transfer Receipt Line"."Shortcut Dimension 1 Code");
-                    ItemLedgerEntry.SetRange("Global Dimension 2 Code", "Shortcut Dimension 2 Code");
-                    ItemLedgerEntry.SetRange("Posting Date", "Transfer Receipt Line"."Receipt Date");
-                    ItemLedgerEntry.SetRange("Entry Type", "ItemLedgerEntry"."Entry Type"::Purchase);
-                    if ItemLedgerEntry.FindSet() then
-                        repeat
-                            _qty := _qty + ItemLedgerEntry.Quantity;
-                            _AvgQty := _avgQty + ItemLedgerEntry.Quantity / ItemLedgerEntry."Qty. per Unit of Measure";
-                        until ItemLedgerEntry.Next() = 0;
-                    PurchUOM := item."Purch. Unit of Measure";
-                end;
-                if (_AvgQty <> 0) then begin
-                    CovertQty := _qty / _AvgQty;
+                    ItemLedgerEntry.SetFilter("Location Code", "Transfer Receipt Line"."Transfer-to Code");
+                    ItemLedgerEntry.SetRange("Document No.", "Transfer Receipt Header"."No.");
+                    // ItemLedgerEntry.SetRange("Global Dimension 1 Code", "Shortcut Dimension 1 Code");
+                    // ItemLedgerEntry.SetRange("Global Dimension 2 Code", "Shortcut Dimension 2 Code");
+                    ItemLedgerEntry.SetRange("Entry Type", "ItemLedgerEntry"."Entry Type"::Transfer);
+                    ItemLedgerEntry.SetRange("Document Type", ItemLedgerEntry."Document Type"::"Transfer Receipt");
+                    if ItemLedgerEntry.FindFirst() then begin
+                        ItemLedgerEntryLot.Reset();
+                        ItemLedgerEntryLot.SetRange("Item No.", ItemLedgerEntry."Item No.");
+                        ItemLedgerEntryLot.SetRange("Lot No.", ItemLedgerEntry."Lot No.");
+                        ItemLedgerEntryLot.SetRange("Entry Type", ItemLedgerEntryLot."Entry Type"::Purchase);
+                        if ItemLedgerEntryLot.FindSet() then
+                            repeat
+                                _qty := _qty + ItemLedgerEntryLot.Quantity;
+                                _AvgQty := _avgQty + ItemLedgerEntryLot.Quantity / ItemLedgerEntryLot."Qty. per Unit of Measure";
+                            until ItemLedgerEntryLot.Next() = 0;
+                        PurchUOM := item."Purch. Unit of Measure";
+                    end;
+                    if (_AvgQty <> 0) then
+                        CovertQty := (Quantity) / abs(_qty / _AvgQty);
+
+
 
                 end;
 
@@ -47,6 +55,7 @@ reportextension 50100 TransferReceiptRptExt extends "Transfer Receipt"
     }
     var
         ItemLedgerEntry: Record "Item Ledger Entry";
+        ItemLedgerEntryLot: record "Item Ledger Entry";
         Item: Record Item;
         CovertQty: Decimal;
         PurchUOM: Text[20];

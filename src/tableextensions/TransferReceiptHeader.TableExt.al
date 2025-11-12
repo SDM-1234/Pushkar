@@ -24,6 +24,12 @@ tableextension 50109 TransferReceiptHeader extends "Transfer Receipt Header"
             DataClassification = CustomerContent;
             Editable = false;
         }
+        field(50103; Description; Text[100])
+        {
+            OptimizeForTextSearch = true;
+
+        }
+
     }
 
 }

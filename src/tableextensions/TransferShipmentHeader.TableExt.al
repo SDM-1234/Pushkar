@@ -24,9 +24,15 @@ tableextension 50108 TransferShipmentHeader extends "Transfer Shipment Header"
             DataClassification = CustomerContent;
             Editable = false;
         }
-        field(50103; "Assign Shipment to FG"; Boolean)
+        field(50103; Description; Text[100])
+        {
+            OptimizeForTextSearch = true;
+        }
+        field(50104; "Assign Shipment to FG"; Boolean)
         {
             Caption = 'Assign Shipment to FG';
         }
+
+
     }
 }

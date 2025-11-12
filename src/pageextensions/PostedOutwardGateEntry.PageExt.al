@@ -15,12 +15,12 @@ pageextension 50124 PostedOutwardGateEntry extends "Posted Outward Gate Entry"
                 begin
                     recPostGateEntHead.Reset();
                     recPostGateEntHead.SetRange("No.", rec."No.");
-                    if recPostGateEntHead.FindFirst() then Report.Run(50000, true, false, recPostGateEntHead);
+                    if recPostGateEntHead.FindFirst() then
+                        Report.Run(50104, true, false, recPostGateEntHead);
                 end;
             }
         }
     }
     var
-        myInt: Integer;
         recPostGateEntHead: Record "Posted Gate Entry Header";
 }

@@ -26,5 +26,10 @@ tableextension 50100 SalesHeader extends "Sales Header"
             Caption = 'Unit of Measure';
             DataClassification = CustomerContent;
         }
+        field(50110; "PS Vehicle No."; Code[20])
+        {
+            Caption = 'Vehicle Num';
+            DataClassification = CustomerContent;
+        }
     }
 }

@@ -154,6 +154,7 @@ report 50103 "Purchase Order Report"
                 }
                 trigger OnAfterGetRecord()
                 var
+                    GSTSetup: Record "GST Setup";
                     rectaxtrans: Record "Tax Transaction Value";
                 begin
                     Clear(decCGSTPer);
@@ -189,6 +190,8 @@ report 50103 "Purchase Order Report"
         }
     }
     trigger OnPreReport()
+    var
+        GSTSetup: Record "GST Setup";
     begin
         recCompinfo.Get();
         GSTSetup.get();
@@ -244,8 +247,8 @@ report 50103 "Purchase Order Report"
 
     procedure GetGSTRoundingPrecision(ComponentName: Code[30]): Decimal
     var
-        TaxComponent: Record "Tax Component";
         GSTSetup: Record "GST Setup";
+        TaxComponent: Record "Tax Component";
         GSTRoundingPrecision: Decimal;
     begin
         if not GSTSetup.Get() then exit;
@@ -261,24 +264,21 @@ report 50103 "Purchase Order Report"
     end;
 
     var
-        myInt: Integer;
-        txtcaption: Text;
-        intPage: Integer;
         recCompinfo: Record "Company Information";
-        recState: Record State;
         recCoun: Record "Country/Region";
-        txtStatecoun: Text;
-        txtComment: Text;
-        SGSTAmt: Decimal;
+        recpurcomline: Record "Purch. Comment Line";
+        recState: Record State;
         CGSTAmt: Decimal;
-        IGSSTAmt: Decimal;
         decCGSTPer: Decimal;
-        decSGSTPer: Decimal;
         decIGSTPer: Decimal;
-        IGSTLbl: Label 'IGST';
-        SGSTLbl: Label 'SGST';
+        decSGSTPer: Decimal;
+        IGSSTAmt: Decimal;
+        SGSTAmt: Decimal;
+        intPage: Integer;
+        txtcaption: Text;
+        txtComment: Text;
+        txtStatecoun: Text;
         CGSTLbl: Label 'CGST';
         GSTLbl: Label 'GST';
-        GSTSetup: Record "GST Setup";
-        recpurcomline: Record "Purch. Comment Line";
+        IGSTLbl: Label 'IGST';
 }

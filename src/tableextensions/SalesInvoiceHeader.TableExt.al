@@ -26,6 +26,12 @@ tableextension 50102 SalesInvoiceHeader extends "Sales Invoice Header"
             Caption = 'Unit of Measure';
             DataClassification = CustomerContent;
         }
+        field(50110; "PS Vehicle No."; Code[20])
+        {
+            Caption = 'Vehicle Num';
+            DataClassification = CustomerContent;
+        }
+
     }
 
 }

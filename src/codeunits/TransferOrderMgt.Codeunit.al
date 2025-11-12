@@ -14,7 +14,7 @@ codeunit 50101 TransferOrderMgt
         TransShptHeader."Item No." := TransHeader."Item No.";
         TransShptHeader."Unit of Measure" := TransHeader."Unit of Measure";
         TransShptHeader.Quantity := TransHeader.Quantity;
-
+TransShptHeader.Description := TransHeader.Description;
         //OnBeforeInsertTransShptHeader(TransShptHeader, TransHeader, SuppressCommit);
     end;
     //OnBeforeInsertTransShptLine
@@ -33,6 +33,7 @@ codeunit 50101 TransferOrderMgt
         TransferReceiptHeader."Item No." := TransferHeader."Item No.";
         TransferReceiptHeader."Unit of Measure" := TransferHeader."Unit of Measure";
         TransferReceiptHeader.Quantity := TransferHeader.Quantity;
+        TransferReceiptHeader.Description := TransferHeader.Description;
         //OnBeforeInsertTransShptHeader(TransShptHeader, TransHeader, SuppressCommit);
     end;
 

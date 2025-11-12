@@ -7361,7 +7361,7 @@ Fields!CompinfoCity.Value &amp; Fields!CompinfoPostcode.Value  &amp; vbcrlf &amp
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Buy_from_City.Value &amp; " " &amp; Fields!Buy_from_Post_Code.Value</Value>
+                                  <Value>=Fields!Ship_to_City.Value &amp; " " &amp; Fields!Ship_to_Post_Code.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -7383,6 +7383,7 @@ Fields!CompinfoCity.Value &amp; Fields!CompinfoPostcode.Value  &amp; vbcrlf &amp
                           </Style>
                         </Textbox>
                         <ColSpan>3</ColSpan>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />

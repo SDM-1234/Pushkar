@@ -87,9 +87,8 @@ report 50104 GatePassOutwardReport
             begin
                 recPostGateEntLine.Reset();
                 recPostGateEntLine.SetRange("Gate Entry No.", PostedGateEntryHeader."No.");
-                if recPostGateEntLine.FindFirst() then begin
+                if recPostGateEntLine.FindFirst() then
                     if recSaleShpHead.Get(recPostGateEntLine."Source No.") then;
-                end;
             end;
         }
     }
@@ -101,7 +100,6 @@ report 50104 GatePassOutwardReport
     end;
 
     var
-        myInt: Integer;
         recCompinfo: Record "Company Information";
         recPostGateEntLine: Record "Posted Gate Entry Line";
         recSaleShpHead: Record "Sales Shipment Header";

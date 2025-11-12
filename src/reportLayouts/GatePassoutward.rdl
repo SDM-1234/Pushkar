@@ -19,27 +19,27 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.00174in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.26389in</Width>
+                  <Width>1.26563in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.01667in</Width>
+                  <Width>1.01841in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.69443in</Width>
+                  <Width>2.69617in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.00174in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.00174in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.20928in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -178,7 +178,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.20928in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -319,7 +319,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.20928in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -483,7 +483,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.20928in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -647,7 +647,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.20928in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -811,7 +811,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.20928in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1008,7 +1008,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.20928in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1205,7 +1205,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.20928in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1406,7 +1406,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.20928in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1589,6 +1589,7 @@
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
+                                    <Format>f2</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1613,7 +1614,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.20928in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1810,7 +1811,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.625in</Height>
+                  <Height>0.58428in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2078,10 +2079,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>0.19444in</Top>
+            <Top>0in</Top>
             <Left>0.0139in</Left>
-            <Height>3.125in</Height>
-            <Width>7.97499in</Width>
+            <Height>2.67708in</Height>
+            <Width>7.98543in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2089,13 +2090,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>3.44444in</Height>
+        <Height>2.67708in</Height>
         <Style />
       </Body>
-      <Width>7.98889in</Width>
+      <Width>7.99933in</Width>
       <Page>
         <PageHeader>
-          <Height>2.83833in</Height>
+          <Height>1.37724in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2133,10 +2134,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.27778in</Top>
+              <Top>0.02778in</Top>
               <Left>0.0139in</Left>
               <Height>0.25in</Height>
-              <Width>7.49166in</Width>
+              <Width>7.98541in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2165,10 +2166,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CompinfoName</rd:DefaultName>
-              <Top>0.82167in</Top>
+              <Top>0.32167in</Top>
               <Left>0.0139in</Left>
               <Height>0.20833in</Height>
-              <Width>2.95833in</Width>
+              <Width>2.36912in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -2197,10 +2198,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CompinfoAddress</rd:DefaultName>
-              <Top>1.08556in</Top>
+              <Top>0.58556in</Top>
               <Left>0.0139in</Left>
               <Height>0.20833in</Height>
-              <Width>2.95833in</Width>
+              <Width>2.36912in</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -2230,10 +2231,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CompinfoCity</rd:DefaultName>
-              <Top>1.34945in</Top>
+              <Top>0.84945in</Top>
               <Left>0.0139in</Left>
               <Height>0.23612in</Height>
-              <Width>2.95833in</Width>
+              <Width>3.77431in</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -2265,10 +2266,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Posting_Date</rd:DefaultName>
-              <Top>0.78in</Top>
-              <Left>6.29722in</Left>
+              <Top>0.28in</Top>
+              <Left>6.42222in</Left>
               <Height>0.25in</Height>
-              <Width>1.69167in</Width>
+              <Width>1.57709in</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -2297,10 +2298,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>txtStatecoun</rd:DefaultName>
-              <Top>1.62724in</Top>
+              <Top>1.12724in</Top>
               <Left>0.0139in</Left>
               <Height>0.25in</Height>
-              <Width>2.93056in</Width>
+              <Width>3.77431in</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <Border>
@@ -2319,6 +2320,16 @@
             </Border>
           </Style>
         </PageHeader>
+        <PageFooter>
+          <Height>1in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <LeftMargin>0.25in</LeftMargin>
         <RightMargin>0.25in</RightMargin>
         <TopMargin>0.25in</TopMargin>

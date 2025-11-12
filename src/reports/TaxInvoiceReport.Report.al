@@ -320,15 +320,15 @@ report 50100 "Tax Invoice Report"
         QRCodeInput := "Sales Invoice Header"."External Document No." +
         DELCHR(FORMAT(SalesInvoiceLine.Quantity), '<=>', ',') + "Sales Invoice Header"."No." +
         VarText1 + '.' + VarText2 + '.20' + VarText3 +
-        DELCHR(FORMAT(SalesInvoiceLine."Gross Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
         DELCHR(FORMAT(SalesInvoiceLine."Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
-        SupplierCode + ',' + SalesInvoiceLine."No." +
+        DELCHR(FORMAT(SalesInvoiceLine."Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
+        "Sales Invoice Header"."Sell-to Customer No." + ',' + SalesInvoiceLine."No." +
         DELCHR(FORMAT(CGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
         DELCHR(FORMAT(IGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
         DELCHR(FORMAT(CGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
         DELCHR(FORMAT(IGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
         DELCHR(FORMAT(TextTotalAmount, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
-        SalesInvoiceLine."Tariff No.";
+        TariffNo;
         RecRef.GetTable("Sales Invoice Header");
         QRGenerator.GenerateQRCodeImage(QRCodeInput, TempBlob);
         TempBlob.ToRecordRef(RecRef, "Sales Invoice Header".FieldNo("QR Code"));
@@ -340,6 +340,7 @@ report 50100 "Tax Invoice Report"
     var
         CompanyInfo: Record "Company Information";
         States: Record State;
+        TariffNo: Code[20];//Same field replaced by variable
         HSNTable: Record "HSN/SAC";
         Customers: Record Customer;
         CountryRegion: Record "Country/Region";

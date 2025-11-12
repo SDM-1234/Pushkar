@@ -1,0 +1,93 @@
+{
+    "al.enableCodeAnalysis": true,
+    "al.codeAnalyzers": [
+    "${CodeCop}","${PerTenantExtensionCop}","${UICop}"
+    ],
+    //"al.ruleSetPath": "./.codeAnalysis/PR.ruleset.json",
+    "CRS.ObjectNamePrefix": "",
+    "CRS.ExtensionObjectNamePattern":  "<Prefix><BaseNameShort>", 
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al", 
+    "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.AlSubFolderName": "None",
+    "CRS.OnSaveAlFileAction": "Rename",
+    "CRS.RenameWithGit": true,
+    "ALStructureCreator.FolderStructure": {
+        "structure": {
+            "logo": {
+                "name": "logo",
+                "autocreate": true
+            },
+            "object": {
+                "name": "src",
+                "autocreate": true,
+                "subfolder": {
+                    "codeunit": {
+                        "name": "codeunit",
+                        "autocreate": true
+                    },
+                    "controladdin": {
+                        "name": "controladdins",
+                        "autocreate": false
+                    },
+                    "dotnet": {
+                        "name": "dotnet",
+                        "autocreate": false
+                    },
+                    "entitlement": {
+                        "name": "entitlement",
+                        "autocreate": false
+                    },
+                    "enum": {
+                        "name": "enum",
+                        "autocreate": true,
+                        "createext": false
+                    },
+                    "interface": {
+                        "name": "interfaces",
+                        "autocreate": false
+                    },
+                    "page": {
+                        "name": "page",
+                        "autocreate": true,
+                        "createcust": true,
+                        "createext": false
+                    },
+                    "pageextension": {
+                        "name": "pageextension",
+                        "autocreate": true,
+                        "createcust": true,
+                        "createext": false
+                    },                    
+                    "permissionset": {
+                        "name": "permissionset",
+                        "autocreate": true,
+                        "createext": false
+                    },
+                    "profile": {
+                        "name": "profiles",
+                        "autocreate": false
+                    },
+                    "query": {
+                        "name": "query",
+                        "autocreate": true
+                    },
+                    "report": {
+                        "name": "report",
+                        "autocreate": true,
+                        "subfolder": {
+                            "layout": {
+                                "name": "layout",
+                                "autocreate": true
+                            }
+                        }
+                    },                 
+                }
+            },
+            "webservice": {
+                "name": "webservice",
+                "autocreate": true
+            }
+        }
+    },
+    "ALTB.UseOldFileNamingConventions":false
+}

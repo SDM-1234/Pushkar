@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[{"Kind":106,"Name":"RequestOptionsPage","Namespace":""},{"Id":50100,"Kind":13,"Name":"Tax Invoice Report","Namespace":""}],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":50111,"Kind":17,"Name":"PurchaseInvoiceLines","Namespace":"Pushkar.Pushkar"},{"Kind":106,"Name":"RequestOptionsPage","Namespace":""},{"Id":50132,"Kind":16,"Name":"PostedPurchaseInvoiceLines","Namespace":"Pushkar.Pushkar"},{"Id":50100,"Kind":13,"Name":"Tax Invoice Report","Namespace":""},{"Id":50112,"Kind":17,"Name":"PurchCrMemoLine","Namespace":"Pushkar.Pushkar"}],"Removed":[]}

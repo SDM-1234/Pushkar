@@ -2,8 +2,9 @@ namespace Pushkar.Pushkar;
 
 using Microsoft.Purchases.History;
 
-pageextension 50132 PostedPurchaseInvoiceLines extends "Posted Purchase Invoice Lines"
+pageextension 50113 "PostedPurchaseCrMemoLines_WM" extends "Posted Purchase Cr. Memo Lines"
 {
+
     layout
     {
         addafter("Document No.")

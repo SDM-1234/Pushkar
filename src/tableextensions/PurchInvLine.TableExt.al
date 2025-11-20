@@ -26,14 +26,14 @@ tableextension 50111 PurchInvLine extends "Purch. Inv. Line"
         {
             Caption = 'Vendor Invoice No.';
             FieldClass = FlowField;
-            CalcFormula = lookup("Purchase Header"."Vendor Invoice No." where("No." = field("Document No.")));
+            CalcFormula = lookup("Purch. Inv. Header"."Vendor Invoice No." where("No." = field("Document No.")));
         }
 
         field(50103; "Document Date"; Date)
         {
             Caption = 'Document Date';
             FieldClass = FlowField;
-            CalcFormula = lookup("Purchase Header"."Document Date" where("No." = field("Document No.")));
+            CalcFormula = lookup("Purch. Inv. Header"."Document Date" where("No." = field("Document No.")));
         }
         field(50104; "Purch. Account"; Code[20])
         {

@@ -26,16 +26,16 @@ tableextension 50112 PurchCrMemoLine extends "Purch. Cr. Memo Line"
         }
         field(50102; "Vendor Invoice No."; Code[35])
         {
-            Caption = 'Vendor Invoice No.';
+            Caption = 'Vendor Cr Memo No.';
             FieldClass = FlowField;
-            CalcFormula = lookup("Purchase Header"."Vendor Invoice No." where("No." = field("Document No.")));
+            CalcFormula = lookup("Purch. Cr. Memo Hdr."."Vendor Cr. Memo No." where("No." = field("Document No.")));
         }
 
         field(50103; "Document Date"; Date)
         {
             Caption = 'Document Date';
             FieldClass = FlowField;
-            CalcFormula = lookup("Purchase Header"."Document Date" where("No." = field("Document No.")));
+            CalcFormula = lookup("Purch. Cr. Memo Hdr."."Document Date" where("No." = field("Document No.")));
         }
         field(50104; "Purch. Account"; Code[20])
         {

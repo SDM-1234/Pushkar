@@ -28,6 +28,11 @@ pageextension 50132 PostedPurchaseInvoiceLines extends "Posted Purchase Invoice 
             {
                 ApplicationArea = All;
             }
+            field("Purch. Account Name"; Rec."Purch. Account Name")
+            {
+                ApplicationArea = All;
+            }
+
         }
     }
 

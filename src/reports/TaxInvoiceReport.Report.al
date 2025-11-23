@@ -305,18 +305,9 @@ report 50100 "Tax Invoice Report"
         QRGenerator: Codeunit "QR Generator";
         RecRef: RecordRef;
         VarText1, VarText2, VarText3, QRCodeInput : Text;
-        IGSTAmtl, IGSTPerl : decimal;
     begin
         IF not QRCodePrint THEN
             Exit;
-        if SGSTAmt <> 0 then begin
-            IGSTAmtl := SGSTAmt;
-            IGSTPerl := SGSTPer;
-        end;
-        if IGSTAmt <> 0 then begin
-            IGSTAmtl := IGSTAmt;
-            IGSTPerl := IGSTPer;
-        end;
         SalesInvoiceLine.SetRange("Document No.", "Sales Invoice Header"."No.");
         SalesInvoiceLine.SetRange(Type, SalesInvoiceLine.Type::Item);
         SalesInvoiceLine.FindFirst();
@@ -326,6 +317,7 @@ report 50100 "Tax Invoice Report"
         //QR Code
         // Save a QR code image into a file in a temporary folder
         QRCodeInput := "Sales Invoice Header"."External Document No." + ',' +
+        '10' + ',' +
         DELCHR(FORMAT(SalesInvoiceLine.Quantity), '<=>', ',') + ',' +
         "Sales Invoice Header"."No." + ',' +
         VarText1 + '.' + VarText2 + '.20' + VarText3 + ',' +
@@ -333,9 +325,14 @@ report 50100 "Tax Invoice Report"
         DELCHR(FORMAT(SalesInvoiceLine."Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
         "Sales Invoice Header"."Sell-to Customer No." + ',' + SalesInvoiceLine."No." + ',' +
         DELCHR(FORMAT(CGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
-        DELCHR(FORMAT(IGSTAmtl, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        DELCHR(FORMAT(SGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        DELCHR(FORMAT(IGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        '0.00' + ',' +
         DELCHR(FORMAT(CGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
-        DELCHR(FORMAT(IGSTPerl, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        DELCHR(FORMAT(SGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        DELCHR(FORMAT(IGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        '0.00' + ',' +
+        '0.00' + ',' +
         DELCHR(FORMAT(TextTotalAmount, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
         SalesInvoiceLine."HSN/SAC Code";
         RecRef.GetTable("Sales Invoice Header");

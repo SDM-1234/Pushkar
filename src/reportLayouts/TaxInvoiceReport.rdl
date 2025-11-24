@@ -6477,9 +6477,6 @@ End Function
         <Field Name="IRNNO">
           <DataField>IRNNO</DataField>
         </Field>
-        <Field Name="QRCode">
-          <DataField>QRCode</DataField>
-        </Field>
         <Field Name="Vehicle_No_">
           <DataField>Vehicle_No_</DataField>
         </Field>
@@ -6584,6 +6581,9 @@ End Function
         </Field>
         <Field Name="QtyToText1">
           <DataField>QtyToText1</DataField>
+        </Field>
+        <Field Name="QRCode">
+          <DataField>QRCode</DataField>
         </Field>
       </Fields>
       <Query>

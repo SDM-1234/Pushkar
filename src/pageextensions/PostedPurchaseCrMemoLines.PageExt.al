@@ -16,6 +16,28 @@ pageextension 50114 PostedPurchaseCrMemoLines extends "Posted Purchase Cr. Memo 
                 Caption = 'Vendor Name';
                 Editable = false;
             }
+
+            field("GST Amount"; Rec."GST Amount")
+            {
+                ApplicationArea = All;
+            }
+            field("TDS Amount"; Rec."TDS Amount")
+            {
+                ApplicationArea = All;
+            }
+            field("Vendor Invoice No."; Rec."Vendor Invoice No.")
+            {
+                ApplicationArea = All;
+            }
+            field("Document Date"; Rec."Document Date")
+            {
+                ApplicationArea = All;
+            }
+            field("Purch. Account"; Rec."Purch. Account")
+            {
+                ApplicationArea = All;
+            }
+
         }
     }
     trigger OnAfterGetRecord()

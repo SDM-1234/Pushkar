@@ -84,9 +84,7 @@ report 50100 "Tax Invoice Report"
             column(VideInvoiceNo; '') { }
             column(VideInvoiceDate; '') { }
             column(IRNNO; "Sales Invoice Header"."IRN Hash") { }
-            column(QRCode; "Sales Invoice Header"."QR Code") { }
             column(Vehicle_No_; "Vehicle No.") { }
-
             column(ASNNo; '') { }
             dataitem("Sales Invoice Line"; "Sales Invoice Line")
             {
@@ -116,6 +114,8 @@ report 50100 "Tax Invoice Report"
                 column(TextTotalAmount; TextTotalAmount) { }
                 column(QtyToText; QtyToText[1] + QtyToText[2]) { }
                 column(QtyToText1; QtyToText1) { }
+                column(QRCode; "Sales Invoice Header"."QR Code") { }
+
 
                 trigger OnAfterGetRecord() // sales invoice line
                 begin
@@ -183,13 +183,15 @@ report 50100 "Tax Invoice Report"
                     QtyToText1 := QtyToText1.Replace('PAISA', '');
                     QtyToText1 := QtyToText1.Replace('AND', '');
                     QtyToText1 := QtyToText1.Replace('ZERO', '');
+                    CustomQR();
+                    "Sales Invoice Header".CalcFields("QR Code");
+
 
                 end;
 
             }
             trigger OnAfterGetRecord() // sales invoice header
             begin
-                CalcFields("QR Code");
                 CompanyName := CompanyInfo.Name;
                 CompanyAdd1 := CompanyInfo.Address;
                 CompanyAdd2 := CompanyInfo."Address 2";
@@ -247,9 +249,6 @@ report 50100 "Tax Invoice Report"
                         ShipToGSTIN := Customers."GST Registration No.";
                     end;
                 end;
-
-
-
             end;
         }
 
@@ -317,22 +316,29 @@ report 50100 "Tax Invoice Report"
         VarText3 := COPYSTR(FORMAT("Sales Invoice Header"."Posting Date"), 7, 2);
         //QR Code
         // Save a QR code image into a file in a temporary folder
-        QRCodeInput := "Sales Invoice Header"."External Document No." +
-        DELCHR(FORMAT(SalesInvoiceLine.Quantity), '<=>', ',') + "Sales Invoice Header"."No." +
-        VarText1 + '.' + VarText2 + '.20' + VarText3 +
-        DELCHR(FORMAT(SalesInvoiceLine."Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
-        DELCHR(FORMAT(SalesInvoiceLine."Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
-        "Sales Invoice Header"."Sell-to Customer No." + ',' + SalesInvoiceLine."No." +
-        DELCHR(FORMAT(CGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
-        DELCHR(FORMAT(IGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
-        DELCHR(FORMAT(CGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
-        DELCHR(FORMAT(IGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
-        DELCHR(FORMAT(TextTotalAmount, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') +
-        TariffNo;
+        QRCodeInput := "Sales Invoice Header"."External Document No." + ',' +
+        '10' + ',' +
+        DELCHR(FORMAT(SalesInvoiceLine.Quantity), '<=>', ',') + ',' +
+        "Sales Invoice Header"."No." + ',' +
+        VarText1 + '.' + VarText2 + '.20' + VarText3 + ',' +
+        DELCHR(FORMAT(SalesInvoiceLine."Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        DELCHR(FORMAT(SalesInvoiceLine."Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        "Sales Invoice Header"."Sell-to Customer No." + ',' + SalesInvoiceLine."No." + ',' +
+        DELCHR(FORMAT(CGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        DELCHR(FORMAT(SGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        DELCHR(FORMAT(IGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        '0.00' + ',' +
+        DELCHR(FORMAT(CGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        DELCHR(FORMAT(SGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        DELCHR(FORMAT(IGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        '0.00' + ',' +
+        '0.00' + ',' +
+        DELCHR(FORMAT(TextTotalAmount, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+        SalesInvoiceLine."HSN/SAC Code";
         RecRef.GetTable("Sales Invoice Header");
         QRGenerator.GenerateQRCodeImage(QRCodeInput, TempBlob);
         TempBlob.ToRecordRef(RecRef, "Sales Invoice Header".FieldNo("QR Code"));
-        RecRef.Modify();
+        //RecRef.Modify();
         RecRef.SetTable("Sales Invoice Header");
     end;
 

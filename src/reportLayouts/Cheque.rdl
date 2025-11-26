@@ -78,7 +78,6 @@
                             <PaddingBottom>1pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -385,7 +384,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!TotalAmountInwords_1.Value</Value>
+                    <Value>=First(Fields!TotalAmountInwords_1.Value)</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                     </Style>

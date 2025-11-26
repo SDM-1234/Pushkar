@@ -26,7 +26,7 @@ pageextension 50129 BankPaymentVoucher extends "Bank Payment Voucher"
                 Caption = 'Print Check-PTPL';
                 ToolTip = 'Prints a check using the PTPL format.';
                 Image = Check;
-                Visible = false;
+                //Visible = false;
 
             }
         }

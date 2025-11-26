@@ -188,6 +188,9 @@ report 50106 "Check Printing"
                             TotalNetAmount := RecGenJounLine.Amount;
 
 
+                        If RecGenJounLine."Credit Amount" <> 0 then
+                            TotalNetAmount := TotalNetAmount * -1;
+
                         //Counter += 1;
                         //IF Counter > 1 THEN
                         //  TotalNetAmount := "Credit Amount";
@@ -195,15 +198,8 @@ report 50106 "Check Printing"
                         //IF Counter = 1 THEN
                         //  TotalNetAmount := "Debit Amount";
 
-
-
-
                         ReportCheck.InitTextVariable();
-
-                        If TotalNetAmount < 0 then
-                            ReportCheck.FormatNoText(TotalAmountInwords, TotalNetAmount * -1, '')
-                        else
-                            ReportCheck.FormatNoText(TotalAmountInwords, TotalNetAmount, '');
+                        ReportCheck.FormatNoText(TotalAmountInwords, TotalNetAmount, '');
 
 
                     until RecGenJounLine.Next() = 0;

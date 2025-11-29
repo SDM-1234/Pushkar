@@ -1,0 +1,22 @@
+pageextension 50133 CustomerCardExtPTPL extends "Customer Card"
+{
+    layout
+    {
+        // Add changes to page layout here
+        addlast(General)
+        {
+            field("Supplier Code"; Rec."Supplier Code")
+            {
+                ApplicationArea = All;
+                Caption = 'Supplier Code';
+                ToolTip = 'Specifies the supplier code associated with the customer.';
+            }
+        }
+
+    }
+
+    actions
+    {
+        // Add changes to page actions here
+    }
+}

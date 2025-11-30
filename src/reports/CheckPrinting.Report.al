@@ -209,47 +209,58 @@ report 50106 "Check Printing"
         }
     }
 
-    requestpage
-    {
+    // requestpage
+    // {
 
-        layout
-        {
-            area(Content)
-            {
-                group(Group)
-                {
-                    Caption = 'Filters';
-                    field("Journal_Template_Name"; JnlTemplateName)
-                    {
-                        Caption = 'Journal Template Name';
-                        ApplicationArea = All;
-                        TableRelation = "Gen. Journal Template".Name;
-                    }
-                    field("Journal Batch Name"; JnlBatchName)
-                    {
-                        Caption = 'Journal Batch Name';
-                        ApplicationArea = All;
-                        TableRelation = "Gen. Journal Batch".Name;
-                    }
-                    field("Document No."; DocumentNo)
-                    {
-                        Caption = 'Document No.';
-                        ApplicationArea = All;
-                        //TableRelation = "Gen. Journal Line"."Document No.";
-                    }
-                }
-            }
-        }
 
-        actions
-        {
-        }
-    }
+
+    //     layout
+    //     {
+
+
+    //         area(Content)
+    //         {
+
+
+    //             group(Group)
+    //             {
+    //                 Caption = 'Filters';
+    //                 field("Journal_Template_Name"; JnlTemplateName)
+    //                 {
+    //                     Caption = 'Journal Template Name';
+    //                     ApplicationArea = All;
+    //                     TableRelation = "Gen. Journal Template".Name;
+    //                 }
+    //                 field("Journal Batch Name"; JnlBatchName)
+    //                 {
+    //                     Caption = 'Journal Batch Name';
+    //                     ApplicationArea = All;
+    //                     TableRelation = "Gen. Journal Batch".Name;
+    //                 }
+    //                 field("Document No."; DocumentNo)
+    //                 {
+    //                     Caption = 'Document No.';
+    //                     ApplicationArea = All;
+    //                     //TableRelation = "Gen. Journal Line"."Document No.";
+    //                 }
+    //             }
+    //         }
+
+    //     }
+
+
+    // }
 
     labels
     {
     }
 
+    procedure SetChequeParameter(DocNo: Code[20]; TemplateName: Code[10]; BatchName: Code[10])
+    begin
+        JnlTemplateName := TemplateName;
+        JnlBatchName := BatchName;
+        DocumentNo := DocNo;
+    end;
     trigger OnPreReport()
     begin
         CompanyInformation.GET();

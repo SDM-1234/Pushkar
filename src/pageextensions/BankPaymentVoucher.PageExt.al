@@ -21,12 +21,20 @@ pageextension 50129 BankPaymentVoucher extends "Bank Payment Voucher"
         {
             action("Print Check-PTPL")
             {
-                RunObject = report "Check Printing";
+                //RunObject = report "Check Printing";
                 ApplicationArea = All;
                 Caption = 'Print Check-PTPL';
                 ToolTip = 'Prints a check using the PTPL format.';
                 Image = Check;
                 //Visible = false;
+
+                trigger OnAction()
+                var
+                    CheckPrinting: Report "Check Printing";
+                begin
+                    CheckPrinting.SetChequeParameter(Rec."Document No.", Rec."Journal Template Name", Rec."Journal Batch Name");
+                    CheckPrinting.Run();
+                end;
 
             }
         }

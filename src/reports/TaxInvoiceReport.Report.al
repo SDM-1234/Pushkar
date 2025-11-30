@@ -183,10 +183,8 @@ report 50100 "Tax Invoice Report"
                     QtyToText1 := QtyToText1.Replace('PAISA', '');
                     QtyToText1 := QtyToText1.Replace('AND', '');
                     QtyToText1 := QtyToText1.Replace('ZERO', '');
-                    CustomQR();
                     "Sales Invoice Header".CalcFields("QR Code");
-
-
+                    CustomQR();
                 end;
 
             }
@@ -300,6 +298,7 @@ report 50100 "Tax Invoice Report"
 
     local procedure CustomQR()
     var
+        Customer: Record Customer;
         SalesInvoiceLine: Record "Sales Invoice Line";
         TempBlob: Codeunit "Temp Blob";
         QRGenerator: Codeunit "QR Generator";
@@ -308,6 +307,7 @@ report 50100 "Tax Invoice Report"
     begin
         IF not QRCodePrint THEN
             Exit;
+        Customer.Get("Sales Invoice Header"."Sell-to Customer No.");
         SalesInvoiceLine.SetRange("Document No.", "Sales Invoice Header"."No.");
         SalesInvoiceLine.SetRange(Type, SalesInvoiceLine.Type::Item);
         SalesInvoiceLine.FindFirst();
@@ -323,7 +323,7 @@ report 50100 "Tax Invoice Report"
         VarText1 + '.' + VarText2 + '.20' + VarText3 + ',' +
         DELCHR(FORMAT(SalesInvoiceLine."Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
         DELCHR(FORMAT(SalesInvoiceLine."Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
-        "Sales Invoice Header"."Sell-to Customer No." + ',' + SalesInvoiceLine."No." + ',' +
+        Customer."Supplier Code" + ',' + SalesInvoiceLine."No." + ',' +
         DELCHR(FORMAT(CGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
         DELCHR(FORMAT(SGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
         DELCHR(FORMAT(IGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
@@ -338,7 +338,6 @@ report 50100 "Tax Invoice Report"
         RecRef.GetTable("Sales Invoice Header");
         QRGenerator.GenerateQRCodeImage(QRCodeInput, TempBlob);
         TempBlob.ToRecordRef(RecRef, "Sales Invoice Header".FieldNo("QR Code"));
-        //RecRef.Modify();
         RecRef.SetTable("Sales Invoice Header");
     end;
 

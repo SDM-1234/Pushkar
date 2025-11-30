@@ -13,34 +13,35 @@ report 50106 "Check Printing"
 
     dataset
     {
-        dataitem("Gen. Journal Line"; "Gen. Journal Line")
+        dataitem(Integer; Integer)
         {
-            DataItemTableView = SORTING("Document No.");
-            RequestFilterFields = "Journal Template Name", "Document No.";
+            DataItemTableView = SORTING(Number) where(Number = const(1));
+            //RequestFilterFields = "Journal Template Name", "Document No.";
             column(Company_Name; CompanyInformation.Name)
             {
             }
-            column(Pay_Name; "Gen. Journal Line".Description)
+            column(Pay_Name; RecGenJounLine.Description)
             {
             }
-            column(Posting_Date; FORMAT("Gen. Journal Line"."Posting Date"))
+            column(Posting_Date; FORMAT(RecGenJounLine."Posting Date"))
             {
             }
-            column(Document_No; "Gen. Journal Line"."Document No.")
+            column(Document_No; RecGenJounLine."Document No.")
             {
             }
-            column(Account_No; "Gen. Journal Line"."Account No.")
+            column(Account_No; RecGenJounLine."Account No.")
             {
             }
-            column(Description_Val; "Gen. Journal Line".Description)
+            column(Description_Val; RecGenJounLine.Description)
             {
             }
-            column(Debit_Amount; "Gen. Journal Line"."Debit Amount")
+            column(Debit_Amount; RecGenJounLine."Debit Amount")
             {
             }
-            column(Credit_Amount; "Gen. Journal Line"."Credit Amount")
+            column(Credit_Amount; RecGenJounLine."Credit Amount")
             {
             }
+
             column(Narrations_Val; VarNarration)
             {
             }
@@ -115,111 +116,151 @@ report 50106 "Check Printing"
 
             trigger OnAfterGetRecord()
             begin
-                IF TempDocumentNo <> "Document No." THEN BEGIN
-                    PayName := '';
-                    BankAccountNo := '';
-                    BankAccountName := '';
-                    CheckNo := '';
-                    CheckDate := 0D;
-                    BankAmount := 0;
-                    TotalNetAmount := 0;
-                    CheckDateFormat := '';
-                    CLEAR(StoreDate);
-                    CLEAR(VendInfo);
-                END;
-                TempDocumentNo := "Document No.";
-                IF PayName = '' THEN BEGIN
-                    IF "Account Type" = "Account Type"::Vendor THEN
-                        GetVendor.GET("Account No.");
-                    //PayName := "Payee Name";
-                    VendInfo[1] := GetVendor.Address;
-                    VendInfo[2] := GetVendor."Address 2" + ',';
-                    VendInfo[3] := GetVendor.City + '-' + GetVendor."Post Code" + ',';
-                    IF RecState.GET(GetVendor."State Code") THEN
-                        VendInfo[4] := RecState.Description + ',';
-                    IF CountryRegion.GET(GetVendor."Country/Region Code") THEN
-                        VendInfo[5] := CountryRegion.Name;
-                    //IF "Account Type" = "Account Type"::"G/L Account" THEN
-                    // PayName := "Payee Name";
-                END;
-
-
-                IF "Cheque No." <> '' THEN BEGIN
-                    IF "Account Type" = "Account Type"::"Bank Account" THEN BEGIN
-                        BankAccount.GET("Account No.");
-                        BankAccountNo := "Account No.";
-                    END;
-                    IF "Bal. Account Type" = "Bal. Account Type"::"Bank Account" THEN BEGIN
-                        BankAccount.GET("Bal. Account No.");
-                        BankAccountNo := "Bal. Account No.";
-                    END;
-
-                    BankAccountName := BankAccount.Name;
-                    CheckNo := "Cheque No.";
-                    CheckDate := "Cheque Date";
-                    BankAmount := ABS(Amount);
-                    CheckDateFormat := FORMAT("Posting Date", 0, '<Day,2><Month,2><Year4>');
-                    StoreDate[1] := COPYSTR(CheckDateFormat, 1, 1);
-                    StoreDate[2] := COPYSTR(CheckDateFormat, 2, 1);
-                    StoreDate[3] := COPYSTR(CheckDateFormat, 3, 1);
-                    StoreDate[4] := COPYSTR(CheckDateFormat, 4, 1);
-                    StoreDate[5] := COPYSTR(CheckDateFormat, 5, 1);
-                    StoreDate[6] := COPYSTR(CheckDateFormat, 6, 1);
-                    StoreDate[7] := COPYSTR(CheckDateFormat, 7, 1);
-                    StoreDate[8] := COPYSTR(CheckDateFormat, 8, 1);
-                END;
-
-
-                If ("Gen. Journal Line"."Bal. Account Type" = "Gen. Journal Line"."Bal. Account Type"::"Bank Account") and ("Gen. Journal Line"."Bal. Account No." <> '') then
-                    TotalNetAmount := "Gen. Journal Line".Amount;
-
-
-                If ("Gen. Journal Line"."Bal. Account No." = '') and ("Gen. Journal Line"."Account Type" = "Account Type"::"Bank Account") then
-                    TotalNetAmount := "Gen. Journal Line".Amount;
-
-
-                //Counter += 1;
-                //IF Counter > 1 THEN
-                //  TotalNetAmount := "Credit Amount";
-
-                //IF Counter = 1 THEN
-                //  TotalNetAmount := "Debit Amount";
-
-
 
 
                 RecGenJounLine.RESET();
-                RecGenJounLine.SETRANGE(RecGenJounLine."Journal Template Name", "Gen. Journal Line"."Journal Template Name");
-                RecGenJounLine.SETRANGE(RecGenJounLine."Journal Batch Name", "Gen. Journal Line"."Journal Batch Name");
-                RecGenJounLine.SETRANGE(RecGenJounLine."Document No.", "Gen. Journal Line"."Document No.");
-                IF RecGenJounLine.FINDLAST() THEN
-                    //VarNarration := RecGenJounLine.Narration;
-                ReportCheck.InitTextVariable();
+                RecGenJounLine.SETRANGE(RecGenJounLine."Journal Template Name", JnlTemplateName);
+                RecGenJounLine.SETRANGE(RecGenJounLine."Journal Batch Name", JnlBatchName);
+                RecGenJounLine.SETRANGE(RecGenJounLine."Document No.", DocumentNo);
+                IF RecGenJounLine.FindFirst() THEN
+                    repeat
 
-                If TotalNetAmount < 0 then
-                    ReportCheck.FormatNoText(TotalAmountInwords, TotalNetAmount * -1, '')
-                else
-                    ReportCheck.FormatNoText(TotalAmountInwords, TotalNetAmount, '');
+                        IF TempDocumentNo <> RecGenJounLine."Document No." THEN BEGIN
+                            PayName := '';
+                            BankAccountNo := '';
+                            BankAccountName := '';
+                            CheckNo := '';
+                            CheckDate := 0D;
+                            BankAmount := 0;
+                            TotalNetAmount := 0;
+                            CheckDateFormat := '';
+                            CLEAR(StoreDate);
+                            CLEAR(VendInfo);
+                        END;
+                        TempDocumentNo := RecGenJounLine."Document No.";
+                        IF PayName = '' THEN BEGIN
+                            IF RecGenJounLine."Account Type" = RecGenJounLine."Account Type"::Vendor THEN
+                                GetVendor.GET(RecGenJounLine."Account No.");
+                            //PayName := "Payee Name";
+                            VendInfo[1] := GetVendor.Address;
+                            VendInfo[2] := GetVendor."Address 2" + ',';
+                            VendInfo[3] := GetVendor.City + '-' + GetVendor."Post Code" + ',';
+                            IF RecState.GET(GetVendor."State Code") THEN
+                                VendInfo[4] := RecState.Description + ',';
+                            IF CountryRegion.GET(GetVendor."Country/Region Code") THEN
+                                VendInfo[5] := CountryRegion.Name;
+                            //IF "Account Type" = "Account Type"::"G/L Account" THEN
+                            // PayName := "Payee Name";
+                        END;
+
+
+                        IF RecGenJounLine."Cheque No." <> '' THEN BEGIN
+                            IF RecGenJounLine."Account Type" = RecGenJounLine."Account Type"::"Bank Account" THEN
+                                if BankAccount.GET(RecGenJounLine."Account No.") then
+                                    BankAccountNo := RecGenJounLine."Account No.";
+
+                            IF RecGenJounLine."Bal. Account Type" = "Bal. Account Type"::"Bank Account" THEN
+                                if BankAccount.GET(RecGenJounLine."Bal. Account No.") then
+                                    BankAccountNo := RecGenJounLine."Bal. Account No.";
+
+
+                            BankAccountName := BankAccount.Name;
+                            CheckNo := RecGenJounLine."Cheque No.";
+                            CheckDate := RecGenJounLine."Cheque Date";
+                            BankAmount := ABS(RecGenJounLine.Amount);
+                            CheckDateFormat := FORMAT(RecGenJounLine."Posting Date", 0, '<Day,2><Month,2><Year4>');
+                            StoreDate[1] := COPYSTR(CheckDateFormat, 1, 1);
+                            StoreDate[2] := COPYSTR(CheckDateFormat, 2, 1);
+                            StoreDate[3] := COPYSTR(CheckDateFormat, 3, 1);
+                            StoreDate[4] := COPYSTR(CheckDateFormat, 4, 1);
+                            StoreDate[5] := COPYSTR(CheckDateFormat, 5, 1);
+                            StoreDate[6] := COPYSTR(CheckDateFormat, 6, 1);
+                            StoreDate[7] := COPYSTR(CheckDateFormat, 7, 1);
+                            StoreDate[8] := COPYSTR(CheckDateFormat, 8, 1);
+                        END;
+
+
+                        If (RecGenJounLine."Bal. Account Type" = RecGenJounLine."Bal. Account Type"::"Bank Account") and (RecGenJounLine."Bal. Account No." <> '') then
+                            TotalNetAmount := RecGenJounLine.Amount;
+
+
+                        If (RecGenJounLine."Bal. Account No." = '') and (RecGenJounLine."Account Type" = RecGenJounLine."Account Type"::"Bank Account") then
+                            TotalNetAmount := RecGenJounLine.Amount;
+
+
+                        If RecGenJounLine."Credit Amount" <> 0 then
+                            TotalNetAmount := TotalNetAmount * -1;
+
+                        //Counter += 1;
+                        //IF Counter > 1 THEN
+                        //  TotalNetAmount := "Credit Amount";
+
+                        //IF Counter = 1 THEN
+                        //  TotalNetAmount := "Debit Amount";
+
+                        ReportCheck.InitTextVariable();
+                        ReportCheck.FormatNoText(TotalAmountInwords, TotalNetAmount, '');
+
+
+                    until RecGenJounLine.Next() = 0;
+
+
             end;
         }
     }
 
-    requestpage
-    {
+    // requestpage
+    // {
 
-        layout
-        {
-        }
 
-        actions
-        {
-        }
-    }
+
+    //     layout
+    //     {
+
+
+    //         area(Content)
+    //         {
+
+
+    //             group(Group)
+    //             {
+    //                 Caption = 'Filters';
+    //                 field("Journal_Template_Name"; JnlTemplateName)
+    //                 {
+    //                     Caption = 'Journal Template Name';
+    //                     ApplicationArea = All;
+    //                     TableRelation = "Gen. Journal Template".Name;
+    //                 }
+    //                 field("Journal Batch Name"; JnlBatchName)
+    //                 {
+    //                     Caption = 'Journal Batch Name';
+    //                     ApplicationArea = All;
+    //                     TableRelation = "Gen. Journal Batch".Name;
+    //                 }
+    //                 field("Document No."; DocumentNo)
+    //                 {
+    //                     Caption = 'Document No.';
+    //                     ApplicationArea = All;
+    //                     //TableRelation = "Gen. Journal Line"."Document No.";
+    //                 }
+    //             }
+    //         }
+
+    //     }
+
+
+    // }
 
     labels
     {
     }
 
+    procedure SetChequeParameter(DocNo: Code[20]; TemplateName: Code[10]; BatchName: Code[10])
+    begin
+        JnlTemplateName := TemplateName;
+        JnlBatchName := BatchName;
+        DocumentNo := DocNo;
+    end;
     trigger OnPreReport()
     begin
         CompanyInformation.GET();
@@ -238,7 +279,11 @@ report 50106 "Check Printing"
         TempDocumentNo: Code[20];
         CheckDate: Date;
         BankAmount: Decimal;
+        JnlTemplateName: Code[10];
+        JnlBatchName: Code[10];
+        DocumentNo: Code[20];
         TotalNetAmount: Decimal;
+        GenJournalLine: Record "Gen. Journal Line";
         Counter: Integer;
         BankAccountName: Text;
         CheckDateFormat: Text;

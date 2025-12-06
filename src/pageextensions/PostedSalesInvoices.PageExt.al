@@ -1,3 +1,7 @@
+namespace Pushkar.Pushkar;
+
+using Microsoft.Sales.History;
+    
 pageextension 50127 PostedSalesInvoices extends "Posted Sales Invoices"
 {
     actions

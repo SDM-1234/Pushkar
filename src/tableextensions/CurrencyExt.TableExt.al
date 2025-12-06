@@ -1,3 +1,7 @@
+namespace Pushkar.Pushkar;
+
+using Microsoft.Finance.Currency;
+    
 tableextension 50114 CurrencyExt extends Currency
 {
     fields

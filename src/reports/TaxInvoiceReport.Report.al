@@ -1,3 +1,17 @@
+namespace Pushkar.Pushkar;
+
+using Microsoft.Finance.GST.Base;
+using Microsoft.Finance.Reports;
+using Microsoft.Finance.TaxBase;
+using Microsoft.Finance.TaxEngine.TaxTypeHandler;
+using Microsoft.Foundation.Address;
+using Microsoft.Foundation.Company;
+using Microsoft.Inventory.Location;
+using Microsoft.QRGeneration;
+using Microsoft.Sales.Customer;
+using Microsoft.Sales.History;
+using System.Utilities;
+
 report 50100 "Tax Invoice Report"
 {
     DefaultLayout = RDLC;
@@ -43,13 +57,22 @@ report 50100 "Tax Invoice Report"
             {
 
             }
+            column(CompanyPAN; CompanyPAN)
+            {
+
+            }
+            column(CompanyCIN; CompanyCIN)
+            {
+
+            }
+
             column(CompanyState; CompanyState) { }
             column(CompanyStateCode; CompanyStateCode) { }
             column(InvoiceNo; "Sales Invoice Header"."No.")
             { }
             column(InvoiceDate; "Sales Invoice Header"."Posting Date")
             { }
-            column(SupplierCode; "Sales Invoice Header"."Sell-to Customer No.")
+            column(SupplierCode; SupplierCode)
             { }
             column(BillToName; BillToName) { }
             column(BillToAdd1; BillToAdd1) { }
@@ -196,6 +219,8 @@ report 50100 "Tax Invoice Report"
                 CompanyCity := CompanyInfo.City;
                 CompanyPin := CompanyInfo."Post Code";
                 CompanyGSTIN := CompanyInfo."GST Registration No.";
+                CompanyPAN := CompanyInfo."P.A.N. No.";
+                CompanyCIN := CompanyInfo."Circle No.";
                 if (CompanyInfo."State Code" <> '') then begin
                     States.Reset();
                     States.Get(CompanyInfo."State Code");
@@ -216,6 +241,7 @@ report 50100 "Tax Invoice Report"
                 BillToAdd2 := Customers."Address 2";
                 BillToCity := Customers.City;
                 BillToPin := Customers."Post Code";
+                SupplierCode := Customers."Supplier Code";
                 States.Reset();
                 if Customers."State Code" <> '' then begin
                     States.Get(Customers."State Code");
@@ -358,6 +384,9 @@ report 50100 "Tax Invoice Report"
         CompanyCity: Text[60];
         CompanyPin: Text[10];
         CompanyGSTIN: Text[15];
+        CompanyPAN: Code[20];
+        SupplierCode: Code[20];
+        CompanyCIN: Code[20];
         CompanyState: Text[30];
         CompanyStateCode: Text[5];
         LocationState: Text[30];

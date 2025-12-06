@@ -1,3 +1,7 @@
+namespace Pushkar.Pushkar;
+
+using Microsoft.Warehouse.GateEntry;
+    
 pageextension 50124 PostedOutwardGateEntry extends "Posted Outward Gate Entry"
 {
     actions

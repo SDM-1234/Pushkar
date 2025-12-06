@@ -1,3 +1,9 @@
+namespace Pushkar.Pushkar;
+
+using Microsoft.Inventory.Item;
+using Microsoft.Inventory.Ledger;
+using Microsoft.Inventory.Transfer;
+    
 
 reportextension 50104 TransferReceiptRptExt extends "Transfer Receipt"
 {

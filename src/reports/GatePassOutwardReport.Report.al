@@ -1,3 +1,11 @@
+namespace Pushkar.Pushkar;
+
+using Microsoft.Finance.TaxBase;
+using Microsoft.Foundation.Address;
+using Microsoft.Foundation.Company;
+using Microsoft.Sales.History;
+using Microsoft.Warehouse.GateEntry;
+    
 report 50104 GatePassOutwardReport
 {
     UsageCategory = ReportsAndAnalysis;

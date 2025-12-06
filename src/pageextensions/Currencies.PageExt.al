@@ -1,3 +1,7 @@
+namespace Pushkar.Pushkar;
+
+using Microsoft.Finance.Currency;
+    
 
 pageextension 50113 Currencies extends Currencies
 {

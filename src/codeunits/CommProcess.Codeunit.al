@@ -1,3 +1,11 @@
+namespace Pushkar.Pushkar;
+
+using Microsoft.Finance.GST.Base;
+using Microsoft.Foundation.Company;
+using Microsoft.Sales.History;
+using Microsoft.Sales.Receivables;
+using System.Utilities;
+    
 codeunit 50102 CommProcess
 {
     trigger OnRun()

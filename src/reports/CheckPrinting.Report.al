@@ -1,3 +1,13 @@
+namespace Pushkar.Pushkar;
+
+using Microsoft.Bank.BankAccount;
+using Microsoft.Finance.GeneralLedger.Journal;
+using Microsoft.Finance.TaxBase;
+using Microsoft.Foundation.Address;
+using Microsoft.Foundation.Company;
+using Microsoft.Purchases.Vendor;
+using System.Utilities;
+
 /// <summary>
 /// Report Check Printing (ID 50077).
 /// </summary>
@@ -159,7 +169,7 @@ report 50106 "Check Printing"
                                 if BankAccount.GET(RecGenJounLine."Account No.") then
                                     BankAccountNo := RecGenJounLine."Account No.";
 
-                            IF RecGenJounLine."Bal. Account Type" = "Bal. Account Type"::"Bank Account" THEN
+                            IF RecGenJounLine."Bal. Account Type" = RecGenJounLine."Bal. Account Type"::"Bank Account" THEN
                                 if BankAccount.GET(RecGenJounLine."Bal. Account No.") then
                                     BankAccountNo := RecGenJounLine."Bal. Account No.";
 

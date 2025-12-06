@@ -1,3 +1,7 @@
+namespace Pushkar.Pushkar;
+
+using Microsoft.Sales.Customer;
+    
 tableextension 50115 CustomerExtPTPL extends Customer
 {
     fields

@@ -1,3 +1,11 @@
+namespace Pushkar.Pushkar;
+
+using Microsoft.Finance.Reports;
+using Microsoft.Inventory.Comment;
+using Microsoft.Inventory.Intrastat;
+using Microsoft.Inventory.Item;
+using Microsoft.Inventory.Ledger;
+    
 reportextension 50102 TransferShipmentGST extends "Transfer Shipment GST"
 {
     dataset

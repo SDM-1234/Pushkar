@@ -11,5 +11,10 @@ permissionset 50100 GeneratedPermission
         codeunit CommProcess = X,
         codeunit SalesCommonSubscriber = X,
         codeunit TransferOrderMgt = X,
-        page "Temp Posted Transfer Shipments" = X;
+        page "Temp Posted Transfer Shipments" = X,
+        tabledata DailyScheduleList = RIMD,
+        table DailyScheduleList = X,
+        report "Check Printing" = X,
+        codeunit AmountToWords = X,
+        page DailyScheduleList = X;
 }

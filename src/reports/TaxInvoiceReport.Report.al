@@ -386,7 +386,7 @@ report 50100 "Tax Invoice Report"
         CompanyGSTIN: Text[15];
         CompanyPAN: Code[20];
         SupplierCode: Code[20];
-        CompanyCIN: Code[20];
+        CompanyCIN: Text[30];
         CompanyState: Text[30];
         CompanyStateCode: Text[5];
         LocationState: Text[30];

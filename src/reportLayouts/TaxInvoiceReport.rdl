@@ -878,7 +878,6 @@
                           </Style>
                         </Textbox>
                         <ColSpan>3</ColSpan>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />
@@ -2120,6 +2119,7 @@
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>dd-MM-yyyy</Format>
                                     <TextDecoration>None</TextDecoration>
                                     <Color>#000000</Color>
                                   </Style>
@@ -4132,14 +4132,15 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox124</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!CGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
                             </Border>
                             <LeftBorder>
-                              <Color>Black</Color>
                               <Style>Solid</Style>
-                              <Width>1pt</Width>
                             </LeftBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -4147,6 +4148,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -4174,6 +4176,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox125</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!CGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -4211,6 +4216,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox126</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!CGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -4428,14 +4436,15 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox145</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!SGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
                             </Border>
                             <LeftBorder>
-                              <Color>Black</Color>
                               <Style>Solid</Style>
-                              <Width>1pt</Width>
                             </LeftBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -4470,6 +4479,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox146</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!SGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -4507,6 +4519,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox147</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!SGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -4724,14 +4739,15 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox138</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!IGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
                             </Border>
                             <LeftBorder>
-                              <Color>Black</Color>
                               <Style>Solid</Style>
-                              <Width>1pt</Width>
                             </LeftBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -4766,6 +4782,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox139</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!IGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -4803,6 +4822,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox140</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!IGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>

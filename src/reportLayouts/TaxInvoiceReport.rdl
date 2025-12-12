@@ -11,6 +11,265 @@
       <rd:DataSourceID>188d04d5-b99f-4d7f-8fbc-4c5942eac186</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="CompanyAdd1">
+          <DataField>CompanyAdd1</DataField>
+        </Field>
+        <Field Name="CompanyAdd2">
+          <DataField>CompanyAdd2</DataField>
+        </Field>
+        <Field Name="PS_Vehicle_No_">
+          <DataField>PS_Vehicle_No_</DataField>
+        </Field>
+        <Field Name="CompanyCity">
+          <DataField>CompanyCity</DataField>
+        </Field>
+        <Field Name="CompanyPin">
+          <DataField>CompanyPin</DataField>
+        </Field>
+        <Field Name="CompanyGSTIN">
+          <DataField>CompanyGSTIN</DataField>
+        </Field>
+        <Field Name="CompanyPAN">
+          <DataField>CompanyPAN</DataField>
+        </Field>
+        <Field Name="CompanyCIN">
+          <DataField>CompanyCIN</DataField>
+        </Field>
+        <Field Name="CompanyState">
+          <DataField>CompanyState</DataField>
+        </Field>
+        <Field Name="CompanyStateCode">
+          <DataField>CompanyStateCode</DataField>
+        </Field>
+        <Field Name="InvoiceNo">
+          <DataField>InvoiceNo</DataField>
+        </Field>
+        <Field Name="InvoiceDate">
+          <DataField>InvoiceDate</DataField>
+        </Field>
+        <Field Name="SupplierCode">
+          <DataField>SupplierCode</DataField>
+        </Field>
+        <Field Name="BillToName">
+          <DataField>BillToName</DataField>
+        </Field>
+        <Field Name="BillToAdd1">
+          <DataField>BillToAdd1</DataField>
+        </Field>
+        <Field Name="BillToAdd2">
+          <DataField>BillToAdd2</DataField>
+        </Field>
+        <Field Name="BillToCity">
+          <DataField>BillToCity</DataField>
+        </Field>
+        <Field Name="BillToPin">
+          <DataField>BillToPin</DataField>
+        </Field>
+        <Field Name="BillToState">
+          <DataField>BillToState</DataField>
+        </Field>
+        <Field Name="BillToStateCode">
+          <DataField>BillToStateCode</DataField>
+        </Field>
+        <Field Name="BillToCountry">
+          <DataField>BillToCountry</DataField>
+        </Field>
+        <Field Name="BillToGSTIN">
+          <DataField>BillToGSTIN</DataField>
+        </Field>
+        <Field Name="ShipToName">
+          <DataField>ShipToName</DataField>
+        </Field>
+        <Field Name="ShipToAdd1">
+          <DataField>ShipToAdd1</DataField>
+        </Field>
+        <Field Name="ShipToAdd2">
+          <DataField>ShipToAdd2</DataField>
+        </Field>
+        <Field Name="ShipToCity">
+          <DataField>ShipToCity</DataField>
+        </Field>
+        <Field Name="ShipToPin">
+          <DataField>ShipToPin</DataField>
+        </Field>
+        <Field Name="ShipToState">
+          <DataField>ShipToState</DataField>
+        </Field>
+        <Field Name="ShipToStateCode">
+          <DataField>ShipToStateCode</DataField>
+        </Field>
+        <Field Name="ShipToCountry">
+          <DataField>ShipToCountry</DataField>
+        </Field>
+        <Field Name="ShipToGSTIN">
+          <DataField>ShipToGSTIN</DataField>
+        </Field>
+        <Field Name="PONumber">
+          <DataField>PONumber</DataField>
+        </Field>
+        <Field Name="PODate">
+          <DataField>PODate</DataField>
+        </Field>
+        <Field Name="ChalanNo">
+          <DataField>ChalanNo</DataField>
+        </Field>
+        <Field Name="ChalanDate">
+          <DataField>ChalanDate</DataField>
+        </Field>
+        <Field Name="RRCNoteNo">
+          <DataField>RRCNoteNo</DataField>
+        </Field>
+        <Field Name="RRCNoteDate">
+          <DataField>RRCNoteDate</DataField>
+        </Field>
+        <Field Name="CareeerName">
+          <DataField>CareeerName</DataField>
+        </Field>
+        <Field Name="ReturnChalanNo">
+          <DataField>ReturnChalanNo</DataField>
+        </Field>
+        <Field Name="DispatchNoteNo">
+          <DataField>DispatchNoteNo</DataField>
+        </Field>
+        <Field Name="DispatchNoteDate">
+          <DataField>DispatchNoteDate</DataField>
+        </Field>
+        <Field Name="StoreLoc">
+          <DataField>StoreLoc</DataField>
+        </Field>
+        <Field Name="PallateNo">
+          <DataField>PallateNo</DataField>
+        </Field>
+        <Field Name="VideInvoiceNo">
+          <DataField>VideInvoiceNo</DataField>
+        </Field>
+        <Field Name="VideInvoiceDate">
+          <DataField>VideInvoiceDate</DataField>
+        </Field>
+        <Field Name="IRNNO">
+          <DataField>IRNNO</DataField>
+        </Field>
+        <Field Name="Vehicle_No_">
+          <DataField>Vehicle_No_</DataField>
+        </Field>
+        <Field Name="ASNNo">
+          <DataField>ASNNo</DataField>
+        </Field>
+        <Field Name="UOM">
+          <DataField>UOM</DataField>
+        </Field>
+        <Field Name="Commodity">
+          <DataField>Commodity</DataField>
+        </Field>
+        <Field Name="ItemName">
+          <DataField>ItemName</DataField>
+        </Field>
+        <Field Name="No_">
+          <DataField>No_</DataField>
+        </Field>
+        <Field Name="UnitPrice">
+          <DataField>UnitPrice</DataField>
+        </Field>
+        <Field Name="UnitPriceFormat">
+          <DataField>UnitPriceFormat</DataField>
+        </Field>
+        <Field Name="LineAmount">
+          <DataField>LineAmount</DataField>
+        </Field>
+        <Field Name="LineAmountFormat">
+          <DataField>LineAmountFormat</DataField>
+        </Field>
+        <Field Name="Location_Code">
+          <DataField>Location_Code</DataField>
+        </Field>
+        <Field Name="HSN">
+          <DataField>HSN</DataField>
+        </Field>
+        <Field Name="SGSTAmt">
+          <DataField>SGSTAmt</DataField>
+        </Field>
+        <Field Name="SGSTAmtFormat">
+          <DataField>SGSTAmtFormat</DataField>
+        </Field>
+        <Field Name="SGSTPer">
+          <DataField>SGSTPer</DataField>
+        </Field>
+        <Field Name="SGSTPerFormat">
+          <DataField>SGSTPerFormat</DataField>
+        </Field>
+        <Field Name="IGSTAmt">
+          <DataField>IGSTAmt</DataField>
+        </Field>
+        <Field Name="IGSTAmtFormat">
+          <DataField>IGSTAmtFormat</DataField>
+        </Field>
+        <Field Name="IGSTPer">
+          <DataField>IGSTPer</DataField>
+        </Field>
+        <Field Name="IGSTPerFormat">
+          <DataField>IGSTPerFormat</DataField>
+        </Field>
+        <Field Name="CGSTAmt">
+          <DataField>CGSTAmt</DataField>
+        </Field>
+        <Field Name="CGSTAmtFormat">
+          <DataField>CGSTAmtFormat</DataField>
+        </Field>
+        <Field Name="CGSTPer">
+          <DataField>CGSTPer</DataField>
+        </Field>
+        <Field Name="CGSTPerFormat">
+          <DataField>CGSTPerFormat</DataField>
+        </Field>
+        <Field Name="CessAmt">
+          <DataField>CessAmt</DataField>
+        </Field>
+        <Field Name="CessAmtFormat">
+          <DataField>CessAmtFormat</DataField>
+        </Field>
+        <Field Name="CessPer">
+          <DataField>CessPer</DataField>
+        </Field>
+        <Field Name="CessPerFormat">
+          <DataField>CessPerFormat</DataField>
+        </Field>
+        <Field Name="AmountToText">
+          <DataField>AmountToText</DataField>
+        </Field>
+        <Field Name="ShipQty">
+          <DataField>ShipQty</DataField>
+        </Field>
+        <Field Name="ShipQtyFormat">
+          <DataField>ShipQtyFormat</DataField>
+        </Field>
+        <Field Name="TextTotalAmount">
+          <DataField>TextTotalAmount</DataField>
+        </Field>
+        <Field Name="TextTotalAmountFormat">
+          <DataField>TextTotalAmountFormat</DataField>
+        </Field>
+        <Field Name="QtyToText">
+          <DataField>QtyToText</DataField>
+        </Field>
+        <Field Name="QtyToText1">
+          <DataField>QtyToText1</DataField>
+        </Field>
+        <Field Name="QRCode">
+          <DataField>QRCode</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -265,37 +524,27 @@
                     <TablixCell />
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox39">
+                        <Textbox Name="Textbox1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>OUR GST NO.: </Value>
+                                  <Value />
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <TextDecoration>None</TextDecoration>
                                     <Color>#000000</Color>
-                                  </Style>
-                                </TextRun>
-                                <TextRun>
-                                  <Label>CompanyGST</Label>
-                                  <Value>=Fields!CompanyGSTIN.Value</Value>
-                                  <Style>
-                                    <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox39</rd:DefaultName>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -444,7 +693,7 @@
                             </Border>
                             <BottomBorder>
                               <Color>Black</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                               <Width>1pt</Width>
                             </BottomBorder>
                             <LeftBorder>
@@ -540,88 +789,39 @@
                     <TablixCell />
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox53">
+                        <Textbox Name="CompanyCIN2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>CIN No. </Value>
                                   <Style>
+                                    <FontStyle>Normal</FontStyle>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <TextDecoration>None</TextDecoration>
+                                    <Color>#000000</Color>
                                   </Style>
                                 </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox53</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox54">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!CompanyCIN.Value</Value>
                                   <Style>
+                                    <FontStyle>Normal</FontStyle>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <TextDecoration>None</TextDecoration>
+                                    <Color>#000000</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox54</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox55">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox55</rd:DefaultName>
+                          <rd:DefaultName>CompanyCIN</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -637,8 +837,11 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <ColSpan>3</ColSpan>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
@@ -742,7 +945,7 @@
                             </Border>
                             <TopBorder>
                               <Color>Black</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                               <Width>1pt</Width>
                             </TopBorder>
                             <LeftBorder>
@@ -829,25 +1032,14 @@
                     <TablixCell />
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="CompanyCIN">
+                        <Textbox Name="Textbox4">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>CIN No. </Value>
-                                  <Style>
-                                    <FontStyle>Normal</FontStyle>
-                                    <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                    <TextDecoration>None</TextDecoration>
-                                    <Color>#000000</Color>
-                                  </Style>
-                                </TextRun>
-                                <TextRun>
-                                  <Value>=Fields!CompanyCIN.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Segoe UI</FontFamily>
@@ -861,7 +1053,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>CompanyCIN</rd:DefaultName>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -878,7 +1070,6 @@
                           </Style>
                         </Textbox>
                         <ColSpan>3</ColSpan>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />
@@ -890,22 +1081,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox1">
+                        <Textbox Name="Textbox6">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Supplier Code : </Value>
-                                  <Style>
-                                    <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                                <TextRun>
-                                  <Label>SupplierCode</Label>
-                                  <Value>=Fields!SupplierCode.Value</Value>
+                                  <Value>=iif(Fields!SupplierCode.Value = "","","Supplier Code :" &amp; Fields!SupplierCode.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -915,7 +1098,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1829,7 +2012,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.5in</Height>
+                  <Height>0.38333in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2018,7 +2201,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.5in</Height>
+                  <Height>0.36667in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2120,6 +2303,7 @@
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>dd-MM-yyyy</Format>
                                     <TextDecoration>None</TextDecoration>
                                     <Color>#000000</Color>
                                   </Style>
@@ -2351,14 +2535,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox85">
+                        <Textbox Name="Textbox7">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Vehicle Num</Value>
+                                  <Value />
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Segoe UI</FontFamily>
@@ -2372,7 +2556,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox85</rd:DefaultName>
+                          <rd:DefaultName>Textbox7</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -2402,14 +2586,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PS_Vehicle_No_">
+                        <Textbox Name="Textbox9">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PS_Vehicle_No_.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Segoe UI</FontFamily>
@@ -2423,7 +2607,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PS_Vehicle_No_</rd:DefaultName>
+                          <rd:DefaultName>Textbox9</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -2577,7 +2761,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.5in</Height>
+                  <Height>0.39167in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2986,7 +3170,7 @@
                               <TextRuns>
                                 <TextRun>
                                   <Label>VehNo</Label>
-                                  <Value>=Fields!Vehicle_No_.Value</Value>
+                                  <Value>=Fields!PS_Vehicle_No_.Value</Value>
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Segoe UI</FontFamily>
@@ -3639,7 +3823,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.35in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -4132,14 +4316,15 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox124</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!CGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
                             </Border>
                             <LeftBorder>
-                              <Color>Black</Color>
                               <Style>Solid</Style>
-                              <Width>1pt</Width>
                             </LeftBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -4174,6 +4359,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox125</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!CGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -4211,6 +4399,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox126</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!CGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -4428,14 +4619,15 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox145</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!SGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
                             </Border>
                             <LeftBorder>
-                              <Color>Black</Color>
                               <Style>Solid</Style>
-                              <Width>1pt</Width>
                             </LeftBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -4470,6 +4662,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox146</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!SGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -4507,6 +4702,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox147</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!SGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -4724,14 +4922,15 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox138</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!IGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
                             </Border>
                             <LeftBorder>
-                              <Color>Black</Color>
                               <Style>Solid</Style>
-                              <Width>1pt</Width>
                             </LeftBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -4766,6 +4965,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox139</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!IGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -4803,6 +5005,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox140</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!IGSTAmt.Value =0,true,false)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -4827,26 +5032,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox127">
+                        <Textbox Name="Textbox2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Pallet No.: </Value>
-                                  <Style>
-                                    <FontStyle>Normal</FontStyle>
-                                    <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
-                                    <TextDecoration>None</TextDecoration>
-                                    <Color>#000000</Color>
-                                  </Style>
-                                </TextRun>
-                                <TextRun>
-                                  <Label>PallNo</Label>
-                                  <Value>=Fields!PallateNo.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Segoe UI</FontFamily>
@@ -4860,7 +5053,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox127</rd:DefaultName>
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -4887,6 +5080,7 @@
                           </Style>
                         </Textbox>
                         <ColSpan>5</ColSpan>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />
@@ -5013,25 +5207,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox162">
+                        <Textbox Name="Textbox3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Duty Paid Vide Invoice No. </Value>
-                                  <Style>
-                                    <FontStyle>Normal</FontStyle>
-                                    <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
-                                    <TextDecoration>None</TextDecoration>
-                                    <Color>#000000</Color>
-                                  </Style>
-                                </TextRun>
-                                <TextRun>
-                                  <Value>=Fields!VideInvoiceNo.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Segoe UI</FontFamily>
@@ -5045,7 +5228,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox162</rd:DefaultName>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -5193,25 +5376,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox155">
+                        <Textbox Name="Textbox10">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Date: </Value>
-                                  <Style>
-                                    <FontStyle>Normal</FontStyle>
-                                    <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
-                                    <TextDecoration>None</TextDecoration>
-                                    <Color>#000000</Color>
-                                  </Style>
-                                </TextRun>
-                                <TextRun>
-                                  <Value>=Fields!VideInvoiceDate.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Segoe UI</FontFamily>
@@ -5225,7 +5397,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox155</rd:DefaultName>
+                          <rd:DefaultName>Textbox10</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -5373,14 +5545,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox148">
+                        <Textbox Name="Textbox11">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Pallet to be recycled and taken back by Pushkar Techno Private Limited. Xerox copy of invoice enclosed</Value>
+                                  <Value />
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Segoe UI</FontFamily>
@@ -5394,7 +5566,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox148</rd:DefaultName>
+                          <rd:DefaultName>Textbox11</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -6280,7 +6452,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.64806in</Top>
             <Left>0in</Left>
-            <Height>10.47in</Height>
+            <Height>10.21167in</Height>
             <Width>8.02778in</Width>
             <Style>
               <Border>
@@ -6400,8 +6572,20 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Line Name="Line1">
+            <Top>6.84584in</Top>
+            <Left>8.02778in</Left>
+            <Height>0.75in</Height>
+            <Width>0in</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
         </ReportItems>
-        <Height>11.11806in</Height>
+        <Height>10.85973in</Height>
         <Style />
       </Body>
       <Width>8.02778in</Width>
@@ -6416,6 +6600,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -6456,263 +6646,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="CompanyName">
-          <DataField>CompanyName</DataField>
-        </Field>
-        <Field Name="CompanyAdd1">
-          <DataField>CompanyAdd1</DataField>
-        </Field>
-        <Field Name="CompanyAdd2">
-          <DataField>CompanyAdd2</DataField>
-        </Field>
-        <Field Name="PS_Vehicle_No_">
-          <DataField>PS_Vehicle_No_</DataField>
-        </Field>
-        <Field Name="CompanyCity">
-          <DataField>CompanyCity</DataField>
-        </Field>
-        <Field Name="CompanyPin">
-          <DataField>CompanyPin</DataField>
-        </Field>
-        <Field Name="CompanyGSTIN">
-          <DataField>CompanyGSTIN</DataField>
-        </Field>
-        <Field Name="CompanyPAN">
-          <DataField>CompanyPAN</DataField>
-        </Field>
-        <Field Name="CompanyCIN">
-          <DataField>CompanyCIN</DataField>
-        </Field>
-        <Field Name="CompanyState">
-          <DataField>CompanyState</DataField>
-        </Field>
-        <Field Name="CompanyStateCode">
-          <DataField>CompanyStateCode</DataField>
-        </Field>
-        <Field Name="InvoiceNo">
-          <DataField>InvoiceNo</DataField>
-        </Field>
-        <Field Name="InvoiceDate">
-          <DataField>InvoiceDate</DataField>
-        </Field>
-        <Field Name="SupplierCode">
-          <DataField>SupplierCode</DataField>
-        </Field>
-        <Field Name="BillToName">
-          <DataField>BillToName</DataField>
-        </Field>
-        <Field Name="BillToAdd1">
-          <DataField>BillToAdd1</DataField>
-        </Field>
-        <Field Name="BillToAdd2">
-          <DataField>BillToAdd2</DataField>
-        </Field>
-        <Field Name="BillToCity">
-          <DataField>BillToCity</DataField>
-        </Field>
-        <Field Name="BillToPin">
-          <DataField>BillToPin</DataField>
-        </Field>
-        <Field Name="BillToState">
-          <DataField>BillToState</DataField>
-        </Field>
-        <Field Name="BillToStateCode">
-          <DataField>BillToStateCode</DataField>
-        </Field>
-        <Field Name="BillToCountry">
-          <DataField>BillToCountry</DataField>
-        </Field>
-        <Field Name="BillToGSTIN">
-          <DataField>BillToGSTIN</DataField>
-        </Field>
-        <Field Name="ShipToName">
-          <DataField>ShipToName</DataField>
-        </Field>
-        <Field Name="ShipToAdd1">
-          <DataField>ShipToAdd1</DataField>
-        </Field>
-        <Field Name="ShipToAdd2">
-          <DataField>ShipToAdd2</DataField>
-        </Field>
-        <Field Name="ShipToCity">
-          <DataField>ShipToCity</DataField>
-        </Field>
-        <Field Name="ShipToPin">
-          <DataField>ShipToPin</DataField>
-        </Field>
-        <Field Name="ShipToState">
-          <DataField>ShipToState</DataField>
-        </Field>
-        <Field Name="ShipToStateCode">
-          <DataField>ShipToStateCode</DataField>
-        </Field>
-        <Field Name="ShipToCountry">
-          <DataField>ShipToCountry</DataField>
-        </Field>
-        <Field Name="ShipToGSTIN">
-          <DataField>ShipToGSTIN</DataField>
-        </Field>
-        <Field Name="PONumber">
-          <DataField>PONumber</DataField>
-        </Field>
-        <Field Name="PODate">
-          <DataField>PODate</DataField>
-        </Field>
-        <Field Name="ChalanNo">
-          <DataField>ChalanNo</DataField>
-        </Field>
-        <Field Name="ChalanDate">
-          <DataField>ChalanDate</DataField>
-        </Field>
-        <Field Name="RRCNoteNo">
-          <DataField>RRCNoteNo</DataField>
-        </Field>
-        <Field Name="RRCNoteDate">
-          <DataField>RRCNoteDate</DataField>
-        </Field>
-        <Field Name="CareeerName">
-          <DataField>CareeerName</DataField>
-        </Field>
-        <Field Name="ReturnChalanNo">
-          <DataField>ReturnChalanNo</DataField>
-        </Field>
-        <Field Name="DispatchNoteNo">
-          <DataField>DispatchNoteNo</DataField>
-        </Field>
-        <Field Name="DispatchNoteDate">
-          <DataField>DispatchNoteDate</DataField>
-        </Field>
-        <Field Name="StoreLoc">
-          <DataField>StoreLoc</DataField>
-        </Field>
-        <Field Name="PallateNo">
-          <DataField>PallateNo</DataField>
-        </Field>
-        <Field Name="VideInvoiceNo">
-          <DataField>VideInvoiceNo</DataField>
-        </Field>
-        <Field Name="VideInvoiceDate">
-          <DataField>VideInvoiceDate</DataField>
-        </Field>
-        <Field Name="IRNNO">
-          <DataField>IRNNO</DataField>
-        </Field>
-        <Field Name="Vehicle_No_">
-          <DataField>Vehicle_No_</DataField>
-        </Field>
-        <Field Name="ASNNo">
-          <DataField>ASNNo</DataField>
-        </Field>
-        <Field Name="UOM">
-          <DataField>UOM</DataField>
-        </Field>
-        <Field Name="Commodity">
-          <DataField>Commodity</DataField>
-        </Field>
-        <Field Name="ItemName">
-          <DataField>ItemName</DataField>
-        </Field>
-        <Field Name="No_">
-          <DataField>No_</DataField>
-        </Field>
-        <Field Name="UnitPrice">
-          <DataField>UnitPrice</DataField>
-        </Field>
-        <Field Name="UnitPriceFormat">
-          <DataField>UnitPriceFormat</DataField>
-        </Field>
-        <Field Name="LineAmount">
-          <DataField>LineAmount</DataField>
-        </Field>
-        <Field Name="LineAmountFormat">
-          <DataField>LineAmountFormat</DataField>
-        </Field>
-        <Field Name="Location_Code">
-          <DataField>Location_Code</DataField>
-        </Field>
-        <Field Name="HSN">
-          <DataField>HSN</DataField>
-        </Field>
-        <Field Name="SGSTAmt">
-          <DataField>SGSTAmt</DataField>
-        </Field>
-        <Field Name="SGSTAmtFormat">
-          <DataField>SGSTAmtFormat</DataField>
-        </Field>
-        <Field Name="SGSTPer">
-          <DataField>SGSTPer</DataField>
-        </Field>
-        <Field Name="SGSTPerFormat">
-          <DataField>SGSTPerFormat</DataField>
-        </Field>
-        <Field Name="IGSTAmt">
-          <DataField>IGSTAmt</DataField>
-        </Field>
-        <Field Name="IGSTAmtFormat">
-          <DataField>IGSTAmtFormat</DataField>
-        </Field>
-        <Field Name="IGSTPer">
-          <DataField>IGSTPer</DataField>
-        </Field>
-        <Field Name="IGSTPerFormat">
-          <DataField>IGSTPerFormat</DataField>
-        </Field>
-        <Field Name="CGSTAmt">
-          <DataField>CGSTAmt</DataField>
-        </Field>
-        <Field Name="CGSTAmtFormat">
-          <DataField>CGSTAmtFormat</DataField>
-        </Field>
-        <Field Name="CGSTPer">
-          <DataField>CGSTPer</DataField>
-        </Field>
-        <Field Name="CGSTPerFormat">
-          <DataField>CGSTPerFormat</DataField>
-        </Field>
-        <Field Name="CessAmt">
-          <DataField>CessAmt</DataField>
-        </Field>
-        <Field Name="CessAmtFormat">
-          <DataField>CessAmtFormat</DataField>
-        </Field>
-        <Field Name="CessPer">
-          <DataField>CessPer</DataField>
-        </Field>
-        <Field Name="CessPerFormat">
-          <DataField>CessPerFormat</DataField>
-        </Field>
-        <Field Name="AmountToText">
-          <DataField>AmountToText</DataField>
-        </Field>
-        <Field Name="ShipQty">
-          <DataField>ShipQty</DataField>
-        </Field>
-        <Field Name="ShipQtyFormat">
-          <DataField>ShipQtyFormat</DataField>
-        </Field>
-        <Field Name="TextTotalAmount">
-          <DataField>TextTotalAmount</DataField>
-        </Field>
-        <Field Name="TextTotalAmountFormat">
-          <DataField>TextTotalAmountFormat</DataField>
-        </Field>
-        <Field Name="QtyToText">
-          <DataField>QtyToText</DataField>
-        </Field>
-        <Field Name="QtyToText1">
-          <DataField>QtyToText1</DataField>
-        </Field>
-        <Field Name="QRCode">
-          <DataField>QRCode</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>

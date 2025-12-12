@@ -198,7 +198,7 @@ report 50100 "Tax Invoice Report"
                     Cheque.InitTextVariable();
                     Cheque.FormatNoText(AmountToText, TextTotalAmount, "Sales Invoice Header"."Currency Code");
                     Cheque.InitTextVariable();
-                    Cheque.FormatNoText(QtyToText, Quantity, '');
+                    Cheque.FormatNoText(QtyToText, Round(Quantity, 0.01, '='), '');
 
                     QtyToText1 := QtyToText[1] + QtyToText[2];
 
@@ -386,7 +386,7 @@ report 50100 "Tax Invoice Report"
         CompanyGSTIN: Text[15];
         CompanyPAN: Code[20];
         SupplierCode: Code[20];
-        CompanyCIN: Code[20];
+        CompanyCIN: Text[30];
         CompanyState: Text[30];
         CompanyStateCode: Text[5];
         LocationState: Text[30];

@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="PostingDateCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PostingDateCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PostingDateCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ShptMethodCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ShptMethodCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ShptMethodCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="InTransit_TransShptHeaderCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>InTransit_TransShptHeaderCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>InTransit_TransShptHeaderCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ItemNo_TransShptLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ItemNo_TransShptLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ItemNo_TransShptLineCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Desc_TransShptLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Desc_TransShptLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Desc_TransShptLineCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Qty_TransShptLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Qty_TransShptLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Qty_TransShptLineCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="UOM_TransShptLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>UOM_TransShptLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>UOM_TransShptLineCaption</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="No_TransShptHeader">
+          <DataField>No_TransShptHeader</DataField>
+        </Field>
+        <Field Name="CopyTextCaption">
+          <DataField>CopyTextCaption</DataField>
+        </Field>
+        <Field Name="TransferToAddr1">
+          <DataField>TransferToAddr1</DataField>
+        </Field>
+        <Field Name="TransferFromAddr1">
+          <DataField>TransferFromAddr1</DataField>
+        </Field>
+        <Field Name="TransferToAddr2">
+          <DataField>TransferToAddr2</DataField>
+        </Field>
+        <Field Name="TransferFromAddr2">
+          <DataField>TransferFromAddr2</DataField>
+        </Field>
+        <Field Name="TransferToAddr3">
+          <DataField>TransferToAddr3</DataField>
+        </Field>
+        <Field Name="TransferFromAddr3">
+          <DataField>TransferFromAddr3</DataField>
+        </Field>
+        <Field Name="TransferToAddr4">
+          <DataField>TransferToAddr4</DataField>
+        </Field>
+        <Field Name="TransferFromAddr4">
+          <DataField>TransferFromAddr4</DataField>
+        </Field>
+        <Field Name="TransferToAddr5">
+          <DataField>TransferToAddr5</DataField>
+        </Field>
+        <Field Name="TransferToAddr6">
+          <DataField>TransferToAddr6</DataField>
+        </Field>
+        <Field Name="InTransit_TransShptHeader">
+          <DataField>InTransit_TransShptHeader</DataField>
+        </Field>
+        <Field Name="PostDate_TransShptHeader">
+          <DataField>PostDate_TransShptHeader</DataField>
+        </Field>
+        <Field Name="No2_TransShptHeader">
+          <DataField>No2_TransShptHeader</DataField>
+        </Field>
+        <Field Name="TransferToAddr7">
+          <DataField>TransferToAddr7</DataField>
+        </Field>
+        <Field Name="TransferToAddr8">
+          <DataField>TransferToAddr8</DataField>
+        </Field>
+        <Field Name="TransferFromAddr5">
+          <DataField>TransferFromAddr5</DataField>
+        </Field>
+        <Field Name="TransferFromAddr6">
+          <DataField>TransferFromAddr6</DataField>
+        </Field>
+        <Field Name="ShiptDate_TransShptHeader">
+          <DataField>ShiptDate_TransShptHeader</DataField>
+        </Field>
+        <Field Name="TransferFromAddr7">
+          <DataField>TransferFromAddr7</DataField>
+        </Field>
+        <Field Name="TransferFromAddr8">
+          <DataField>TransferFromAddr8</DataField>
+        </Field>
+        <Field Name="PageCaption">
+          <DataField>PageCaption</DataField>
+        </Field>
+        <Field Name="OutputNo">
+          <DataField>OutputNo</DataField>
+        </Field>
+        <Field Name="Desc_ShptMethod">
+          <DataField>Desc_ShptMethod</DataField>
+        </Field>
+        <Field Name="TransShptHdrNoCaption">
+          <DataField>TransShptHdrNoCaption</DataField>
+        </Field>
+        <Field Name="TransShptShptDateCaption">
+          <DataField>TransShptShptDateCaption</DataField>
+        </Field>
+        <Field Name="GSTComponentCode1">
+          <DataField>GSTComponentCode1</DataField>
+        </Field>
+        <Field Name="GSTComponentCode2">
+          <DataField>GSTComponentCode2</DataField>
+        </Field>
+        <Field Name="GSTComponentCode3">
+          <DataField>GSTComponentCode3</DataField>
+        </Field>
+        <Field Name="GSTComponentCode4">
+          <DataField>GSTComponentCode4</DataField>
+        </Field>
+        <Field Name="GSTCompAmount1">
+          <DataField>GSTCompAmount1</DataField>
+        </Field>
+        <Field Name="GSTCompAmount1Format">
+          <DataField>GSTCompAmount1Format</DataField>
+        </Field>
+        <Field Name="GSTCompAmount2">
+          <DataField>GSTCompAmount2</DataField>
+        </Field>
+        <Field Name="GSTCompAmount2Format">
+          <DataField>GSTCompAmount2Format</DataField>
+        </Field>
+        <Field Name="GSTCompAmount3">
+          <DataField>GSTCompAmount3</DataField>
+        </Field>
+        <Field Name="GSTCompAmount3Format">
+          <DataField>GSTCompAmount3Format</DataField>
+        </Field>
+        <Field Name="GSTCompAmount4">
+          <DataField>GSTCompAmount4</DataField>
+        </Field>
+        <Field Name="GSTCompAmount4Format">
+          <DataField>GSTCompAmount4Format</DataField>
+        </Field>
+        <Field Name="IsGSTApplicable">
+          <DataField>IsGSTApplicable</DataField>
+        </Field>
+        <Field Name="Amount">
+          <DataField>Amount</DataField>
+        </Field>
+        <Field Name="TotalTaxAmount">
+          <DataField>TotalTaxAmount</DataField>
+        </Field>
+        <Field Name="TransferFromRegCode">
+          <DataField>TransferFromRegCode</DataField>
+        </Field>
+        <Field Name="TransferToRegCode">
+          <DataField>TransferToRegCode</DataField>
+        </Field>
+        <Field Name="FromGSTRegNo">
+          <DataField>FromGSTRegNo</DataField>
+        </Field>
+        <Field Name="ToGSTRegNo">
+          <DataField>ToGSTRegNo</DataField>
+        </Field>
+        <Field Name="HSNSAC">
+          <DataField>HSNSAC</DataField>
+        </Field>
+        <Field Name="HSNSACCode">
+          <DataField>HSNSACCode</DataField>
+        </Field>
+        <Field Name="DimText">
+          <DataField>DimText</DataField>
+        </Field>
+        <Field Name="Number_DimensionLoop1">
+          <DataField>Number_DimensionLoop1</DataField>
+        </Field>
+        <Field Name="HdrDimCaption">
+          <DataField>HdrDimCaption</DataField>
+        </Field>
+        <Field Name="ShowInternalInfo">
+          <DataField>ShowInternalInfo</DataField>
+        </Field>
+        <Field Name="NoOfCopies">
+          <DataField>NoOfCopies</DataField>
+        </Field>
+        <Field Name="ItemNo_TransShptLine">
+          <DataField>ItemNo_TransShptLine</DataField>
+        </Field>
+        <Field Name="Desc_TransShptLine">
+          <DataField>Desc_TransShptLine</DataField>
+        </Field>
+        <Field Name="Qty_TransShptLine">
+          <DataField>Qty_TransShptLine</DataField>
+        </Field>
+        <Field Name="Qty_TransShptLineFormat">
+          <DataField>Qty_TransShptLineFormat</DataField>
+        </Field>
+        <Field Name="UOM_TransShptLine">
+          <DataField>UOM_TransShptLine</DataField>
+        </Field>
+        <Field Name="LineNo_TransShptLine">
+          <DataField>LineNo_TransShptLine</DataField>
+        </Field>
+        <Field Name="DocNo_TransShptLine">
+          <DataField>DocNo_TransShptLine</DataField>
+        </Field>
+        <Field Name="GSTBaseAmount_TransferShipmentLine">
+          <DataField>GSTBaseAmount_TransferShipmentLine</DataField>
+        </Field>
+        <Field Name="GSTBaseAmount_TransferShipmentLineFormat">
+          <DataField>GSTBaseAmount_TransferShipmentLineFormat</DataField>
+        </Field>
+        <Field Name="CGSTAmt">
+          <DataField>CGSTAmt</DataField>
+        </Field>
+        <Field Name="CGSTAmtFormat">
+          <DataField>CGSTAmtFormat</DataField>
+        </Field>
+        <Field Name="SGSTAmt">
+          <DataField>SGSTAmt</DataField>
+        </Field>
+        <Field Name="SGSTAmtFormat">
+          <DataField>SGSTAmtFormat</DataField>
+        </Field>
+        <Field Name="IGSTAmt">
+          <DataField>IGSTAmt</DataField>
+        </Field>
+        <Field Name="IGSTAmtFormat">
+          <DataField>IGSTAmtFormat</DataField>
+        </Field>
+        <Field Name="UGSTAmt">
+          <DataField>UGSTAmt</DataField>
+        </Field>
+        <Field Name="UGSTAmtFormat">
+          <DataField>UGSTAmtFormat</DataField>
+        </Field>
+        <Field Name="CGSTLbl">
+          <DataField>CGSTLbl</DataField>
+        </Field>
+        <Field Name="SGSTLbl">
+          <DataField>SGSTLbl</DataField>
+        </Field>
+        <Field Name="IGSTLbl">
+          <DataField>IGSTLbl</DataField>
+        </Field>
+        <Field Name="UGSTLbl">
+          <DataField>UGSTLbl</DataField>
+        </Field>
+        <Field Name="DimText4">
+          <DataField>DimText4</DataField>
+        </Field>
+        <Field Name="Number_DimensionLoop2">
+          <DataField>Number_DimensionLoop2</DataField>
+        </Field>
+        <Field Name="LineDimCaption">
+          <DataField>LineDimCaption</DataField>
+        </Field>
+        <Field Name="CovertQty">
+          <DataField>CovertQty</DataField>
+        </Field>
+        <Field Name="CovertQtyFormat">
+          <DataField>CovertQtyFormat</DataField>
+        </Field>
+        <Field Name="PurchUOM">
+          <DataField>PurchUOM</DataField>
+        </Field>
+        <Field Name="Unit_Price">
+          <DataField>Unit_Price</DataField>
+        </Field>
+        <Field Name="Unit_PriceFormat">
+          <DataField>Unit_PriceFormat</DataField>
+        </Field>
+        <Field Name="Remarks">
+          <DataField>Remarks</DataField>
+        </Field>
+        <Field Name="Vehicle_No_">
+          <DataField>Vehicle_No_</DataField>
+        </Field>
+        <Field Name="Time_of_Removal">
+          <DataField>Time_of_Removal</DataField>
+        </Field>
+        <Field Name="FGItem_No_">
+          <DataField>FGItem_No_</DataField>
+        </Field>
+        <Field Name="FGQuantity">
+          <DataField>FGQuantity</DataField>
+        </Field>
+        <Field Name="FGQuantityFormat">
+          <DataField>FGQuantityFormat</DataField>
+        </Field>
+        <Field Name="FGUnit_of_Measure">
+          <DataField>FGUnit_of_Measure</DataField>
+        </Field>
+        <Field Name="FGDescription">
+          <DataField>FGDescription</DataField>
+        </Field>
+        <Field Name="Transaction_Specification">
+          <DataField>Transaction_Specification</DataField>
+        </Field>
+        <Field Name="TransferOrderNo">
+          <DataField>TransferOrderNo</DataField>
+        </Field>
+        <Field Name="Transaction_NatureDesc">
+          <DataField>Transaction_NatureDesc</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

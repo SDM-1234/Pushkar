@@ -3,6 +3,7 @@ namespace Pushkar.Pushkar;
 using Microsoft.Finance.GST.Base;
 using Microsoft.Finance.Reports;
 using Microsoft.Finance.TaxBase;
+using Microsoft.Finance.TCS.TCSBase;
 using Microsoft.Finance.TaxEngine.TaxTypeHandler;
 using Microsoft.Foundation.Address;
 using Microsoft.Foundation.Company;
@@ -96,6 +97,8 @@ report 50100 "Tax Invoice Report"
             column(PODate; "Sales Invoice Header"."Document Date") { }
             column(ChalanNo; "Sales Invoice Header"."No.") { }
             column(ChalanDate; "Sales Invoice Header"."Posting Date") { }
+            column(TCSAmount; TCSAmount) { }
+
             column(RRCNoteNo; '') { }
             column(RRCNoteDate; '') { }
             column(CareeerName; '') { }
@@ -193,7 +196,7 @@ report 50100 "Tax Invoice Report"
                                     CessPer := DetailedGSTLedgerEntry."GST %";
                                 end;
                         until DetailedGSTLedgerEntry.Next() = 0;
-                    TextTotalAmount := "Line Amount" + SGSTAmt + CGSTAmt + IGSTAmt + CessAmt;
+                    TextTotalAmount := "Line Amount" + SGSTAmt + CGSTAmt + IGSTAmt + CessAmt + TCSAmount;
 
                     Cheque.InitTextVariable();
                     Cheque.FormatNoText(AmountToText, TextTotalAmount, "Sales Invoice Header"."Currency Code");
@@ -213,6 +216,13 @@ report 50100 "Tax Invoice Report"
             }
             trigger OnAfterGetRecord() // sales invoice header
             begin
+
+
+
+                TCSEntry.Reset();
+                TCSEntry.SetRange("Document No.", "No.");
+                if TCSEntry.FindFirst() then
+                    TCSAmount := TCSEntry."TCS Amount Including Surcharge";
                 CompanyName := CompanyInfo.Name;
                 CompanyAdd1 := CompanyInfo.Address;
                 CompanyAdd2 := CompanyInfo."Address 2";
@@ -431,5 +441,7 @@ report 50100 "Tax Invoice Report"
         AmountToText: array[2] of Text[80];
         QtyToText: array[2] of Text[80];
         QtyToText1: Text[200];
+        TCSEntry: Record "TCS Entry";
+        TCSAmount: Decimal;
 }
 

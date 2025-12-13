@@ -31,6 +31,8 @@ reportextension 50102 TransferShipmentGST extends "Transfer Shipment GST"
             column(FGUnit_of_Measure; "Unit of Measure") { }
             column(FGDescription; Description) { }
             column(Transaction_Specification; TransactionSpecifcation.Text) { }
+            column(TransferOrderNo; "Transfer Shipment Header"."Transfer Order No.") { }
+            column(Transaction_NatureDesc; TransactionType.Description) { }
         }
 
 
@@ -39,6 +41,7 @@ reportextension 50102 TransferShipmentGST extends "Transfer Shipment GST"
             trigger OnAfterAfterGetRecord()
             begin
                 if TransactionSpecifcation.Get("Transfer Shipment Header"."Transaction Specification") then;
+                if TransactionType.Get("Transfer Shipment Header"."Transaction Type") then;
             end;
         }
 
@@ -87,12 +90,24 @@ reportextension 50102 TransferShipmentGST extends "Transfer Shipment GST"
         }
     }
 
+    rendering
+    {
+        layout(LayoutName)
+        {
+            Type = RDLC;
+            LayoutFile = 'src/ReportLayouts/TransferShipmentGSTWithUOMCon.rdl';
+        }
+    }
+
+
+
     var
         InvetoryCommentLine: Record "Inventory Comment Line";
         Item: Record Item;
         ItemLedgerEntry: Record "Item Ledger Entry";
         ItemLedgerEntryLot: Record "Item Ledger Entry";
         TransactionSpecifcation: Record "Transaction Specification";
+        TransactionType: Record "Transaction Type";
         CovertQty: Decimal;
         Remarks: Text[250];
         _AvgQty: Decimal;

@@ -9,7 +9,6 @@ page 50101 DailyScheduleList
     PageType = List;
     SourceTable = DailyScheduleList;
     SourceTableView = where(Updated = filter(false));
-
     UsageCategory = Lists;
 
     layout
@@ -65,39 +64,38 @@ page 50101 DailyScheduleList
 
                 trigger OnAction()
                 var
-                    SalesLine2: Record "Sales Line";
                     SalesLine: Record "Sales Line";
-
+                    StartDate: Date;
+                    EndDate: Date;
                 begin
 
-
-
+                    StartDate := CalcDate('CM-M+1D', Rec."Shipment Date");
+                    EndDate := CalcDate('CM', Rec."Shipment Date");
 
                     If not Rec.Updated then begin
-
                         //SalesLine.SetRange("Document No.", Rec."SO No.");
                         SalesLine.SetRange("No.", Rec."Item No.");
-                        SalesLine.SetRange("Sell-to Customer No.", '1007');
-
-                        If SalesLine.FindLast() then begin
-
-                            SalesLine2 := SalesLine;
-                            SalesLine2.Validate(Quantity, SalesLine.Quantity - Rec.Quantity);
-                            SalesLine2.Validate("Line No.", SalesLine."Line No." + 10000);
-                            SalesLine2.Insert();
-
-                            SalesLine.Validate(Quantity, Rec.Quantity);
-                            SalesLine.Validate("Shipment Date", Rec."Shipment Date");
-                            SalesLine.Modify();
-
-                            Rec.Updated := true;
+                        SalesLine.SetRange("Shipment Date", StartDate, EndDate);
+                        //SalesLine.SetRange("Sell-to Customer No.", '1007');
+                        If SalesLine.FindFirst() then begin
+                            Rec."SO No." := SalesLine."Document No.";
                             Rec.Modify();
-
                             Message('Sales Order %1 updated successfully.', Rec."SO No.");
-
                         end;
-
                     end;
+
+
+                    // SalesLine2 := SalesLine;
+                    // SalesLine2.Validate(Quantity, SalesLine.Quantity - Rec.Quantity);
+                    // SalesLine2.Validate("Line No.", SalesLine."Line No." + 10000);
+                    // SalesLine2.Insert();
+
+                    // SalesLine.Validate(Quantity, Rec.Quantity);
+                    // SalesLine.Validate("Shipment Date", Rec."Shipment Date");
+                    // SalesLine.Modify();
+
+                    // Rec.Updated := true;
+                    // Rec.Modify();
                     // Implement the action logic here
                 end;
             }

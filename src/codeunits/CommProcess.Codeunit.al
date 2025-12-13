@@ -132,6 +132,10 @@ codeunit 50102 CommProcess
         end;
         intCheck1 := StrPos(txtResult, ',');
         if (intCheck1 > 0) then txtResult := DelStr(txtResult, StrPos(txtResult, ','), 1);
+
+
+        if txtVal in ['0', '0.00', '0.000', '0.0000'] then
+            txtResult := '';
         exit(txtResult);
     end;
 

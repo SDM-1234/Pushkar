@@ -2,6 +2,7 @@ namespace Pushkar.Pushkar;
 
 using Microsoft.Sales.Document;
 using Microsoft.Sales.Customer;
+using Microsoft.Inventory.Item;
 
 report 50102 ScheduleVsSupplyReport
 {
@@ -16,7 +17,7 @@ report 50102 ScheduleVsSupplyReport
             column(ItemNo; "Item No.")
             {
             }
-            column(Quantity; Quantity)
+            column(ScheduleQuantity; Quantity)
             {
             }
             column(SONo; "SO No.")
@@ -28,21 +29,21 @@ report 50102 ScheduleVsSupplyReport
             column(CustomerName; Customer.Name)
             {
             }
-
-
-
+            column(ItemDescription; Item.Description)
+            {
+            }
+            column(ItemGroup; Item."Inventory Posting Group")
+            {
+            }
 
             trigger OnAfterGetRecord()
             var
                 SalesHeader: record "Sales Header";
-                SalesLine: Record "Sales Line";
             begin
 
                 if SalesHeader.Get('Order', "SO No.") then;
-
-                if Customer.Get(SalesHeader."Sell-to Customer No.") then;
-
-
+                if customer.Get(SalesHeader."Sell-to Customer No.") then;
+                if item.Get("Item No.") then;
 
             end;
 
@@ -50,26 +51,10 @@ report 50102 ScheduleVsSupplyReport
 
     }
 
-    requestpage
-    {
-        layout
-        {
-            area(Content)
-            {
-                group(GroupName)
-                {
-                }
-            }
-        }
-        actions
-        {
-            area(Processing)
-            {
-            }
-        }
-    }
 
     var
         Customer: record Customer;
+        Item: Record Item;
+
 
 }

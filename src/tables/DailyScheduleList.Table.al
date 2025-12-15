@@ -42,8 +42,9 @@ table 50101 DailyScheduleList
         field(6; "SO No."; Code[20])
         {
             Caption = 'Sales Order No.';
-            //TableRelation = "Sales Header"."No." where("Document Type" = const(Order), "Sell-to Customer No." = const('1007'));
+            TableRelation = "Sales Header"."No." where("Document Type" = const(Order), "Sell-to Customer No." = const('1007'));
             ToolTip = 'Specifies the value of the Sales Order No. field.', Comment = '%';
+            Editable = false;
         }
         field(7; "Reason Code"; Code[20])
         {
@@ -56,8 +57,10 @@ table 50101 DailyScheduleList
                 if "Reason Code" <> '' then begin
                     ReasonCode.SetRange("Code", "Reason Code");
                     if ReasonCode.FindFirst() then
-                        "Reason Description" := ReasonCode.Description;
-                end;
+                        "Reason Description" := ReasonCode.Description
+                end else
+                    "Reason Description" := '';
+
             end;
 
         }

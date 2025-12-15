@@ -363,16 +363,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleList - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 551752586 - Action 2514050376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>View processed records.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleList - Action ProcessedRecords - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 551752586 - Action 2514050376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Processed Records</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleList - Action ProcessedRecords - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 551752586 - Action 3835402553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Updates the related sales order.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -392,36 +382,6 @@
           <source>Schedule Vs Supply Report</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleList - Action ScheduleVsSupplyReport - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4088769626 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Daily Schedule Archives</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ProcessedDailySchedule - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4088769626 - Control 577209412 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the SystemCreatedAt field.</source>
-          <note from="Developer" annotates="general" priority="2">%</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ProcessedDailySchedule - Control SystemCreatedAt - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 4088769626 - Control 4000648066 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the SystemCreatedBy field.</source>
-          <note from="Developer" annotates="general" priority="2">%</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ProcessedDailySchedule - Control SystemCreatedBy - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 4088769626 - Control 1367528460 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the SystemId field.</source>
-          <note from="Developer" annotates="general" priority="2">%</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ProcessedDailySchedule - Control SystemId - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 4088769626 - Control 2453272523 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the SystemModifiedAt field.</source>
-          <note from="Developer" annotates="general" priority="2">%</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ProcessedDailySchedule - Control SystemModifiedAt - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 4088769626 - Control 4085837753 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the SystemModifiedBy field.</source>
-          <note from="Developer" annotates="general" priority="2">%</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ProcessedDailySchedule - Control SystemModifiedBy - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 3704761161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Check Printing</source>

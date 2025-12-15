@@ -55,16 +55,6 @@ page 50101 DailyScheduleList
         }
         area(processing)
         {
-
-            action(ProcessedRecords)
-            {
-
-                ApplicationArea = All;
-                Image = Archive;
-                RunObject = Page ProcessedDailySchedule;
-                ToolTip = 'View processed records.';
-                Caption = 'Processed Records';
-            }
             action(UpdateSalesOrder)
             {
                 ApplicationArea = All;
@@ -100,8 +90,8 @@ page 50101 DailyScheduleList
 
                     // Loop through each selected record and update
                     repeat
-                        if not SelectedRecords.Updated then begin
-                            StartDate := CalcDate(StartDateFormula, SelectedRecords."Shipment Date");
+                        //if not SelectedRecords.Updated then begin
+                        StartDate := CalcDate(StartDateFormula, SelectedRecords."Shipment Date");
                             EndDate := CalcDate(EndDateFormula, SelectedRecords."Shipment Date");
 
                             SalesLine.SetRange("No.", SelectedRecords."Item No.");
@@ -113,7 +103,7 @@ page 50101 DailyScheduleList
                                 SelectedRecords.Modify();
                                 UpdateCount += 1;
                             end;
-                        end;
+                    //end;
                     until SelectedRecords.Next() = 0;
 
                     Message('%1 Sales Order(s) updated successfully.', UpdateCount);

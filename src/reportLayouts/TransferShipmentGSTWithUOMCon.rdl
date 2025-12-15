@@ -4773,6 +4773,13 @@ Fields!Desc_ShptMethod.Value)</Hidden>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
+                      <Value>For       </Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
                       <Value>=Fields!Transaction_Specification.Value</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>

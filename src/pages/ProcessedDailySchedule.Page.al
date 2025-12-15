@@ -2,13 +2,13 @@ namespace Pushkar.Pushkar;
 
 page 50102 ProcessedDailySchedule
 {
-    ApplicationArea = All;
-    Caption = 'ProcessedDailySchedule';
+    Caption = 'Daily Schedule Archives';
     PageType = List;
     SourceTable = DailyScheduleList;
     SourceTableView = where(Updated = filter(true));
     UsageCategory = Lists;
     Editable = False;
+    ApplicationArea = All;
 
     layout
     {
@@ -18,23 +18,18 @@ page 50102 ProcessedDailySchedule
             {
                 field("Entry No."; Rec."Entry No.")
                 {
-                    ToolTip = 'Specifies the value of the Entry No. field.', Comment = '%';
                 }
                 field("Item No."; Rec."Item No.")
                 {
-                    ToolTip = 'Specifies the value of the Item No. field.', Comment = '%';
                 }
                 field(Quantity; Rec.Quantity)
                 {
-                    ToolTip = 'Specifies the value of the Quantity field.', Comment = '%';
                 }
                 field("SO No."; Rec."SO No.")
                 {
-                    ToolTip = 'Specifies the value of the Sales Order No. field.', Comment = '%';
                 }
                 field("Shipment Date"; Rec."Shipment Date")
                 {
-                    ToolTip = 'Specifies the value of the Shipment Date field.', Comment = '%';
                 }
                 field(SystemCreatedAt; Rec.SystemCreatedAt)
                 {
@@ -58,7 +53,6 @@ page 50102 ProcessedDailySchedule
                 }
                 field(Updated; Rec.Updated)
                 {
-                    ToolTip = 'Specifies the value of the Updated field.', Comment = '%';
                 }
             }
         }

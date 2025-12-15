@@ -10,6 +10,7 @@ tableextension 50105 TransferShipmentLine extends "Transfer Shipment Line"
         {
             Caption = 'Posted Transfer Shipment No.';
             DataClassification = CustomerContent;
+            ToolTip = 'Specifies the value of the Posted Transfer Shipment No. field.', Comment = '%';
         }
     }
 }

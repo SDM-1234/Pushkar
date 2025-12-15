@@ -20,7 +20,6 @@ page 50110 "Temp Posted Transfer Shipments"
             {
                 field("Assign Shipment to FG"; Rec."Assign Shipment to FG")
                 {
-                    ToolTip = 'Specifies the value of the Applies-to No. field.', Comment = '%';
                 }
                 field("No."; Rec."No.")
                 {
@@ -34,15 +33,12 @@ page 50110 "Temp Posted Transfer Shipments"
                 }
                 field("Item No."; Rec."Item No.")
                 {
-                    ToolTip = 'Specifies the value of the Item No. field.', Comment = '%';
                 }
                 field(Quantity; Rec.Quantity)
                 {
-                    ToolTip = 'Specifies the value of the Unit of Measure field.', Comment = '%';
                 }
                 field("Unit of Measure"; Rec."Unit of Measure")
                 {
-                    ToolTip = 'Specifies the value of the Unit of Measure field.', Comment = '%';
                 }
                 field("Transfer-to Code"; Rec."Transfer-to Code")
                 {

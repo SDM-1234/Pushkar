@@ -96,7 +96,7 @@ codeunit 50102 CommProcess
         else
             salejsonobj.Add('ForCur', recpostsale."Currency Code");
         salejsonobj.Add('Sup_Gstin', recCompinfo."GST Registration No.");
-        salejsonobj.Add('VehNo', recpostsale."Vehicle No.");
+        salejsonobj.Add('VehNo', recpostsale."PS Vehicle No.");
         salejsonobj.Add('Part_Rev', 'A');
         salejsonobj.Add('Buy_Gstin', recpostsale."Customer GST Reg. No.");
         salejsonobj.Add('Irn', recpostsale."IRN Hash");

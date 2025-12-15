@@ -13,7 +13,6 @@ pageextension 50133 CustomerCardExtPTPL extends "Customer Card"
             {
                 ApplicationArea = All;
                 Caption = 'Supplier Code';
-                ToolTip = 'Specifies the supplier code associated with the customer.';
             }
         }
 

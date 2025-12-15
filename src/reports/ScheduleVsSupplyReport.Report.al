@@ -16,7 +16,7 @@ report 50102 ScheduleVsSupplyReport
 
         dataitem(DailyScheduleList; DailyScheduleList)
         {
-
+            RequestFilterFields = "Shipment Date";
             column(ItemNo; "Item No.")
             {
             }
@@ -62,12 +62,19 @@ report 50102 ScheduleVsSupplyReport
             {
             }
             column(SalesLine_No; SalesLine."No.")
-            {
-            }
-            column(SalesLineitemDescription; SalesLineitem.Description)
             { }
+            column(SalesLine_UnitPrice; SalesLine."Unit Price") { }
+            column(SalesLineitemDescription; SalesLineitem.Description) { }
             column(SalesHeaderExtDocNo; SalesHeader."External Document No.") { }
             column(SalesHeaderDocDate; SalesHeader."Document Date") { }
+
+            trigger OnPreDataItem()
+            begin
+                Setrange(Updated, true);
+                If (StartDate <> 0D) or (EndDate <> 0D) then
+                    SetRange("Shipment Date", StartDate, EndDate);
+            end;
+
             trigger OnAfterGetRecord()
             var
             begin
@@ -81,15 +88,41 @@ report 50102 ScheduleVsSupplyReport
                 if SalesLine.Get(SalesHeader."Document Type", SalesHeader."No.", 10000) then;
                 if SalesLineitem.Get(SalesLine."No.") then;
 
-
             end;
 
         }
 
+
+
+
     }
 
+    requestpage
+    {
+        layout
+        {
+            area(Content)
+            {
 
+                field(StartDate; StartDate)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Start Date';
+                    ToolTip = 'Specifies the value of the StartDate field.';
+                }
+                field(EndDate; EndDate)
+                {
+                    ApplicationArea = all;
+                    Caption = 'End Date';
+                    ToolTip = 'Specifies the value of the EndDate field.';
+                }
+
+            }
+        }
+    }
     var
+        StartDate: Date;
+        EndDate: Date;
         Customer: record Customer;
         Item: Record Item;
         SalesLineItem: Record Item;

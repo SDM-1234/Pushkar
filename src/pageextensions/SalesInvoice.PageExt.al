@@ -18,7 +18,6 @@ pageextension 50107 SalesInvoice extends "Sales Invoice"
             field("PS Vehicle No."; Rec."PS Vehicle No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Vehicle Num field.', Comment = '%';
             }
 
         }

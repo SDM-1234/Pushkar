@@ -11,7 +11,6 @@ pageextension 50101 TransferOrderSubform extends "Transfer Order Subform"
             field("Posted Transfer Shipment Nos."; Rec."Posted Transfer Shipment Nos.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Posted Transfer Shipment field.', Comment = '%';
             }
         }
     }

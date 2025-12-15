@@ -19,42 +19,42 @@ page 50101 DailyScheduleList
             {
                 field("Item No."; Rec."Item No.")
                 {
-                    ToolTip = 'Specifies the value of the Item No. field.', Comment = '%';
                 }
                 field(Quantity; Rec.Quantity)
                 {
-                    ToolTip = 'Specifies the value of the Quantity field.', Comment = '%';
                 }
                 field("Shipment Date"; Rec."Shipment Date")
                 {
-                    ToolTip = 'Specifies the value of the Shipment Date field.', Comment = '%';
                 }
                 field("SO No."; Rec."SO No.")
                 {
-                    ToolTip = 'Specifies the value of the Sales Order No. field.', Comment = '%';
                 }
+                field("Reason Code"; Rec."Reason Code")
+                { }
 
-
+                field("Reason Description"; Rec."Reason Description")
+                { }
+                field(Remarks; Rec.Remarks) { }
             }
+
         }
-
-
     }
 
     actions
     {
+        area(Reporting)
+        {
+            action(ScheduleVsSupplyReport)
+            {
+                ApplicationArea = All;
+                Image = Report;
+                RunObject = Report ScheduleVsSupplyReport;
+                ToolTip = 'Generates the Schedule Vs Supply Report.';
+                Caption = 'Schedule Vs Supply Report';
+            }
+        }
         area(processing)
         {
-
-            action(ProcessedRecords)
-            {
-
-                ApplicationArea = All;
-                Image = Archive;
-                RunObject = Page ProcessedDailySchedule;
-                ToolTip = 'View processed records.';
-                Caption = 'Processed Records';
-            }
             action(UpdateSalesOrder)
             {
                 ApplicationArea = All;
@@ -64,39 +64,49 @@ page 50101 DailyScheduleList
 
                 trigger OnAction()
                 var
+                    SelectedRecords: Record DailyScheduleList;
                     SalesLine: Record "Sales Line";
-                    StartDate: Date;
+                    EndDateFormula: DateFormula;
+                    StartDateFormula: DateFormula;
                     EndDate: Date;
+                    StartDate: Date;
+                    FormulaText: Text;
+                    UpdateCount: Integer;
                 begin
+                    // Get all selected records from the current page
+                    CurrPage.SetSelectionFilter(SelectedRecords);
 
-                    StartDate := CalcDate('CM-M+1D', Rec."Shipment Date");
-                    EndDate := CalcDate('CM', Rec."Shipment Date");
-
-                    If not Rec.Updated then begin
-                        //SalesLine.SetRange("Document No.", Rec."SO No.");
-                        SalesLine.SetRange("No.", Rec."Item No.");
-                        SalesLine.SetRange("Shipment Date", StartDate, EndDate);
-                        //SalesLine.SetRange("Sell-to Customer No.", '1007');
-                        If SalesLine.FindFirst() then begin
-                            Rec."SO No." := SalesLine."Document No.";
-                            Rec.Modify();
-                            Message('Sales Order %1 updated successfully.', Rec."SO No.");
-                        end;
+                    if not SelectedRecords.FindSet() then begin
+                        Message('No records selected.');
+                        exit;
                     end;
 
+                    FormulaText := 'CM-1M+1D';
+                    Evaluate(StartDateFormula, FormulaText);
+                    FormulaText := 'CM';
+                    Evaluate(EndDateFormula, FormulaText);
 
-                    // SalesLine2 := SalesLine;
-                    // SalesLine2.Validate(Quantity, SalesLine.Quantity - Rec.Quantity);
-                    // SalesLine2.Validate("Line No.", SalesLine."Line No." + 10000);
-                    // SalesLine2.Insert();
+                    UpdateCount := 0;
 
-                    // SalesLine.Validate(Quantity, Rec.Quantity);
-                    // SalesLine.Validate("Shipment Date", Rec."Shipment Date");
-                    // SalesLine.Modify();
+                    // Loop through each selected record and update
+                    repeat
+                        //if not SelectedRecords.Updated then begin
+                        StartDate := CalcDate(StartDateFormula, SelectedRecords."Shipment Date");
+                            EndDate := CalcDate(EndDateFormula, SelectedRecords."Shipment Date");
 
-                    // Rec.Updated := true;
-                    // Rec.Modify();
-                    // Implement the action logic here
+                            SalesLine.SetRange("No.", SelectedRecords."Item No.");
+                            SalesLine.SetRange("Shipment Date", StartDate, EndDate);
+
+                            if SalesLine.FindFirst() then begin
+                                SelectedRecords."SO No." := SalesLine."Document No.";
+                                SelectedRecords.Updated := true;
+                                SelectedRecords.Modify();
+                                UpdateCount += 1;
+                            end;
+                    //end;
+                    until SelectedRecords.Next() = 0;
+
+                    Message('%1 Sales Order(s) updated successfully.', UpdateCount);
                 end;
             }
         }

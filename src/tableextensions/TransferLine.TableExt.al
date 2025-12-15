@@ -10,7 +10,7 @@ tableextension 50104 "TransferLine" extends "Transfer Line"
         {
             Caption = 'Posted Transfer Shipment Nos.';
             DataClassification = CustomerContent;
-
+            ToolTip = 'Specifies the value of the Posted Transfer Shipment field.', Comment = '%';
             trigger OnLookup()
             var
                 TempTransferShipmentHeader: Record "Transfer Shipment Header" temporary;

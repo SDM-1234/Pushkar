@@ -15,8 +15,7 @@
             "enableSqlInformationDebugger": true,
             "usePublicURLFromServer": true,
             "schemaUpdateMode": "ForceSync"
-        },
-                {
+        },                {
             "name": "Pushkar_UAT",
             "request": "launch",
             "type": "al",
@@ -30,8 +29,7 @@
             "enableSqlInformationDebugger": true,
             "usePublicURLFromServer": true,
             "schemaUpdateMode": "Synchronize"
-        },
-                        {
+        },                        {
             "name": "Pushkar_UAT-ForceSync",
             "request": "launch",
             "type": "al",

@@ -83,7 +83,7 @@ page 50101 DailyScheduleList
                 begin
                     // Get all selected records from the current page
                     CurrPage.SetSelectionFilter(Rec);
-                    if Rec.Updated then
+                    if not Rec.Updated then
                         Rec.UpdateSalesOrderNo(Rec);
                     CurrPage.Update(false);
                 end;

@@ -171,6 +171,7 @@ table 50101 DailyScheduleList
 
             SalesLine.SetRange("No.", SelectedRecords."Item No.");
             SalesLine.SetRange("Shipment Date", StartDate, EndDate);
+            SalesLine.SetRange("Sell-to Customer No.", '1007');
 
             if SalesLine.FindFirst() then begin
                 SelectedRecords."SO No." := SalesLine."Document No.";

@@ -8,6 +8,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table DailyScheduleList - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 551752586 - Field 2574556897 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Delivered Quantity field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table DailyScheduleList - Field Delivered Quantity - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 551752586 - Field 2574556897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delivered Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table DailyScheduleList - Field Delivered Quantity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 551752586 - Field 883711285 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Entry No. field.</source>
           <note from="Developer" annotates="general" priority="2">%</note>
@@ -27,6 +37,16 @@
           <source>Item No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table DailyScheduleList - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 551752586 - Field 2654793296 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Pending Quantity field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table DailyScheduleList - Field Pending Quantity - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 551752586 - Field 2654793296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pending Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table DailyScheduleList - Field Pending Quantity - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 551752586 - Field 2704404533 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Quantity field.</source>
@@ -52,6 +72,16 @@
           <source>Remarks</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table DailyScheduleList - Field Remarks - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 551752586 - Field 2435458655 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Sales Line Unit Price field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table DailyScheduleList - Field Sales Line Unit Price - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Table 551752586 - Field 2435458655 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Line Unit Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table DailyScheduleList - Field Sales Line Unit Price - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 551752586 - Field 4112852368 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Shipment Date field.</source>
@@ -363,6 +393,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleArchives - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2527858759 - Control 2574556897 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Delivered Quantity field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleArchives - Control Delivered Quantity - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2527858759 - Control 2654793296 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Pending Quantity field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleArchives - Control Pending Quantity - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2527858759 - Action 1834710710 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Updates the Delivered and Pending Quantity based on Sales Shipment Lines.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleArchives - Action UpdateQuantity - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2527858759 - Action 1834710710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleArchives - Action UpdateQuantity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2527858759 - Action 615842463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Generates the Schedule Vs Supply Report.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -398,20 +448,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleList - Control SO No. - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 551752586 - Control 2339977023 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Updated field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleList - Control Updated - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 551752586 - Action 2527858759 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Opens the Daily Schedule Archives page.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleList - Action DailyScheduleArchives - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 551752586 - Action 2675496269 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 551752586 - Action 2527858759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Daily Schedule Archives</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleList - Action DailyScheduleArchives - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 551752586 - Action 3103733224 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Executes the Process action.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleList - Action Process - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleList - Action ArchiveRecords - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 551752586 - Action 3103733224 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archive Records</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleList - Action ArchiveRecords - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 551752586 - Action 3835402553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Updates the related sales order.</source>

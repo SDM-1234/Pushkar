@@ -57,8 +57,11 @@ report 50102 ScheduleVsSupplyReport
             column(Reason_Description; "Reason Description")
             {
             }
+            Column(Pending_Quantity; "Pending Quantity") { }
+            column(Delivered_Quantity; "Delivered Quantity") { }
 
             column(Remarks; Remarks)
+
             {
             }
             column(SalesLine_No; SalesLine."No.")

@@ -1,5 +1,8 @@
 namespace Pushkar.Pushkar;
 
+using Microsoft.Sales.Document;
+using Microsoft.Sales.History;
+
 page 50102 DailyScheduleArchives
 {
     ApplicationArea = All;
@@ -8,6 +11,7 @@ page 50102 DailyScheduleArchives
     SourceTable = DailyScheduleList;
     SourceTableView = where(updated = filter(true));
     UsageCategory = Lists;
+    InsertAllowed = false;
 
     layout
     {
@@ -16,14 +20,6 @@ page 50102 DailyScheduleArchives
             repeater(General)
             {
                 field("Entry No."; Rec."Entry No.")
-                {
-                    Editable = false;
-                }
-                field("Item No."; Rec."Item No.")
-                {
-                    Editable = false;
-                }
-                field(Quantity; Rec.Quantity)
                 {
                     Editable = false;
                 }
@@ -40,19 +36,61 @@ page 50102 DailyScheduleArchives
                 {
                     Editable = false;
                 }
+                field("Item No."; Rec."Item No.")
+                {
+                    Editable = false;
+                }
                 field("Shipment Date"; Rec."Shipment Date")
                 {
                     Editable = false;
                 }
-                field(Updated; Rec.Updated)
+                field(Quantity; Rec.Quantity)
                 {
                     Editable = false;
+                }
+                field("Sales Line Unit Price"; Rec."Sales Line Unit Price")
+                {
+                    Editable = false;
+                }
+                field("Delivered Quantity"; Rec."Delivered Quantity")
+                {
+                    ToolTip = 'Specifies the value of the Delivered Quantity field.', Comment = '%';
+                    Editable = false;
+
+                }
+                field("Pending Quantity"; Rec."Pending Quantity")
+                {
+                    ToolTip = 'Specifies the value of the Pending Quantity field.', Comment = '%';
+                    Editable = false;
+
                 }
             }
         }
     }
     actions
     {
+        area(Processing)
+        {
+            action(UpdateQuantity)
+            {
+                ApplicationArea = All;
+                Image = UpdateShipment;
+                Caption = 'Update Quantity';
+                ToolTip = 'Updates the Delivered and Pending Quantity based on Sales Shipment Lines.';
+
+                trigger OnAction()
+                var
+                    RecDailyScheduleList: Record DailyScheduleList;
+                begin
+                    RecDailyScheduleList.Reset();
+                    CurrPage.SetSelectionFilter(RecDailyScheduleList);
+                    RecDailyScheduleList.UpdatePostedShipmentQuantity(RecDailyScheduleList);
+                    CurrPage.Update(false);
+                    RecDailyScheduleList.Reset();
+                end;
+            }
+
+        }
         area(Reporting)
         {
             action(ScheduleVsSupplyReport)
@@ -63,6 +101,8 @@ page 50102 DailyScheduleArchives
                 ToolTip = 'Generates the Schedule Vs Supply Report.';
                 Caption = 'Schedule Vs Supply Report';
             }
+
+
         }
     }
 }

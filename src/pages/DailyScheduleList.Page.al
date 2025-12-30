@@ -1,6 +1,7 @@
 namespace Pushkar.Pushkar;
 using Microsoft.Sales.Document;
 using System.Utilities;
+using Microsoft.Sales.History;
 
 
 page 50101 DailyScheduleList
@@ -34,12 +35,6 @@ page 50101 DailyScheduleList
                 {
                     ToolTip = 'Specifies the value of the Sales Order No. field.';
                 }
-                field(Updated; Rec.Updated)
-                {
-                    ToolTip = 'Specifies the value of the Updated field.';
-                }
-
-
         }
     }
     }
@@ -53,6 +48,7 @@ page 50101 DailyScheduleList
             {
                 ApplicationArea = All;
                 Image = Archive;
+                caption = 'Daily Schedule Archives';
                 ToolTip = 'Opens the Daily Schedule Archives page.';
                 RunObject = Page DailyScheduleArchives;
             }
@@ -60,33 +56,19 @@ page 50101 DailyScheduleList
 
         area(processing)
         {
-
-
-            action(Process)
+            action(ArchiveRecords)
             {
                 Image = Process;
                 ApplicationArea = All;
+                Caption = 'Archive Records';
                 ToolTip = 'Executes the Process action.';
                 trigger OnAction()
                 var
-                    SelectedRecords: Record DailyScheduleList;
-                    ConfirmManagement: Codeunit "Confirm Management";
-                    UpdateCount: Integer;
-
                 begin
-
-                    if not ConfirmManagement.GetResponseOrDefault('Do you want to process records?', true) then
-                        exit;
-
-                    CurrPage.SetSelectionFilter(SelectedRecords);
-
-                    if SelectedRecords.FindSet() then
-                        repeat
-                            SelectedRecords.Updated := true;
-                            SelectedRecords.Modify();
-                            UpdateCount += 1;
-                        until SelectedRecords.Next() = 0;
-                    Message('%1 Sales Order(s) processed successfully.', UpdateCount);
+                    CurrPage.SetSelectionFilter(Rec);
+                    if Rec.Updated then
+                        Rec.ArchiveRecords(Rec);
+                    //CurrPage.Update();
                 end;
             }
             action(UpdateSalesOrder)
@@ -98,48 +80,12 @@ page 50101 DailyScheduleList
 
                 trigger OnAction()
                 var
-                    SalesLine: Record "Sales Line";
-                    SelectedRecords: Record DailyScheduleList;
-                    EndDateFormula: DateFormula;
-                    StartDateFormula: DateFormula;
-                    EndDate: Date;
-                    StartDate: Date;
-                    UpdateCount: Integer;
-                    FormulaText: Text;
                 begin
                     // Get all selected records from the current page
-                    CurrPage.SetSelectionFilter(SelectedRecords);
-
-                    if not SelectedRecords.FindSet() then begin
-                        Message('No records selected.');
-                        exit;
-                    end;
-
-                    FormulaText := 'CM-1M+1D';
-                    Evaluate(StartDateFormula, FormulaText);
-                    FormulaText := 'CM';
-                    Evaluate(EndDateFormula, FormulaText);
-
-                    UpdateCount := 0;
-
-                    // Loop through each selected record and update
-                    repeat
-                        //if SelectedRecords.FindSet() then begin
-                        StartDate := CalcDate(StartDateFormula, SelectedRecords."Shipment Date");
-                        EndDate := CalcDate(EndDateFormula, SelectedRecords."Shipment Date");
-
-                        SalesLine.SetRange("No.", SelectedRecords."Item No.");
-                        SalesLine.SetRange("Shipment Date", StartDate, EndDate);
-
-                        if SalesLine.FindFirst() then begin
-                            SelectedRecords."SO No." := SalesLine."Document No.";
-                            SelectedRecords.Modify();
-                            UpdateCount += 1;
-                        end;
-                    //end;
-                    until SelectedRecords.Next() = 0;
-
-                    Message('%1 Sales Order(s) updated successfully.', UpdateCount);
+                    CurrPage.SetSelectionFilter(Rec);
+                    if Rec.Updated then
+                        Rec.UpdateSalesOrderNo(Rec);
+                    CurrPage.Update(false);
                 end;
             }
         }

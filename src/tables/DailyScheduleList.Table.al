@@ -202,16 +202,16 @@ table 50101 DailyScheduleList
             Message('No records selected.');
             exit;
         end;
-
+        Clear(QtytoUpdate);
         // Loop through each selected record and update
         repeat
             // Get all selected records from the current page
             Clear(NextShipmentDate);
             Clear(QtytoUpdate);
 
-            DailyScheduleList.SetCurrentKey("Entry No.", "Shipment Date");
+            DailyScheduleList.SetCurrentKey("Shipment Date");
             DailyScheduleList.Ascending(true);
-            DailyScheduleList.SetFilter("Entry No.", '>%1', SelectedRecords."Entry No.");
+            //DailyScheduleList.SetFilter("Entry No.", '>%1', SelectedRecords."Entry No.");
             DailyScheduleList.Setrange("Item No.", SelectedRecords."Item No.");
             DailyScheduleList.Setrange("SO No.", SelectedRecords."SO No.");
             DailyScheduleList.SetFilter("Shipment Date", '>%1', SelectedRecords."Shipment Date");
@@ -222,6 +222,7 @@ table 50101 DailyScheduleList
 
             SalesShipmentLine.SetRange(Type, SalesShipmentLine.Type::Item);
             SalesShipmentLine.SetRange("No.", SelectedRecords."Item No.");
+            SalesShipmentLine.SetRange("Order No.", SelectedRecords."SO No.");
 
 
             // Set range based on next shipment date

@@ -71,6 +71,21 @@ page 50102 DailyScheduleArchives
     {
         area(Processing)
         {
+
+            action(UpdateDeliveryZeroQty)
+            {
+                ApplicationArea = All;
+                Image = UpdateShipment;
+                Caption = 'Update Zero Quantity';
+                ToolTip = 'Updates the Delivered and Pending Quantity based on Sales Shipment Lines.';
+
+                trigger OnAction()
+                begin
+                    Rec.ModifyAll("Delivered Quantity", 0);
+                    Rec.ModifyAll("Pending Quantity", 0);
+                end;
+            }
+
             action(UpdateQuantity)
             {
                 ApplicationArea = All;

@@ -283,6 +283,12 @@ report 50100 "Tax Invoice Report"
                         ShipToGSTIN := Customers."GST Registration No.";
                     end;
                 end;
+
+                ShipToName := "Ship-to Name";
+                ShipToAdd1 := "Ship-to Address";
+                ShipToAdd2 := "Ship-to Address 2";
+                ShipToCity := "Ship-to City";
+                ShipToPin := "Ship-to Post Code";
             end;
         }
 

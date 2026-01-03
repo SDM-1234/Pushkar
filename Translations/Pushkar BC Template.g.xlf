@@ -403,6 +403,16 @@
           <note from="Developer" annotates="general" priority="2">%</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleArchives - Control Pending Quantity - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 2527858759 - Action 3757506293 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Updates the Delivered and Pending Quantity based on Sales Shipment Lines.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleArchives - Action UpdateDeliveryZeroQty - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2527858759 - Action 3757506293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Zero Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleArchives - Action UpdateDeliveryZeroQty - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2527858759 - Action 1834710710 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Updates the Delivered and Pending Quantity based on Sales Shipment Lines.</source>
           <note from="Developer" annotates="general" priority="2"></note>

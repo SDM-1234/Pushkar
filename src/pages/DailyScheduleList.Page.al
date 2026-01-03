@@ -66,9 +66,9 @@ page 50101 DailyScheduleList
                 var
                 begin
                     CurrPage.SetSelectionFilter(Rec);
-                    if Rec.Updated then
+                    if not Rec.Updated then
                         Rec.ArchiveRecords(Rec);
-                    //CurrPage.Update();
+                    CurrPage.Update(false);
                 end;
             }
             action(UpdateSalesOrder)

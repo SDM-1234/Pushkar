@@ -84,14 +84,14 @@ report 50100 "Tax Invoice Report"
             column(BillToStateCode; BillToStateCode) { }
             column(BillToCountry; BillToCountry) { }
             column(BillToGSTIN; BillToGSTIN) { }
-            column(ShipToName; BillToName) { }
-            column(ShipToAdd1; BillToAdd1) { }
-            column(ShipToAdd2; BillToAdd2) { }
-            column(ShipToCity; BillToCity) { }
-            column(ShipToPin; BillToPin) { }
-            column(ShipToState; BillToState) { }
-            column(ShipToStateCode; BillToStateCode) { }
-            column(ShipToCountry; BillToCountry) { }
+            column(ShipToName; ShipToName) { }
+            column(ShipToAdd1; ShipToAdd1) { }
+            column(ShipToAdd2; ShipToAdd2) { }
+            column(ShipToCity; ShipToCity) { }
+            column(ShipToPin; ShipToPin) { }
+            column(ShipToState; ShipToState) { }
+            column(ShipToStateCode; ShipToStateCode) { }
+            column(ShipToCountry; ShipToCountry) { }
             column(ShipToGSTIN; BillToGSTIN) { }
             column(PONumber; "Sales Invoice Header"."External Document No.") { }
             column(PODate; "Sales Invoice Header"."Document Date") { }
@@ -257,11 +257,21 @@ report 50100 "Tax Invoice Report"
                     States.Get(Customers."State Code");
                     BillToState := states.Description;
                     BillToStateCode := states."State Code (GST Reg. No.)";
+
+
+                    ShipToState := states.Description;
+                    ShipToStateCode := states."State Code (GST Reg. No.)";
+
+
                 end;
                 if Customers."Country/Region Code" <> '' then begin
                     CountryRegion.Get(Customers."Country/Region Code");
                     BillToCountry := CountryRegion.Name;
                     BillToGSTIN := Customers."GST Registration No.";
+
+                    ShipToCountry := CountryRegion.Name;
+                    ShipToGSTIN := Customers."GST Registration No.";
+
                 end;
                 if "Ship-to Customer" <> '' then begin
                     Customers.Reset();

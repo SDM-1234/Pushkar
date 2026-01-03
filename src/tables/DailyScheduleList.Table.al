@@ -246,7 +246,7 @@ table 50101 DailyScheduleList
             end;
         until SelectedRecords.Next() = 0;
         if QtyUpdatedCount > 0 then
-            Message('Quantity updated successfully in %1 records.', QtyUpdatedCount);
+            Message('Quantity updated successfully.');
     end;
 
 }

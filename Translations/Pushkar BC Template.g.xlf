@@ -388,6 +388,46 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit AmountToWords - NamedType ZeroLbl</note>
         </trans-unit>
+        <trans-unit id="Codeunit 393635635 - NamedType 3441384473" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Imposed restriction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ApprovalMgtPSK - NamedType ImposedRestrictionLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 393635635 - NamedType 3555910734" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pending Approval</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ApprovalMgtPSK - NamedType PendingApprovalLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3171393693 - Method 1147532894 - NamedType 4273853447" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Please Choose the Excel file.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit E-Invoice Import Excel - Method ImportExcel - NamedType UploadExcelMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3171393693 - Method 1147532894 - NamedType 511806700" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No Excel file found!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit E-Invoice Import Excel - Method ImportExcel - NamedType NoFileFoundMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3171393693 - Method 1147532894 - NamedType 2702005912" size-unit="char" translate="yes" xml:space="preserve">
+          <source>E-Invoice Response Imported Successfully.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit E-Invoice Import Excel - Method ImportExcel - NamedType ExcelImportSucess_Msg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 30189773 - NamedType 1004021259" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No Approval Workflow For This Line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ReqLine Workflow Evt Handling - NamedType ReqLineApprovalExistErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 30189773 - NamedType 226697405" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Requisition Line Approval Cancelled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ReqLine Workflow Evt Handling - NamedType ReqLineCancelApprovalLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 30189773 - NamedType 754171275" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Requisition Line Approval Requested</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ReqLine Workflow Evt Handling - NamedType ReqLineSendApprovalLbl</note>
+        </trans-unit>
         <trans-unit id="Page 2527858759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Daily Schedule Archives</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -487,6 +527,11 @@
           <source>Update Sales Order No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page DailyScheduleList - Action UpdateSalesOrder - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2655215007 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bulk E-Invoice Export</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Bulk E-Invoice Export - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3704761161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Check Printing</source>
@@ -883,6 +928,101 @@
           <note from="Developer" annotates="general" priority="2">%</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderSubform - Control Qty. per Unit of Measure - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 227370865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Approval</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Approval - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 803889193 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Approve the requested changes.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Approve - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Approve</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Approve - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 1013253961 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Delegate the approval to a substitute approver.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Delegate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 1013253961 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Delegate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Delegate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 113888489 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Reject the approval request.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Reject - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 113888489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Reject</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Reject - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 2364670106 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Request Approval</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Request Approval - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 858296388 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Cancel Approval Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action CancelApprovalRequest - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 795459262 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Cancel sending selected lines for approval.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action CancelApprovalRequestRequisitionLine - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 795459262 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Selected Journal Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action CancelApprovalRequestRequisitionLine - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 383335270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Send Approval Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action SendApprovalRequest - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 3274512876 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Send selected lines for approval.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action SendApprovalRequestRequisitionLine - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 3274512876 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Selected Requisition Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action SendApprovalRequestRequisitionLine - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 2879026819 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Request Approval</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Category_Request Approval - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 1599615865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Cancel Approval Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Category_Cancel Approval Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Action 1897540983 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Send Approval Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Action Category_Send Approval Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Control 854724933 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Specifies the approval status for Physical Inventory Journal.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Control ReqLineApprovalStatus - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 919603500 - Control 854724933 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Approval Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ReqWorksheet - Control ReqLineApprovalStatus - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4275230785 - Control 103924864 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1708100201">
           <source>Specifies the value of the Posting No. Series field.</source>
           <note from="Developer" annotates="general" priority="2">%</note>
@@ -1062,6 +1202,16 @@
           <source>Vendor Invoice No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvLine - Field Vendor Invoice No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1110143038 - Field 1878856189 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
+          <source>Specifies the approval status for Transfer Header.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension RequisitionLine - Field Approval Status - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1110143038 - Field 1878856189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
+          <source>Approval Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension RequisitionLine - Field Approval Status - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2156531793 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>Description</source>
@@ -1312,6 +1462,11 @@
           <source>Posted Transfer Shipment No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TransferShipmentLine - Field Posted Transfer Shipment Nos. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 3304382701 - EnumValue 1487485508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 1878856189">
+          <source>Pending Approval</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension ApprovalStatus - EnumValue Pending Approval - Property Caption</note>
         </trans-unit>
       </group>
     </body>

@@ -117,7 +117,6 @@ page 50102 DailyScheduleArchives
                 Caption = 'Schedule Vs Supply Report';
             }
 
-
         }
     }
 }

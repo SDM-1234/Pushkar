@@ -1,4 +1,5 @@
 namespace Pushkar.Pushkar;
+
 using Microsoft.Bank.BankAccount;
 using Microsoft.Bank.Ledger;
 using Microsoft.Finance.Dimension;
@@ -36,6 +37,23 @@ codeunit 50100 SalesCommonSubscriber
             SalesHeader.Validate("Unit of Measure", Rec."Unit of Measure");
             SalesHeader.Modify();
         end;
+    end;
+
+
+
+    [EventSubscriber(ObjectType::Page, Page::"Sales Order", 'OnOpenPageEvent', '', false, false)]
+    local procedure OnOpenPageEvent_SO(var Rec: Record "Sales Header")
+    begin
+        Rec."Posting Date" := WorkDate();
+        Rec.Modify();
+    end;
+
+
+    [EventSubscriber(ObjectType::Page, Page::"Sales Order", 'OnAfterOnAfterGetRecord', '', false, false)]
+    local procedure OnAfterOnAfterGetRecord_SO(var SalesHeader: Record "Sales Header")
+    begin
+        SalesHeader."Posting Date" := WorkDate();
+        SalesHeader.Modify();
     end;
 
 

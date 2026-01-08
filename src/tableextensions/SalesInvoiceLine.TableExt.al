@@ -16,13 +16,13 @@ tableextension 50117 SalesInvoiceLine extends "Sales Invoice Line"
         {
             Caption = 'GST Amount';
             FieldClass = FlowField;
-            CalcFormula = sum("Detailed GST Ledger Entry"."GST Amount" where("Document Line No." = field("Line No."), "Document No." = field("Document No."), "Document Type" = const("Credit Memo")));
+            CalcFormula = sum("Detailed GST Ledger Entry"."GST Amount" where("Document Line No." = field("Line No."), "Document No." = field("Document No."), "Document Type" = const("Invoice")));
         }
         field(50101; "TDS Amount"; Decimal)
         {
             Caption = 'TDS Amount';
             FieldClass = FlowField;
-            CalcFormula = sum("TDS Entry"."TDS Amount" where("Document No." = field("Document No."), "Document Type" = const("Credit Memo")));
+            CalcFormula = sum("TDS Entry"."TDS Amount" where("Document No." = field("Document No."), "Document Type" = const("Invoice")));
         }
         field(50102; "Invoice No."; Code[35])
         {

@@ -271,6 +271,7 @@ report 50106 "Check Printing"
         JnlBatchName := BatchName;
         DocumentNo := DocNo;
     end;
+
     trigger OnPreReport()
     begin
         CompanyInformation.GET();

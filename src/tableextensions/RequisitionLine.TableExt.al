@@ -1,7 +1,7 @@
 namespace Pushkar.Pushkar;
 
-using System.Automation;
 using Microsoft.Inventory.Requisition;
+using System.Automation;
 
 tableextension 50113 RequisitionLine extends "Requisition Line"
 {

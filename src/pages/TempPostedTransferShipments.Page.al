@@ -1,7 +1,7 @@
 namespace Pushkar.Pushkar;
 
 using Microsoft.Inventory.Transfer;
-    
+
 page 50110 "Temp Posted Transfer Shipments"
 {
     PageType = List;

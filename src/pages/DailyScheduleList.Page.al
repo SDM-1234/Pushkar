@@ -1,7 +1,7 @@
 namespace Pushkar.Pushkar;
 using Microsoft.Sales.Document;
-using System.Utilities;
 using Microsoft.Sales.History;
+using System.Utilities;
 
 
 page 50101 DailyScheduleList
@@ -35,8 +35,8 @@ page 50101 DailyScheduleList
                 {
                     ToolTip = 'Specifies the value of the Sales Order No. field.';
                 }
+            }
         }
-    }
     }
     actions
     {

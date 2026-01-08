@@ -1,8 +1,8 @@
 namespace Pushkar.Pushkar;
 
-using Microsoft.Inventory.Transfer;
 using Microsoft.Foundation.UOM;
 using Microsoft.Inventory.Item;
+using Microsoft.Inventory.Transfer;
 
 tableextension 50107 TransferHeader extends "Transfer Header"
 {

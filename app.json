@@ -93,6 +93,6 @@
   
   "runtime": "15.0",
   "features": [
-    "NoImplicitWith","TranslationFile"
+    "NoImplicitWith"
   ]
 }

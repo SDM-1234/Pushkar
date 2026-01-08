@@ -1,11 +1,11 @@
 namespace Pushkar.Pushkar;
 
-using Microsoft.Purchases.History;
-using Microsoft.Finance.GeneralLedger.Setup;
-using Microsoft.Purchases.Document;
-using Microsoft.Finance.TDS.TDSBase;
-using Microsoft.Finance.GST.Base;
 using Microsoft.Finance.GeneralLedger.Account;
+using Microsoft.Finance.GeneralLedger.Setup;
+using Microsoft.Finance.GST.Base;
+using Microsoft.Finance.TDS.TDSBase;
+using Microsoft.Purchases.Document;
+using Microsoft.Purchases.History;
 
 tableextension 50111 PurchInvLine extends "Purch. Inv. Line"
 {

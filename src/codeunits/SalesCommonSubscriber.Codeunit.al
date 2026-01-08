@@ -1,19 +1,19 @@
 namespace Pushkar.Pushkar;
-using Microsoft.Sales.Document;
-using Microsoft.Sales.Posting;
-using Microsoft.Finance.GeneralLedger.Account;
-using Microsoft.Purchases.Vendor;
-using Microsoft.Bank.Ledger;
-using Microsoft.Finance.GeneralLedger.Setup;
-using Microsoft.Finance.Dimension;
 using Microsoft.Bank.BankAccount;
+using Microsoft.Bank.Ledger;
+using Microsoft.Finance.Dimension;
+using Microsoft.Finance.GeneralLedger.Account;
+using Microsoft.Finance.GeneralLedger.Setup;
 using Microsoft.Inventory.Item;
-using Microsoft.Purchases.Payables;
-using Microsoft.Sales.Receivables;
-using Microsoft.Sales.Customer;
-using Microsoft.Inventory.Transfer;
-using Microsoft.Sales.History;
 using Microsoft.Inventory.Ledger;
+using Microsoft.Inventory.Transfer;
+using Microsoft.Purchases.Payables;
+using Microsoft.Purchases.Vendor;
+using Microsoft.Sales.Customer;
+using Microsoft.Sales.Document;
+using Microsoft.Sales.History;
+using Microsoft.Sales.Posting;
+using Microsoft.Sales.Receivables;
 using Microsoft.Warehouse.GateEntry;
 
 codeunit 50100 SalesCommonSubscriber

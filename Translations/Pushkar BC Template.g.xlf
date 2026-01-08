@@ -878,6 +878,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemoLines - Control Customer Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3662461463 - Action 746745433 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
+          <source>Upload Bulk Import E-Invoice Response</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemos - Action BulkEInvoiceResponse - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3662461463 - Action 746745433 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2557560783">
+          <source>Upload Bulk Import E-Invoice Response</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemos - Action BulkEInvoiceResponse - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3662461463 - Action 746745433 - Method 1377591017 - NamedType 2060224454" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3662461463">
+          <source>No matched IRN Hash %1 found to update.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = IRN Hash</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesCreditMemos - Action BulkEInvoiceResponse - Method OnAction - NamedType IRNHashErr</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4152420631 - Control 1171137197 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1298119151">
           <source>Name of the customer.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -887,6 +902,21 @@
           <source>Customer Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoiceLines - Control Customer Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 161046261 - Action 2548091052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Executes the TATA JSON action.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices - Action TATA JSON - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 161046261 - Action 746745433 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Upload Bulk Import E-Invoice Response</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices - Action BulkEInvoiceResponse - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 161046261 - Action 746745433 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Upload Bulk Import E-Invoice Response</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PostedSalesInvoices - Action BulkEInvoiceResponse - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 944561194 - Control 1527563463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2714855698">
           <source>Specifies the value of the External Document No. field.</source>

@@ -4,15 +4,14 @@ using Microsoft.Finance.GeneralLedger.Account;
 using Microsoft.Finance.GeneralLedger.Setup;
 using Microsoft.Finance.GST.Base;
 using Microsoft.Finance.TDS.TDSBase;
-using Microsoft.Purchases.Document;
-using Microsoft.Purchases.History;
+using Microsoft.Sales.History;
 
-tableextension 50112 PurchCrMemoLine extends "Purch. Cr. Memo Line"
+tableextension 50117 SalesInvoiceLine extends "Sales Invoice Line"
 {
-
-
     fields
     {
+
+
         field(50100; "GST Amount"; Decimal)
         {
             Caption = 'GST Amount';
@@ -25,32 +24,34 @@ tableextension 50112 PurchCrMemoLine extends "Purch. Cr. Memo Line"
             FieldClass = FlowField;
             CalcFormula = sum("TDS Entry"."TDS Amount" where("Document No." = field("Document No."), "Document Type" = const("Credit Memo")));
         }
-        field(50102; "Vendor Invoice No."; Code[35])
+        field(50102; "Invoice No."; Code[35])
         {
-            Caption = 'Vendor Cr Memo No.';
+            Caption = 'Invoice No.';
             FieldClass = FlowField;
-            CalcFormula = lookup("Purch. Cr. Memo Hdr."."Vendor Cr. Memo No." where("No." = field("Document No.")));
+            CalcFormula = lookup("Sales Cr.Memo Header"."Reference Invoice No." where("No." = field("Document No.")));
         }
 
         field(50103; "Document Date"; Date)
         {
             Caption = 'Document Date';
             FieldClass = FlowField;
-            CalcFormula = lookup("Purch. Cr. Memo Hdr."."Document Date" where("No." = field("Document No.")));
+            CalcFormula = lookup("Sales Cr.Memo Header"."Document Date" where("No." = field("Document No.")));
         }
-        field(50104; "Purch. Account"; Code[20])
+        field(50104; "Sales Account"; Code[20])
         {
-            Caption = 'Purchase Account';
+            Caption = 'Sales Account';
             FieldClass = FlowField;
-            CalcFormula = lookup("General Posting Setup"."Purch. Account" where("Gen. Bus. Posting Group" = field("Gen. Bus. Posting Group"), "Gen. Prod. Posting Group" = field("Gen. Prod. Posting Group")));
+            CalcFormula = lookup("General Posting Setup"."Sales Account" where("Gen. Bus. Posting Group" = field("Gen. Bus. Posting Group"), "Gen. Prod. Posting Group" = field("Gen. Prod. Posting Group")));
         }
-        field(50105; "Purch. Account Name"; Text[100])
+        field(50105; "Sales Account Name"; Text[100])
         {
-            Caption = 'Purchase Account Name';
+            Caption = 'Sales Account Name';
             FieldClass = FlowField;
-            CalcFormula = lookup("G/L Account".Name where("No." = field("Purch. Account")));
+            CalcFormula = lookup("G/L Account".Name where("No." = field("Sales Account")));
         }
+
+
+
 
     }
-
 }

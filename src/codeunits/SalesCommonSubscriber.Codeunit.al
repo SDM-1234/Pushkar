@@ -1,19 +1,20 @@
 namespace Pushkar.Pushkar;
-using Microsoft.Sales.Document;
-using Microsoft.Sales.Posting;
-using Microsoft.Finance.GeneralLedger.Account;
-using Microsoft.Purchases.Vendor;
-using Microsoft.Bank.Ledger;
-using Microsoft.Finance.GeneralLedger.Setup;
-using Microsoft.Finance.Dimension;
+
 using Microsoft.Bank.BankAccount;
+using Microsoft.Bank.Ledger;
+using Microsoft.Finance.Dimension;
+using Microsoft.Finance.GeneralLedger.Account;
+using Microsoft.Finance.GeneralLedger.Setup;
 using Microsoft.Inventory.Item;
-using Microsoft.Purchases.Payables;
-using Microsoft.Sales.Receivables;
-using Microsoft.Sales.Customer;
-using Microsoft.Inventory.Transfer;
-using Microsoft.Sales.History;
 using Microsoft.Inventory.Ledger;
+using Microsoft.Inventory.Transfer;
+using Microsoft.Purchases.Payables;
+using Microsoft.Purchases.Vendor;
+using Microsoft.Sales.Customer;
+using Microsoft.Sales.Document;
+using Microsoft.Sales.History;
+using Microsoft.Sales.Posting;
+using Microsoft.Sales.Receivables;
 using Microsoft.Warehouse.GateEntry;
 
 codeunit 50100 SalesCommonSubscriber
@@ -36,6 +37,23 @@ codeunit 50100 SalesCommonSubscriber
             SalesHeader.Validate("Unit of Measure", Rec."Unit of Measure");
             SalesHeader.Modify();
         end;
+    end;
+
+
+
+    [EventSubscriber(ObjectType::Page, Page::"Sales Order", 'OnOpenPageEvent', '', false, false)]
+    local procedure OnOpenPageEvent_SO(var Rec: Record "Sales Header")
+    begin
+        Rec."Posting Date" := WorkDate();
+        Rec.Modify();
+    end;
+
+
+    [EventSubscriber(ObjectType::Page, Page::"Sales Order", 'OnAfterOnAfterGetRecord', '', false, false)]
+    local procedure OnAfterOnAfterGetRecord_SO(var SalesHeader: Record "Sales Header")
+    begin
+        SalesHeader."Posting Date" := WorkDate();
+        SalesHeader.Modify();
     end;
 
 

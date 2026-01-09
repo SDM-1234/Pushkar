@@ -182,7 +182,7 @@ pageextension 50135 ReqWorksheet extends "Req. Worksheet"
     begin
         ApprovalMgmt.GetApprovalStatus(Rec, ApprovalStatusName, EnabledReqLineWorkflowsExist);
         if ApprovalStatusName = 'Approved' then
-            Error('You cannot modify an approved journal line.');
+            Error('You cannot modify an approved requisition line.');
     end;
 
     trigger OnDeleteRecord(): Boolean
@@ -191,7 +191,7 @@ pageextension 50135 ReqWorksheet extends "Req. Worksheet"
     begin
         ApprovalMgmt.GetApprovalStatus(Rec, ApprovalStatusName, EnabledReqLineWorkflowsExist);
         if ApprovalStatusName = 'Approved' then
-            Error('You cannot delete an approved journal line.');
+            Error('You cannot delete an approved requisition line.');
     end;
 
     trigger OnOpenPage()

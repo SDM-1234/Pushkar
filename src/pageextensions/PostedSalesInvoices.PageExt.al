@@ -22,6 +22,16 @@ pageextension 50127 PostedSalesInvoices extends "Posted Sales Invoices"
                 end;
             }
 
+            action(UpdatePostingDate)
+            {
+                ApplicationArea = All;
+                Caption = 'Update Posting Date';
+                ToolTip = 'Update Posting Date';
+                RunObject = Report "Update Posting Date";
+                Gesture = LeftSwipe;
+                Ellipsis = true;
+            }
+
         }
         addafter(Statistics)
         {

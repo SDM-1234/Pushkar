@@ -14,4 +14,18 @@ pageextension 50131 SalesOrder extends "Sales Order"
             }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        Rec."Posting Date" := WorkDate();
+        Rec.Modify();
+    end;
+
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        Rec."Posting Date" := WorkDate();
+        Rec.Modify();
+    end;
+
 }

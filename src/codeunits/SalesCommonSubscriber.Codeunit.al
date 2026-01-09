@@ -45,7 +45,7 @@ codeunit 50100 SalesCommonSubscriber
     local procedure OnOpenPageEvent_SO(var Rec: Record "Sales Header")
     begin
         Rec."Posting Date" := WorkDate();
-        Rec.Modify();
+        //Rec.Modify();
     end;
 
 
@@ -53,7 +53,7 @@ codeunit 50100 SalesCommonSubscriber
     local procedure OnAfterOnAfterGetRecord_SO(var SalesHeader: Record "Sales Header")
     begin
         SalesHeader."Posting Date" := WorkDate();
-        SalesHeader.Modify();
+        //SalesHeader.Modify();
     end;
 
 

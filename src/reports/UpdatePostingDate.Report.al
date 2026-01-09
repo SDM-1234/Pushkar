@@ -1,15 +1,16 @@
 namespace Pushkar.Pushkar;
+
 using Microsoft.Bank.Ledger;
 using Microsoft.Finance.GeneralLedger.Ledger;
 using Microsoft.Finance.GST.Base;
 using Microsoft.Finance.TCS.TCSBase;
 using Microsoft.Finance.VAT.Ledger;
 using Microsoft.Inventory.Ledger;
-using Microsoft.Sales.History;
 using Microsoft.Purchases.History;
+using Microsoft.Purchases.Payables;
+using Microsoft.Sales.History;
 using Microsoft.Sales.Receivables;
 using System.Utilities;
-using Microsoft.Purchases.Payables;
 report 50108 "Update Posting Date"
 {
     ApplicationArea = All;
@@ -28,7 +29,23 @@ report 50108 "Update Posting Date"
         TableData "TCS Entry" = RM,
         TableData "Item Ledger Entry" = RM,
         TableData "Detailed Cust. Ledg. Entry" = RM,
-        TableData "Value Entry" = RM;
+        TableData "Value Entry" = RM,
+        TableData "Sales Shipment Header" = RM,
+        TableData "Sales Shipment Line" = RM,
+        TableData "Sales Cr.Memo Header" = RM,
+        TableData "Sales Cr.Memo Line" = RM,
+        TableData "Return Shipment Header" = RM,
+        TableData "Return Shipment Line" = RM,
+        TableData "Return Receipt Header" = RM,
+        TableData "Return Receipt Line" = RM,
+        TableData "Purch. Rcpt. Header" = RM,
+        TableData "Purch. Rcpt. Line" = RM,
+        TableData "Purch. Cr. Memo Hdr." = RM,
+        TableData "Purch. Cr. Memo Line" = RM,
+        TableData "Purch. Inv. Header" = RM,
+        TableData "Purch. Inv. Line" = RM,
+        TableData "Vendor Ledger Entry" = RM,
+        TableData "Detailed Vendor Ledg. Entry" = RM;
     dataset
     {
         dataitem(Integer; Integer)
@@ -99,8 +116,12 @@ report 50108 "Update Posting Date"
         PurchInvLine: Record "Purch. Inv. Line";
         VendLedgEntry: Record "Vendor Ledger Entry";
         DtldVendLedgEntry: Record "Detailed Vendor Ledg. Entry";
-
+        ConfirmManagement: Codeunit "Confirm Management";
     begin
+
+        if not ConfirmManagement.GetResponseOrDefault('Do you want to process records?', true) then
+            exit;
+
 
         VendLedgEntry.SetRange("Document No.", SalesInvNo);
         if VendLedgEntry.FindSet() then

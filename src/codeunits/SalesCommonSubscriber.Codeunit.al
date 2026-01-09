@@ -40,6 +40,9 @@ codeunit 50100 SalesCommonSubscriber
     end;
 
 
+
+
+
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', Quantity, false, false)]
     local procedure OnAfterValidateEventQty_PSK(var Rec: Record "Sales Line")
     var

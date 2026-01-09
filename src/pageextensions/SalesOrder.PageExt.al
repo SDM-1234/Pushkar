@@ -22,7 +22,6 @@ pageextension 50131 SalesOrder extends "Sales Order"
     end;
 
 
-
     trigger OnAfterGetCurrRecord()
     begin
         Rec."Posting Date" := WorkDate();

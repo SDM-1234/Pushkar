@@ -763,6 +763,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Tax Invoice Report - Control QRCodePrint - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 4149105855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Update Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4149105855 - Control 739346273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Posting Date for Posted Sales Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Update Posting Date - Control Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4149105855 - Control 3037438984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Update Posting Date - Control PostingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4149105855 - Control 3826203916 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Update Posting Date - Control SalesInvNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 2481794219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Work Order Register</source>
           <note from="Developer" annotates="general" priority="2"></note>

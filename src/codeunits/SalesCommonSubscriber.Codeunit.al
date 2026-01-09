@@ -41,20 +41,20 @@ codeunit 50100 SalesCommonSubscriber
 
 
 
-    [EventSubscriber(ObjectType::Page, Page::"Sales Order", 'OnOpenPageEvent', '', false, false)]
-    local procedure OnOpenPageEvent_SO(var Rec: Record "Sales Header")
-    begin
-        Rec."Posting Date" := WorkDate();
-        Rec.Modify();
-    end;
+    // [EventSubscriber(ObjectType::Page, Page::"Sales Order", 'OnOpenPageEvent', '', false, false)]
+    // local procedure OnOpenPageEvent_SO(var Rec: Record "Sales Header")
+    // begin
+    //     Rec."Posting Date" := WorkDate();
+    //     Rec.Modify();
+    // end;
 
 
-    [EventSubscriber(ObjectType::Page, Page::"Sales Order", 'OnAfterOnAfterGetRecord', '', false, false)]
-    local procedure OnAfterOnAfterGetRecord_SO(var SalesHeader: Record "Sales Header")
-    begin
-        SalesHeader."Posting Date" := WorkDate();
-        SalesHeader.Modify();
-    end;
+    // [EventSubscriber(ObjectType::Page, Page::"Sales Order", 'OnAfterOnAfterGetRecord', '', false, false)]
+    // local procedure OnAfterOnAfterGetRecord_SO(var SalesHeader: Record "Sales Header")
+    // begin
+    //     SalesHeader."Posting Date" := WorkDate();
+    //     SalesHeader.Modify();
+    // end;
 
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', Quantity, false, false)]

@@ -17,15 +17,19 @@ pageextension 50131 SalesOrder extends "Sales Order"
 
     trigger OnOpenPage()
     begin
-        Rec."Posting Date" := WorkDate();
-        Rec.Modify();
+        if (Rec."No." <> '') and (Rec."Posting Date" <> WorkDate()) then begin
+            Rec."Posting Date" := WorkDate();
+            Rec.Modify();
+        end;
     end;
 
 
     trigger OnAfterGetCurrRecord()
     begin
-        Rec."Posting Date" := WorkDate();
-        Rec.Modify();
+        if (Rec."No." <> '') and (Rec."Posting Date" <> WorkDate()) then begin
+            Rec."Posting Date" := WorkDate();
+            Rec.Modify();
+        end;
     end;
 
 }

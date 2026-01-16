@@ -11,229 +11,6 @@
       <rd:DataSourceID>3f1f0eb4-9fd3-47b9-ac59-0b5b15b1672c</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="VendAddr6">
-          <DataField>VendAddr6</DataField>
-        </Field>
-        <Field Name="VendAddr7">
-          <DataField>VendAddr7</DataField>
-        </Field>
-        <Field Name="VendAddr8">
-          <DataField>VendAddr8</DataField>
-        </Field>
-        <Field Name="VendAddr4">
-          <DataField>VendAddr4</DataField>
-        </Field>
-        <Field Name="VendAddr5">
-          <DataField>VendAddr5</DataField>
-        </Field>
-        <Field Name="VendAddr3">
-          <DataField>VendAddr3</DataField>
-        </Field>
-        <Field Name="VendAddr1">
-          <DataField>VendAddr1</DataField>
-        </Field>
-        <Field Name="VendAddr2">
-          <DataField>VendAddr2</DataField>
-        </Field>
-        <Field Name="VendNo_VendLedgEntry">
-          <DataField>VendNo_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="DocDate_VendLedgEntry">
-          <DataField>DocDate_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="CompanyAddr1">
-          <DataField>CompanyAddr1</DataField>
-        </Field>
-        <Field Name="CompanyAddr2">
-          <DataField>CompanyAddr2</DataField>
-        </Field>
-        <Field Name="CompanyAddr3">
-          <DataField>CompanyAddr3</DataField>
-        </Field>
-        <Field Name="CompanyAddr4">
-          <DataField>CompanyAddr4</DataField>
-        </Field>
-        <Field Name="CompanyAddr5">
-          <DataField>CompanyAddr5</DataField>
-        </Field>
-        <Field Name="CompanyAddr6">
-          <DataField>CompanyAddr6</DataField>
-        </Field>
-        <Field Name="CompanyAddr7">
-          <DataField>CompanyAddr7</DataField>
-        </Field>
-        <Field Name="CompanyAddr8">
-          <DataField>CompanyAddr8</DataField>
-        </Field>
-        <Field Name="PhoneNo">
-          <DataField>PhoneNo</DataField>
-        </Field>
-        <Field Name="HomePage">
-          <DataField>HomePage</DataField>
-        </Field>
-        <Field Name="Email">
-          <DataField>Email</DataField>
-        </Field>
-        <Field Name="VATRegistrationNo">
-          <DataField>VATRegistrationNo</DataField>
-        </Field>
-        <Field Name="GiroNo">
-          <DataField>GiroNo</DataField>
-        </Field>
-        <Field Name="BankName">
-          <DataField>BankName</DataField>
-        </Field>
-        <Field Name="BankAccountNo">
-          <DataField>BankAccountNo</DataField>
-        </Field>
-        <Field Name="ReportTitle">
-          <DataField>ReportTitle</DataField>
-        </Field>
-        <Field Name="DocNo_VendLedgEntry">
-          <DataField>DocNo_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="PymtDiscTitle">
-          <DataField>PymtDiscTitle</DataField>
-        </Field>
-        <Field Name="CompanyInfoPhoneNoCaption">
-          <DataField>CompanyInfoPhoneNoCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoGiroNoCaption">
-          <DataField>CompanyInfoGiroNoCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoBankNameCaption">
-          <DataField>CompanyInfoBankNameCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoBankAccNoCaption">
-          <DataField>CompanyInfoBankAccNoCaption</DataField>
-        </Field>
-        <Field Name="RcptNoCaption">
-          <DataField>RcptNoCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoVATRegNoCaption">
-          <DataField>CompanyInfoVATRegNoCaption</DataField>
-        </Field>
-        <Field Name="PostingDateCaption">
-          <DataField>PostingDateCaption</DataField>
-        </Field>
-        <Field Name="AmtCaption">
-          <DataField>AmtCaption</DataField>
-        </Field>
-        <Field Name="PymtAmtSpecCaption">
-          <DataField>PymtAmtSpecCaption</DataField>
-        </Field>
-        <Field Name="PymtTolInvCurrCaption">
-          <DataField>PymtTolInvCurrCaption</DataField>
-        </Field>
-        <Field Name="AppliedVLENo_DtldVendLedgEntry">
-          <DataField>AppliedVLENo_DtldVendLedgEntry</DataField>
-        </Field>
-        <Field Name="PostingDate_VendLedgEntry1">
-          <DataField>PostingDate_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="DocType_VendLedgEntry1">
-          <DataField>DocType_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="DocNo_VendLedgEntry1">
-          <DataField>DocNo_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="Description_VendLedgEntry1">
-          <DataField>Description_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="NegShowAmountVendLedgEntry1">
-          <DataField>NegShowAmountVendLedgEntry1</DataField>
-        </Field>
-        <Field Name="NegShowAmountVendLedgEntry1Format">
-          <DataField>NegShowAmountVendLedgEntry1Format</DataField>
-        </Field>
-        <Field Name="CurrCode_VendLedgEntry1">
-          <DataField>CurrCode_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="NegPmtDiscInvCurrVendLedgEntry1">
-          <DataField>NegPmtDiscInvCurrVendLedgEntry1</DataField>
-        </Field>
-        <Field Name="NegPmtDiscInvCurrVendLedgEntry1Format">
-          <DataField>NegPmtDiscInvCurrVendLedgEntry1Format</DataField>
-        </Field>
-        <Field Name="NegPmtTolInvCurrVendLedgEntry1">
-          <DataField>NegPmtTolInvCurrVendLedgEntry1</DataField>
-        </Field>
-        <Field Name="NegPmtTolInvCurrVendLedgEntry1Format">
-          <DataField>NegPmtTolInvCurrVendLedgEntry1Format</DataField>
-        </Field>
-        <Field Name="VLENo_DtldVendLedgEntry">
-          <DataField>VLENo_DtldVendLedgEntry</DataField>
-        </Field>
-        <Field Name="NegAppliedAmt">
-          <DataField>NegAppliedAmt</DataField>
-        </Field>
-        <Field Name="NegAppliedAmtFormat">
-          <DataField>NegAppliedAmtFormat</DataField>
-        </Field>
-        <Field Name="Description_VendLedgEntry2">
-          <DataField>Description_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="DocNo_VendLedgEntry2">
-          <DataField>DocNo_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="DocType_VendLedgEntry2">
-          <DataField>DocType_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="PostingDate_VendLedgEntry2">
-          <DataField>PostingDate_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="CurrCode_VendLedgEntry2">
-          <DataField>CurrCode_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="NegPmtDiscInvCurrVendLedgEntry2">
-          <DataField>NegPmtDiscInvCurrVendLedgEntry2</DataField>
-        </Field>
-        <Field Name="NegPmtDiscInvCurrVendLedgEntry2Format">
-          <DataField>NegPmtDiscInvCurrVendLedgEntry2Format</DataField>
-        </Field>
-        <Field Name="NegPmtTolInvCurr1VendLedgEntry2">
-          <DataField>NegPmtTolInvCurr1VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="NegPmtTolInvCurr1VendLedgEntry2Format">
-          <DataField>NegPmtTolInvCurr1VendLedgEntry2Format</DataField>
-        </Field>
-        <Field Name="NegRemainingAmt">
-          <DataField>NegRemainingAmt</DataField>
-        </Field>
-        <Field Name="NegRemainingAmtFormat">
-          <DataField>NegRemainingAmtFormat</DataField>
-        </Field>
-        <Field Name="CurrCode_VendLedgEntry">
-          <DataField>CurrCode_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="NegOriginalAmt_VendLedgEntry">
-          <DataField>NegOriginalAmt_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="NegOriginalAmt_VendLedgEntryFormat">
-          <DataField>NegOriginalAmt_VendLedgEntryFormat</DataField>
-        </Field>
-        <Field Name="ExtDocNo_VendLedgEntry">
-          <DataField>ExtDocNo_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="PymtAmtNotAllocatedCaption">
-          <DataField>PymtAmtNotAllocatedCaption</DataField>
-        </Field>
-        <Field Name="PymtAmtCaption">
-          <DataField>PymtAmtCaption</DataField>
-        </Field>
-        <Field Name="ExternalDocNoCaption">
-          <DataField>ExternalDocNoCaption</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -242,7 +19,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>18.13555cm</Width>
+                  <Width>18.18623cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -257,22 +34,22 @@
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>3.84284cm</Width>
+                                    <Width>3.8219cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.49309cm</Width>
+                                    <Width>2.47215cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>3.59519cm</Width>
+                                    <Width>3.57425cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>1.67551cm</Width>
+                                    <Width>1.65457cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.19065cm</Width>
+                                    <Width>2.16971cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>4.33827cm</Width>
+                                    <Width>4.31733cm</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -769,7 +546,7 @@
                               </Filters>
                               <Top>2.92061cm</Top>
                               <Height>1.05832cm</Height>
-                              <Width>18.13555cm</Width>
+                              <Width>18.00992cm</Width>
                               <Visibility>
                                 <Hidden>=IIF(Fields!ExtDocNo_VendLedgEntry.Value&lt;&gt;"",False,True)</Hidden>
                               </Visibility>
@@ -910,28 +687,28 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>0.71086in</Width>
+                                    <Width>0.6705in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.80789in</Width>
+                                    <Width>0.76753in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.80873in</Width>
+                                    <Width>1.12917in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>1.45669in</Width>
+                                    <Width>1.32258in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.62992in</Width>
+                                    <Width>0.58956in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.82677in</Width>
+                                    <Width>0.78641in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>1.12697in</Width>
+                                    <Width>0.90965in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.76525in</Width>
+                                    <Width>0.94885in</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -1975,7 +1752,7 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!ExtDocNo_VendLedgEntry.Value</Value>
+                                                    <Value>=Fields!ExternalDocumentNo_VLE1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
                                                       <FontFamily>Segoe UI</FontFamily>
@@ -2007,7 +1784,7 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!DocDate_VendLedgEntry.Value</Value>
+                                                    <Value>=Fields!DocumentDate_VLE1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
                                                       <FontFamily>Segoe UI</FontFamily>
@@ -2029,7 +1806,6 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                                               <PaddingLeft>5pt</PaddingLeft>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                     </TablixCells>
@@ -2082,7 +1858,7 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                                 </Filter>
                               </Filters>
                               <Height>1.4111cm</Height>
-                              <Width>7.13308in</Width>
+                              <Width>7.12421in</Width>
                               <ZIndex>2</ZIndex>
                               <Visibility>
                                 <Hidden>=IIF(CountRows()&gt;0,False,True)</Hidden>
@@ -2098,28 +1874,28 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>0.71316in</Width>
+                                    <Width>0.64676in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.79977in</Width>
+                                    <Width>0.79127in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.82145in</Width>
+                                    <Width>1.12917in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>1.45669in</Width>
+                                    <Width>1.32258in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.62992in</Width>
+                                    <Width>0.58956in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.82677in</Width>
+                                    <Width>0.78641in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>1.12697in</Width>
+                                    <Width>0.90965in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.76525in</Width>
+                                    <Width>0.94885in</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -2277,7 +2053,8 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="textbox49">
+                                          <Textbox Name="Textbox34">
+                                            <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
@@ -2290,8 +2067,7 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                                                 <Style />
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>textbox49</rd:DefaultName>
-                                            <ZIndex>9</ZIndex>
+                                            <rd:DefaultName>Textbox34</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -2302,7 +2078,8 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="textbox50">
+                                          <Textbox Name="Textbox36">
+                                            <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
@@ -2315,8 +2092,7 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                                                 <Style />
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>textbox50</rd:DefaultName>
-                                            <ZIndex>8</ZIndex>
+                                            <rd:DefaultName>Textbox36</rd:DefaultName>
                                             <Style>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -2521,7 +2297,7 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!ExtDocNo_VendLedgEntry.Value</Value>
+                                                    <Value>=Fields!ExternalDocumentNo_VLE1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
                                                       <FontFamily>Segoe UI</FontFamily>
@@ -2553,7 +2329,7 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!DocDate_VendLedgEntry.Value</Value>
+                                                    <Value>=Fields!DocumentDate_VLE1.Value</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
                                                       <FontFamily>Segoe UI</FontFamily>
@@ -2624,7 +2400,7 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                               </Filters>
                               <Top>1.46034cm</Top>
                               <Height>0.70556cm</Height>
-                              <Width>7.13998in</Width>
+                              <Width>7.12421in</Width>
                               <ZIndex>3</ZIndex>
                               <Visibility>
                                 <Hidden>=IIF(CountRows()&gt;0,False,True)</Hidden>
@@ -2640,13 +2416,13 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>9.95177cm</Width>
+                                    <Width>9.9099cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>1.65997cm</Width>
+                                    <Width>1.6181cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>6.52381cm</Width>
+                                    <Width>6.48194cm</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -2863,7 +2639,7 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                               </Filters>
                               <Top>2.19047cm</Top>
                               <Height>0.70556cm</Height>
-                              <Width>18.13555cm</Width>
+                              <Width>18.00995cm</Width>
                               <ZIndex>4</ZIndex>
                               <Visibility>
                                 <Hidden>=IIF(Fields!NegRemainingAmt.Value&lt;&gt;0,False,True)</Hidden>
@@ -2875,22 +2651,22 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>4.40667cm</Width>
+                                    <Width>4.38573cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>1.93736cm</Width>
+                                    <Width>1.91642cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>3.60774cm</Width>
+                                    <Width>3.5868cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>1.65209cm</Width>
+                                    <Width>1.63115cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.18816cm</Width>
+                                    <Width>2.16722cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>4.32603cm</Width>
+                                    <Width>4.30509cm</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -3525,7 +3301,7 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                               </Filters>
                               <Top>3.98937cm</Top>
                               <Height>0.55555in</Height>
-                              <Width>18.11805cm</Width>
+                              <Width>17.99242cm</Width>
                               <ZIndex>5</ZIndex>
                               <Visibility>
                                 <Hidden>=IIF(Fields!ExtDocNo_VendLedgEntry.Value&lt;&gt;"",True,False)</Hidden>
@@ -3569,18 +3345,19 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <DataSetName>DataSet_Result</DataSetName>
             <PageBreak>
               <BreakLocation>End</BreakLocation>
             </PageBreak>
             <Height>5.43222cm</Height>
-            <Width>18.13555cm</Width>
+            <Width>18.18623cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
         <Height>5.43222cm</Height>
         <Style />
       </Body>
-      <Width>18.1356cm</Width>
+      <Width>18.18623cm</Width>
       <Page>
         <PageHeader>
           <Height>7.44911cm</Height>
@@ -3607,9 +3384,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>5.12043cm</Top>
-              <Left>10.96251cm</Left>
+              <Left>10.60511cm</Left>
               <Height>11pt</Height>
-              <Width>2.67351cm</Width>
+              <Width>2.90531cm</Width>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
@@ -3661,9 +3438,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>6.30625cm</Top>
-              <Left>10.96824cm</Left>
+              <Left>10.61084cm</Left>
               <Height>11pt</Height>
-              <Width>2.65699cm</Width>
+              <Width>2.88879cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -3689,9 +3466,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>5.90293cm</Top>
-              <Left>10.96251cm</Left>
+              <Left>10.60511cm</Left>
               <Height>11pt</Height>
-              <Width>2.67351cm</Width>
+              <Width>2.90531cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -3717,9 +3494,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>5.51168cm</Top>
-              <Left>10.96251cm</Left>
+              <Left>10.60511cm</Left>
               <Height>11pt</Height>
-              <Width>2.67351cm</Width>
+              <Width>2.90531cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -3745,9 +3522,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>3.93928cm</Top>
-              <Left>10.96251cm</Left>
+              <Left>10.60511cm</Left>
               <Height>11pt</Height>
-              <Width>2.67351cm</Width>
+              <Width>2.90531cm</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -3829,7 +3606,7 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
               </Paragraphs>
               <Top>0.02646cm</Top>
               <Height>18.00013pt</Height>
-              <Width>18.13557cm</Width>
+              <Width>18.00995cm</Width>
               <ZIndex>8</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -3855,9 +3632,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>6.2992cm</Top>
-              <Left>13.6713cm</Left>
+              <Left>13.3139cm</Left>
               <Height>11pt</Height>
-              <Width>4.4643cm</Width>
+              <Width>4.6961cm</Width>
               <ZIndex>9</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -3883,9 +3660,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>5.90293cm</Top>
-              <Left>13.63603cm</Left>
+              <Left>13.27863cm</Left>
               <Height>11pt</Height>
-              <Width>4.49954cm</Width>
+              <Width>4.73134cm</Width>
               <ZIndex>10</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -3911,9 +3688,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>5.51168cm</Top>
-              <Left>13.63603cm</Left>
+              <Left>13.27863cm</Left>
               <Height>11pt</Height>
-              <Width>4.49954cm</Width>
+              <Width>4.73134cm</Width>
               <ZIndex>11</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -3939,9 +3716,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>5.12043cm</Top>
-              <Left>13.63603cm</Left>
+              <Left>13.27863cm</Left>
               <Height>11pt</Height>
-              <Width>4.49954cm</Width>
+              <Width>4.73134cm</Width>
               <ZIndex>12</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -3967,9 +3744,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>3.93928cm</Top>
-              <Left>13.63603cm</Left>
+              <Left>13.27863cm</Left>
               <Height>11pt</Height>
-              <Width>4.49954cm</Width>
+              <Width>4.73134cm</Width>
               <ZIndex>13</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -3995,9 +3772,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>3.51628cm</Top>
-              <Left>10.96251cm</Left>
+              <Left>10.60511cm</Left>
               <Height>11pt</Height>
-              <Width>7.17306cm</Width>
+              <Width>7.40486cm</Width>
               <ZIndex>14</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -4023,9 +3800,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>3.09328cm</Top>
-              <Left>10.96251cm</Left>
+              <Left>10.60511cm</Left>
               <Height>11pt</Height>
-              <Width>7.17306cm</Width>
+              <Width>7.40486cm</Width>
               <ZIndex>15</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -4051,9 +3828,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>2.67028cm</Top>
-              <Left>10.96251cm</Left>
+              <Left>10.60511cm</Left>
               <Height>11pt</Height>
-              <Width>7.17306cm</Width>
+              <Width>7.40486cm</Width>
               <ZIndex>16</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -4079,9 +3856,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>2.24728cm</Top>
-              <Left>10.96251cm</Left>
+              <Left>10.60511cm</Left>
               <Height>11pt</Height>
-              <Width>7.17306cm</Width>
+              <Width>7.40486cm</Width>
               <ZIndex>17</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -4107,9 +3884,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>1.88778cm</Top>
-              <Left>10.96251cm</Left>
+              <Left>10.60511cm</Left>
               <Height>11pt</Height>
-              <Width>7.17306cm</Width>
+              <Width>7.40486cm</Width>
               <ZIndex>18</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -4135,9 +3912,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>1.49653cm</Top>
-              <Left>10.96251cm</Left>
+              <Left>10.60511cm</Left>
               <Height>11pt</Height>
-              <Width>7.17306cm</Width>
+              <Width>7.40486cm</Width>
               <ZIndex>19</ZIndex>
               <Style>
                 <VerticalAlign>Top</VerticalAlign>
@@ -4436,9 +4213,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>0.71866cm</Top>
-              <Left>10.96251cm</Left>
+              <Left>10.60511cm</Left>
               <Height>11pt</Height>
-              <Width>7.17306cm</Width>
+              <Width>7.40486cm</Width>
               <ZIndex>30</ZIndex>
               <DataElementOutput>NoOutput</DataElementOutput>
               <Style>
@@ -4493,9 +4270,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>1.14166cm</Top>
-              <Left>10.96251cm</Left>
+              <Left>10.60511cm</Left>
               <Height>10pt</Height>
-              <Width>7.17306cm</Width>
+              <Width>7.40486cm</Width>
               <ZIndex>32</ZIndex>
               <Style>
                 <Border>
@@ -4554,9 +4331,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>1.87141in</Top>
-              <Left>4.31595in</Left>
+              <Left>4.17524in</Left>
               <Height>11pt</Height>
-              <Width>2.67351cm</Width>
+              <Width>2.90531cm</Width>
               <ZIndex>34</ZIndex>
               <Style>
                 <Border>
@@ -4585,9 +4362,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>1.71724in</Top>
-              <Left>4.3117in</Left>
+              <Left>4.17099in</Left>
               <Height>11pt</Height>
-              <Width>2.67351cm</Width>
+              <Width>2.90531cm</Width>
               <ZIndex>35</ZIndex>
               <Style>
                 <Border>
@@ -4616,9 +4393,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>1.71724in</Top>
-              <Left>5.36851in</Left>
+              <Left>5.2278in</Left>
               <Height>11pt</Height>
-              <Width>4.49958cm</Width>
+              <Width>4.73138cm</Width>
               <ZIndex>36</ZIndex>
               <Style>
                 <Border>
@@ -4647,9 +4424,9 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 </Paragraph>
               </Paragraphs>
               <Top>1.85613in</Top>
-              <Left>5.36851in</Left>
+              <Left>5.2278in</Left>
               <Height>11pt</Height>
-              <Width>4.49954cm</Width>
+              <Width>4.73134cm</Width>
               <ZIndex>37</ZIndex>
               <Style>
                 <Border>
@@ -4756,11 +4533,29 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
       </DefaultValue>
       <Prompt>Description_VendLedgEntry1Caption</Prompt>
     </ReportParameter>
+    <ReportParameter Name="ExternalDocumentNo_VLE1Caption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ExternalDocumentNo_VLE1Caption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ExternalDocumentNo_VLE1Caption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DocumentDate_VLE1Caption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>DocumentDate_VLE1Caption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>DocumentDate_VLE1Caption</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>1</NumberOfColumns>
-      <NumberOfRows>9</NumberOfRows>
+      <NumberOfRows>11</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -4806,6 +4601,16 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>8</RowIndex>
           <ParameterName>Description_VendLedgEntry1Caption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>9</RowIndex>
+          <ParameterName>ExternalDocumentNo_VLE1Caption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>10</RowIndex>
+          <ParameterName>DocumentDate_VLE1Caption</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
@@ -4880,4 +4685,233 @@ End Function</Code>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>b717bad0-0854-4d81-a0b2-005cf04cd18a</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="VendAddr6">
+          <DataField>VendAddr6</DataField>
+        </Field>
+        <Field Name="VendAddr7">
+          <DataField>VendAddr7</DataField>
+        </Field>
+        <Field Name="VendAddr8">
+          <DataField>VendAddr8</DataField>
+        </Field>
+        <Field Name="VendAddr4">
+          <DataField>VendAddr4</DataField>
+        </Field>
+        <Field Name="VendAddr5">
+          <DataField>VendAddr5</DataField>
+        </Field>
+        <Field Name="VendAddr3">
+          <DataField>VendAddr3</DataField>
+        </Field>
+        <Field Name="VendAddr1">
+          <DataField>VendAddr1</DataField>
+        </Field>
+        <Field Name="VendAddr2">
+          <DataField>VendAddr2</DataField>
+        </Field>
+        <Field Name="VendNo_VendLedgEntry">
+          <DataField>VendNo_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="DocDate_VendLedgEntry">
+          <DataField>DocDate_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="CompanyAddr1">
+          <DataField>CompanyAddr1</DataField>
+        </Field>
+        <Field Name="CompanyAddr2">
+          <DataField>CompanyAddr2</DataField>
+        </Field>
+        <Field Name="CompanyAddr3">
+          <DataField>CompanyAddr3</DataField>
+        </Field>
+        <Field Name="CompanyAddr4">
+          <DataField>CompanyAddr4</DataField>
+        </Field>
+        <Field Name="CompanyAddr5">
+          <DataField>CompanyAddr5</DataField>
+        </Field>
+        <Field Name="CompanyAddr6">
+          <DataField>CompanyAddr6</DataField>
+        </Field>
+        <Field Name="CompanyAddr7">
+          <DataField>CompanyAddr7</DataField>
+        </Field>
+        <Field Name="CompanyAddr8">
+          <DataField>CompanyAddr8</DataField>
+        </Field>
+        <Field Name="PhoneNo">
+          <DataField>PhoneNo</DataField>
+        </Field>
+        <Field Name="HomePage">
+          <DataField>HomePage</DataField>
+        </Field>
+        <Field Name="Email">
+          <DataField>Email</DataField>
+        </Field>
+        <Field Name="VATRegistrationNo">
+          <DataField>VATRegistrationNo</DataField>
+        </Field>
+        <Field Name="GiroNo">
+          <DataField>GiroNo</DataField>
+        </Field>
+        <Field Name="BankName">
+          <DataField>BankName</DataField>
+        </Field>
+        <Field Name="BankAccountNo">
+          <DataField>BankAccountNo</DataField>
+        </Field>
+        <Field Name="ReportTitle">
+          <DataField>ReportTitle</DataField>
+        </Field>
+        <Field Name="DocNo_VendLedgEntry">
+          <DataField>DocNo_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="PymtDiscTitle">
+          <DataField>PymtDiscTitle</DataField>
+        </Field>
+        <Field Name="CompanyInfoPhoneNoCaption">
+          <DataField>CompanyInfoPhoneNoCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoGiroNoCaption">
+          <DataField>CompanyInfoGiroNoCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoBankNameCaption">
+          <DataField>CompanyInfoBankNameCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoBankAccNoCaption">
+          <DataField>CompanyInfoBankAccNoCaption</DataField>
+        </Field>
+        <Field Name="RcptNoCaption">
+          <DataField>RcptNoCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoVATRegNoCaption">
+          <DataField>CompanyInfoVATRegNoCaption</DataField>
+        </Field>
+        <Field Name="PostingDateCaption">
+          <DataField>PostingDateCaption</DataField>
+        </Field>
+        <Field Name="AmtCaption">
+          <DataField>AmtCaption</DataField>
+        </Field>
+        <Field Name="PymtAmtSpecCaption">
+          <DataField>PymtAmtSpecCaption</DataField>
+        </Field>
+        <Field Name="PymtTolInvCurrCaption">
+          <DataField>PymtTolInvCurrCaption</DataField>
+        </Field>
+        <Field Name="AppliedVLENo_DtldVendLedgEntry">
+          <DataField>AppliedVLENo_DtldVendLedgEntry</DataField>
+        </Field>
+        <Field Name="PostingDate_VendLedgEntry1">
+          <DataField>PostingDate_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="DocType_VendLedgEntry1">
+          <DataField>DocType_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="DocNo_VendLedgEntry1">
+          <DataField>DocNo_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="Description_VendLedgEntry1">
+          <DataField>Description_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="NegShowAmountVendLedgEntry1">
+          <DataField>NegShowAmountVendLedgEntry1</DataField>
+        </Field>
+        <Field Name="NegShowAmountVendLedgEntry1Format">
+          <DataField>NegShowAmountVendLedgEntry1Format</DataField>
+        </Field>
+        <Field Name="CurrCode_VendLedgEntry1">
+          <DataField>CurrCode_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="NegPmtDiscInvCurrVendLedgEntry1">
+          <DataField>NegPmtDiscInvCurrVendLedgEntry1</DataField>
+        </Field>
+        <Field Name="NegPmtDiscInvCurrVendLedgEntry1Format">
+          <DataField>NegPmtDiscInvCurrVendLedgEntry1Format</DataField>
+        </Field>
+        <Field Name="NegPmtTolInvCurrVendLedgEntry1">
+          <DataField>NegPmtTolInvCurrVendLedgEntry1</DataField>
+        </Field>
+        <Field Name="NegPmtTolInvCurrVendLedgEntry1Format">
+          <DataField>NegPmtTolInvCurrVendLedgEntry1Format</DataField>
+        </Field>
+        <Field Name="VLENo_DtldVendLedgEntry">
+          <DataField>VLENo_DtldVendLedgEntry</DataField>
+        </Field>
+        <Field Name="NegAppliedAmt">
+          <DataField>NegAppliedAmt</DataField>
+        </Field>
+        <Field Name="NegAppliedAmtFormat">
+          <DataField>NegAppliedAmtFormat</DataField>
+        </Field>
+        <Field Name="Description_VendLedgEntry2">
+          <DataField>Description_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="DocNo_VendLedgEntry2">
+          <DataField>DocNo_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="DocType_VendLedgEntry2">
+          <DataField>DocType_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="PostingDate_VendLedgEntry2">
+          <DataField>PostingDate_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="CurrCode_VendLedgEntry2">
+          <DataField>CurrCode_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="NegPmtDiscInvCurrVendLedgEntry2">
+          <DataField>NegPmtDiscInvCurrVendLedgEntry2</DataField>
+        </Field>
+        <Field Name="NegPmtDiscInvCurrVendLedgEntry2Format">
+          <DataField>NegPmtDiscInvCurrVendLedgEntry2Format</DataField>
+        </Field>
+        <Field Name="NegPmtTolInvCurr1VendLedgEntry2">
+          <DataField>NegPmtTolInvCurr1VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="NegPmtTolInvCurr1VendLedgEntry2Format">
+          <DataField>NegPmtTolInvCurr1VendLedgEntry2Format</DataField>
+        </Field>
+        <Field Name="NegRemainingAmt">
+          <DataField>NegRemainingAmt</DataField>
+        </Field>
+        <Field Name="NegRemainingAmtFormat">
+          <DataField>NegRemainingAmtFormat</DataField>
+        </Field>
+        <Field Name="CurrCode_VendLedgEntry">
+          <DataField>CurrCode_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="NegOriginalAmt_VendLedgEntry">
+          <DataField>NegOriginalAmt_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="NegOriginalAmt_VendLedgEntryFormat">
+          <DataField>NegOriginalAmt_VendLedgEntryFormat</DataField>
+        </Field>
+        <Field Name="ExtDocNo_VendLedgEntry">
+          <DataField>ExtDocNo_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="PymtAmtNotAllocatedCaption">
+          <DataField>PymtAmtNotAllocatedCaption</DataField>
+        </Field>
+        <Field Name="PymtAmtCaption">
+          <DataField>PymtAmtCaption</DataField>
+        </Field>
+        <Field Name="ExternalDocNoCaption">
+          <DataField>ExternalDocNoCaption</DataField>
+        </Field>
+        <Field Name="ExternalDocumentNo_VLE1">
+          <DataField>ExternalDocumentNo_VLE1</DataField>
+        </Field>
+        <Field Name="DocumentDate_VLE1">
+          <DataField>DocumentDate_VLE1</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

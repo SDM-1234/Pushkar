@@ -13,6 +13,7 @@ permissionset 50100 GeneratedPermission
         report "Purchase Order Report" = X,
         report ScheduleVsSupplyReport = X,
         report "Tax Invoice Report" = X,
+        report "BulkExportTataJSON" = X,
         report "Work Order Report" = X,
         codeunit AmountToWords = X,
         codeunit ApprovalMgtPSK = X,

@@ -16,12 +16,28 @@ using Microsoft.Sales.History;
 using Microsoft.Sales.Posting;
 using Microsoft.Sales.Receivables;
 using Microsoft.Warehouse.GateEntry;
+using Microsoft.Inventory.Posting;
+using Microsoft.Inventory.Journal;
 
 codeunit 50100 SalesCommonSubscriber
 {
 
     Permissions =
         tabledata "Sales Shipment Header" = rm;
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Post", OnBeforeCode, '', false, false)]
+    local procedure OnBeforeCode_ItemJnl(var ItemJournalLine: Record "Item Journal Line")
+    var
+        item: Record Item;
+    begin
+        item.Get(ItemJournalLine."Item No.");
+        if item."Block Positive Adjustment" then
+            if ItemJournalLine.Quantity > 0 then
+                Error('Positive adjustment is blocked for this item.');
+
+    end;
+
 
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', "No.", false, false)]

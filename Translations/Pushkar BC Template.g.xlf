@@ -833,6 +833,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerCardExtPTPL - Control Supplier Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Control 3154686375 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies the value of the Block Positive Adjustment field.</source>
+          <note from="Developer" annotates="general" priority="2">%</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control Block Positive Adjustment - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 4230565839 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>The item number of the item.</source>
           <note from="Developer" annotates="general" priority="2"></note>

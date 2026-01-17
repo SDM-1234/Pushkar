@@ -1,7 +1,7 @@
 namespace Pushkar.Pushkar;
 
-using Microsoft.Sales.History;
 using Microsoft.Sales.Customer;
+using Microsoft.Sales.History;
 
 pageextension 50116 PostedSalesCreditMemoLines extends "Posted Sales Credit Memo Lines"
 {
@@ -15,6 +15,31 @@ pageextension 50116 PostedSalesCreditMemoLines extends "Posted Sales Credit Memo
                 ToolTip = 'Name of the customer.';
                 Caption = 'Customer Name';
                 Editable = false;
+            }
+            field("GST Amount"; Rec."GST Amount")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the GST Amount field.', Comment = '%';
+            }
+            field("Sales Account"; Rec."Sales Account")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Sales Account field.', Comment = '%';
+            }
+            field("Sales Account Name"; Rec."Sales Account Name")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Sales Account Name field.', Comment = '%';
+            }
+            field("TDS Amount"; Rec."TDS Amount")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the TDS Amount field.', Comment = '%';
+            }
+            field("Invoice No."; Rec."Invoice No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Invoice No. field.', Comment = '%';
             }
         }
     }

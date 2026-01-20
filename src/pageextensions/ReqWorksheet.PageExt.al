@@ -78,6 +78,35 @@ pageextension 50135 ReqWorksheet extends "Req. Worksheet"
                         end;
                     }
                 }
+                group(ReOpen)
+                {
+                    Caption = 'Reopen';
+                    Image = ReOpen;
+                    action(ReopenRequisitionLine)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Selected Journal Lines';
+                        Enabled = EnabledReqLineWorkflowsExist;
+                        Image = ReOpen;
+                        ToolTip = 'Reopen selected lines for approval.';
+
+                        trigger OnAction()
+                        var
+                            [SecurityFiltering(SecurityFilter::Filtered)]
+                            ReqLine: Record "Requisition Line";
+                            ApprovalMgt: Codeunit "Approvals Mgmt.";
+                            ApprovalStatusName: Text[20];
+                        begin
+                            if ApprovalStatusName <> 'Approved' then
+                                exit;
+                            GetCurrentlySelectedLines(ReqLine);
+                            if ReqLine.FindSet() then
+                                repeat
+                                    ApprovalMgt.DeleteApprovalEntries(ReqLine.RecordId);
+                                until ReqLine.Next() = 0;
+                        end;
+                    }
+                }
             }
 
             group(Approval)
@@ -149,6 +178,13 @@ pageextension 50135 ReqWorksheet extends "Req. Worksheet"
                 {
                     Caption = 'Cancel Approval Request';
                     actionref(CancelApprovalRequestJournalLine_Promoted; CancelApprovalRequestRequisitionLine)
+                    {
+                    }
+                }
+                group("Category_Reopen Approval Request")
+                {
+                    Caption = 'Reopen';
+                    actionref(ReopenApprovalRequestJournalLine_Promoted; ReopenRequisitionLine)
                     {
                     }
                 }

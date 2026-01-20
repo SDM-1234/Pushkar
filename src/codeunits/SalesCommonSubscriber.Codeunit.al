@@ -31,10 +31,11 @@ codeunit 50100 SalesCommonSubscriber
     var
         item: Record Item;
     begin
-        item.Get(ItemJournalLine."Item No.");
-        if item."Block Positive Adjustment" then
-            if ItemJournalLine.Quantity > 0 then
-                Error('Positive adjustment is blocked for this item.');
+
+        if (ItemJournalLine."Entry Type" = ItemJournalLine."Entry Type"::"Positive Adjmt.") and (ItemJournalLine.Quantity > 0) then
+            if item.Get(ItemJournalLine."Item No.") then
+                if item."Block Positive Adjustment" then
+                    error('Positive adjustment is blocked for this item.');
 
     end;
 

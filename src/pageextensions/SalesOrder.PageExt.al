@@ -68,7 +68,7 @@ pageextension 50131 SalesOrder extends "Sales Order"
     local procedure PrePostValidations()
     BEGIN
 
-        if Rec."GST Customer Type" IN [Rec."GST Customer Type"::Registered, Rec."GST Customer Type"::Unregistered, Rec."GST Customer Type"::" "] then
+        if Rec."GST Customer Type" IN [Rec."GST Customer Type"::Registered, Rec."GST Customer Type"::Unregistered, Rec."GST Customer Type"::"SEZ Unit"] then
             CalculateGSTAmount();
 
     End;

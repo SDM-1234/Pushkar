@@ -23,13 +23,11 @@ pageextension 50140 GeneralLedgerEntries extends "General Ledger Entries"
 
                 trigger OnAction()
                 var
-                    GLEntry: Record "G/L Entry";
                     GLAccount: Record "G/L Account";
+                    SelectedGLEntries: Record "G/L Entry";
                     UserSetup: Record "User Setup";
                     ModifyGLEntriesPage: Page "Modify GL Entries";
-                    SelectedGLEntries: Record "G/L Entry";
-                    RecRef: RecordRef;
-                    GLAccNo: Code[20];
+                    ModifiedCount: Integer;
                 begin
                     // Check user permission
                     UserSetup.Get(UserId());
@@ -54,11 +52,14 @@ pageextension 50140 GeneralLedgerEntries extends "General Ledger Entries"
                         //ModifyGLEntriesPage.GetModifiedValues(GLAccNo);
                         // Apply modifications to selected entries
                         SelectedGLEntries.FindSet();
+                        ModifiedCount := 0;
                         repeat
                             SelectedGLEntries.Validate("G/L Account No.", ModifyGLEntriesPage.GetModifiedValues());
-                            SelectedGLEntries.Modify(true);
+                            SelectedGLEntries.Modify(false);
+                            ModifiedCount += 1;
                         until SelectedGLEntries.Next() = 0;
-                        Message('G/L entries have been modified successfully.');
+                        Message('%1 G/L entries have been modified successfully.', ModifiedCount);
+                        CurrPage.Update(false);
                     end;
                 end;
             }

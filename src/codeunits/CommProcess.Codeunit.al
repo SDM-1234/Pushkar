@@ -138,7 +138,4 @@ codeunit 50102 CommProcess
             txtResult := '';
         exit(txtResult);
     end;
-
-    var
-        myInt: Integer;
 }

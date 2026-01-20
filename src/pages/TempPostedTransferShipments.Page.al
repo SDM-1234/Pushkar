@@ -10,6 +10,7 @@ page 50110 "Temp Posted Transfer Shipments"
     ApplicationArea = All;
     UsageCategory = Lists;
     Editable = true;
+    SourceTableView = where("Assign Shipment to FG" = const(false));
     //MultiSelect = true;
 
     layout

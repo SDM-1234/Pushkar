@@ -39,6 +39,14 @@ pageextension 50131 SalesOrder extends "Sales Order"
                 PrePostValidations();
             end;
         }
+        modify(PreviewPosting)
+        {
+            trigger OnBeforeAction()
+            begin
+                PrePostValidations();
+            end;
+        }
+
     }
     trigger OnOpenPage()
     begin
@@ -59,8 +67,6 @@ pageextension 50131 SalesOrder extends "Sales Order"
         if Rec."GST Customer Type" IN [Rec."GST Customer Type"::Registered, Rec."GST Customer Type"::Unregistered, Rec."GST Customer Type"::" "] then
             CalculateGSTAmount();
 
-        IF Rec."Posting No." = '' THEN
-            ERROR('Please take print out');
     End;
 
     local procedure CalculateGSTAmount()

@@ -2,7 +2,7 @@ namespace Pushkar.Pushkar;
 
 using Microsoft.Inventory.Item;
 
-tableextension 50118 Item extends Item
+tableextension 50118 InventoryPostingGroup extends "Inventory Posting Group"
 {
     fields
     {

@@ -12,6 +12,7 @@ using Microsoft.QRGeneration;
 using Microsoft.Sales.Customer;
 using Microsoft.Sales.History;
 using System.Utilities;
+using Microsoft.Sales.Comment;
 
 report 50100 "Tax Invoice Report"
 {
@@ -91,6 +92,7 @@ report 50100 "Tax Invoice Report"
             column(ShipToCity; ShipToCity) { }
             column(ShipToPin; ShipToPin) { }
             column(ShipToState; ShipToState) { }
+            column(Comnt; Comnt) { }
             column(ShipToStateCode; ShipToStateCode) { }
             column(ShipToCountry; ShipToCountry) { }
             column(ShipToGSTIN; BillToGSTIN) { }
@@ -113,6 +115,8 @@ report 50100 "Tax Invoice Report"
             column(IRNNO; "Sales Invoice Header"."IRN Hash") { }
             column(Vehicle_No_; "Vehicle No.") { }
             column(ASNNo; '') { }
+
+
             dataitem("Sales Invoice Line"; "Sales Invoice Line")
             {
                 DataItemTableView = sorting("Document No.", "Line No.");
@@ -142,6 +146,7 @@ report 50100 "Tax Invoice Report"
                 column(QtyToText; QtyToText[1] + QtyToText[2]) { }
                 column(QtyToText1; QtyToText1) { }
                 column(QRCode; "Sales Invoice Header"."QR Code") { }
+
 
 
                 trigger OnAfterGetRecord() // sales invoice line
@@ -218,6 +223,14 @@ report 50100 "Tax Invoice Report"
             trigger OnAfterGetRecord() // sales invoice header
             begin
 
+
+
+                SalesCommentLine.RESET();
+                SalesCommentLine.SETRANGE("No.", "No.");
+                IF SalesCommentLine.FINDSET() THEN
+                    REPEAT
+                        Comnt := Comnt + ',' + SalesCommentLine.Comment;
+                    UNTIL SalesCommentLine.NEXT() = 0;
 
 
                 if ("Location Code" <> '') then begin
@@ -481,5 +494,7 @@ report 50100 "Tax Invoice Report"
         CGSTLbl: Label 'CGST';
         IGSTLbl: Label 'IGST';
         SGSTLbl: Label 'SGST';
+        SalesCommentLine: Record "Sales Comment Line";
+        Comnt: Text[2048];
 }
 

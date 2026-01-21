@@ -16,12 +16,6 @@ pageextension 50134 ItemCard extends "Item Card"
                 Caption = 'Item No. 2';
                 Editable = true;
             }
-            field("Block Positive Adjustment"; Rec."Block Positive Adjustment")
-            {
-                ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Block Positive Adjustment field.', Comment = '%';
-            }
-
         }
     }
 }

@@ -30,15 +30,17 @@ codeunit 50100 SalesCommonSubscriber
     local procedure OnBeforeCode_ItemJnl(var ItemJournalLine: Record "Item Journal Line")
     var
         item: Record Item;
+        IPG: Record "Inventory Posting Group";
     begin
+
+        IPG.Get(item."Inventory Posting Group");
 
         if (ItemJournalLine."Entry Type" = ItemJournalLine."Entry Type"::"Positive Adjmt.") and (ItemJournalLine.Quantity > 0) then
             if item.Get(ItemJournalLine."Item No.") then
-                if item."Block Positive Adjustment" then
-                    error('Positive adjustment is blocked for this item.');
-
+                if IPG.Get(item."Inventory Posting Group") then
+                    if IPG."Block Positive Adjustment" then
+                        error('Positive adjustment is blocked for this item.');
     end;
-
 
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', "No.", false, false)]

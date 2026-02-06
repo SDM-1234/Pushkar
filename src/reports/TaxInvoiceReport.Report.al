@@ -222,16 +222,12 @@ report 50100 "Tax Invoice Report"
             }
             trigger OnAfterGetRecord() // sales invoice header
             begin
-
-
-
                 SalesCommentLine.RESET();
                 SalesCommentLine.SETRANGE("No.", "No.");
                 IF SalesCommentLine.FINDSET() THEN
                     REPEAT
-                        Comnt := Comnt + ',' + SalesCommentLine.Comment;
+                        Comnt := Comnt + ' ' + SalesCommentLine.Comment;
                     UNTIL SalesCommentLine.NEXT() = 0;
-
 
                 if ("Location Code" <> '') then begin
                     location.get("Location Code");

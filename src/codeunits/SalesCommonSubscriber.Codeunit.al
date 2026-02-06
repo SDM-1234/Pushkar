@@ -32,9 +32,6 @@ codeunit 50100 SalesCommonSubscriber
         item: Record Item;
         IPG: Record "Inventory Posting Group";
     begin
-
-        IPG.Get(item."Inventory Posting Group");
-
         if (ItemJournalLine."Entry Type" = ItemJournalLine."Entry Type"::"Positive Adjmt.") and (ItemJournalLine.Quantity > 0) then
             if item.Get(ItemJournalLine."Item No.") then
                 if IPG.Get(item."Inventory Posting Group") then

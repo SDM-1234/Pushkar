@@ -15,6 +15,7 @@ using Microsoft.Sales.Document;
 using Microsoft.Sales.History;
 using Microsoft.Sales.Posting;
 using Microsoft.Sales.Receivables;
+using Microsoft.Sales.Setup;
 using Microsoft.Warehouse.GateEntry;
 using Microsoft.Inventory.Posting;
 using Microsoft.Inventory.Journal;
@@ -25,6 +26,23 @@ codeunit 50100 SalesCommonSubscriber
     Permissions =
         tabledata "Sales Shipment Header" = rm;
 
+
+
+    [EventSubscriber(ObjectType::Page, Page::"Sales Order List", OnAfterPostingSetSelectionFilter, '', false, false)]
+    local procedure OnAfterPostingSetSelectionFilter(var SalesHeaderToPost: Record "Sales Header"; CurrPageSalesHeader: Record "Sales Header")
+    var
+        SalesAndReceivableSetup: Record "Sales & Receivables Setup";
+    begin
+        SalesAndReceivableSetup.Get();
+
+        if CurrPageSalesHeader."Posting Date" <> WorkDate() then
+            case SalesAndReceivableSetup."Posting Date Method" of
+                SalesAndReceivableSetup."Posting Date Method"::Error:
+                    error('You can not post on %1. Posting Date should be Current Date %2', CurrPageSalesHeader."Posting Date", WorkDate());
+                SalesAndReceivableSetup."Posting Date Method"::Warning:
+                    message('Posting Date should be Work Date')
+            end;
+    end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Post", OnBeforeCode, '', false, false)]
     local procedure OnBeforeCode_ItemJnl(var ItemJournalLine: Record "Item Journal Line")

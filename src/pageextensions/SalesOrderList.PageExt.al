@@ -44,23 +44,6 @@ pageextension 50112 SalesOrderList extends "Sales Order List"
     }
 
 
-    trigger OnOpenPage()
-    begin
-        if (Rec."No." <> '') and (Rec."Posting Date" <> WorkDate()) then begin
-            Rec."Posting Date" := WorkDate();
-            Rec.Modify();
-        end;
-    end;
-
-
-    trigger OnAfterGetCurrRecord()
-    begin
-        if (Rec."No." <> '') and (Rec."Posting Date" <> WorkDate()) then begin
-            Rec."Posting Date" := WorkDate();
-            Rec.Modify();
-        end;
-    end;
-
     local procedure PrePostValidations()
     BEGIN
 

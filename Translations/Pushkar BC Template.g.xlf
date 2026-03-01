@@ -1313,6 +1313,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceLine - Field TDS Amount - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1104893748 - Field 2188855405 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Posting Date Method</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesReceivablesSetup - Field Posting Date Method - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 4208835177 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2"></note>

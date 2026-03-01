@@ -147,7 +147,10 @@ report 50100 "Tax Invoice Report"
                 column(QtyToText1; QtyToText1) { }
                 column(QRCode; "Sales Invoice Header"."QR Code") { }
 
-
+                trigger OnPreDataItem()
+                begin
+                    SetFilter(Quantity, '<>%1', 0);
+                end;
 
                 trigger OnAfterGetRecord() // sales invoice line
                 begin
@@ -222,16 +225,12 @@ report 50100 "Tax Invoice Report"
             }
             trigger OnAfterGetRecord() // sales invoice header
             begin
-
-
-
                 SalesCommentLine.RESET();
                 SalesCommentLine.SETRANGE("No.", "No.");
                 IF SalesCommentLine.FINDSET() THEN
                     REPEAT
-                        Comnt := Comnt + ',' + SalesCommentLine.Comment;
+                        Comnt := Comnt + ' ' + SalesCommentLine.Comment;
                     UNTIL SalesCommentLine.NEXT() = 0;
-
 
                 if ("Location Code" <> '') then begin
                     location.get("Location Code");

@@ -749,7 +749,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Update Posting Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4149105855 - Control 739346273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Update Posting Date for Posted Sales Invoice</source>
+          <source>Update Posting Date for Posted Invoice and all related ledger entries</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Update Posting Date - Control Group - Property Caption</note>
         </trans-unit>
@@ -759,7 +759,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Update Posting Date - Control PostingDate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4149105855 - Control 3826203916 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sales Invoice No.</source>
+          <source>Invoice No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Update Posting Date - Control SalesInvNo - Property Caption</note>
         </trans-unit>
@@ -1512,6 +1512,16 @@
           <source>Posted Transfer Shipment No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TransferShipmentLine - Field Posted Transfer Shipment Nos. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3046612553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete All Sales Blanket Orders</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report DeleteSalesBlanketOrders - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3046612553 - Control 3845178832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>WARNING: This report will permanently delete filtered Sales Blanket Orders.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report DeleteSalesBlanketOrders - Control WarningLabel - Property Caption</note>
         </trans-unit>
       </group>
     </body>

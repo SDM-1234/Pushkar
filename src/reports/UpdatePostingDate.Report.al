@@ -65,13 +65,14 @@ report 50108 "Update Posting Date"
             {
                 group(Group)
                 {
-                    Caption = 'Update Posting Date for Posted Sales Invoice';
+                    Caption = 'Update Posting Date for Posted Invoice and all related ledger entries';
                     field(SalesInvNo; SalesInvNo)
                     {
                         ApplicationArea = All;
-                        Caption = 'Sales Invoice No.';
-                        tablerelation = "Sales Invoice Header"."No.";
+                        Caption = 'Invoice No.';
+                        //tablerelation = "Sales Invoice Header"."No.";
                     }
+
 
                     field(PostingDate; PostingDate)
                     {
@@ -84,6 +85,7 @@ report 50108 "Update Posting Date"
     }
     var
         SalesInvNo: Code[20];
+
         PostingDate: Date;
 
     local procedure UpdatePostingDateForPostedInvoice(SalesInvNo: Code[20]; NewPostingDate: Date)

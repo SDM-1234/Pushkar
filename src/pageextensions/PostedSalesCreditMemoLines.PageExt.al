@@ -2,6 +2,7 @@ namespace Pushkar.Pushkar;
 
 using Microsoft.Sales.Customer;
 using Microsoft.Sales.History;
+using Microsoft.Sales.History;
 
 pageextension 50116 PostedSalesCreditMemoLines extends "Posted Sales Credit Memo Lines"
 {

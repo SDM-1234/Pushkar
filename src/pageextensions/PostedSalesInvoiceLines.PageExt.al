@@ -2,6 +2,7 @@ namespace Pushkar.Pushkar;
 
 using Microsoft.Sales.Customer;
 using Microsoft.Sales.History;
+using Microsoft.Sales.History;
 
 pageextension 50115 PostedSalesInvoiceLines extends "Posted Sales Invoice Lines"
 {

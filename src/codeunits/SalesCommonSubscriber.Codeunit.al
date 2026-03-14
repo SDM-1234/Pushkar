@@ -18,13 +18,17 @@ using Microsoft.Sales.Document;
 using Microsoft.Sales.History;
 using Microsoft.Sales.Posting;
 using Microsoft.Sales.Receivables;
+using Microsoft.Sales.Setup;
 using Microsoft.Warehouse.GateEntry;
+using Microsoft.Inventory.Posting;
+using Microsoft.Inventory.Journal;
 
 codeunit 50100 SalesCommonSubscriber
 {
 
     Permissions =
         tabledata "Sales Shipment Header" = rm;
+
 
 
     [EventSubscriber(ObjectType::Page, Page::"Sales Order List", OnAfterPostingSetSelectionFilter, '', false, false)]
@@ -43,8 +47,6 @@ codeunit 50100 SalesCommonSubscriber
             end;
     end;
 
-
-
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Post", OnBeforeCode, '', false, false)]
     local procedure OnBeforeCode_ItemJnl(var ItemJournalLine: Record "Item Journal Line")
     var
@@ -57,6 +59,7 @@ codeunit 50100 SalesCommonSubscriber
                     if IPG."Block Positive Adjustment" then
                         error('Positive adjustment is blocked for this item.');
     end;
+
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', "No.", false, false)]
     local procedure OnAfterValidateEventNo_PSK(var Rec: Record "Sales Line")

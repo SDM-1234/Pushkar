@@ -54,13 +54,11 @@ page 50102 DailyScheduleArchives
                 }
                 field("Delivered Quantity"; Rec."Delivered Quantity")
                 {
-                    ToolTip = 'Specifies the value of the Delivered Quantity field.', Comment = '%';
                     Editable = false;
 
                 }
                 field("Pending Quantity"; Rec."Pending Quantity")
                 {
-                    ToolTip = 'Specifies the value of the Pending Quantity field.', Comment = '%';
                     Editable = false;
 
                 }

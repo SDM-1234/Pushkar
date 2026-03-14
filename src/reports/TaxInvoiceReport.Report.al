@@ -12,6 +12,7 @@ using Microsoft.QRGeneration;
 using Microsoft.Sales.Customer;
 using Microsoft.Sales.History;
 using System.Utilities;
+using Microsoft.Sales.Comment;
 
 report 50100 "Tax Invoice Report"
 {
@@ -39,6 +40,8 @@ report 50100 "Tax Invoice Report"
             {
 
             }
+            column(LUTARNNo; LUTARNNo) { }
+
             column(CompanyAdd2; CompanyAdd2)
             {
 
@@ -91,6 +94,7 @@ report 50100 "Tax Invoice Report"
             column(ShipToCity; ShipToCity) { }
             column(ShipToPin; ShipToPin) { }
             column(ShipToState; ShipToState) { }
+            column(Comnt; Comnt) { }
             column(ShipToStateCode; ShipToStateCode) { }
             column(ShipToCountry; ShipToCountry) { }
             column(ShipToGSTIN; BillToGSTIN) { }
@@ -113,6 +117,8 @@ report 50100 "Tax Invoice Report"
             column(IRNNO; "Sales Invoice Header"."IRN Hash") { }
             column(Vehicle_No_; "Vehicle No.") { }
             column(ASNNo; '') { }
+
+
             dataitem("Sales Invoice Line"; "Sales Invoice Line")
             {
                 DataItemTableView = sorting("Document No.", "Line No.");
@@ -144,6 +150,10 @@ report 50100 "Tax Invoice Report"
                 column(QRCode; "Sales Invoice Header"."QR Code") { }
 
 
+                trigger OnPreDataItem()
+                begin
+                    SetFilter(Quantity, '<>%1', 0);
+                end;
                 trigger OnAfterGetRecord() // sales invoice line
                 begin
                     Clear(IGSTAmt);
@@ -216,8 +226,20 @@ report 50100 "Tax Invoice Report"
 
             }
             trigger OnAfterGetRecord() // sales invoice header
+            var
+                LUTARN: Record "LUT / ARN Master";
             begin
 
+
+
+                SalesCommentLine.RESET();
+                SalesCommentLine.SETRANGE("No.", "No.");
+                IF SalesCommentLine.FINDSET() THEN
+                    REPEAT
+                        Comnt := Comnt + ',' + SalesCommentLine.Comment;
+                    UNTIL SalesCommentLine.NEXT() = 0;
+
+                LUTARNNo := LUTARN.GetARNNo("Sales Invoice Header"."Posting Date", "Sales Invoice Header"."Location Code");
 
 
                 if ("Location Code" <> '') then begin
@@ -481,5 +503,9 @@ report 50100 "Tax Invoice Report"
         CGSTLbl: Label 'CGST';
         IGSTLbl: Label 'IGST';
         SGSTLbl: Label 'SGST';
+        SalesCommentLine: Record "Sales Comment Line";
+        Comnt: Text[2048];
+        LUTARNNo: Code[50];
+
 }
 

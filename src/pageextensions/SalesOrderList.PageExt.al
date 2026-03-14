@@ -64,7 +64,6 @@ pageextension 50112 SalesOrderList extends "Sales Order List"
         SalesLine1.SetCurrentKey("Document No.", "Document Type", "Line No.");
         SalesLine1.SetRange("Document No.", Rec."No.");
         SalesLine1.SetRange("Document Type", Rec."Document Type");
-        SalesLine1.SetRange(Type, SalesLine1.Type::"G/L Account");
         if SalesLine1.FindSet() then
             repeat
                 GSTAmountByLineNo := 0;

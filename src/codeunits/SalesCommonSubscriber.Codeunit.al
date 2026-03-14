@@ -6,8 +6,10 @@ using Microsoft.Finance.Dimension;
 using Microsoft.Finance.GeneralLedger.Account;
 using Microsoft.Finance.GeneralLedger.Setup;
 using Microsoft.Inventory.Item;
-using Microsoft.Inventory.Posting;
+using Microsoft.Inventory.Journal;
 using Microsoft.Inventory.Ledger;
+using Microsoft.Sales.Setup;
+using Microsoft.Inventory.Posting;
 using Microsoft.Inventory.Transfer;
 using Microsoft.Purchases.Payables;
 using Microsoft.Purchases.Vendor;
@@ -17,7 +19,6 @@ using Microsoft.Sales.History;
 using Microsoft.Sales.Posting;
 using Microsoft.Sales.Receivables;
 using Microsoft.Warehouse.GateEntry;
-using Microsoft.Inventory.Journal;
 
 codeunit 50100 SalesCommonSubscriber
 {
@@ -26,19 +27,35 @@ codeunit 50100 SalesCommonSubscriber
         tabledata "Sales Shipment Header" = rm;
 
 
+    [EventSubscriber(ObjectType::Page, Page::"Sales Order List", OnAfterPostingSetSelectionFilter, '', false, false)]
+    local procedure OnAfterPostingSetSelectionFilter(var SalesHeaderToPost: Record "Sales Header"; CurrPageSalesHeader: Record "Sales Header")
+    var
+        SalesAndReceivableSetup: Record "Sales & Receivables Setup";
+    begin
+        SalesAndReceivableSetup.Get();
+
+        if CurrPageSalesHeader."Posting Date" <> WorkDate() then
+            case SalesAndReceivableSetup."Posting Date Method" of
+                SalesAndReceivableSetup."Posting Date Method"::Error:
+                    error('You can not post on %1. Posting Date should be Current Date %2', CurrPageSalesHeader."Posting Date", WorkDate());
+                SalesAndReceivableSetup."Posting Date Method"::Warning:
+                    message('Posting Date should be Work Date')
+            end;
+    end;
+
+
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Post", OnBeforeCode, '', false, false)]
     local procedure OnBeforeCode_ItemJnl(var ItemJournalLine: Record "Item Journal Line")
     var
         item: Record Item;
+        IPG: Record "Inventory Posting Group";
     begin
-
-
         if (ItemJournalLine."Entry Type" = ItemJournalLine."Entry Type"::"Positive Adjmt.") and (ItemJournalLine.Quantity > 0) then
             if item.Get(ItemJournalLine."Item No.") then
-                if item."Block Positive Adjustment" then
-                    error('Positive adjustment is blocked for this item.');
-
+                if IPG.Get(item."Inventory Posting Group") then
+                    if IPG."Block Positive Adjustment" then
+                        error('Positive adjustment is blocked for this item.');
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', "No.", false, false)]
@@ -55,9 +72,6 @@ codeunit 50100 SalesCommonSubscriber
             SalesHeader.Modify();
         end;
     end;
-
-
-
 
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterValidateEvent', Quantity, false, false)]

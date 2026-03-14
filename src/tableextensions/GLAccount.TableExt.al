@@ -10,6 +10,7 @@ tableextension 50119 GLAccount extends "G/L Account"
         {
             Caption = 'G/L Entries Modification';
             DataClassification = CustomerContent;
+            ToolTip = 'Specifies whether modification of G/L Entries is allowed for this account.';
         }
     }
 }

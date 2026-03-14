@@ -21,19 +21,15 @@ page 50101 DailyScheduleList
             {
                 field("Item No."; Rec."Item No.")
                 {
-                    ToolTip = 'Specifies the value of the Item No. field.';
                 }
                 field(Quantity; Rec.Quantity)
                 {
-                    ToolTip = 'Specifies the value of the Quantity field.';
                 }
                 field("Shipment Date"; Rec."Shipment Date")
                 {
-                    ToolTip = 'Specifies the value of the Shipment Date field.';
                 }
                 field("SO No."; Rec."SO No.")
                 {
-                    ToolTip = 'Specifies the value of the Sales Order No. field.';
                 }
             }
         }

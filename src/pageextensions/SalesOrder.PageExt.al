@@ -5,6 +5,9 @@ using Microsoft.Finance.TaxEngine.TaxTypeHandler;
 
 pageextension 50131 SalesOrder extends "Sales Order"
 {
+
+    Editable = false;
+    DeleteAllowed = false;
     layout
     {
         addafter("Posting Date")
@@ -50,21 +53,25 @@ pageextension 50131 SalesOrder extends "Sales Order"
     }
     trigger OnOpenPage()
     begin
-        Rec."Posting Date" := WorkDate();
-        Rec.Modify();
+        if (Rec."No." <> '') and (Rec."Posting Date" <> WorkDate()) then begin
+            Rec."Posting Date" := WorkDate();
+            Rec.Modify();
+        end;
     end;
 
 
     trigger OnAfterGetCurrRecord()
     begin
-        Rec."Posting Date" := WorkDate();
-        Rec.Modify();
+        if (Rec."No." <> '') and (Rec."Posting Date" <> WorkDate()) then begin
+            Rec."Posting Date" := WorkDate();
+            Rec.Modify();
+        end;
     end;
 
     local procedure PrePostValidations()
     BEGIN
 
-        if Rec."GST Customer Type" IN [Rec."GST Customer Type"::Registered, Rec."GST Customer Type"::Unregistered, Rec."GST Customer Type"::" "] then
+        if Rec."GST Customer Type" IN [Rec."GST Customer Type"::Registered, Rec."GST Customer Type"::Unregistered, Rec."GST Customer Type"::"SEZ Unit"] then
             CalculateGSTAmount();
 
     End;
@@ -82,7 +89,6 @@ pageextension 50131 SalesOrder extends "Sales Order"
         SalesLine1.SetCurrentKey("Document No.", "Document Type", "Line No.");
         SalesLine1.SetRange("Document No.", Rec."No.");
         SalesLine1.SetRange("Document Type", Rec."Document Type");
-        SalesLine1.SetRange(Type, SalesLine1.Type::"G/L Account");
         if SalesLine1.FindSet() then
             repeat
                 GSTAmountByLineNo := 0;

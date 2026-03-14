@@ -28,5 +28,15 @@ permissionset 50100 GeneratedPermission
         codeunit TransferOrderMgt = X,
         page DailyScheduleArchives = X,
         page DailyScheduleList = X,
-        page "Temp Posted Transfer Shipments" = X;
+        page "Temp Posted Transfer Shipments" = X,
+        tabledata "LUT / ARN Master" = RIMD,
+        table "LUT / ARN Master" = X,
+        report "Update Posting Date" = X,
+        codeunit "Gate Entry Subscriber" = X,
+        codeunit "GLEntries Subscriber" = X,
+        codeunit "GST Subscriber" = X,
+        page "LUT ARN List" = X,
+        page "LUT/ARN Card" = X,
+        page "Modify GL Entries" = X,
+        page "Temp Posted Sales Shipments" = X;
 }

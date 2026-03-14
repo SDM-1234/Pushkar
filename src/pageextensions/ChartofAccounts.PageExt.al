@@ -13,7 +13,6 @@ pageextension 50138 ChartofAccounts extends "Chart of Accounts"
             {
                 ApplicationArea = All;
                 Caption = 'Modify G/L Entries ';
-                ToolTip = 'Specifies whether modification of G/L Entries is allowed for this account.';
             }
         }
     }

@@ -97,12 +97,12 @@ pageextension 50135 ReqWorksheet extends "Req. Worksheet"
                             ApprovalMgt: Codeunit "Approvals Mgmt.";
                             ApprovalStatusName: Text[20];
                         begin
-                            if ApprovalStatusName <> 'Approved' then
-                                exit;
                             GetCurrentlySelectedLines(ReqLine);
                             if ReqLine.FindSet() then
                                 repeat
-                                    ApprovalMgt.DeleteApprovalEntries(ReqLine.RecordId);
+                                    ApprovalMgmt.GetApprovalStatus(Rec, ApprovalStatusName, EnabledReqLineWorkflowsExist);
+                                    if ApprovalStatusName = 'Approved' then
+                                        ApprovalMgt.DeleteApprovalEntries(ReqLine.RecordId);
                                 until ReqLine.Next() = 0;
                         end;
                     }

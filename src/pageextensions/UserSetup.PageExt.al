@@ -13,7 +13,6 @@ pageextension 50139 UserSetup extends "User Setup"
             {
                 ApplicationArea = All;
                 Caption = 'Modify G/L Entries ';
-                ToolTip = 'Specifies whether modification of G/L Entries is allowed for this user.';
             }
         }
     }

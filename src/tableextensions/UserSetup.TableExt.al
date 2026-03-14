@@ -11,6 +11,7 @@ tableextension 50120 UserSetup extends "User Setup"
         {
             Caption = 'G/L Entries Modification';
             DataClassification = CustomerContent;
+            ToolTip = 'Specifies whether modification of G/L Entries is allowed for this user.';
         }
 
     }

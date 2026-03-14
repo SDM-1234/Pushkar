@@ -19,42 +19,34 @@ pageextension 50116 PostedSalesCreditMemoLines extends "Posted Sales Credit Memo
             field("GST Amount"; Rec."GST Amount")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the GST Amount field.', Comment = '%';
             }
             field("IGST Amount"; Rec."IGST Amount")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the IGST Amount field.', Comment = '%';
             }
             field("SGST Amount"; Rec."SGST Amount")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the SGST Amount field.', Comment = '%';
             }
             field("CGST Amount"; Rec."CGST Amount")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the CGST Amount field.', Comment = '%';
             }
             field("Sales Account"; Rec."Sales Account")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Sales Account field.', Comment = '%';
             }
             field("Sales Account Name"; Rec."Sales Account Name")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Sales Account Name field.', Comment = '%';
             }
             field("TCS Amount"; Rec."TCS Amount")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the TCS Amount field.', Comment = '%';
             }
             field("Invoice No."; Rec."Invoice No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Invoice No. field.', Comment = '%';
             }
             field("Bin Code"; Rec."Bin Code")
             {
@@ -68,7 +60,6 @@ pageextension 50116 PostedSalesCreditMemoLines extends "Posted Sales Credit Memo
             field("HSN Code"; Rec."HSN Code")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the HSN Code field.', Comment = '%';
             }
 
         }

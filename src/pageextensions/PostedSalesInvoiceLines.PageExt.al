@@ -62,7 +62,7 @@ pageextension 50115 PostedSalesInvoiceLines extends "Posted Sales Invoice Lines"
         }
         addafter("Amount Including VAT")
         {
-            field("Total Bill Value"; Rec.Amount + Rec."GST Amount" + Rec."TCS Amount")
+            field("Total Bill Value"; Rec.Amount + Abs(Rec."GST Amount") + Rec."TCS Amount")
             {
                 ApplicationArea = All;
                 Caption = 'Total Bill Value';

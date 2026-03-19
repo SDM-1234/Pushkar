@@ -10,6 +10,7 @@ tableextension 50118 InventoryPostingGroup extends "Inventory Posting Group"
         {
             Caption = 'Block Positive Adjustment';
             DataClassification = CustomerContent;
+            ToolTip = 'Specifies whether positive adjustments are blocked for this inventory posting group.';
         }
     }
 }

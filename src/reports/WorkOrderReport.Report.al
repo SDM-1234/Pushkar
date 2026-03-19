@@ -1,10 +1,10 @@
 namespace Pushkar.Pushkar;
 
+using Microsoft.Inventory.Item;
+using Microsoft.Inventory.Location;
 using Microsoft.Inventory.Transfer;
 using System.IO;
-using Microsoft.Inventory.Location;
 using System.Utilities;
-using Microsoft.Inventory.Item;
 
 report 50105 "Work Order Report"
 {

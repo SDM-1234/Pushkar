@@ -6,7 +6,10 @@ using Microsoft.Finance.Dimension;
 using Microsoft.Finance.GeneralLedger.Account;
 using Microsoft.Finance.GeneralLedger.Setup;
 using Microsoft.Inventory.Item;
+using Microsoft.Inventory.Journal;
 using Microsoft.Inventory.Ledger;
+using Microsoft.Sales.Setup;
+using Microsoft.Inventory.Posting;
 using Microsoft.Inventory.Transfer;
 using Microsoft.Purchases.Payables;
 using Microsoft.Purchases.Vendor;
@@ -71,23 +74,6 @@ codeunit 50100 SalesCommonSubscriber
             SalesHeader.Validate("Unit of Measure", Rec."Unit of Measure");
             SalesHeader.Modify();
         end;
-    end;
-
-
-
-    [EventSubscriber(ObjectType::Page, Page::"Sales Order", 'OnOpenPageEvent', '', false, false)]
-    local procedure OnOpenPageEvent_SO(var Rec: Record "Sales Header")
-    begin
-        Rec."Posting Date" := WorkDate();
-        //Rec.Modify();
-    end;
-
-
-    [EventSubscriber(ObjectType::Page, Page::"Sales Order", 'OnAfterOnAfterGetRecord', '', false, false)]
-    local procedure OnAfterOnAfterGetRecord_SO(var SalesHeader: Record "Sales Header")
-    begin
-        SalesHeader."Posting Date" := WorkDate();
-        //SalesHeader.Modify();
     end;
 
 

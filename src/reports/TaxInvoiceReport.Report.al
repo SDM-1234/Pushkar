@@ -340,12 +340,15 @@ report 50100 "Tax Invoice Report"
 
     requestpage
     {
+
         layout
         {
+
             area(content)
             {
                 group(Options)
                 {
+
                     field(QRCodePrint; QRCodePrint)
                     {
                         Caption = 'Print QR Code';
@@ -356,6 +359,7 @@ report 50100 "Tax Invoice Report"
             }
         }
     }
+
     trigger OnPreReport()
     begin
         CompanyInfo.get();
@@ -435,14 +439,13 @@ report 50100 "Tax Invoice Report"
         DetailedGSTLedgerEntry: Record "Detailed GST Ledger Entry";
         HSNTable: Record "HSN/SAC";
         location: Record Location;
+        SalesCommentLine: Record "Sales Comment Line";
         States: Record State;
         TCSEntry: Record "TCS Entry";
         Cheque: Report "Posted Voucher";
         QRCodePrint: Boolean;
         CompanyPAN: Code[20];
         SupplierCode: Code[20];
-        TariffNo: Code[20];//Same field replaced by variable
-        Chalandate: Date;
         CessAmt: Decimal;
         CessPer: Decimal;
         CGSTAmt: Decimal;
@@ -453,8 +456,6 @@ report 50100 "Tax Invoice Report"
         SGSTPer: Decimal;
         TCSAmount: Decimal;
         TextTotalAmount: Decimal;
-        TotalInvAmt: Decimal;
-        AmountInWords: Text[200];
         AmountToText: array[2] of Text[80];
         BillToAdd1: Text[100];
         BillToAdd2: Text[100];
@@ -465,8 +466,8 @@ report 50100 "Tax Invoice Report"
         BillToPin: Text[20];
         BillToState: Text[50];
         BillToStateCode: Text[10];
-        ChallanNo: Text[50];
         Commodity: Text[100];
+        Comnt: Text[2048];
         CompanyAdd1: Text[100];
         CompanyAdd2: Text[100];
         CompanyCIN: Text[30];
@@ -493,7 +494,5 @@ report 50100 "Tax Invoice Report"
         CGSTLbl: Label 'CGST';
         IGSTLbl: Label 'IGST';
         SGSTLbl: Label 'SGST';
-        SalesCommentLine: Record "Sales Comment Line";
-        Comnt: Text[2048];
 }
 

@@ -16,6 +16,7 @@ pageextension 50134 ItemCard extends "Item Card"
                 Caption = 'Item No. 2';
                 Editable = true;
             }
+
         }
     }
 }

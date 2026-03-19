@@ -106,6 +106,11 @@ table 50101 DailyScheduleList
             Caption = 'Sales Line Unit Price';
             ToolTip = 'Specifies the value of the Sales Line Unit Price field.', Comment = '%';
         }
+        field(15; "Customer No."; Decimal)
+        {
+            Caption = 'Customer No.';
+            ToolTip = 'Specifies the value of the Customer No.', Comment = '%';
+        }
 
 
     }
@@ -246,7 +251,7 @@ table 50101 DailyScheduleList
             end;
         until SelectedRecords.Next() = 0;
         if QtyUpdatedCount > 0 then
-            Message('Quantity updated successfully in %1 records.', QtyUpdatedCount);
+            Message('Quantity updated successfully.');
     end;
 
 }

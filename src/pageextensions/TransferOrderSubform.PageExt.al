@@ -14,4 +14,22 @@ pageextension 50101 TransferOrderSubform extends "Transfer Order Subform"
             }
         }
     }
+    actions
+    {
+        addafter("F&unctions")
+        {
+            action(AssignPostedTransferShipments)
+            {
+                Caption = 'Assign Posted Transfer Shipments';
+                Image = Create;
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.AssignPostedTransferShipments();
+                    //Message('Posted Transfer Shipments assigned successfully.');
+                end;
+            }
+        }
+    }
 }

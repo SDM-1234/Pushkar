@@ -1,6 +1,7 @@
 namespace Pushkar.Pushkar;
 
 using Microsoft.Inventory.Transfer;
+using Microsoft.Inventory.Intrastat;
 
 tableextension 50108 TransferShipmentHeader extends "Transfer Shipment Header"
 {

@@ -6,6 +6,18 @@ codeunit 50103 SingleInstanceCU
 
 
 
+    procedure SetAllowCreation(pAllowCreate: Boolean)
+    begin
+        AllowCreate := pAllowCreate;
+    end;
+
+    procedure GetAllowCreation(): Boolean
+    begin
+        exit(AllowCreate);
+    end;
+
+
+
     procedure SetBulkEInvoices(pBulkEInvoice: Boolean)
     begin
         BulkEInvoice := pBulkEInvoice;
@@ -29,6 +41,7 @@ codeunit 50103 SingleInstanceCU
 
     var
         BulkEInvoice: Boolean;
+        AllowCreate: Boolean;
         JsonArrayData: JsonArray;
 
 }

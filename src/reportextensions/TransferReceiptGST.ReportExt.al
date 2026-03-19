@@ -3,7 +3,7 @@ namespace Pushkar.Pushkar;
 using Microsoft.Finance.Reports;
 using Microsoft.Inventory.Item;
 using Microsoft.Inventory.Ledger;
-    
+
 
 reportextension 50103 TransferReceiptGST extends "Transfer Receipt GST"
 {

@@ -7,7 +7,7 @@ using Microsoft.Foundation.Address;
 using Microsoft.Foundation.Company;
 using Microsoft.Purchases.Comment;
 using Microsoft.Purchases.Document;
-    
+
 report 50103 "Purchase Order Report"
 {
     UsageCategory = ReportsAndAnalysis;

@@ -30,6 +30,7 @@ report 50107 "Bulk E-Invoice Export"
                 eInvoiceJsonHandler: Codeunit "e-Invoice Json Handler";
                 eInvoiceManagement: Codeunit "e-Invoice Management";
             begin
+
                 if eInvoiceManagement.IsGSTApplicable("No.", Database::"Sales Invoice Header") then begin
                     SalesInvHeader.Reset();
                     SalesInvHeader.SetRange("No.", "No.");
@@ -38,6 +39,7 @@ report 50107 "Bulk E-Invoice Export"
                         SalesInvHeader.Mark(true);
                         eInvoiceJsonHandler.SetSalesInvHeader(SalesInvHeader);
                         eInvoiceJsonHandler.Run();
+
                     end;
                 End;
             end;
@@ -50,15 +52,19 @@ report 50107 "Bulk E-Invoice Export"
                 InStream: InStream;
                 JsonText: Text;
                 ToFile: Text[250];
+                JObject: JsonObject;
             begin
-                JsonArrayData := SingleInstanceCU.GetEinvoiceJsonArray();
+                Clear(JObject);
+                JsonArrayData := singleInstanceCU.GetEinvoiceJsonArray();
                 JsonArrayData.WriteTo(JsonText);
                 TempBlob.CreateOutStream(OutStream);
                 OutStream.WriteText(JsonText);
                 ToFile := 'EInvoice' + '.json';
                 TempBlob.CreateInStream(InStream);
                 DownloadFromStream(InStream, 'e-Invoice', '', '', ToFile);
-                SingleInstanceCU.SetBulkEInvoices(false);
+
+                singleInstanceCU.SetBulkEInvoices(false);
+                singleInstanceCU.AddEinvoiceJsonArray(JObject);
             end;
         }
     }

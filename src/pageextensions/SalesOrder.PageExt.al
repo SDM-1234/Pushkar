@@ -5,6 +5,9 @@ using Microsoft.Finance.TaxEngine.TaxTypeHandler;
 
 pageextension 50131 SalesOrder extends "Sales Order"
 {
+
+    Editable = false;
+    DeleteAllowed = false;
     layout
     {
         addafter("Posting Date")

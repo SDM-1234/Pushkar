@@ -2,6 +2,7 @@ namespace Pushkar.Pushkar;
 
 using Microsoft.Sales.Customer;
 using Microsoft.Sales.History;
+using Microsoft.Sales.History;
 
 pageextension 50116 PostedSalesCreditMemoLines extends "Posted Sales Credit Memo Lines"
 {
@@ -19,29 +20,61 @@ pageextension 50116 PostedSalesCreditMemoLines extends "Posted Sales Credit Memo
             field("GST Amount"; Rec."GST Amount")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the GST Amount field.', Comment = '%';
+            }
+            field("IGST Amount"; Rec."IGST Amount")
+            {
+                ApplicationArea = All;
+            }
+            field("SGST Amount"; Rec."SGST Amount")
+            {
+                ApplicationArea = All;
+            }
+            field("CGST Amount"; Rec."CGST Amount")
+            {
+                ApplicationArea = All;
             }
             field("Sales Account"; Rec."Sales Account")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Sales Account field.', Comment = '%';
             }
             field("Sales Account Name"; Rec."Sales Account Name")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Sales Account Name field.', Comment = '%';
             }
-            field("TDS Amount"; Rec."TDS Amount")
+            field("TCS Amount"; Rec."TCS Amount")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the TDS Amount field.', Comment = '%';
             }
             field("Invoice No."; Rec."Invoice No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Invoice No. field.', Comment = '%';
             }
+            field("Bin Code"; Rec."Bin Code")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the bin where the items are picked or put away.';
+            }
+
         }
+        addafter("No.")
+        {
+            field("HSN Code"; Rec."HSN Code")
+            {
+                ApplicationArea = All;
+            }
+
+        }
+        addafter("Amount Including VAT")
+        {
+            field("Total Bill Value"; Rec.Amount + Rec."GST Amount" + Rec."TCS Amount")
+            {
+                ApplicationArea = All;
+                Caption = 'Total Bill Value';
+                ToolTip = 'Specifies the value of the Total Bill Value field.';
+            }
+
+        }
+
     }
     trigger OnAfterGetRecord()
     begin

@@ -4,7 +4,7 @@ using Microsoft.Inventory.Item;
 using Microsoft.Inventory.Ledger;
 using Microsoft.Inventory.Reports;
 using System.Environment;
-    
+
 
 report 50101 InventoryValuationReport
 {

@@ -1,7 +1,7 @@
 namespace Pushkar.Pushkar;
 
 using Microsoft.Finance.Currency;
-    
+
 codeunit 50104 AmountToWords
 {
     trigger OnRun()

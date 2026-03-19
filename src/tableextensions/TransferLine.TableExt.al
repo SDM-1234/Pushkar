@@ -13,15 +13,25 @@ tableextension 50104 "TransferLine" extends "Transfer Line"
             ToolTip = 'Specifies the value of the Posted Transfer Shipment field.', Comment = '%';
             trigger OnLookup()
             var
+            begin
+                AssignPostedTransferShipments();
+            end;
+        }
+    }
+
+
+    procedure AssignPostedTransferShipments()
+    var
                 TempTransferShipmentHeader: Record "Transfer Shipment Header" temporary;
                 TransferShipmentHeader: Record "Transfer Shipment Header";
                 SelectedNos: Text[2048];
                 First: Boolean;
-            begin
-                TempTransferShipmentHeader.Init();
-                TransferShipmentHeader.SetRange("Item No.", "Item No.");
+    begin
+        TempTransferShipmentHeader.Init();
                 TransferShipmentHeader.SetRange("Transfer-from Code", "Transfer-to Code");
-                if TransferShipmentHeader.FindSet() then
+        TransferShipmentHeader.SetRange("Item No.", "Item No.");
+
+        if TransferShipmentHeader.FindSet() then
                     repeat
                         TempTransferShipmentHeader := TransferShipmentHeader;
                         TempTransferShipmentHeader.Insert();
@@ -35,12 +45,19 @@ tableextension 50104 "TransferLine" extends "Transfer Line"
                         repeat
                             if not First then
                                 SelectedNos += '|';
+
                             SelectedNos += TempTransferShipmentHeader."No.";
                             First := false;
-                        until TempTransferShipmentHeader.Next() = 0;
-                    Validate("Posted Transfer Shipment Nos.", SelectedNos);
-                end;
-            end;
-        }
-    }
+
+                            TransferShipmentHeader := TempTransferShipmentHeader;
+                            TransferShipmentHeader."Assign Shipment to FG" := true;
+                            TransferShipmentHeader.Modify();
+
+                until TempTransferShipmentHeader.Next() = 0;
+
+            validate("Posted Transfer Shipment Nos.", SelectedNos);
+
+        end;
+    end;
+
 }

@@ -5,7 +5,7 @@ using Microsoft.Purchases.Vendor;
 using Microsoft.Sales.Customer;
 using Microsoft.Sales.Document;
 using Microsoft.Warehouse.Document;
-    
+
 pageextension 50110 WarehouseReceipt extends "Warehouse Receipt"
 {
     layout

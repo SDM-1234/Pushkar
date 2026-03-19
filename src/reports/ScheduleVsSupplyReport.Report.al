@@ -1,8 +1,8 @@
 namespace Pushkar.Pushkar;
 
-using Microsoft.Sales.Document;
-using Microsoft.Sales.Customer;
 using Microsoft.Inventory.Item;
+using Microsoft.Sales.Customer;
+using Microsoft.Sales.Document;
 
 report 50102 ScheduleVsSupplyReport
 {

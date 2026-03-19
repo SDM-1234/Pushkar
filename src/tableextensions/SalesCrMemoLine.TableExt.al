@@ -57,7 +57,7 @@ tableextension 50116 SalesCrMemoLine extends "Sales Cr.Memo Line"
         {
             Caption = 'HSN Code';
             FieldClass = FlowField;
-            CalcFormula = lookup("Detailed GST Ledger Entry"."HSN/SAC Code" where("Document Line No." = field("Line No."), "Document No." = field("Document No."), "Document Type" = const("Credit Memo")));
+            CalcFormula = lookup("Detailed GST Ledger Entry"."HSN/SAC Code" where("No." = field("No."), "Document No." = field("Document No."), "Document Type" = const("Credit Memo")));
             ToolTip = 'Specifies the value of the HSN Code field.', Comment = '%';
         }
 
@@ -65,21 +65,21 @@ tableextension 50116 SalesCrMemoLine extends "Sales Cr.Memo Line"
         {
             Caption = 'CGST Amount';
             FieldClass = FlowField;
-            CalcFormula = sum("Detailed GST Ledger Entry"."GST Amount" where("Document Line No." = field("Line No."), "Document No." = field("Document No."), "Document Type" = const("Credit Memo"), "GST Component Code" = filter('CGST')));
+            CalcFormula = sum("Detailed GST Ledger Entry"."GST Amount" where("Document No." = field("Document No."), "Document Type" = const("Credit Memo"), "GST Component Code" = filter('CGST')));
             ToolTip = 'Specifies the value of the CGST Amount field.', Comment = '%';
         }
         field(50108; "SGST Amount"; Decimal)
         {
             Caption = 'SGST Amount';
             FieldClass = FlowField;
-            CalcFormula = sum("Detailed GST Ledger Entry"."GST Amount" where("Document Line No." = field("Line No."), "Document No." = field("Document No."), "Document Type" = const("Credit Memo"), "GST Component Code" = filter('SGST')));
+            CalcFormula = sum("Detailed GST Ledger Entry"."GST Amount" where("Document No." = field("Document No."), "Document Type" = const("Credit Memo"), "GST Component Code" = filter('SGST')));
             ToolTip = 'Specifies the value of the SGST Amount field.', Comment = '%';
         }
         field(50109; "IGST Amount"; Decimal)
         {
             Caption = 'IGST Amount';
             FieldClass = FlowField;
-            CalcFormula = sum("Detailed GST Ledger Entry"."GST Amount" where("Document Line No." = field("Line No."), "Document No." = field("Document No."), "Document Type" = const("Credit Memo"), "GST Component Code" = filter('IGST')));
+            CalcFormula = sum("Detailed GST Ledger Entry"."GST Amount" where("Document No." = field("Document No."), "Document Type" = const("Credit Memo"), "GST Component Code" = filter('IGST')));
             ToolTip = 'Specifies the value of the IGST Amount field.', Comment = '%';
         }
         field(50110; "IRN Hash"; Text[64])

@@ -6475,9 +6475,6 @@ End Function
         <Field Name="CompanyAdd1">
           <DataField>CompanyAdd1</DataField>
         </Field>
-        <Field Name="LUTARNNo">
-          <DataField>LUTARNNo</DataField>
-        </Field>
         <Field Name="CompanyAdd2">
           <DataField>CompanyAdd2</DataField>
         </Field>

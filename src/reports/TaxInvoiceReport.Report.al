@@ -5,7 +5,6 @@ using Microsoft.Finance.Reports;
 using Microsoft.Finance.TaxBase;
 using Microsoft.Finance.TaxEngine.TaxTypeHandler;
 using Microsoft.Finance.TCS.TCSBase;
-using Microsoft.Finance.TCS.TCSBase;
 using Microsoft.Foundation.Address;
 using Microsoft.Foundation.Company;
 using Microsoft.Inventory.Location;
@@ -13,7 +12,6 @@ using Microsoft.QRGeneration;
 using Microsoft.Sales.Customer;
 using Microsoft.Sales.History;
 using System.Utilities;
-using Microsoft.Sales.Comment;
 using Microsoft.Sales.Comment;
 
 report 50100 "Tax Invoice Report"
@@ -23,7 +21,6 @@ report 50100 "Tax Invoice Report"
     Caption = 'Tax Invoice Report';
     Permissions = TableData "Sales Shipment buffer" = rimd;
     UsageCategory = ReportsAndAnalysis;
-    PreviewMode = PrintLayout;
     PreviewMode = PrintLayout;
     ApplicationArea = All;
 
@@ -43,8 +40,6 @@ report 50100 "Tax Invoice Report"
             {
 
             }
-            column(LUTARNNo; LUTARNNo) { }
-
             column(CompanyAdd2; CompanyAdd2)
             {
 
@@ -98,7 +93,6 @@ report 50100 "Tax Invoice Report"
             column(ShipToPin; ShipToPin) { }
             column(ShipToState; ShipToState) { }
             column(Comnt; Comnt) { }
-            column(Comnt; Comnt) { }
             column(ShipToStateCode; ShipToStateCode) { }
             column(ShipToCountry; ShipToCountry) { }
             column(ShipToGSTIN; BillToGSTIN) { }
@@ -121,8 +115,6 @@ report 50100 "Tax Invoice Report"
             column(IRNNO; "Sales Invoice Header"."IRN Hash") { }
             column(Vehicle_No_; "Vehicle No.") { }
             column(ASNNo; '') { }
-
-
 
 
             dataitem("Sales Invoice Line"; "Sales Invoice Line")
@@ -154,11 +146,6 @@ report 50100 "Tax Invoice Report"
                 column(QtyToText; QtyToText[1] + QtyToText[2]) { }
                 column(QtyToText1; QtyToText1) { }
                 column(QRCode; "Sales Invoice Header"."QR Code") { }
-
-                trigger OnPreDataItem()
-                begin
-                    SetFilter(Quantity, '<>%1', 0);
-                end;
 
                 trigger OnPreDataItem()
                 begin
@@ -237,21 +224,13 @@ report 50100 "Tax Invoice Report"
 
             }
             trigger OnAfterGetRecord() // sales invoice header
-            var
-                LUTARN: Record "LUT / ARN Master";
             begin
-
-
-
                 SalesCommentLine.RESET();
                 SalesCommentLine.SETRANGE("No.", "No.");
                 IF SalesCommentLine.FINDSET() THEN
                     REPEAT
-                        Comnt := Comnt + ',' + SalesCommentLine.Comment;
+                        Comnt := Comnt + ' ' + SalesCommentLine.Comment;
                     UNTIL SalesCommentLine.NEXT() = 0;
-
-                LUTARNNo := LUTARN.GetARNNo("Sales Invoice Header"."Posting Date", "Sales Invoice Header"."Location Code");
-
 
                 if ("Location Code" <> '') then begin
                     location.get("Location Code");
@@ -354,12 +333,6 @@ report 50100 "Tax Invoice Report"
                 TCSEntry.SetRange("Document No.", "No.");
                 if TCSEntry.FindFirst() then
                     TCSAmount := TCSEntry."TCS Amount Including Surcharge";
-
-
-                TCSEntry.Reset();
-                TCSEntry.SetRange("Document No.", "No.");
-                if TCSEntry.FindFirst() then
-                    TCSAmount := TCSEntry."TCS Amount Including Surcharge";
             end;
         }
 
@@ -367,12 +340,15 @@ report 50100 "Tax Invoice Report"
 
     requestpage
     {
+
         layout
         {
+
             area(content)
             {
                 group(Options)
                 {
+
                     field(QRCodePrint; QRCodePrint)
                     {
                         Caption = 'Print QR Code';
@@ -383,6 +359,7 @@ report 50100 "Tax Invoice Report"
             }
         }
     }
+
     trigger OnPreReport()
     begin
         CompanyInfo.get();
@@ -414,7 +391,6 @@ report 50100 "Tax Invoice Report"
         Customer: Record Customer;
         SalesInvoiceLine: Record "Sales Invoice Line";
         QRGenerator: Codeunit "QR Generator";
-        TempBlob: Codeunit "Temp Blob";
         TempBlob: Codeunit "Temp Blob";
         RecRef: RecordRef;
         VarText1, VarText2, VarText3, QRCodeInput : Text;
@@ -462,41 +438,24 @@ report 50100 "Tax Invoice Report"
         Customers: Record Customer;
         DetailedGSTLedgerEntry: Record "Detailed GST Ledger Entry";
         HSNTable: Record "HSN/SAC";
-        Customers: Record Customer;
-        DetailedGSTLedgerEntry: Record "Detailed GST Ledger Entry";
-        HSNTable: Record "HSN/SAC";
         location: Record Location;
-        States: Record State;
-        TCSEntry: Record "TCS Entry";
+        SalesCommentLine: Record "Sales Comment Line";
         States: Record State;
         TCSEntry: Record "TCS Entry";
         Cheque: Report "Posted Voucher";
         QRCodePrint: Boolean;
-        QRCodePrint: Boolean;
         CompanyPAN: Code[20];
         SupplierCode: Code[20];
-        TariffNo: Code[20];//Same field replaced by variable
-        TariffNo: Code[20];//Same field replaced by variable
-        Chalandate: Date;
-        CessAmt: Decimal;
-        CessPer: Decimal;
-        CGSTAmt: Decimal;
-        CGSTPer: Decimal;
         CessAmt: Decimal;
         CessPer: Decimal;
         CGSTAmt: Decimal;
         CGSTPer: Decimal;
         IGSTAmt: Decimal;
         IGSTPer: Decimal;
-        IGSTPer: Decimal;
         SGSTAmt: Decimal;
         SGSTPer: Decimal;
         TCSAmount: Decimal;
-        TCSAmount: Decimal;
         TextTotalAmount: Decimal;
-        TotalInvAmt: Decimal;
-        AmountInWords: Text[200];
-        AmountInWords: Text[200];
         AmountToText: array[2] of Text[80];
         BillToAdd1: Text[100];
         BillToAdd2: Text[100];
@@ -507,31 +466,8 @@ report 50100 "Tax Invoice Report"
         BillToPin: Text[20];
         BillToState: Text[50];
         BillToStateCode: Text[10];
-        ChallanNo: Text[50];
         Commodity: Text[100];
-        CompanyAdd1: Text[100];
-        CompanyAdd2: Text[100];
-        CompanyCIN: Text[30];
-        CompanyCity: Text[100];
-        CompanyGSTIN: Text[20];
-        CompanyName: Text[100];
-        CompanyPin: Text[20];
-        CompanyState: Text[50];
-        CompanyStateCode: Text[10];
-        LocationState: Text[50];
-        LocationStateCode: Text[10];
-        QtyToText1: Text[200];
-        BillToAdd1: Text[100];
-        BillToAdd2: Text[100];
-        BillToCity: Text[100];
-        BillToCountry: Text[50];
-        BillToGSTIN: Text[20];
-        BillToName: Text[100];
-        BillToPin: Text[20];
-        BillToState: Text[50];
-        BillToStateCode: Text[10];
-        ChallanNo: Text[50];
-        Commodity: Text[100];
+        Comnt: Text[2048];
         CompanyAdd1: Text[100];
         CompanyAdd2: Text[100];
         CompanyCIN: Text[30];
@@ -558,9 +494,5 @@ report 50100 "Tax Invoice Report"
         CGSTLbl: Label 'CGST';
         IGSTLbl: Label 'IGST';
         SGSTLbl: Label 'SGST';
-        SalesCommentLine: Record "Sales Comment Line";
-        Comnt: Text[2048];
-        LUTARNNo: Code[50];
-
 }
 

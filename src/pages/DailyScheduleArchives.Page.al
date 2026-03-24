@@ -32,6 +32,11 @@ page 50102 DailyScheduleArchives
                 field(Remarks; Rec.Remarks)
                 {
                 }
+                field("Customer No."; Rec."Customer No.")
+                {
+                    Editable = false;
+                }
+
                 field("SO No."; Rec."SO No.")
                 {
                     Editable = false;

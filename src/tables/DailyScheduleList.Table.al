@@ -2,6 +2,7 @@ namespace Pushkar.Pushkar;
 
 using Microsoft.Foundation.AuditCodes;
 using Microsoft.Inventory.Item;
+using Microsoft.Sales.Customer;
 using Microsoft.Sales.Document;
 using Microsoft.Sales.History;
 using System.Utilities;
@@ -92,7 +93,6 @@ table 50101 DailyScheduleList
                 if "Delivered Quantity" > 0 then
                     "Pending Quantity" := Quantity - "Delivered Quantity";
             end;
-
         }
         field(12; "Pending Quantity"; Decimal)
         {
@@ -100,18 +100,17 @@ table 50101 DailyScheduleList
             ToolTip = 'Specifies the value of the Pending Quantity field.', Comment = '%';
 
         }
-
         field(14; "Sales Line Unit Price"; Decimal)
         {
             Caption = 'Sales Line Unit Price';
             ToolTip = 'Specifies the value of the Sales Line Unit Price field.', Comment = '%';
         }
-        field(15; "Customer No."; Decimal)
+        field(15; "Customer No."; Code[20])
         {
             Caption = 'Customer No.';
+            TableRelation = Customer."No.";
             ToolTip = 'Specifies the value of the Customer No.', Comment = '%';
         }
-
 
     }
     keys
@@ -176,7 +175,8 @@ table 50101 DailyScheduleList
 
             SalesLine.SetRange("No.", SelectedRecords."Item No.");
             SalesLine.SetRange("Shipment Date", StartDate, EndDate);
-            SalesLine.SetRange("Sell-to Customer No.", '1007');
+            //SalesLine.SetRange("Sell-to Customer No.", '1007');
+            SalesLine.SetRange("Sell-to Customer No.", SelectedRecords."Customer No.");
 
             if SalesLine.FindFirst() then begin
                 SelectedRecords."SO No." := SalesLine."Document No.";

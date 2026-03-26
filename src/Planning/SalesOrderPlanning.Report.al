@@ -33,7 +33,7 @@ report 50111 "Sales Order Planning"
                 if "Outstanding Quantity" = "Reserved Quantity" then
                     CurrReport.Skip();
 
-                item.SetAutoCalcFields(Inventory, "Reserved Qty. on Inventory", "Qty. on Assembly Order");
+                item.SetAutoCalcFields(Inventory, "Reserved Qty. on Inventory", "Qty. on Assembly Order", "Qty. on Purch. Order");
                 Item.SetRange("No.", "No.");
                 if "Location Code" <> '' then
                     Item.SetRange("Location Filter", "Location Code");

@@ -19,6 +19,9 @@ page 50101 DailyScheduleList
         {
             repeater(General)
             {
+                field("Customer No."; Rec."Customer No.")
+                {
+                }
                 field("Item No."; Rec."Item No.")
                 {
                 }

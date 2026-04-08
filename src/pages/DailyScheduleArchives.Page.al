@@ -1,6 +1,7 @@
 namespace Pushkar.Pushkar;
 
 using Microsoft.Sales.Document;
+using System.Security.AccessControl;
 using Microsoft.Sales.History;
 
 page 50102 DailyScheduleArchives
@@ -70,16 +71,39 @@ page 50102 DailyScheduleArchives
             }
         }
     }
+
+
     actions
     {
         area(Processing)
         {
+            action(UpdatePendingQuantity)
+            {
+                ApplicationArea = All;
+                Image = UpdateShipment;
+                ToolTip = 'Click to Update Pending Quantity.';
+                Caption = 'Update Pending Quantity';
+                Visible = UpdateQty;
+
+                trigger OnAction()
+                var
+                    DailyScheduleListRec: Record DailyScheduleList;
+                begin
+                    if DailyScheduleListRec.findset() then
+                        repeat
+                            DailyScheduleListRec."Pending Quantity" := DailyScheduleListRec.Quantity - DailyScheduleListRec."Delivered Quantity";
+                            DailyScheduleListRec.Modify()
+                        until DailyScheduleListRec.Next() = 0;
+                end;
+            }
 
             action(UpdateDeliveryZeroQty)
             {
                 ApplicationArea = All;
                 Image = UpdateShipment;
                 Caption = 'Update Zero Quantity';
+                Visible = UpdateQty;
+
                 ToolTip = 'Updates the Delivered and Pending Quantity based on Sales Shipment Lines.';
 
                 trigger OnAction()
@@ -122,4 +146,19 @@ page 50102 DailyScheduleArchives
 
         }
     }
+
+    trigger OnOpenPage()
+    var
+        AccessControl: Record "Access Control";
+    begin
+
+        AccessControl.SetRange("User Security ID", UserSecurityId());
+        AccessControl.SetRange("Role ID", 'SUPER');
+        if not AccessControl.IsEmpty() then
+            UpdateQty := true;
+    end;
+
+    var
+        UpdateQty: Boolean;
+
 }

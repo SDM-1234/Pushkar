@@ -21,7 +21,7 @@ report 50102 ScheduleVsSupplyReport
             column(ItemNo; "Item No.")
             {
             }
-            column(CustomerNo; "Customer No.")
+            column(CustomerNo; Customer."No.")
             {
             }
 
@@ -88,59 +88,94 @@ report 50102 ScheduleVsSupplyReport
             trigger OnAfterGetRecord()
             var
             begin
-                SalesLine.Reset();
+
+
+                if item.Get("Item No.") then;
+
+                SalesHeader.Reset();
                 SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Order);
                 SalesHeader.SetRange("No.", "SO No.");
-                if not SalesHeader.findfirst() then begin
+                if SalesHeader.findfirst() then begin
+
+
+                    Clear(SalesLine_No);
+                    Clear(SalesLine_UnitPrice);
+                    Clear(SalesLine_ShippedQty);
+                    Clear(SalesLine_Quantity);
+                    Clear(SalesLine_OutStandingQuantity);
+                    Clear(SalesHeaderExtDocNo);
+                    Clear(SalesHeaderExtDocDate);
+                    Clear(CustomerName);
+                    Clear(SalesLineitemDescription);
+
+                    SalesLine.Reset();
+                    SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+                    SalesLine.SetRange("Document No.", SalesHeader."No.");
+                    if SalesLine.findfirst() then begin
+                        SalesLine_No := SalesLine."No.";
+                        SalesLine_UnitPrice := SalesLine."Unit Price";
+                        SalesLine_ShippedQty := SalesLine."Quantity Shipped";
+                        SalesLine_Quantity := SalesLine.Quantity;
+                        SalesLine_OutStandingQuantity := SalesLine."Outstanding Quantity";
+
+
+
+                        SalesLineitem.Reset();
+                        if SalesLineitem.Get(SalesLine."No.") then
+                            SalesLineitemDescription := SalesLineitem.Description;
+                    end;
+                    if customer.Get(SalesHeader."Sell-to Customer No.") then
+                        CustomerName := Customer.Name;
+
+                    SalesHeaderExtDocNo := SalesHeader."External Document No.";
+                    SalesHeaderExtDocDate := SalesHeader."Document Date";
+
+
+
+
+                end else begin
+
+
+                    Clear(SalesLine_No);
+                    Clear(SalesLine_UnitPrice);
+                    Clear(SalesLine_ShippedQty);
+                    Clear(SalesLine_Quantity);
+                    Clear(SalesLine_OutStandingQuantity);
+                    Clear(SalesHeaderExtDocNo);
+                    Clear(SalesHeaderExtDocDate);
+                    Clear(CustomerName);
+                    Clear(SalesLineitemDescription);
+
                     SalesHeaderArchive.Reset();
                     SalesHeaderArchive.SetRange("Document Type", SalesHeaderArchive."Document Type"::Order);
                     SalesHeaderArchive.SetRange("No.", "SO No.");
                     if SalesHeaderArchive.findlast() then;
                     SalesHeaderExtDocNo := SalesHeaderArchive."External Document No.";
                     SalesHeaderExtDocDate := SalesHeaderArchive."Document Date";
-                    if customer.Get(SalesHeaderArchive."Sell-to Customer No.") then
-                        CustomerName := Customer.Name;
 
                     SalesLineArchive.Reset();
-
                     SalesLineArchive.Setrange("Document Type", SalesHeaderArchive."Document Type");
                     SalesLineArchive.Setrange("Document No.", SalesHeaderArchive."No.");
                     SalesLineArchive.SetRange("Doc. No. Occurrence", SalesHeaderArchive."Doc. No. Occurrence");
                     SalesLineArchive.Setrange("Version No.", SalesHeaderArchive."Version No.");
                     if SalesLineArchive.FindFirst() then begin
-                        //if SalesLineArchive.Get(SalesHeaderArchive."Document Type", SalesHeaderArchive."No.", 10000) then;
                         SalesLine_No := SalesLineArchive."No.";
                         SalesLine_UnitPrice := SalesLineArchive."Unit Price";
                         SalesLine_ShippedQty := SalesLineArchive."Qty. to Ship" + SalesLineArchive."Quantity Shipped";
                         SalesLine_Quantity := SalesLineArchive.Quantity;
                         SalesLine_OutStandingQuantity := SalesLineArchive."Outstanding Quantity";
-                    end;
-                    SalesLineitem.Reset();
+
+                        SalesLineitem.Reset();
                     if SalesLineitem.Get(SalesLineArchive."No.") then
                         SalesLineitemDescription := SalesLineitem.Description;
-
-                end else begin
-                    if customer.Get(SalesHeader."Sell-to Customer No.") then
+end;
+                    if customer.Get(SalesHeaderArchive."Sell-to Customer No.") then
                         CustomerName := Customer.Name;
-                    SalesLine.Reset();
-                    if SalesLine.Get(SalesHeader."Document Type", SalesHeader."No.", 10000) then;
-                    SalesLine_No := SalesLine."No.";
-                    SalesLine_UnitPrice := SalesLine."Unit Price";
-                    SalesLine_ShippedQty := SalesLine."Quantity Shipped";
-                    SalesLine_Quantity := SalesLine.Quantity;
-                    SalesLine_OutStandingQuantity := SalesLine."Outstanding Quantity";
 
-                    SalesLineitem.Reset();
-                    if SalesLineitem.Get(SalesLine."No.") then
-                        SalesLineitemDescription := SalesLineitem.Description;
-
-                    SalesHeaderExtDocNo := SalesHeader."External Document No.";
-                    SalesHeaderExtDocDate := SalesHeader."Document Date";
 
 
                 end;
 
-                if item.Get("Item No.") then;
 
             end;
 
@@ -201,6 +236,7 @@ report 50102 ScheduleVsSupplyReport
         SalesLine_UnitPrice: Decimal;
         SalesLineitemDescription: Text[100];
         CustomerName: Text[100];
+        CustomerNo: Code[20];
 
 
 }

@@ -1,6 +1,7 @@
 namespace Pushkar.Pushkar;
 
 using Microsoft.Purchases.Reports;
+using Microsoft.Finance.TDS.TDSBase;
 
 reportextension 50101 VendorPaymentReceipt extends "Vendor - Payment Receipt"
 {
@@ -16,8 +17,33 @@ reportextension 50101 VendorPaymentReceipt extends "Vendor - Payment Receipt"
             {
                 IncludeCaption = true;
             }
+            column(TDSAmount_VLE1; TDSAmount)
+            {
+            }
+            column(TDSSection_VLE1; TDSSection)
+            {
+            }
+
         }
+        modify(VendLedgEntry1)
+        {
+            trigger OnAfterAfterGetRecord()
+            var
+                TDSEntry: Record "TDS Entry";
+            begin
+                TDSEntry.SetRange("Document No.", VendLedgEntry1."Document No.");
+                If TDSEntry.findfirst() then begin
+                    TDSAmount := TDSEntry."TDS Amount";
+                    TDSSection := TDSEntry.Section;
+                end;
+            end;
+        }
+
+
     }
+
+
+
 
     rendering
     {
@@ -28,5 +54,9 @@ reportextension 50101 VendorPaymentReceipt extends "Vendor - Payment Receipt"
         }
     }
 
+
+    var
+        TDSAmount: Decimal;
+        TDSSection: Code[20];
 
 }

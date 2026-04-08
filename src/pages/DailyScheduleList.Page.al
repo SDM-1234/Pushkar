@@ -85,6 +85,7 @@ page 50101 DailyScheduleList
                     if not Rec.Updated then
                         Rec.UpdateSalesOrderNo(Rec);
                     CurrPage.Update(false);
+
                 end;
             }
         }

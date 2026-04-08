@@ -19,6 +19,9 @@ page 50101 DailyScheduleList
         {
             repeater(General)
             {
+                field("Customer No."; Rec."Customer No.")
+                {
+                }
                 field("Item No."; Rec."Item No.")
                 {
                 }
@@ -82,6 +85,7 @@ page 50101 DailyScheduleList
                     if not Rec.Updated then
                         Rec.UpdateSalesOrderNo(Rec);
                     CurrPage.Update(false);
+
                 end;
             }
         }

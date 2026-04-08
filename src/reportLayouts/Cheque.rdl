@@ -1,13 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <am:AuthoringMetadata>
+    <am:CreatedBy>
+      <am:Name>PBIRB</am:Name>
+      <am:Version>15.7.1815.334</am:Version>
+    </am:CreatedBy>
+    <am:UpdatedBy>
+      <am:Name>PBIRB</am:Name>
+      <am:Version>15.7.1815.334</am:Version>
+    </am:UpdatedBy>
+    <am:LastModifiedTimestamp>2026-04-08T07:00:42.8151622Z</am:LastModifiedTimestamp>
+  </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource">
+      <rd:SecurityType>None</rd:SecurityType>
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
         <ConnectString />
       </ConnectionProperties>
-      <rd:SecurityType>None</rd:SecurityType>
       <rd:DataSourceID>f4a2440e-5470-480e-aeb9-97aed1e293a5</rd:DataSourceID>
     </DataSource>
   </DataSources>
@@ -50,6 +63,7 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="StoreDate_1">
+                          <rd:DefaultName>StoreDate_1</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -69,7 +83,6 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>StoreDate_1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -84,6 +97,7 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="StoreDate_2">
+                          <rd:DefaultName>StoreDate_2</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -103,7 +117,6 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>StoreDate_2</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -118,6 +131,7 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="StoreDate_3">
+                          <rd:DefaultName>StoreDate_3</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -137,7 +151,6 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>StoreDate_3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -152,6 +165,7 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="StoreDate_4">
+                          <rd:DefaultName>StoreDate_4</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -171,7 +185,6 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>StoreDate_4</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -186,6 +199,7 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="StoreDate_5">
+                          <rd:DefaultName>StoreDate_5</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -205,7 +219,6 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>StoreDate_5</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -220,6 +233,7 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="StoreDate_6">
+                          <rd:DefaultName>StoreDate_6</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -239,7 +253,6 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>StoreDate_6</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -254,6 +267,7 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="StoreDate_7">
+                          <rd:DefaultName>StoreDate_7</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -273,7 +287,6 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>StoreDate_7</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -288,6 +301,7 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="StoreDate_8">
+                          <rd:DefaultName>StoreDate_8</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -307,7 +321,6 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>StoreDate_8</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -340,8 +353,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>6mm</Top>
-            <Left>157mm</Left>
+            <Top>10mm</Top>
+            <Left>154mm</Left>
             <Height>5.47083mm</Height>
             <Width>43mm</Width>
             <Style>
@@ -351,6 +364,7 @@
             </Style>
           </Tablix>
           <Textbox Name="Textbox18">
+            <rd:DefaultName>Textbox18</rd:DefaultName>
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -369,8 +383,7 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>17mm</Top>
+            <Top>20mm</Top>
             <Left>20mm</Left>
             <Height>5.58661mm</Height>
             <Width>132.32342mm</Width>
@@ -387,6 +400,7 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox19">
+            <rd:DefaultName>Textbox18</rd:DefaultName>
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -405,8 +419,7 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>25mm</Top>
+            <Top>30mm</Top>
             <Left>35mm</Left>
             <Height>5.55903mm</Height>
             <Width>166.82913mm</Width>
@@ -423,6 +436,7 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox20">
+            <rd:DefaultName>Textbox18</rd:DefaultName>
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -441,8 +455,7 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>31mm</Top>
+            <Top>36mm</Top>
             <Left>15mm</Left>
             <Height>5.55903mm</Height>
             <Width>127.19922mm</Width>
@@ -459,6 +472,7 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox21">
+            <rd:DefaultName>Textbox18</rd:DefaultName>
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -469,7 +483,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontWeight>Bold</FontWeight>
-                      <Format>#,0</Format>
+                      <Format>#,0.00;(#,0.00)</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -478,8 +492,7 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>33mm</Top>
+            <Top>40mm</Top>
             <Left>162mm</Left>
             <Height>5.29445mm</Height>
             <Width>38mm</Width>
@@ -495,6 +508,7 @@
             </Style>
           </Textbox>
           <Textbox Name="Textbox1">
+            <rd:DefaultName>Textbox1</rd:DefaultName>
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -513,8 +527,7 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>4.97099cm</Top>
+            <Top>5.60599cm</Top>
             <Left>8.72808cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
@@ -590,8 +603,6 @@ End Function
 </Code>
   <Language>=User!Language</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
-  <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>

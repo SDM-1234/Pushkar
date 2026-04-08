@@ -6,6 +6,20 @@ using System.Security.User;
 
 pageextension 50140 GeneralLedgerEntries extends "General Ledger Entries"
 {
+
+    layout
+    {
+        // No changes to the layout
+        addafter("Document No.")
+        {
+
+            field("Application Document No."; Rec."Application Document No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Application Document No. field.', Comment = '%';
+            }
+        }
+    }
     actions
     {
 

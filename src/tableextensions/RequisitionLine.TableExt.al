@@ -15,6 +15,10 @@ tableextension 50113 RequisitionLine extends "Requisition Line"
             ToolTip = 'Specifies the approval status for Transfer Header.';
             Initvalue = Open;
         }
+        field(50101; "Sales Order Planning"; Boolean)
+        {
+            Caption = 'Sales Order Planning';
+        }
 
     }
 }

@@ -77,39 +77,29 @@ page 50102 DailyScheduleArchives
     {
         area(Processing)
         {
-            action(UpdatePendingQuantity)
-            {
-                ApplicationArea = All;
-                Image = UpdateShipment;
-                ToolTip = 'Click to Update Pending Quantity.';
-                Caption = 'Update Pending Quantity';
-                Visible = UpdateQty;
-
-                trigger OnAction()
-                var
-                    DailyScheduleListRec: Record DailyScheduleList;
-                begin
-                    if DailyScheduleListRec.findset() then
-                        repeat
-                            DailyScheduleListRec."Pending Quantity" := DailyScheduleListRec.Quantity - DailyScheduleListRec."Delivered Quantity";
-                            DailyScheduleListRec.Modify()
-                        until DailyScheduleListRec.Next() = 0;
-                end;
-            }
 
             action(UpdateDeliveryZeroQty)
             {
                 ApplicationArea = All;
                 Image = UpdateShipment;
                 Caption = 'Update Zero Quantity';
-                Visible = UpdateQty;
+
 
                 ToolTip = 'Updates the Delivered and Pending Quantity based on Sales Shipment Lines.';
 
                 trigger OnAction()
+                var
+                    RecDailyScheduleList: Record DailyScheduleList;
+
                 begin
-                    Rec.ModifyAll("Delivered Quantity", 0);
-                    Rec.ModifyAll("Pending Quantity", 0);
+
+                    RecDailyScheduleList.Reset();
+                    CurrPage.SetSelectionFilter(RecDailyScheduleList);
+                    RecDailyScheduleList.UpdateDeliveredandPendingQuantity(RecDailyScheduleList);
+                    CurrPage.Update(false);
+                    RecDailyScheduleList.Reset();
+
+
                 end;
             }
 

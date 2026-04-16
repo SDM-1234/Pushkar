@@ -111,6 +111,22 @@ table 50101 DailyScheduleList
             TableRelation = Customer."No.";
             ToolTip = 'Specifies the value of the Customer No.', Comment = '%';
         }
+        field(16; "Item Category Code"; Code[20])
+        {
+            Caption = 'Item Category Code';
+            //TableRelation = Customer."No.";
+            fieldClass = flowfield;
+            CalcFormula = lookup(Item."Item Category Code" where("No." = field("Item No.")));
+            ToolTip = 'Specifies the value of the Item Category Code', Comment = '%';
+        }
+        field(17; "Common Item No."; Code[20])
+        {
+            Caption = 'Common Item No.';
+            //TableRelation = Customer."No.";
+            fieldClass = flowfield;
+            CalcFormula = lookup(Item."Common Item No." where("No." = field("Item No.")));
+            ToolTip = 'Specifies the value of the Common Item No.', Comment = '%';
+        }
 
     }
     keys

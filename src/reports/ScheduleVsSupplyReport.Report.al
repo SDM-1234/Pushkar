@@ -17,7 +17,7 @@ report 50102 ScheduleVsSupplyReport
 
         dataitem(DailyScheduleList; DailyScheduleList)
         {
-            RequestFilterFields = "Shipment Date";
+            RequestFilterFields = "Shipment Date", "Item Category Code", "Common Item No.";
             column(ItemNo; "Item No.")
             {
             }

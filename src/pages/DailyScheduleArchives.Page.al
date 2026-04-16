@@ -61,13 +61,20 @@ page 50102 DailyScheduleArchives
                 field("Delivered Quantity"; Rec."Delivered Quantity")
                 {
                     Editable = false;
-
                 }
                 field("Pending Quantity"; Rec."Pending Quantity")
                 {
                     Editable = false;
-
                 }
+                field("Item Category Code"; Rec."Item Category Code")
+                {
+                    Editable = false;
+                }
+                field("Common Item No."; Rec."Common Item No.")
+                {
+                    Editable = false;
+                }
+
             }
         }
     }

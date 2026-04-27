@@ -111,6 +111,22 @@ table 50101 DailyScheduleList
             TableRelation = Customer."No.";
             ToolTip = 'Specifies the value of the Customer No.', Comment = '%';
         }
+        field(16; "Item Category Code"; Code[20])
+        {
+            Caption = 'Item Category Code';
+            //TableRelation = Customer."No.";
+            fieldClass = flowfield;
+            CalcFormula = lookup(Item."Item Category Code" where("No." = field("Item No.")));
+            ToolTip = 'Specifies the value of the Item Category Code', Comment = '%';
+        }
+        field(17; "Common Item No."; Code[20])
+        {
+            Caption = 'Common Item No.';
+            //TableRelation = Customer."No.";
+            fieldClass = flowfield;
+            CalcFormula = lookup(Item."Common Item No." where("No." = field("Item No.")));
+            ToolTip = 'Specifies the value of the Common Item No.', Comment = '%';
+        }
 
     }
     keys
@@ -191,6 +207,17 @@ table 50101 DailyScheduleList
             Message('Sales Order updated successfully.');
     end;
 
+    procedure UpdateDeliveredandPendingQuantity(var SelectedRecords: Record DailyScheduleList)
+
+    begin
+
+        if SelectedRecords.findset() then
+            repeat
+                SelectedRecords."Delivered Quantity" := 0;
+                SelectedRecords."Pending Quantity" := 0;
+                SelectedRecords.Modify();
+            until SelectedRecords.Next() = 0;
+    end;
 
     procedure UpdatePostedShipmentQuantity(var SelectedRecords: Record DailyScheduleList)
     var
@@ -216,7 +243,6 @@ table 50101 DailyScheduleList
 
             DailyScheduleList.SetCurrentKey("Shipment Date");
             DailyScheduleList.Ascending(true);
-            //DailyScheduleList.SetFilter("Entry No.", '>%1', SelectedRecords."Entry No.");
             DailyScheduleList.Setrange("Item No.", SelectedRecords."Item No.");
             DailyScheduleList.Setrange("SO No.", SelectedRecords."SO No.");
             DailyScheduleList.SetFilter("Shipment Date", '>%1', SelectedRecords."Shipment Date");
@@ -248,6 +274,9 @@ table 50101 DailyScheduleList
                 SelectedRecords.Validate("Delivered Quantity", QtytoUpdate);
                 SelectedRecords.Modify();
                 QtyUpdatedCount += 1;
+            end else begin
+                SelectedRecords."Pending Quantity" := SelectedRecords."Quantity" - SelectedRecords."Delivered Quantity";
+                SelectedRecords.Modify();
             end;
         until SelectedRecords.Next() = 0;
         if QtyUpdatedCount > 0 then

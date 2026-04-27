@@ -1,6 +1,7 @@
 namespace Pushkar.Pushkar;
 
 using Microsoft.Sales.Document;
+using System.Security.AccessControl;
 using Microsoft.Sales.History;
 
 page 50102 DailyScheduleArchives
@@ -60,16 +61,25 @@ page 50102 DailyScheduleArchives
                 field("Delivered Quantity"; Rec."Delivered Quantity")
                 {
                     Editable = false;
-
                 }
                 field("Pending Quantity"; Rec."Pending Quantity")
                 {
                     Editable = false;
-
                 }
+                field("Item Category Code"; Rec."Item Category Code")
+                {
+                    Editable = false;
+                }
+                field("Common Item No."; Rec."Common Item No.")
+                {
+                    Editable = false;
+                }
+
             }
         }
     }
+
+
     actions
     {
         area(Processing)
@@ -80,12 +90,23 @@ page 50102 DailyScheduleArchives
                 ApplicationArea = All;
                 Image = UpdateShipment;
                 Caption = 'Update Zero Quantity';
+
+
                 ToolTip = 'Updates the Delivered and Pending Quantity based on Sales Shipment Lines.';
 
                 trigger OnAction()
+                var
+                    RecDailyScheduleList: Record DailyScheduleList;
+
                 begin
-                    Rec.ModifyAll("Delivered Quantity", 0);
-                    Rec.ModifyAll("Pending Quantity", 0);
+
+                    RecDailyScheduleList.Reset();
+                    CurrPage.SetSelectionFilter(RecDailyScheduleList);
+                    RecDailyScheduleList.UpdateDeliveredandPendingQuantity(RecDailyScheduleList);
+                    CurrPage.Update(false);
+                    RecDailyScheduleList.Reset();
+
+
                 end;
             }
 
@@ -122,4 +143,19 @@ page 50102 DailyScheduleArchives
 
         }
     }
+
+    trigger OnOpenPage()
+    var
+        AccessControl: Record "Access Control";
+    begin
+
+        AccessControl.SetRange("User Security ID", UserSecurityId());
+        AccessControl.SetRange("Role ID", 'SUPER');
+        if not AccessControl.IsEmpty() then
+            UpdateQty := true;
+    end;
+
+    var
+        UpdateQty: Boolean;
+
 }

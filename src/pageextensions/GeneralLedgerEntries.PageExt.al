@@ -6,6 +6,7 @@ using System.Security.User;
 
 pageextension 50140 GeneralLedgerEntries extends "General Ledger Entries"
 {
+
     actions
     {
 

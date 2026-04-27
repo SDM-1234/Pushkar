@@ -41,10 +41,10 @@ report 50111 "Sales Order Planning"
                 Item.FindFirst();
                 if item."Assembly BOM" then
                     DemandQty := "Outstanding Qty. (Base)" - Item.Inventory + item."Reserved Qty. on Inventory"
-                        - item."Qty. on Assembly Order"
+                        - (item."Qty. on Assembly Order" - item."Res. Qty. on Assembly Order")
                 else
                     DemandQty := "Outstanding Qty. (Base)" - Item.Inventory + item."Reserved Qty. on Inventory"
-                        - item."Qty. on Purch. Order";
+                        - (item."Qty. on Purch. Order" - item."Reserved Qty. on Purch. Orders");
 
                 if demandQty <= 0 then
                     CurrReport.Skip();

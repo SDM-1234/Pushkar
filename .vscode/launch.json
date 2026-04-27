@@ -15,7 +15,8 @@
             "enableSqlInformationDebugger": true,
             "usePublicURLFromServer": true,
             "schemaUpdateMode": "ForceSync"
-        },                {
+        },
+        {
             "name": "Pushkar_UAT",
             "request": "launch",
             "type": "al",
@@ -29,7 +30,8 @@
             "enableSqlInformationDebugger": true,
             "usePublicURLFromServer": true,
             "schemaUpdateMode": "Synchronize"
-        },                        {
+        },
+        {
             "name": "Pushkar_UAT-ForceSync",
             "request": "launch",
             "type": "al",
@@ -43,7 +45,17 @@
             "enableSqlInformationDebugger": true,
             "usePublicURLFromServer": true,
             "schemaUpdateMode": "ForceSync"
+        },
+        {
+            "name": "AL: Generated Attach request",
+            "request": "attach",
+            "type": "al",
+            "environmentType": "Sandbox",
+            "environmentName": "UAT",
+            "sessionId": 67840,
+            "breakOnNext": "WebClient",
+            "breakOnError": "ExcludeTry",
+            "tenant": "55c71f3c-d6ec-4763-887c-b0e454f38312"
         }
-
     ]
 }

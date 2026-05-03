@@ -34,7 +34,8 @@ report 50111 "Sales Order Planning"
                 if "Outstanding Quantity" = "Reserved Quantity" then
                     CurrReport.Skip();
 
-                item.SetAutoCalcFields("Assembly BOM", Inventory, "Reserved Qty. on Inventory", "Qty. on Assembly Order", "Qty. on Purch. Order");
+                item.SetAutoCalcFields("Assembly BOM", Inventory, "Reserved Qty. on Inventory", "Qty. on Assembly Order", "Qty. on Purch. Order"
+                        , "Res. Qty. on Assembly Order", "Reserved Qty. on Purch. Orders");
                 Item.SetRange("No.", "No.");
                 if "Location Code" <> '' then
                     Item.SetRange("Location Filter", "Location Code");
@@ -127,13 +128,14 @@ report 50111 "Sales Order Planning"
             AsmLine.SetRange(Type, AsmLine.Type::Item);
             if AsmLine.FindSet(false) then
                 repeat
-                    item.SetAutoCalcFields("Assembly BOM", Inventory, "Reserved Qty. on Inventory", "Qty. on Assembly Order", "Qty. on Purch. Order");
+                    item.SetAutoCalcFields("Assembly BOM", Inventory, "Reserved Qty. on Inventory", "Qty. on Assembly Order", "Qty. on Purch. Order"
+                        , "Res. Qty. on Assembly Order", "Reserved Qty. on Purch. Orders");
                     Item.SetRange("No.", AsmLine."No.");
                     if AsmLine."Location Code" <> '' then
                         Item.SetRange("Location Filter", AsmLine."Location Code");
                     Item.FindFirst();
                     DemandQty := AsmLine."Remaining Quantity (Base)" - Item.Inventory + item."Reserved Qty. on Inventory"
-                        - item."Qty. on Purch. Order";
+                        - (item."Qty. on Purch. Order" - item."Reserved Qty. on Purch. Orders");
                     if DemandQty <= 0 then
                         continue;
                     CreateReqLine(1, AsmLine."No.", AsmLine."Location Code", AsmLine."Unit of Measure Code", DemandQty, AsmLine);

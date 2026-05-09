@@ -51,6 +51,11 @@ pageextension 50115 PostedSalesInvoiceLines extends "Posted Sales Invoice Lines"
             {
                 ApplicationArea = All;
             }
+            field("Posting Date"; Rec."Posting Date")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Posting Date field.', Comment = '%';
+            }
         }
         addafter("No.")
         {

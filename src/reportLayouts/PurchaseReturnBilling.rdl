@@ -6712,15 +6712,6 @@ End Function
         <Field Name="ShipQtyFormat">
           <DataField>ShipQtyFormat</DataField>
         </Field>
-        <Field Name="PeriodOfServices">
-          <DataField>PeriodOfServices</DataField>
-        </Field>
-        <Field Name="SpecificationofServices">
-          <DataField>SpecificationofServices</DataField>
-        </Field>
-        <Field Name="SrNo">
-          <DataField>SrNo</DataField>
-        </Field>
         <Field Name="TextTotalAmount">
           <DataField>TextTotalAmount</DataField>
         </Field>

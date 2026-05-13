@@ -47,9 +47,9 @@ report 50111 "Sales Order Planning"
                     DemandQty := "Outstanding Qty. (Base)" - Item.Inventory + item."Reserved Qty. on Inventory"
                         - (item."Qty. on Purch. Order" - item."Reserved Qty. on Purch. Orders");
 
+                SalesLine.AutoReserve(false);
                 if demandQty <= 0 then
                     CurrReport.Skip();
-                SalesLine.AutoReserve();
 
                 case Item."Replenishment System" of
                     Item."Replenishment System"::Purchase:
@@ -119,6 +119,8 @@ report 50111 "Sales Order Planning"
         Item: Record Item;
         ATOLink: Record "Assemble-to-Order Link";
         AsmLine: Record "Assembly Line";
+        ReservMgt: Codeunit "Reservation Management";
+        FullAutoReservation: Boolean;
         DemandQty: Decimal;
     begin
         SalesLine.TestField("Qty. to Asm. to Order (Base)");
@@ -134,8 +136,13 @@ report 50111 "Sales Order Planning"
                     if AsmLine."Location Code" <> '' then
                         Item.SetRange("Location Filter", AsmLine."Location Code");
                     Item.FindFirst();
-                    DemandQty := AsmLine."Remaining Quantity (Base)" - Item.Inventory + item."Reserved Qty. on Inventory"
-                        - (item."Qty. on Purch. Order" - item."Reserved Qty. on Purch. Orders");
+                    DemandQty := AsmLine."Remaining Quantity (Base)" - Item.Inventory + item."Reserved Qty. on Inventory";
+
+                    if AsmLine."Remaining Quantity (Base)" <> 0 then begin
+                        AsmLine.TestField("Due Date");
+                        ReservMgt.SetReservSource(AsmLine);
+                        ReservMgt.AutoReserve(FullAutoReservation, '', AsmLine."Due Date", AsmLine."Remaining Quantity", AsmLine."Remaining Quantity (Base)");
+                    End;
                     if DemandQty <= 0 then
                         continue;
                     CreateReqLine(1, AsmLine."No.", AsmLine."Location Code", AsmLine."Unit of Measure Code", DemandQty, AsmLine);

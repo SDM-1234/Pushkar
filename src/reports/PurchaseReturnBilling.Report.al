@@ -2,6 +2,7 @@ namespace Pushkar.Pushkar;
 
 using Microsoft.Finance.GST.Base;
 using Microsoft.Finance.Reports;
+using Microsoft.Purchases.Payables;
 using Microsoft.Finance.TaxBase;
 using Microsoft.Finance.TaxEngine.TaxTypeHandler;
 using Microsoft.Finance.TCS.TCSBase;
@@ -32,31 +33,28 @@ report 50116 "Purchase Return Billing"
         {
             DataItemTableView = sorting("No.");
             RequestFilterFields = "No.", "Buy-from Vendor No.", "No. Printed";
-            RequestFilterHeading = 'Posted Sales Invoice';
-
+            RequestFilterHeading = 'Posted Purchase Credit Memo';
+            column(VendorInvNo; PurchInvHeader."Vendor Invoice No.")
+            { }
+            column(VendorInvDate; PurchInvHeader."Document Date")
+            { }
             column(CompanyName; CompanyName)
             {
-
             }
             column(CompanyAdd1; CompanyAdd1)
             {
-
             }
             column(CompanyAdd2; CompanyAdd2)
             {
-
             }
             column(PS_Vehicle_No_; "Vehicle No.")
             {
-
             }
             column(CompanyCity; CompanyCity)
             {
-
             }
             column(CompanyPin; CompanyPin)
             {
-
             }
             column(CompanyGSTIN; CompanyGSTIN)
             {
@@ -154,7 +152,7 @@ report 50116 "Purchase Return Billing"
                     SetFilter(Quantity, '<>%1', 0);
                 end;
 
-                trigger OnAfterGetRecord() // sales invoice line
+                trigger OnAfterGetRecord() // Purchase Credit Memo Line
                 begin
                     Clear(IGSTAmt);
                     Clear(CGSTAmt);
@@ -225,8 +223,19 @@ report 50116 "Purchase Return Billing"
                 end;
 
             }
-            trigger OnAfterGetRecord() // sales invoice header
+            trigger OnAfterGetRecord() // Purchase Credit Memo Header
             begin
+
+                DtldVendLedgerEntry.Reset();
+                DtldVendLedgerEntry.SetRange("Entry Type", DtldVendLedgerEntry."Entry Type"::Application);
+                DtldVendLedgerEntry.SetRange("Document No.", "No.");
+                DtldVendLedgerEntry.SetFilter("Applied Vend. Ledger Entry No.", '<>%1', DtldVendLedgerEntry."Vendor Ledger Entry No.");
+                if DtldVendLedgerEntry.FindFirst() then begin
+                    VendorLedgerEntry.Reset();
+                    VendorLedgerEntry.Get(DtldVendLedgerEntry."Vendor Ledger Entry No.");
+                    PurchInvHeader.Reset();
+                    PurchInvHeader.Get(VendorLedgerEntry."Document No.");
+                end;
                 SalesCommentLine.RESET();
                 SalesCommentLine.SETRANGE("No.", "No.");
                 IF SalesCommentLine.FINDSET() THEN
@@ -433,6 +442,9 @@ report 50116 "Purchase Return Billing"
 
 
     var
+        DtldVendLedgerEntry: Record "Detailed Vendor Ledg. Entry";
+        VendorLedgerEntry: Record "Vendor Ledger Entry";
+        PurchInvHeader: Record "Purch. Inv. Header";
         CompanyInfo: Record "Company Information";
         CountryRegion: Record "Country/Region";
         VendorVar: Record Vendor;

@@ -1,7 +1,7 @@
 page 50115 DetailedVendApplication
 {
     ApplicationArea = All;
-    Caption = 'DetailedVendApplication';
+    Caption = 'Dtld Vend. Ledger for Application Posting';
     PageType = List;
     SourceTable = DetailedVendorLedgerEntry;
     UsageCategory = Lists;

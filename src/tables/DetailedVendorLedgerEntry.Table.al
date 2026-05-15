@@ -9,6 +9,7 @@ table 50105 DetailedVendorLedgerEntry
         field(1; "Entry No."; Integer)
         {
             DataClassification = CustomerContent;
+            AutoIncrement = true;
 
         }
         field(2; "Posting Date"; Date)

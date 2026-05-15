@@ -138,6 +138,16 @@ report 50103 "Purchase Order Report"
                 column(Unit_of_Measure; "Unit of Measure Code")
                 {
                 }
+
+                column(Planned_Receipt_Date; "Planned Receipt Date")
+                {
+                }
+
+
+                column(PromisedReceiptDate; "Promised Receipt Date")
+                {
+                }
+
                 column(Direct_Unit_Cost; "Direct Unit Cost")
                 {
                 }

@@ -49,6 +49,11 @@ pageextension 50116 PostedSalesCreditMemoLines extends "Posted Sales Credit Memo
             {
                 ApplicationArea = All;
             }
+            field("Posting Date"; Rec."Posting Date")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Posting Date field.', Comment = '%';
+            }
             field("Bin Code"; Rec."Bin Code")
             {
                 ApplicationArea = All;

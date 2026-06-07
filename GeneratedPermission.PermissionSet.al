@@ -43,5 +43,12 @@ permissionset 50100 GeneratedPermission
         table DetailedVendorLedgerEntry = X,
         report DeleteSalesBlanketOrders = X,
         report "Sales Order Planning" = X,
-        codeunit "Sales Order Planning Handler" = X;
+        codeunit "Sales Order Planning Handler" = X,
+        tabledata DtldCustomerLedgerEntry = RIMD,
+        table DtldCustomerLedgerEntry = X,
+        report "Item Stock Report" = X,
+        report "Purchase Return Billing" = X,
+        codeunit PurchaseHandler = X,
+        page CustomerApplicationPosting = X,
+        page VendorAplicationPosting = X;
 }

@@ -1,4 +1,9 @@
-page 50115 DetailedVendApplication
+namespace Pushkar.Pushkar;
+
+using Microsoft.Finance.ReceivablesPayables;
+using Microsoft.Purchases.Payables;
+
+page 50113 VendorAplicationPosting
 {
     ApplicationArea = All;
     Caption = 'Dtld Vend. Ledger for Application Posting';
@@ -91,11 +96,11 @@ page 50115 DetailedVendApplication
 
                 trigger OnAction()
                 var
-                    ApplyingVendLedgerEntry: record "Vendor Ledger Entry";
+                    NewApplyUnapplyParameters: Record "Apply Unapply Parameters";
+                    DtldVendLedENtry: Record DetailedVendorLedgerEntry;
                     DtldVendLedENtry2: Record DetailedVendorLedgerEntry;//Application
                     DtldVendLedENtry3: Record DetailedVendorLedgerEntry;//Invoice
-                    DtldVendLedENtry: Record DetailedVendorLedgerEntry;
-                    NewApplyUnapplyParameters: Record "Apply Unapply Parameters";
+                    ApplyingVendLedgerEntry: record "Vendor Ledger Entry";
                     RecVLE: Record "Vendor Ledger Entry" temporary;
 
                     VendorLedgerEntry: Record "Vendor Ledger Entry";
@@ -123,7 +128,9 @@ page 50115 DetailedVendApplication
                                     DtldVendLedEntry3.Reset();
                                     DtldVendLedEntry3.SetRange(Closed, false);
                                     DtldVendLedEntry3.SetRange("Vendor Ledger Entry No.", DtldVendLedENtry2."Vendor Ledger Entry No.");
-                                    DtldVendLedEntry3.Setrange("Document Type", DtldVendLedENtry3."Document Type"::Invoice);
+                                    //DtldVendLedEntry3.Setrange("Document Type", DtldVendLedENtry3."Document Type"::Invoice);
+                                    DtldVendLedEntry3.SetFilter("Document Type", '%1|%2', DtldVendLedEntry3."Document Type"::Invoice, DtldVendLedEntry3."Document Type"::"Credit Memo");
+
                                     DtldVendLedEntry3.SetRange("Entry Type", 'Initial Entry');
                                     if DtldVendLedEntry3.findfirst() then
                                         if DtldVendLedENtry3."Vendor Ledger Entry No." <> DtldVendLedENtry2."Applied Vend. Ledger Entry No." then begin

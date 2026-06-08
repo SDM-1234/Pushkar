@@ -1,6 +1,7 @@
 namespace Pushkar.Pushkar;
 
 using Microsoft.Purchases.Payables;
+using Microsoft.Sales.Receivables;
 
 codeunit 50103 SingleInstanceCU
 {
@@ -19,15 +20,16 @@ codeunit 50103 SingleInstanceCU
         exit(IsHandled);
     end;
 
-    procedure SetVendLedgerEntry(VendLedgerEntryRec: Record "Vendor Ledger Entry");
+
+    procedure SetCustLedgerEntry(CustLedgerEntryRec: Record "Cust. Ledger Entry");
     begin
-        VendLedgerEntry := VendLedgerEntryRec;
+        CustLedgerEntry := CustLedgerEntryRec;
     end;
 
 
-    procedure GetVendLedgerEntry(): Record "Vendor Ledger Entry"
+    procedure GetCustLedgerEntry(): Record "Cust. Ledger Entry"
     begin
-        exit(VendLedgerEntry);
+        exit(CustLedgerEntry);
     end;
 
 
@@ -38,10 +40,25 @@ codeunit 50103 SingleInstanceCU
             ApplyVendLedgerEntry.Reset();
     end;
 
+    procedure SetApplicationCustLedgerEntryParameters(TempApplyingCustLedgEntry: Record "Cust. Ledger Entry");
+    begin
+        ApplyCustLedgerEntry := TempApplyingCustLedgEntry;
+        if not IsHandled then
+            ApplyCustLedgerEntry.Reset();
+    end;
+
+
     procedure GetApplicationVendLedgerEntryParameters(): Record "Vendor Ledger Entry"
     begin
         exit(ApplyVendLedgerEntry);
     end;
+
+    procedure GetApplicationCustLedgerEntryParameters(): Record "Cust. Ledger Entry"
+    begin
+        exit(ApplyCustLedgerEntry);
+    end;
+
+
 
 
     procedure SetAllowCreation(pAllowCreate: Boolean)
@@ -80,6 +97,9 @@ codeunit 50103 SingleInstanceCU
     var
         ApplyVendLedgerEntry: Record "Vendor Ledger Entry" temporary;
         VendLedgerEntry: Record "Vendor Ledger Entry" temporary;
+        ApplyCustLedgerEntry: Record "Cust. Ledger Entry" temporary;
+        CustLedgerEntry: Record "Cust. Ledger Entry" temporary;
+
         JsonArrayData: JsonArray;
         AllowCreate: Boolean;
         BulkEInvoice: Boolean;

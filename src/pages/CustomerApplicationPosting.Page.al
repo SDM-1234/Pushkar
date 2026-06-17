@@ -6,7 +6,7 @@ using Microsoft.Sales.Receivables;
 page 50104 CustomerApplicationPosting
 {
     ApplicationArea = All;
-    Caption = 'CustomerApplicationPosting';
+    Caption = 'Customer Application Posting';
     PageType = List;
     SourceTable = DtldCustomerLedgerEntry;
     UsageCategory = Tasks;

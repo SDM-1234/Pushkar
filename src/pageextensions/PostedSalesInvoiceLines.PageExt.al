@@ -2,7 +2,6 @@ namespace Pushkar.Pushkar;
 
 using Microsoft.Sales.Customer;
 using Microsoft.Sales.History;
-using Microsoft.Sales.History;
 
 pageextension 50115 PostedSalesInvoiceLines extends "Posted Sales Invoice Lines"
 {
@@ -51,6 +50,12 @@ pageextension 50115 PostedSalesInvoiceLines extends "Posted Sales Invoice Lines"
             {
                 ApplicationArea = All;
             }
+            field("External Doc. No."; Rec."External Doc. No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the External Document No. field.', Comment = '%';
+            }
+
             field("Posting Date"; Rec."Posting Date")
             {
                 ApplicationArea = All;

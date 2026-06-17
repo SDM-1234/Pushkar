@@ -6,7 +6,7 @@ using Microsoft.Purchases.Payables;
 page 50113 VendorAplicationPosting
 {
     ApplicationArea = All;
-    Caption = 'Dtld Vend. Ledger for Application Posting';
+    Caption = 'Vendor Application Posting';
     PageType = List;
     SourceTable = DetailedVendorLedgerEntry;
     UsageCategory = Lists;

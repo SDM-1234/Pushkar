@@ -55,6 +55,9 @@ report 50107 "Bulk E-Invoice Export"
                 JObject: JsonObject;
             begin
                 Clear(JObject);
+                Clear(JsonArrayData);
+                Clear(JsonText);
+                //InStream.ResetPosition();
                 JsonArrayData := singleInstanceCU.GetEinvoiceJsonArray();
                 JsonArrayData.WriteTo(JsonText);
                 TempBlob.CreateOutStream(OutStream);

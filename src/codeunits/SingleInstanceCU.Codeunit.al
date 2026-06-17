@@ -86,6 +86,7 @@ codeunit 50103 SingleInstanceCU
 
     procedure AddEinvoiceJsonArray(JObject: JsonObject)
     begin
+        //Clear(JsonArrayData);
         JsonArrayData.Add(JObject);
     end;
 

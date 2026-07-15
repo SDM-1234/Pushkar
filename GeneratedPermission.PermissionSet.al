@@ -46,5 +46,10 @@ permissionset 50100 GeneratedPermission
         report "Purchase Return Billing" = X,
         codeunit PurchaseHandler = X,
         page CustomerApplicationPosting = X,
-        page VendorAplicationPosting = X;
+        page VendorAplicationPosting = X,
+        tabledata "WF Mandatory Fields" = RIMD,
+        table "WF Mandatory Fields" = X,
+        codeunit WMWorkflowResponses = X,
+        page "WF Mandatory Fields List" = X,
+        codeunit ApplicationPostingHandler = X;
 }

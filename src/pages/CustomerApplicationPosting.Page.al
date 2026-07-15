@@ -132,7 +132,6 @@ page 50104 CustomerApplicationPosting
                     SingleInstanceCU: Codeunit SingleInstanceCU;
                     CustEntryApplyPostedEntries: Codeunit "CustEntry-Apply Posted Entries";
                     ApplicationPostingDate: Date;
-                    AppliedAmount: Decimal;
                     ErrorText: Text[250];
 
                 begin
@@ -149,12 +148,10 @@ page 50104 CustomerApplicationPosting
                                 repeat
 
                                     ApplicationPostingDate := DtldCustLedEntry2."Posting Date";
-
                                     DtldCustLedEntry3.Reset();
                                     DtldCustLedEntry3.SetRange(Closed, false);
                                     DtldCustLedEntry3.SetRange("Customer Ledger Entry No.", DtldCustLedENtry2."Customer Ledger Entry No.");
-                                    DtldCustLedEntry3.SetFilter("Document Type", '%1|%2', DtldCustLedEntry3."Document Type"::Invoice, DtldCustLedEntry3."Document Type"::"Credit Memo");
-                                    //DtldCustLedEntry3.Setrange("Document Type", DtldCustLedENtry3."Document Type"::Invoice, DtldCustLedENtry3."Document Type"::"Credit Memo");
+                                    DtldCustLedEntry3.Setrange("Document Type", DtldCustLedENtry3."Document Type"::Invoice);//, DtldCustLedENtry3."Document Type"::"Credit Memo");
                                     DtldCustLedEntry3.SetRange("Entry Type", 'Initial Entry');
                                     if DtldCustLedEntry3.findfirst() then
                                         if DtldCustLedENtry3."Customer Ledger Entry No." <> DtldCustLedENtry2."Applied Cust. Ledger Entry No." then begin

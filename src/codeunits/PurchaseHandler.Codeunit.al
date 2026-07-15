@@ -45,12 +45,9 @@ codeunit 50112 PurchaseHandler
                     PurchInvLine.Name := ChargeItem.Description;
         end;
     end;
-
-
-
     /// <summary>
-    /// UpdateName.
-    /// Updating Name on Posted Purchase Inv Lines
+    /// Updating GL , Item and all the Types of Names
+    /// </summary>
     /// <param name="Rec">VAR Record "Purch. Inv. Line".</param>
     procedure UpdateName(var Rec: Record "Purch. Inv. Line")
     var
@@ -77,8 +74,6 @@ codeunit 50112 PurchaseHandler
             Type::"Charge (Item)":
                 if ChargeItem.Get(Rec."No.") then
                     Rec.Name := ChargeItem.Description;
-
-
         end;
         Rec.Modify();
     end;

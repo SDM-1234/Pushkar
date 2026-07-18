@@ -98,4 +98,12 @@ codeunit 50117 "Sales Order Planning Handler"
             AssLine.Description, PurchOrderLine."Expected Receipt Date", AssLine."Due Date",
              0, ReservationStatus::Reservation);
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Assembly Line Management", OnPreCheckAndConfirmUpdateOnElseOnBeforeResetLinesConfirmDialog, '', false, false)]
+    local procedure "Assembly Line Management_OnPreCheckAndConfirmUpdateOnElseOnBeforeResetLinesConfirmDialog"(var AssemblyHeader: Record "Assembly Header"; OldAssemblyHeader: Record "Assembly Header"; FieldNum: Integer; var ReplaceLinesFromBOM: Boolean; var SkipReplaceLinesConfirmation: Boolean)
+    begin
+        if AssemblyHeader."Sales Order Planning" then
+            SkipReplaceLinesConfirmation := true;
+    end;
+
 }

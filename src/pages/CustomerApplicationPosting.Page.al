@@ -122,17 +122,17 @@ page 50104 CustomerApplicationPosting
                 trigger OnAction()
                 var
                     ApplyingCustLedgerEntry: Record "Cust. Ledger Entry";
+                    CustomerLedgerEntry: Record "Cust. Ledger Entry";
                     DtldCustLedENtry2: Record DtldCustomerLedgerEntry;//Application
                     DtldCustLedENtry3: Record DtldCustomerLedgerEntry;//Invoice
                     DtldCustLedENtry: Record DtldCustomerLedgerEntry;
+                    ApplicationPostingMgt: Codeunit ApplicationPostingMgt;
+                    ErrorText: Text[250];
                     NewApplyUnapplyParameters: Record "Apply Unapply Parameters";
-                    RecVLE: Record "Cust. Ledger Entry" temporary;
-
-                    CustomerLedgerEntry: Record "Cust. Ledger Entry";
                     SingleInstanceCU: Codeunit SingleInstanceCU;
                     CustEntryApplyPostedEntries: Codeunit "CustEntry-Apply Posted Entries";
                     ApplicationPostingDate: Date;
-                    ErrorText: Text[250];
+
 
                 begin
                     DtldCustLedEntry.Reset();
@@ -156,111 +156,18 @@ page 50104 CustomerApplicationPosting
                                     if DtldCustLedEntry3.findfirst() then
                                         if DtldCustLedENtry3."Customer Ledger Entry No." <> DtldCustLedENtry2."Applied Cust. Ledger Entry No." then begin
 
-                                            Clear(ErrorText);
+                                            ApplicationPostingMgt.PostApplication(DtldCustLedENtry3,DtldCustLedEntry,ApplicationPostingDate);
 
-                                            CustomerLedgerEntry := GetCustomerLedgerEntry(DtldCustLedENtry3);
-                                            ApplyingCustLedgerEntry := GetApplyingCustomerLedgerEntry(DtldCustLedEntry);
-
-                                            //RecVLE.Copy(CustomerLedgerEntry);
-
-                                            SetApplyCustomerLedgerEntries(CustomerLedgerEntry);
-
-                                            SetSingleInstanceValues(ApplyingCustLedgerEntry);
-
-                                            CustEntryApplyPostedEntries.ApplyCustEntryFormEntry(ApplyingCustLedgerEntry);
-
-
-                                            if not applicationPosting(NewApplyUnapplyParameters, ApplyingCustLedgerEntry, ApplicationPostingDate) then begin
-
-                                                SingleInstanceCU.SetIsHandled(false);
-
-                                                ErrorText := CopyStr(GetLastErrorText(), 1, 250);
-                                                UpdateDetailedApplication(DtldCustLedEntry3, true, ErrorText, false);
-                                            end else
-                                                UpdateDetailedApplication(DtldCustLedEntry3, False, ErrorText, True);
+                                            ApplicationPostingMgt.Run() // 
                                         end;
                                 until DtldCustLedEntry2.Next() = 0;
 
                         until DtldCustLedENtry.Next() = 0;
-
                 end;
             }
         }
     }
 
 
-    local procedure SetSingleInstanceValues(ApplyingCustLedgerEntry: Record "Cust. Ledger Entry")
-    var
-        SingleInstanceCU: Codeunit SingleInstanceCU;
-    begin
-        SingleInstanceCU.SetApplicationCustLedgerEntryParameters(ApplyingCustLedgerEntry);
-        SingleInstanceCU.SetIsHandled(true);
-    end;
 
-    local procedure SetApplyCustomerLedgerEntries(CustLedgEntry: Record "Cust. Ledger Entry")
-    var
-        ApplyCustEntries: Page "Apply Customer Entries";
-    begin
-
-        ApplyCustEntries.SetSelectionFilter(CustLedgEntry);
-        ApplyCustEntries.SetRecord(CustLedgEntry);
-
-        ApplyCustEntries.SetCustLedgEntry(CustLedgEntry);
-        ApplyCustEntries.SetApplyingCustLedgEntry();
-
-
-        ApplyCustEntries.SetAppliesToID(UserID());
-        ApplyCustEntries.SetCustApplId(false);
-
-    end;
-
-
-    local procedure UpdateDetailedApplication(DtldCustLedEntry: Record DtldCustomerLedgerEntry; Error: Boolean; ErrorText: Text[250]; Closed: Boolean)
-    begin
-        DtldCustLedEntry.Error := Error;
-        DtldCustLedEntry."Error Text" := ErrorText;
-        DtldCustLedEntry.Closed := Closed;
-        DtldCustLedEntry.Modify();
-    end;
-
-    [TryFunction]
-    local procedure ApplicationPosting(var NewApplyUnapplyParameters: Record "Apply Unapply Parameters"; ApplyingCustLedgerEntry: Record "Cust. Ledger Entry"; ApplicationPostingDate: Date)
-    var
-        ApplyUnapplyParameters: Record "Apply Unapply Parameters";
-        CustEntryApplyPostedEntries: Codeunit "CustEntry-Apply Posted Entries";
-        PostApplicationPage: Page "Post Application";
-    begin
-        ApplyUnapplyParameters.CopyFromCustLedgEntry(ApplyingCustLedgerEntry);
-        ApplyUnapplyParameters."Posting Date" := ApplicationPostingDate;
-        PostApplicationPage.SetParameters(ApplyUnapplyParameters);
-        PostApplicationPage.GetParameters(NewApplyUnapplyParameters);
-        CustEntryApplyPostedEntries.Apply(ApplyingCustLedgerEntry, NewApplyUnapplyParameters);
-    end;
-
-    local procedure GetApplyingCustomerLedgerEntry(DtldCustLedENtry: Record DtldCustomerLedgerEntry): Record "Cust. Ledger Entry"
-    var
-        ApplyingCustLedgerEntry: Record "Cust. Ledger Entry";
-    begin
-
-        ApplyingCustLedgerEntry.Reset();
-        ApplyingCustLedgerEntry.SetRange("Document No.", DtldCustLedEntry."Document No.");
-        ApplyingCustLedgerEntry.SetRange("Document Type", DtldCustLedEntry."Document Type");
-        ApplyingCustLedgerEntry.CalcFields("Remaining Amount", Amount);
-        if ApplyingCustLedgerEntry.findfirst() then
-            exit(ApplyingCustLedgerEntry);
-
-    end;
-
-
-    local procedure GetCustomerLedgerEntry(DtldCustLedENtry3: Record DtldCustomerLedgerEntry): Record "Cust. Ledger Entry"
-    var
-        CustomerLedgerEntry: Record "Cust. Ledger Entry";
-    begin
-        CustomerLedgerEntry.Reset();
-        CustomerLedgerEntry.SetRange("Document No.", DtldCustLedENtry3."Document No.");
-        CustomerLedgerEntry.SetRange("Document Type", DtldCustLedENtry3."Document Type");
-        CustomerLedgerEntry.CalcFields("Remaining Amount", Amount);
-        if CustomerLedgerEntry.findfirst() then
-            exit(CustomerLedgerEntry);
-    end;
 }

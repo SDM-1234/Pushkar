@@ -34,10 +34,6 @@ codeunit 50109 ApplicationPostingHandler
     end;
 
 
-
-
-
-
     [EventSubscriber(ObjectType::Page, Page::"Apply Vendor Entries", OnBeforeSetApplyingVendLedgEntry, '', false, false)]
     local procedure OnBeforeSetApplyingVendLedgEntry(var ApplyingVendLedgEntry: Record "Vendor Ledger Entry"; var CalcType: Enum "Vendor Apply Calculation Type");
     var

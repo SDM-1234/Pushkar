@@ -1,4 +1,4 @@
-table 50105 "SO Planning Processing"
+table 50102 "SO Planning Processing"
 {
     DataClassification = ToBeClassified;
     Caption = 'SO Planning Processing';

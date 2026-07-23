@@ -10,7 +10,7 @@ report 50115 "Item Stock Report"
     {
         dataitem(Item; Item)                // grouping on the based on Item table 
         {
-            RequestFilterFields = "No.", "Inventory Posting Group";
+            RequestFilterFields = "No.", "Inventory Posting Group", "Location Filter";
 
             dataitem("Item Ledger Entry"; "Item Ledger Entry")          // data come from item ledger entry table based on the date filter and item number
             {

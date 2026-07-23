@@ -24,244 +24,6 @@
       <rd:DataSourceID>3f1f0eb4-9fd3-47b9-ac59-0b5b15b1672c</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="VendAddr6">
-          <DataField>VendAddr6</DataField>
-        </Field>
-        <Field Name="VendAddr7">
-          <DataField>VendAddr7</DataField>
-        </Field>
-        <Field Name="VendAddr8">
-          <DataField>VendAddr8</DataField>
-        </Field>
-        <Field Name="VendAddr4">
-          <DataField>VendAddr4</DataField>
-        </Field>
-        <Field Name="VendAddr5">
-          <DataField>VendAddr5</DataField>
-        </Field>
-        <Field Name="VendAddr3">
-          <DataField>VendAddr3</DataField>
-        </Field>
-        <Field Name="VendAddr1">
-          <DataField>VendAddr1</DataField>
-        </Field>
-        <Field Name="VendAddr2">
-          <DataField>VendAddr2</DataField>
-        </Field>
-        <Field Name="VendNo_VendLedgEntry">
-          <DataField>VendNo_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="DocDate_VendLedgEntry">
-          <DataField>DocDate_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="CompanyAddr1">
-          <DataField>CompanyAddr1</DataField>
-        </Field>
-        <Field Name="CompanyAddr2">
-          <DataField>CompanyAddr2</DataField>
-        </Field>
-        <Field Name="CompanyAddr3">
-          <DataField>CompanyAddr3</DataField>
-        </Field>
-        <Field Name="CompanyAddr4">
-          <DataField>CompanyAddr4</DataField>
-        </Field>
-        <Field Name="CompanyAddr5">
-          <DataField>CompanyAddr5</DataField>
-        </Field>
-        <Field Name="CompanyAddr6">
-          <DataField>CompanyAddr6</DataField>
-        </Field>
-        <Field Name="CompanyAddr7">
-          <DataField>CompanyAddr7</DataField>
-        </Field>
-        <Field Name="CompanyAddr8">
-          <DataField>CompanyAddr8</DataField>
-        </Field>
-        <Field Name="PhoneNo">
-          <DataField>PhoneNo</DataField>
-        </Field>
-        <Field Name="HomePage">
-          <DataField>HomePage</DataField>
-        </Field>
-        <Field Name="Email">
-          <DataField>Email</DataField>
-        </Field>
-        <Field Name="VATRegistrationNo">
-          <DataField>VATRegistrationNo</DataField>
-        </Field>
-        <Field Name="GiroNo">
-          <DataField>GiroNo</DataField>
-        </Field>
-        <Field Name="BankName">
-          <DataField>BankName</DataField>
-        </Field>
-        <Field Name="BankAccountNo">
-          <DataField>BankAccountNo</DataField>
-        </Field>
-        <Field Name="ReportTitle">
-          <DataField>ReportTitle</DataField>
-        </Field>
-        <Field Name="DocNo_VendLedgEntry">
-          <DataField>DocNo_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="PymtDiscTitle">
-          <DataField>PymtDiscTitle</DataField>
-        </Field>
-        <Field Name="CompanyInfoPhoneNoCaption">
-          <DataField>CompanyInfoPhoneNoCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoGiroNoCaption">
-          <DataField>CompanyInfoGiroNoCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoBankNameCaption">
-          <DataField>CompanyInfoBankNameCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoBankAccNoCaption">
-          <DataField>CompanyInfoBankAccNoCaption</DataField>
-        </Field>
-        <Field Name="RcptNoCaption">
-          <DataField>RcptNoCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoVATRegNoCaption">
-          <DataField>CompanyInfoVATRegNoCaption</DataField>
-        </Field>
-        <Field Name="PostingDateCaption">
-          <DataField>PostingDateCaption</DataField>
-        </Field>
-        <Field Name="AmtCaption">
-          <DataField>AmtCaption</DataField>
-        </Field>
-        <Field Name="PymtAmtSpecCaption">
-          <DataField>PymtAmtSpecCaption</DataField>
-        </Field>
-        <Field Name="PymtTolInvCurrCaption">
-          <DataField>PymtTolInvCurrCaption</DataField>
-        </Field>
-        <Field Name="AppliedVLENo_DtldVendLedgEntry">
-          <DataField>AppliedVLENo_DtldVendLedgEntry</DataField>
-        </Field>
-        <Field Name="PostingDate_VendLedgEntry1">
-          <DataField>PostingDate_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="DocType_VendLedgEntry1">
-          <DataField>DocType_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="DocNo_VendLedgEntry1">
-          <DataField>DocNo_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="Description_VendLedgEntry1">
-          <DataField>Description_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="NegShowAmountVendLedgEntry1">
-          <DataField>NegShowAmountVendLedgEntry1</DataField>
-        </Field>
-        <Field Name="NegShowAmountVendLedgEntry1Format">
-          <DataField>NegShowAmountVendLedgEntry1Format</DataField>
-        </Field>
-        <Field Name="CurrCode_VendLedgEntry1">
-          <DataField>CurrCode_VendLedgEntry1</DataField>
-        </Field>
-        <Field Name="NegPmtDiscInvCurrVendLedgEntry1">
-          <DataField>NegPmtDiscInvCurrVendLedgEntry1</DataField>
-        </Field>
-        <Field Name="NegPmtDiscInvCurrVendLedgEntry1Format">
-          <DataField>NegPmtDiscInvCurrVendLedgEntry1Format</DataField>
-        </Field>
-        <Field Name="NegPmtTolInvCurrVendLedgEntry1">
-          <DataField>NegPmtTolInvCurrVendLedgEntry1</DataField>
-        </Field>
-        <Field Name="NegPmtTolInvCurrVendLedgEntry1Format">
-          <DataField>NegPmtTolInvCurrVendLedgEntry1Format</DataField>
-        </Field>
-        <Field Name="VLENo_DtldVendLedgEntry">
-          <DataField>VLENo_DtldVendLedgEntry</DataField>
-        </Field>
-        <Field Name="NegAppliedAmt">
-          <DataField>NegAppliedAmt</DataField>
-        </Field>
-        <Field Name="NegAppliedAmtFormat">
-          <DataField>NegAppliedAmtFormat</DataField>
-        </Field>
-        <Field Name="Description_VendLedgEntry2">
-          <DataField>Description_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="DocNo_VendLedgEntry2">
-          <DataField>DocNo_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="DocType_VendLedgEntry2">
-          <DataField>DocType_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="PostingDate_VendLedgEntry2">
-          <DataField>PostingDate_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="CurrCode_VendLedgEntry2">
-          <DataField>CurrCode_VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="NegPmtDiscInvCurrVendLedgEntry2">
-          <DataField>NegPmtDiscInvCurrVendLedgEntry2</DataField>
-        </Field>
-        <Field Name="NegPmtDiscInvCurrVendLedgEntry2Format">
-          <DataField>NegPmtDiscInvCurrVendLedgEntry2Format</DataField>
-        </Field>
-        <Field Name="NegPmtTolInvCurr1VendLedgEntry2">
-          <DataField>NegPmtTolInvCurr1VendLedgEntry2</DataField>
-        </Field>
-        <Field Name="NegPmtTolInvCurr1VendLedgEntry2Format">
-          <DataField>NegPmtTolInvCurr1VendLedgEntry2Format</DataField>
-        </Field>
-        <Field Name="NegRemainingAmt">
-          <DataField>NegRemainingAmt</DataField>
-        </Field>
-        <Field Name="NegRemainingAmtFormat">
-          <DataField>NegRemainingAmtFormat</DataField>
-        </Field>
-        <Field Name="CurrCode_VendLedgEntry">
-          <DataField>CurrCode_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="NegOriginalAmt_VendLedgEntry">
-          <DataField>NegOriginalAmt_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="NegOriginalAmt_VendLedgEntryFormat">
-          <DataField>NegOriginalAmt_VendLedgEntryFormat</DataField>
-        </Field>
-        <Field Name="ExtDocNo_VendLedgEntry">
-          <DataField>ExtDocNo_VendLedgEntry</DataField>
-        </Field>
-        <Field Name="PymtAmtNotAllocatedCaption">
-          <DataField>PymtAmtNotAllocatedCaption</DataField>
-        </Field>
-        <Field Name="PymtAmtCaption">
-          <DataField>PymtAmtCaption</DataField>
-        </Field>
-        <Field Name="ExternalDocNoCaption">
-          <DataField>ExternalDocNoCaption</DataField>
-        </Field>
-        <Field Name="ExternalDocumentNo_VLE1">
-          <DataField>ExternalDocumentNo_VLE1</DataField>
-        </Field>
-        <Field Name="DocumentDate_VLE1">
-          <DataField>DocumentDate_VLE1</DataField>
-        </Field>
-        <Field Name="TDSAmount_VLE1">
-          <DataField>TDSAmount_VLE1</DataField>
-        </Field>
-        <Field Name="TDSAmount_VLE1Format">
-          <DataField>TDSAmount_VLE1Format</DataField>
-        </Field>
-        <Field Name="TDSSection_VLE1">
-          <DataField>TDSSection_VLE1</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -5843,4 +5605,242 @@ Public Function SetData(NewData as Object,Group as integer)
 End Function</Code>
   <Language>=User!Language</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="VendAddr6">
+          <DataField>VendAddr6</DataField>
+        </Field>
+        <Field Name="VendAddr7">
+          <DataField>VendAddr7</DataField>
+        </Field>
+        <Field Name="VendAddr8">
+          <DataField>VendAddr8</DataField>
+        </Field>
+        <Field Name="VendAddr4">
+          <DataField>VendAddr4</DataField>
+        </Field>
+        <Field Name="VendAddr5">
+          <DataField>VendAddr5</DataField>
+        </Field>
+        <Field Name="VendAddr3">
+          <DataField>VendAddr3</DataField>
+        </Field>
+        <Field Name="VendAddr1">
+          <DataField>VendAddr1</DataField>
+        </Field>
+        <Field Name="VendAddr2">
+          <DataField>VendAddr2</DataField>
+        </Field>
+        <Field Name="VendNo_VendLedgEntry">
+          <DataField>VendNo_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="DocDate_VendLedgEntry">
+          <DataField>DocDate_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="CompanyAddr1">
+          <DataField>CompanyAddr1</DataField>
+        </Field>
+        <Field Name="CompanyAddr2">
+          <DataField>CompanyAddr2</DataField>
+        </Field>
+        <Field Name="CompanyAddr3">
+          <DataField>CompanyAddr3</DataField>
+        </Field>
+        <Field Name="CompanyAddr4">
+          <DataField>CompanyAddr4</DataField>
+        </Field>
+        <Field Name="CompanyAddr5">
+          <DataField>CompanyAddr5</DataField>
+        </Field>
+        <Field Name="CompanyAddr6">
+          <DataField>CompanyAddr6</DataField>
+        </Field>
+        <Field Name="CompanyAddr7">
+          <DataField>CompanyAddr7</DataField>
+        </Field>
+        <Field Name="CompanyAddr8">
+          <DataField>CompanyAddr8</DataField>
+        </Field>
+        <Field Name="PhoneNo">
+          <DataField>PhoneNo</DataField>
+        </Field>
+        <Field Name="HomePage">
+          <DataField>HomePage</DataField>
+        </Field>
+        <Field Name="Email">
+          <DataField>Email</DataField>
+        </Field>
+        <Field Name="VATRegistrationNo">
+          <DataField>VATRegistrationNo</DataField>
+        </Field>
+        <Field Name="GiroNo">
+          <DataField>GiroNo</DataField>
+        </Field>
+        <Field Name="BankName">
+          <DataField>BankName</DataField>
+        </Field>
+        <Field Name="BankAccountNo">
+          <DataField>BankAccountNo</DataField>
+        </Field>
+        <Field Name="ReportTitle">
+          <DataField>ReportTitle</DataField>
+        </Field>
+        <Field Name="DocNo_VendLedgEntry">
+          <DataField>DocNo_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="PymtDiscTitle">
+          <DataField>PymtDiscTitle</DataField>
+        </Field>
+        <Field Name="CompanyInfoPhoneNoCaption">
+          <DataField>CompanyInfoPhoneNoCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoGiroNoCaption">
+          <DataField>CompanyInfoGiroNoCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoBankNameCaption">
+          <DataField>CompanyInfoBankNameCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoBankAccNoCaption">
+          <DataField>CompanyInfoBankAccNoCaption</DataField>
+        </Field>
+        <Field Name="RcptNoCaption">
+          <DataField>RcptNoCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoVATRegNoCaption">
+          <DataField>CompanyInfoVATRegNoCaption</DataField>
+        </Field>
+        <Field Name="PostingDateCaption">
+          <DataField>PostingDateCaption</DataField>
+        </Field>
+        <Field Name="AmtCaption">
+          <DataField>AmtCaption</DataField>
+        </Field>
+        <Field Name="PymtAmtSpecCaption">
+          <DataField>PymtAmtSpecCaption</DataField>
+        </Field>
+        <Field Name="PymtTolInvCurrCaption">
+          <DataField>PymtTolInvCurrCaption</DataField>
+        </Field>
+        <Field Name="AppliedVLENo_DtldVendLedgEntry">
+          <DataField>AppliedVLENo_DtldVendLedgEntry</DataField>
+        </Field>
+        <Field Name="PostingDate_VendLedgEntry1">
+          <DataField>PostingDate_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="DocType_VendLedgEntry1">
+          <DataField>DocType_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="DocNo_VendLedgEntry1">
+          <DataField>DocNo_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="Description_VendLedgEntry1">
+          <DataField>Description_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="NegShowAmountVendLedgEntry1">
+          <DataField>NegShowAmountVendLedgEntry1</DataField>
+        </Field>
+        <Field Name="NegShowAmountVendLedgEntry1Format">
+          <DataField>NegShowAmountVendLedgEntry1Format</DataField>
+        </Field>
+        <Field Name="CurrCode_VendLedgEntry1">
+          <DataField>CurrCode_VendLedgEntry1</DataField>
+        </Field>
+        <Field Name="NegPmtDiscInvCurrVendLedgEntry1">
+          <DataField>NegPmtDiscInvCurrVendLedgEntry1</DataField>
+        </Field>
+        <Field Name="NegPmtDiscInvCurrVendLedgEntry1Format">
+          <DataField>NegPmtDiscInvCurrVendLedgEntry1Format</DataField>
+        </Field>
+        <Field Name="NegPmtTolInvCurrVendLedgEntry1">
+          <DataField>NegPmtTolInvCurrVendLedgEntry1</DataField>
+        </Field>
+        <Field Name="NegPmtTolInvCurrVendLedgEntry1Format">
+          <DataField>NegPmtTolInvCurrVendLedgEntry1Format</DataField>
+        </Field>
+        <Field Name="VLENo_DtldVendLedgEntry">
+          <DataField>VLENo_DtldVendLedgEntry</DataField>
+        </Field>
+        <Field Name="NegAppliedAmt">
+          <DataField>NegAppliedAmt</DataField>
+        </Field>
+        <Field Name="NegAppliedAmtFormat">
+          <DataField>NegAppliedAmtFormat</DataField>
+        </Field>
+        <Field Name="Description_VendLedgEntry2">
+          <DataField>Description_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="DocNo_VendLedgEntry2">
+          <DataField>DocNo_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="DocType_VendLedgEntry2">
+          <DataField>DocType_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="PostingDate_VendLedgEntry2">
+          <DataField>PostingDate_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="CurrCode_VendLedgEntry2">
+          <DataField>CurrCode_VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="NegPmtDiscInvCurrVendLedgEntry2">
+          <DataField>NegPmtDiscInvCurrVendLedgEntry2</DataField>
+        </Field>
+        <Field Name="NegPmtDiscInvCurrVendLedgEntry2Format">
+          <DataField>NegPmtDiscInvCurrVendLedgEntry2Format</DataField>
+        </Field>
+        <Field Name="NegPmtTolInvCurr1VendLedgEntry2">
+          <DataField>NegPmtTolInvCurr1VendLedgEntry2</DataField>
+        </Field>
+        <Field Name="NegPmtTolInvCurr1VendLedgEntry2Format">
+          <DataField>NegPmtTolInvCurr1VendLedgEntry2Format</DataField>
+        </Field>
+        <Field Name="NegRemainingAmt">
+          <DataField>NegRemainingAmt</DataField>
+        </Field>
+        <Field Name="NegRemainingAmtFormat">
+          <DataField>NegRemainingAmtFormat</DataField>
+        </Field>
+        <Field Name="CurrCode_VendLedgEntry">
+          <DataField>CurrCode_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="NegOriginalAmt_VendLedgEntry">
+          <DataField>NegOriginalAmt_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="NegOriginalAmt_VendLedgEntryFormat">
+          <DataField>NegOriginalAmt_VendLedgEntryFormat</DataField>
+        </Field>
+        <Field Name="ExtDocNo_VendLedgEntry">
+          <DataField>ExtDocNo_VendLedgEntry</DataField>
+        </Field>
+        <Field Name="PymtAmtNotAllocatedCaption">
+          <DataField>PymtAmtNotAllocatedCaption</DataField>
+        </Field>
+        <Field Name="PymtAmtCaption">
+          <DataField>PymtAmtCaption</DataField>
+        </Field>
+        <Field Name="ExternalDocNoCaption">
+          <DataField>ExternalDocNoCaption</DataField>
+        </Field>
+        <Field Name="ExternalDocumentNo_VLE1">
+          <DataField>ExternalDocumentNo_VLE1</DataField>
+        </Field>
+        <Field Name="DocumentDate_VLE1">
+          <DataField>DocumentDate_VLE1</DataField>
+        </Field>
+        <Field Name="TDSAmount_VLE1">
+          <DataField>TDSAmount_VLE1</DataField>
+        </Field>
+        <Field Name="TDSAmount_VLE1Format">
+          <DataField>TDSAmount_VLE1Format</DataField>
+        </Field>
+        <Field Name="TDSSection_VLE1">
+          <DataField>TDSSection_VLE1</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

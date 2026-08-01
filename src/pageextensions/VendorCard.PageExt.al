@@ -1,13 +1,8 @@
-namespace Pushkar.Pushkar;
-
-using Microsoft.Inventory.Item;
-using System.Automation;
-
-pageextension 50134 ItemCard extends "Item Card"
+pageextension 50148 VendorCard extends "Vendor Card"
 {
     layout
     {
-        addlast(Item)
+        addlast(General)
         {
             field("Approval Status"; Rec."Approval Status")
             {
@@ -16,9 +11,9 @@ pageextension 50134 ItemCard extends "Item Card"
             }
         }
 
-}
+    }
 
-actions
+    actions
     {
         addafter(SendApprovalRequest)
         {
@@ -31,16 +26,14 @@ actions
 
                 trigger OnAction()
                 var
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
-                        WorkflowWebhookManagement: Codeunit "Workflow Webhook Management";
+                    ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                    WorkflowWebhookManagement: Codeunit "Workflow Webhook Management";
                 begin
-                    ApprovalsMgmt.OnCancelItemApprovalRequest(Rec);
+                    ApprovalsMgmt.OnCancelVendorApprovalRequest(Rec);
                     WorkflowWebhookManagement.FindAndCancel(Rec.RecordId);
                 end;
-
             }
         }
     }
 
 }
-

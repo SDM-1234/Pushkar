@@ -29,7 +29,6 @@ permissionset 50100 GeneratedPermission
         table "LUT / ARN Master" = X,
         report "Update Posting Date" = X,
         codeunit "Gate Entry Subscriber" = X,
-        codeunit "GLEntries Subscriber" = X,
         codeunit "GST Subscriber" = X,
         page "LUT ARN List" = X,
         page "LUT/ARN Card" = X,
@@ -51,5 +50,16 @@ permissionset 50100 GeneratedPermission
         table "WF Mandatory Fields" = X,
         codeunit WMWorkflowResponses = X,
         page "WF Mandatory Fields List" = X,
-        codeunit ApplicationPostingHandler = X;
+        codeunit ApplicationPostingHandler = X,
+        tabledata "SO Planning Processing" = RIMD,
+        table "SO Planning Processing" = X,
+        codeunit ApplicationPostingMgt = X,
+        codeunit CustomerApprovalMgt = X,
+        codeunit CustomerWFResponseHandling = X,
+        codeunit ItemApprovalMgt = X,
+        codeunit "ItemWorkflow Response Handling" = X,
+        codeunit VendorApplicationPostingMgt = X,
+        codeunit VendorApprovalMgt = X,
+        codeunit VendorWFResponseHandling = X,
+        query "Item By Sales Outs Qty" = X;
 }

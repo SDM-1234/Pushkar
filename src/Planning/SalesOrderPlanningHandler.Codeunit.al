@@ -7,6 +7,8 @@ codeunit 50117 "Sales Order Planning Handler"
             IsHandled := true;
     end;
 
+
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Req. Wksh.-Make Order", OnBeforePurchOrderLineInsert, '', false, false)]
     local procedure "Req. Wksh.-Make Order_OnBeforePurchOrderLineInsert"(var PurchOrderHeader: Record "Purchase Header"; var PurchOrderLine: Record "Purchase Line"; var ReqLine: Record "Requisition Line"; CommitIsSuppressed: Boolean)
     begin

@@ -1,6 +1,10 @@
 
 Codeunit 50113 WMWorkflowResponses
 {
+
+
+
+
     procedure FieldMandatory(): code[128]
     begin
         EXIT('CHECKMANDATORYFIELDS');
@@ -17,9 +21,9 @@ Codeunit 50113 WMWorkflowResponses
     var
         WorkflowResponseHandling: Codeunit "Workflow Response Handling";
     begin
+
         WorkflowResponseHandling.AddResponseToLibrary(FieldMandatory(), 0, 'Check Mandatory Fields.', 'GROUP 50000');
         WorkflowResponseHandling.AddResponseToLibrary(AttachmentMandatory(), 0, 'Check Mandatory Attachments.', 'GROUP 50000');
-        //WorkflowResponseHandling.AddResponseToLibrary(ShipmentDateSLMandatory(), 0, 'Check Shipment Date in Sales Line.', 'GROUP 50000');
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Workflow Response Handling", 'OnExecuteWorkflowResponse', '', true, true)]

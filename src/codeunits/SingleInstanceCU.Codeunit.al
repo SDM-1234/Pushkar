@@ -59,6 +59,16 @@ codeunit 50103 SingleInstanceCU
     end;
 
 
+procedure SetSkipModifyEvent(pSkipModify: Boolean)
+    begin
+        SkipModify := pSkipModify;
+    end;
+
+
+    procedure GetSkipModifyEvent(): Boolean
+    begin
+        exit(SkipModify);
+    end;
 
 
     procedure SetAllowCreation(pAllowCreate: Boolean)
@@ -105,4 +115,5 @@ codeunit 50103 SingleInstanceCU
         AllowCreate: Boolean;
         BulkEInvoice: Boolean;
         IsHandled: Boolean;
+        SkipModify: Boolean;
 }

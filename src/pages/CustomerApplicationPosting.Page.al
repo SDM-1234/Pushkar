@@ -121,32 +121,34 @@ page 50104 CustomerApplicationPosting
 
                 trigger OnAction()
                 var
-                    ApplyingCustLedgerEntry: Record "Cust. Ledger Entry";
-                    CustomerLedgerEntry: Record "Cust. Ledger Entry";
                     DtldCustLedENtry2: Record DtldCustomerLedgerEntry;//Application
                     DtldCustLedENtry3: Record DtldCustomerLedgerEntry;//Invoice
                     DtldCustLedENtry: Record DtldCustomerLedgerEntry;
                     ApplicationPostingMgt: Codeunit ApplicationPostingMgt;
-                    ErrorText: Text[250];
-                    NewApplyUnapplyParameters: Record "Apply Unapply Parameters";
-                    SingleInstanceCU: Codeunit SingleInstanceCU;
-                    CustEntryApplyPostedEntries: Codeunit "CustEntry-Apply Posted Entries";
                     ApplicationPostingDate: Date;
-
-
+                    ProgressWindow: Dialog;
+                    TotalRecords: Integer;
+                    CurrentRecord: Integer;
+                    ProgressPercent: Integer;
+                    Text0001Tok: Label 'Posting Detailed Application...\\Processing Entry: #1###### of #2######)';
                 begin
+
+
                     DtldCustLedEntry.Reset();
                     DtldCustLedEntry.SetRange(Closed, false);
-                    DtldCustLedEntry.Setrange("Document Type", DtldCustLedEntry."Document Type"::Payment);
+                    DtldCustLedEntry.SetFilter("Document Type", '%1|%2', DtldCustLedEntry."Document Type"::Payment, DtldCustLedEntry."Document Type"::" ");
+
+                    TotalRecords := DtldCustLedEntry.Count();
+                    if TotalRecords = 0 then
+                        exit;
+                    ProgressWindow.Open(Text0001Tok);
                     if DtldCustLedEntry.FindSet() then
                         repeat
-
                             DtldCustLedEntry2.Reset();
                             DtldCustLedEntry2.SetRange(Closed, false);
                             DtldCustLedEntry2.SetRange("Applied Cust. Ledger Entry No.", DtldCustLedEntry."Customer Ledger Entry No.");
                             if DtldCustLedEntry2.FindSet() then
                                 repeat
-
                                     ApplicationPostingDate := DtldCustLedEntry2."Posting Date";
                                     DtldCustLedEntry3.Reset();
                                     DtldCustLedEntry3.SetRange(Closed, false);
@@ -156,6 +158,17 @@ page 50104 CustomerApplicationPosting
                                     if DtldCustLedEntry3.findfirst() then
                                         if DtldCustLedENtry3."Customer Ledger Entry No." <> DtldCustLedENtry2."Applied Cust. Ledger Entry No." then begin
 
+                                            CurrentRecord += 1;
+
+                                            if CurrentRecord mod 10 = 0 then begin
+                                                // 2. Update Window values
+                                                // Calculate percentage for progress bar (#3)
+                                                ProgressPercent := Round((CurrentRecord / TotalRecords) * 10000, 1, '>');
+
+                                                ProgressWindow.Update(1, CurrentRecord);
+                                                ProgressWindow.Update(2, TotalRecords);
+                                                ProgressWindow.Update(3, ProgressPercent);
+                                            end;
                                             ApplicationPostingMgt.PostApplication(DtldCustLedENtry3,DtldCustLedEntry,ApplicationPostingDate);
 
                                             ApplicationPostingMgt.Run() // 
@@ -163,11 +176,13 @@ page 50104 CustomerApplicationPosting
                                 until DtldCustLedEntry2.Next() = 0;
 
                         until DtldCustLedENtry.Next() = 0;
+
+                    // 3. Close Progress Window
+                    ProgressWindow.Close();
+
+                    Message('Detailed application posting completed successfully.');
                 end;
             }
         }
     }
-
-
-
 }

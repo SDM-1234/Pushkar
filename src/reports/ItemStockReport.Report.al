@@ -14,6 +14,7 @@ report 50115 "Item Stock Report"
 
             dataitem("Item Ledger Entry"; "Item Ledger Entry")          // data come from item ledger entry table based on the date filter and item number
             {
+
                 DataItemLink = "Item No." = field("No.");
                 //PrintOnlyIfDetail = true;       // it links with current entry with item table
 
@@ -36,7 +37,9 @@ report 50115 "Item Stock Report"
 
                 trigger OnPreDataItem()
                 begin
+                    //Item.GetFilters();
                     SetRange("Posting Date", FromDate, ToDate);
+
                 end;
 
                 trigger OnAfterGetRecord()

@@ -13,6 +13,13 @@ tableextension 50115 CustomerExtPTPL extends Customer
             ToolTip = 'Specifies the supplier code associated with the customer.';
             Caption = 'Supplier Code';
         }
+        field(50100; "Approval Status"; Enum ItemApprovalStatus)
+        {
+            Caption = 'Approval Status';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
+
     }
 
     keys

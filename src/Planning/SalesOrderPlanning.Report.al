@@ -77,13 +77,13 @@ report 50111 "Sales Order Planning"
                         ToolTip = 'Select the date for which you want to view the sales order planning.';
                         ApplicationArea = All;
                     }
-                    field(ItemNoFilter_; ItemNoFilter)
-                    {
-                        Caption = 'Item No. Filter';
-                        ToolTip = 'Select the item for which you want to view the sales order planning.';
-                        ApplicationArea = All;
-                        TableRelation = Item;
-                    }
+                    // field(ItemNoFilter_; ItemNoFilter)
+                    // {
+                    //     Caption = 'Item No. Filter';
+                    //     ToolTip = 'Select the item for which you want to view the sales order planning.';
+                    //     ApplicationArea = All;
+                    //     TableRelation = Item;
+                    // }
                     field(LocationFilter_; LocationFilter)
                     {
                         Caption = 'Location Filter';

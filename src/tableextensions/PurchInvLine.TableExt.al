@@ -98,5 +98,11 @@ tableextension 50111 PurchInvLine extends "Purch. Inv. Line"
             CalcFormula = lookup("G/L Account"."Name" where("No." = field("TDS Section")));
             ToolTip = 'Specifies the value of the TDS Section GL Name field.', Comment = '%';
         }
+        field(50113; "Name"; Text[100])
+        {
+            Caption = 'Name';
+            ToolTip = 'Specifies the value of the Name field.';
+        }
+
     }
 }

@@ -55,6 +55,11 @@ pageextension 50114 PostedPurchaseCrMemoLines extends "Posted Purchase Cr. Memo 
                 ApplicationArea = All;
                 Caption = 'TDS Account No.';
             }
+            field("Posting Date"; Rec."Posting Date")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Posting Date field.', Comment = '%';
+            }
             field("TDS Section Name"; Rec."TDS Section Name")
             {
                 ApplicationArea = All;

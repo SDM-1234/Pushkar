@@ -6,6 +6,15 @@ pageextension 50132 PostedPurchaseInvoiceLines extends "Posted Purchase Invoice 
 {
     layout
     {
+        addafter("No.")
+        {
+
+            field(Name; Rec.Name)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Name field.', Comment = '%';
+            }
+        }
         addafter("Document No.")
         {
             field("GST Amount"; Rec."GST Amount")
@@ -89,5 +98,30 @@ pageextension 50132 PostedPurchaseInvoiceLines extends "Posted Purchase Invoice 
         }
 
     }
+actions
+    {
+        addafter("Item &Tracking Lines")
+        {
+            action(UpdateName)
+            {
+                ApplicationArea = All;
+                Caption = 'Update Name';
+                Image = UpdateDescription;
+                ToolTip = 'Updates the name of the selected purchase invoice line.';
 
+                trigger OnAction()
+                var
+                    PurInvLine: record "Purch. Inv. Line";
+                    PurchaseHandler: Codeunit PurchaseHandler;
+                begin
+                    if PurInvLine.FindSet() then
+                        repeat
+
+                            PurchaseHandler.UpdateName(PurInvLine);
+
+                        until PurInvLine.Next() = 0;
+                end;
+            }
+        }
+    }
 }

@@ -38,5 +38,17 @@ permissionset 50100 GeneratedPermission
         page "LUT ARN List" = X,
         page "LUT/ARN Card" = X,
         page "Modify GL Entries" = X,
-        page "Temp Posted Sales Shipments" = X;
+        page "Temp Posted Sales Shipments" = X,
+        tabledata DetailedVendorLedgerEntry = RIMD,
+        table DetailedVendorLedgerEntry = X,
+        report DeleteSalesBlanketOrders = X,
+        report "Sales Order Planning" = X,
+        codeunit "Sales Order Planning Handler" = X,
+        tabledata DtldCustomerLedgerEntry = RIMD,
+        table DtldCustomerLedgerEntry = X,
+        report "Item Stock Report" = X,
+        report "Purchase Return Billing" = X,
+        codeunit PurchaseHandler = X,
+        page CustomerApplicationPosting = X,
+        page VendorAplicationPosting = X;
 }

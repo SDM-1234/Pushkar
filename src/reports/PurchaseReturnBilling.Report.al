@@ -2,23 +2,26 @@ namespace Pushkar.Pushkar;
 
 using Microsoft.Finance.GST.Base;
 using Microsoft.Finance.Reports;
+using Microsoft.Purchases.Payables;
 using Microsoft.Finance.TaxBase;
 using Microsoft.Finance.TaxEngine.TaxTypeHandler;
 using Microsoft.Finance.TCS.TCSBase;
 using Microsoft.Foundation.Address;
 using Microsoft.Foundation.Company;
 using Microsoft.Inventory.Location;
+using Microsoft.Purchases.History;
+using Microsoft.Purchases.Vendor;
 using Microsoft.QRGeneration;
 using Microsoft.Sales.Customer;
 using Microsoft.Sales.History;
 using System.Utilities;
 using Microsoft.Sales.Comment;
 
-report 50100 "Tax Invoice Report"
+report 50116 "Purchase Return Billing"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = 'src/ReportLayouts/TaxInvoiceReport.rdl';
-    Caption = 'Tax Invoice Report';
+    RDLCLayout = 'src/ReportLayouts/PurchaseReturnBilling.rdl';
+    Caption = 'Purchase Return Billing';
     Permissions = TableData "Sales Shipment buffer" = rimd;
     UsageCategory = ReportsAndAnalysis;
     PreviewMode = PrintLayout;
@@ -26,35 +29,32 @@ report 50100 "Tax Invoice Report"
 
     dataset
     {
-        dataitem("Sales Invoice Header"; "Sales Invoice Header")
+        dataitem("Purch. Cr. Memo Hdr."; "Purch. Cr. Memo Hdr.")
         {
             DataItemTableView = sorting("No.");
-            RequestFilterFields = "No.", "Sell-to Customer No.", "No. Printed";
-            RequestFilterHeading = 'Posted Sales Invoice';
-
+            RequestFilterFields = "No.", "Buy-from Vendor No.", "No. Printed";
+            RequestFilterHeading = 'Posted Purchase Credit Memo';
+            column(VendorInvNo; PurchInvHeader."Vendor Invoice No.")
+            { }
+            column(VendorInvDate; PurchInvHeader."Document Date")
+            { }
             column(CompanyName; CompanyName)
             {
-
             }
             column(CompanyAdd1; CompanyAdd1)
             {
-
             }
             column(CompanyAdd2; CompanyAdd2)
             {
-
             }
-            column(PS_Vehicle_No_; "PS Vehicle No.")
+            column(PS_Vehicle_No_; "Vehicle No.")
             {
-
             }
             column(CompanyCity; CompanyCity)
             {
-
             }
             column(CompanyPin; CompanyPin)
             {
-
             }
             column(CompanyGSTIN; CompanyGSTIN)
             {
@@ -71,9 +71,9 @@ report 50100 "Tax Invoice Report"
 
             column(CompanyState; CompanyState) { }
             column(CompanyStateCode; CompanyStateCode) { }
-            column(InvoiceNo; "Sales Invoice Header"."No.")
+            column(InvoiceNo; "Purch. Cr. Memo Hdr."."No.")
             { }
-            column(InvoiceDate; "Sales Invoice Header"."Posting Date")
+            column(InvoiceDate; "Purch. Cr. Memo Hdr."."Posting Date")
             { }
             column(SupplierCode; SupplierCode)
             { }
@@ -96,10 +96,10 @@ report 50100 "Tax Invoice Report"
             column(ShipToStateCode; ShipToStateCode) { }
             column(ShipToCountry; ShipToCountry) { }
             column(ShipToGSTIN; BillToGSTIN) { }
-            column(PONumber; "Sales Invoice Header"."External Document No.") { }
-            column(PODate; "Sales Invoice Header"."Document Date") { }
-            column(ChalanNo; "Sales Invoice Header"."No.") { }
-            column(ChalanDate; "Sales Invoice Header"."Posting Date") { }
+            column(PONumber; 'NA') { }
+            column(PODate; "Purch. Cr. Memo Hdr."."Document Date") { }
+            column(ChalanNo; "Purch. Cr. Memo Hdr."."No.") { }
+            column(ChalanDate; "Purch. Cr. Memo Hdr."."Posting Date") { }
             column(TCSAmount; TCSAmount) { }
 
             column(RRCNoteNo; '') { }
@@ -108,27 +108,27 @@ report 50100 "Tax Invoice Report"
             column(ReturnChalanNo; '') { }
             column(DispatchNoteNo; '') { }
             column(DispatchNoteDate; '') { }
-            column(StoreLoc; "Sales Invoice Header"."Location Code") { }
+            column(StoreLoc; "Purch. Cr. Memo Hdr."."Location Code") { }
             column(PallateNo; '') { }
             column(VideInvoiceNo; '') { }
             column(VideInvoiceDate; '') { }
-            column(IRNNO; "Sales Invoice Header"."IRN Hash") { }
+            column(IRNNO; 'NA') { }
             column(Vehicle_No_; "Vehicle No.") { }
             column(ASNNo; '') { }
 
 
-            dataitem("Sales Invoice Line"; "Sales Invoice Line")
+            dataitem("Purch. Cr. Memo Line"; "Purch. Cr. Memo Line")
             {
                 DataItemTableView = sorting("Document No.", "Line No.");
-                DataItemLinkReference = "Sales Invoice Header";
+                DataItemLinkReference = "Purch. Cr. Memo Hdr.";
                 DataItemLink = "Document No." = field("No.");
 
-                column(UOM; "Sales Invoice Line"."Unit of Measure Code") { }
+                column(UOM; "Purch. Cr. Memo Line"."Unit of Measure Code") { }
                 column(Commodity; Commodity) { }
-                column(ItemName; "Sales Invoice Line".Description) { }
+                column(ItemName; "Purch. Cr. Memo Line".Description) { }
                 column(No_; "No.") { }
-                column(UnitPrice; "Sales Invoice Line"."Unit Price") { }
-                column(LineAmount; "Sales Invoice Line"."Line Amount") { }
+                column(UnitPrice; "Purch. Cr. Memo Line"."Unit Cost") { }
+                column(LineAmount; "Purch. Cr. Memo Line"."Line Amount") { }
                 column(Location_Code; "Location Code") { }
 
                 column(HSN; "HSN/SAC Code") { }
@@ -141,25 +141,19 @@ report 50100 "Tax Invoice Report"
                 column(CessAmt; CessAmt) { }
                 column(CessPer; CessPer) { }
                 column(AmountToText; AmountToText[1] + AmountToText[2]) { }
-                column(ShipQty; "Sales Invoice Line".Quantity) { }
-                column(PeriodOfServices; "Sales Invoice Line"."Description 2") { }
-                column(SpecificationofServices; SpecificationofServices) { }
-                column(SrNo; SrNo) { }
+                column(ShipQty; "Purch. Cr. Memo Line".Quantity) { }
                 column(TextTotalAmount; TextTotalAmount) { }
                 column(QtyToText; QtyToText[1] + QtyToText[2]) { }
                 column(QtyToText1; QtyToText1) { }
-                column(QRCode; "Sales Invoice Header"."QR Code") { }
+                column(QRCode; 'NA') { }
 
                 trigger OnPreDataItem()
                 begin
                     SetFilter(Quantity, '<>%1', 0);
-                    Clear(SrNo);
                 end;
 
-                trigger OnAfterGetRecord() // sales invoice line
+                trigger OnAfterGetRecord() // Purchase Credit Memo Line
                 begin
-
-                    SrNo += 1;
                     Clear(IGSTAmt);
                     Clear(CGSTAmt);
                     Clear(SGSTAmt);
@@ -169,12 +163,12 @@ report 50100 "Tax Invoice Report"
                     if HSNTable.Find('-') then
                         Commodity := HSNTable.Description;
                     DetailedGSTLedgerEntry.Reset();
-                    DetailedGSTLedgerEntry.SetRange("Document No.", "Sales Invoice Line"."Document No.");
+                    DetailedGSTLedgerEntry.SetRange("Document No.", "Purch. Cr. Memo Line"."Document No.");
                     DetailedGSTLedgerEntry.SetRange("Entry Type", DetailedGSTLedgerEntry."Entry Type"::"Initial Entry");
                     if DetailedGSTLedgerEntry.FindSet() then
                         repeat
-                            if (DetailedGSTLedgerEntry."GST Component Code" = CGSTLbl) And ("Sales Invoice Header"."Currency Code" <> '') then begin
-                                CGSTAmt += Round((Abs(DetailedGSTLedgerEntry."GST Amount") * "Sales Invoice Header"."Currency Factor"), GetGSTRoundingPrecision(DetailedGSTLedgerEntry."GST Component Code"));
+                            if (DetailedGSTLedgerEntry."GST Component Code" = CGSTLbl) And ("Purch. Cr. Memo Hdr."."Currency Code" <> '') then begin
+                                CGSTAmt += Round((Abs(DetailedGSTLedgerEntry."GST Amount") * "Purch. Cr. Memo Hdr."."Currency Factor"), GetGSTRoundingPrecision(DetailedGSTLedgerEntry."GST Component Code"));
                                 CGSTPer := DetailedGSTLedgerEntry."GST %";
                             end
                             else
@@ -182,8 +176,8 @@ report 50100 "Tax Invoice Report"
                                     CGSTAmt += Abs(DetailedGSTLedgerEntry."GST Amount");
                                     CGSTPer := DetailedGSTLedgerEntry."GST %";
                                 end;
-                            if (DetailedGSTLedgerEntry."GST Component Code" = SGSTLbl) And ("Sales Invoice Header"."Currency Code" <> '') then begin
-                                SGSTAmt += Round((Abs(DetailedGSTLedgerEntry."GST Amount") * "Sales Invoice Header"."Currency Factor"), GetGSTRoundingPrecision(DetailedGSTLedgerEntry."GST Component Code"));
+                            if (DetailedGSTLedgerEntry."GST Component Code" = SGSTLbl) And ("Purch. Cr. Memo Hdr."."Currency Code" <> '') then begin
+                                SGSTAmt += Round((Abs(DetailedGSTLedgerEntry."GST Amount") * "Purch. Cr. Memo Hdr."."Currency Factor"), GetGSTRoundingPrecision(DetailedGSTLedgerEntry."GST Component Code"));
                                 SGSTPer := DetailedGSTLedgerEntry."GST %";
                             end
                             else
@@ -192,8 +186,8 @@ report 50100 "Tax Invoice Report"
                                     SGSTPer := DetailedGSTLedgerEntry."GST %";
                                 end;
 
-                            if (DetailedGSTLedgerEntry."GST Component Code" = IGSTLbl) And ("Sales Invoice Header"."Currency Code" <> '') then begin
-                                IGSTAmt += Round((Abs(DetailedGSTLedgerEntry."GST Amount") * "Sales Invoice Header"."Currency Factor"), GetGSTRoundingPrecision(DetailedGSTLedgerEntry."GST Component Code"));
+                            if (DetailedGSTLedgerEntry."GST Component Code" = IGSTLbl) And ("Purch. Cr. Memo Hdr."."Currency Code" <> '') then begin
+                                IGSTAmt += Round((Abs(DetailedGSTLedgerEntry."GST Amount") * "Purch. Cr. Memo Hdr."."Currency Factor"), GetGSTRoundingPrecision(DetailedGSTLedgerEntry."GST Component Code"));
                                 IGSTPer := DetailedGSTLedgerEntry."GST %";
                             end
                             else
@@ -201,8 +195,8 @@ report 50100 "Tax Invoice Report"
                                     IGSTAmt += Abs(DetailedGSTLedgerEntry."GST Amount");
                                     IGSTPer := DetailedGSTLedgerEntry."GST %";
                                 end;
-                            if (DetailedGSTLedgerEntry."GST Component Code" = CessLbl) And ("Sales Invoice Header"."Currency Code" <> '') then begin
-                                CessAmt += Round((Abs(DetailedGSTLedgerEntry."GST Amount") * "Sales Invoice Header"."Currency Factor"), GetGSTRoundingPrecision(DetailedGSTLedgerEntry."GST Component Code"));
+                            if (DetailedGSTLedgerEntry."GST Component Code" = CessLbl) And ("Purch. Cr. Memo Hdr."."Currency Code" <> '') then begin
+                                CessAmt += Round((Abs(DetailedGSTLedgerEntry."GST Amount") * "Purch. Cr. Memo Hdr."."Currency Factor"), GetGSTRoundingPrecision(DetailedGSTLedgerEntry."GST Component Code"));
                                 CessPer := DetailedGSTLedgerEntry."GST %";
                             end
                             else
@@ -214,7 +208,7 @@ report 50100 "Tax Invoice Report"
                     TextTotalAmount := "Line Amount" + SGSTAmt + CGSTAmt + IGSTAmt + CessAmt + TCSAmount;
 
                     Cheque.InitTextVariable();
-                    Cheque.FormatNoText(AmountToText, TextTotalAmount, "Sales Invoice Header"."Currency Code");
+                    Cheque.FormatNoText(AmountToText, TextTotalAmount, "Purch. Cr. Memo Hdr."."Currency Code");
                     Cheque.InitTextVariable();
                     Cheque.FormatNoText(QtyToText, Round(Quantity, 0.01, '='), '');
 
@@ -224,19 +218,24 @@ report 50100 "Tax Invoice Report"
                     QtyToText1 := QtyToText1.Replace('PAISA', '');
                     QtyToText1 := QtyToText1.Replace('AND', '');
                     QtyToText1 := QtyToText1.Replace('ZERO', '');
-                    "Sales Invoice Header".CalcFields("QR Code");
+                    //"Purch. Cr. Memo Hdr.".CalcFields("QR Code");
                     CustomQR();
-
-
-
-                    If ("Sales Invoice Line".Type = "Sales Invoice Line".Type::"G/L Account") or ("Sales Invoice Line".Type = "Sales Invoice Line".Type::" ") then
-                        SpecificationofServices += "Sales Invoice Line".Description + ' ';
-
                 end;
 
             }
-            trigger OnAfterGetRecord() // sales invoice header
+            trigger OnAfterGetRecord() // Purchase Credit Memo Header
             begin
+
+                DtldVendLedgerEntry.Reset();
+                DtldVendLedgerEntry.SetRange("Entry Type", DtldVendLedgerEntry."Entry Type"::Application);
+                DtldVendLedgerEntry.SetRange("Document No.", "No.");
+                DtldVendLedgerEntry.SetFilter("Applied Vend. Ledger Entry No.", '<>%1', DtldVendLedgerEntry."Vendor Ledger Entry No.");
+                if DtldVendLedgerEntry.FindFirst() then begin
+                    VendorLedgerEntry.Reset();
+                    VendorLedgerEntry.Get(DtldVendLedgerEntry."Vendor Ledger Entry No.");
+                    PurchInvHeader.Reset();
+                    PurchInvHeader.Get(VendorLedgerEntry."Document No.");
+                end;
                 SalesCommentLine.RESET();
                 SalesCommentLine.SETRANGE("No.", "No.");
                 IF SalesCommentLine.FINDSET() THEN
@@ -284,17 +283,17 @@ report 50100 "Tax Invoice Report"
                     CompanyStateCode := States."State Code (GST Reg. No.)";
                 end;
 
-                Customers.Reset();
-                Customers.get("Sell-to Customer No.");
-                BillToName := "Sell-to Customer Name";
-                BillToAdd1 := Customers.Address;
-                BillToAdd2 := Customers."Address 2";
-                BillToCity := Customers.City;
-                BillToPin := Customers."Post Code";
-                SupplierCode := Customers."Supplier Code";
+                VendorVar.Reset();
+                VendorVar.get("Buy-from Vendor No.");
+                BillToName := "Buy-from Vendor Name";
+                BillToAdd1 := VendorVar.Address;
+                BillToAdd2 := VendorVar."Address 2";
+                BillToCity := VendorVar.City;
+                BillToPin := VendorVar."Post Code";
+                //SupplierCode := VendorVar."Supplier Code";
                 States.Reset();
-                if Customers."State Code" <> '' then begin
-                    States.Get(Customers."State Code");
+                if VendorVar."State Code" <> '' then begin
+                    States.Get(VendorVar."State Code");
                     BillToState := states.Description;
                     BillToStateCode := states."State Code (GST Reg. No.)";
 
@@ -304,33 +303,33 @@ report 50100 "Tax Invoice Report"
 
 
                 end;
-                if Customers."Country/Region Code" <> '' then begin
-                    CountryRegion.Get(Customers."Country/Region Code");
+                if VendorVar."Country/Region Code" <> '' then begin
+                    CountryRegion.Get(VendorVar."Country/Region Code");
                     BillToCountry := CountryRegion.Name;
-                    BillToGSTIN := Customers."GST Registration No.";
+                    BillToGSTIN := VendorVar."GST Registration No.";
 
                     ShipToCountry := CountryRegion.Name;
-                    ShipToGSTIN := Customers."GST Registration No.";
+                    ShipToGSTIN := VendorVar."GST Registration No.";
 
                 end;
-                if "Ship-to Customer" <> '' then begin
-                    Customers.Reset();
-                    Customers.get("Sell-to Customer No.");
-                    BillToName := "Sell-to Customer Name";
-                    BillToAdd1 := Customers.Address;
-                    BillToAdd2 := Customers."Address 2";
-                    BillToCity := Customers.City;
-                    BillToPin := Customers."Post Code";
+                if "Ship-to Address" <> '' then begin
+                    VendorVar.Reset();
+                    VendorVar.get("Buy-from Vendor No.");
+                    BillToName := "Buy-from Vendor Name";
+                    BillToAdd1 := VendorVar.Address;
+                    BillToAdd2 := VendorVar."Address 2";
+                    BillToCity := VendorVar.City;
+                    BillToPin := VendorVar."Post Code";
                     States.Reset();
-                    if Customers."State Code" <> '' then begin
-                        States.Get(Customers."State Code");
+                    if VendorVar."State Code" <> '' then begin
+                        States.Get(VendorVar."State Code");
                         ShipToState := states.Description;
                         ShipToStateCode := states."State Code (GST Reg. No.)";
                     end;
-                    if Customers."Country/Region Code" <> '' then begin
-                        CountryRegion.Get(Customers."Country/Region Code");
+                    if VendorVar."Country/Region Code" <> '' then begin
+                        CountryRegion.Get(VendorVar."Country/Region Code");
                         ShipToCountry := CountryRegion.Name;
-                        ShipToGSTIN := Customers."GST Registration No.";
+                        ShipToGSTIN := VendorVar."GST Registration No.";
                     end;
                 end;
 
@@ -400,8 +399,8 @@ report 50100 "Tax Invoice Report"
 
     local procedure CustomQR()
     var
-        Customer: Record Customer;
-        SalesInvoiceLine: Record "Sales Invoice Line";
+        Vendor: Record Vendor;
+        PurchCrMemoLine: Record "Purch. Cr. Memo Line";
         QRGenerator: Codeunit "QR Generator";
         TempBlob: Codeunit "Temp Blob";
         RecRef: RecordRef;
@@ -409,45 +408,46 @@ report 50100 "Tax Invoice Report"
     begin
         IF not QRCodePrint THEN
             Exit;
-        Customer.Get("Sales Invoice Header"."Sell-to Customer No.");
-        SalesInvoiceLine.SetRange("Document No.", "Sales Invoice Header"."No.");
-        SalesInvoiceLine.SetRange(Type, SalesInvoiceLine.Type::Item);
-        SalesInvoiceLine.FindFirst();
-        VarText1 := COPYSTR(FORMAT("Sales Invoice Header"."Posting Date"), 1, 2);
-        VarText2 := COPYSTR(FORMAT("Sales Invoice Header"."Posting Date"), 4, 2);
-        VarText3 := COPYSTR(FORMAT("Sales Invoice Header"."Posting Date"), 7, 2);
-        //QR Code
-        // Save a QR code image into a file in a temporary folder
-        QRCodeInput := "Sales Invoice Header"."External Document No." + ',' +
-        '10' + ',' +
-        DELCHR(FORMAT(SalesInvoiceLine.Quantity), '<=>', ',') + ',' +
-        "Sales Invoice Header"."No." + ',' +
-        VarText1 + '.' + VarText2 + '.20' + VarText3 + ',' +
-        DELCHR(FORMAT(SalesInvoiceLine."Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
-        DELCHR(FORMAT(SalesInvoiceLine."Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
-        Customer."Supplier Code" + ',' + SalesInvoiceLine."No." + ',' +
-        DELCHR(FORMAT(CGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
-        DELCHR(FORMAT(SGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
-        DELCHR(FORMAT(IGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
-        '0.00' + ',' +
-        DELCHR(FORMAT(CGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
-        DELCHR(FORMAT(SGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
-        DELCHR(FORMAT(IGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
-        '0.00' + ',' +
-        '0.00' + ',' +
-        DELCHR(FORMAT(TextTotalAmount, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
-        SalesInvoiceLine."HSN/SAC Code";
-        RecRef.GetTable("Sales Invoice Header");
+        Vendor.Get("Purch. Cr. Memo Hdr."."Buy-from Vendor No.");
+        PurchCrMemoLine.SetRange("Document No.", "Purch. Cr. Memo Hdr."."No.");
+        PurchCrMemoLine.SetRange(Type, PurchCrMemoLine.Type::Item);
+        PurchCrMemoLine.FindFirst();
+        VarText1 := COPYSTR(FORMAT("Purch. Cr. Memo Hdr."."Posting Date"), 1, 2);
+        VarText2 := COPYSTR(FORMAT("Purch. Cr. Memo Hdr."."Posting Date"), 4, 2);
+        VarText3 := COPYSTR(FORMAT("Purch. Cr. Memo Hdr."."Posting Date"), 7, 2);
+        /* 
+                DELCHR(FORMAT(PurchCrMemoLine.Quantity), '<=>', ',') + ',' +
+                "Purch. Cr. Memo Hdr."."No." + ',' +
+                VarText1 + '.' + VarText2 + '.20' + VarText3 + ',' +
+                DELCHR(FORMAT(PurchCrMemoLine."Unit Cost", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+                DELCHR(FORMAT(PurchCrMemoLine."Unit Cost", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+                Vendor."Supplier Code" + ',' + PurchCrMemoLine."No." + ',' +
+                DELCHR(FORMAT(CGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+                DELCHR(FORMAT(SGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+                DELCHR(FORMAT(IGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+                '0.00' + ',' +
+                DELCHR(FORMAT(CGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+                DELCHR(FORMAT(SGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+                DELCHR(FORMAT(IGSTPer, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+                '0.00' + ',' +
+                '0.00' + ',' +
+                DELCHR(FORMAT(TextTotalAmount, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
+                PurchCrMemoLine."HSN/SAC Code";
+         */
+        RecRef.GetTable("Purch. Cr. Memo Hdr.");
         QRGenerator.GenerateQRCodeImage(QRCodeInput, TempBlob);
-        TempBlob.ToRecordRef(RecRef, "Sales Invoice Header".FieldNo("QR Code"));
-        RecRef.SetTable("Sales Invoice Header");
+        //TempBlob.ToRecordRef(RecRef, "Purch. Cr. Memo Hdr.".FieldNo("QR Code"));
+        RecRef.SetTable("Purch. Cr. Memo Hdr.");
     end;
 
 
     var
+        DtldVendLedgerEntry: Record "Detailed Vendor Ledg. Entry";
+        VendorLedgerEntry: Record "Vendor Ledger Entry";
+        PurchInvHeader: Record "Purch. Inv. Header";
         CompanyInfo: Record "Company Information";
         CountryRegion: Record "Country/Region";
-        Customers: Record Customer;
+        VendorVar: Record Vendor;
         DetailedGSTLedgerEntry: Record "Detailed GST Ledger Entry";
         HSNTable: Record "HSN/SAC";
         location: Record Location;
@@ -456,7 +456,6 @@ report 50100 "Tax Invoice Report"
         TCSEntry: Record "TCS Entry";
         Cheque: Report "Posted Voucher";
         QRCodePrint: Boolean;
-        SrNo: Integer;
         CompanyPAN: Code[20];
         SupplierCode: Code[20];
         CessAmt: Decimal;
@@ -507,6 +506,5 @@ report 50100 "Tax Invoice Report"
         CGSTLbl: Label 'CGST';
         IGSTLbl: Label 'IGST';
         SGSTLbl: Label 'SGST';
-        SpecificationofServices: Text[1024];
 }
 

@@ -91,6 +91,14 @@ tableextension 50117 SalesInvoiceLine extends "Sales Invoice Line"
             CalcFormula = lookup("Sales Invoice Header"."IRN Hash" where("No." = field("Document No.")));
         }
 
+        field(50111; "External Doc. No."; Code[35])
+        {
+            Caption = 'External Document No.';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Sales Invoice Header"."External Document No." where("No." = field("Document No.")));
+        }
+
+
 
 
 

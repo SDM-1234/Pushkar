@@ -154,6 +154,7 @@ report 50100 "Tax Invoice Report"
                 begin
                     SetFilter(Quantity, '<>%1', 0);
                     Clear(SrNo);
+                    Clear(TextTotalAmount);
                 end;
 
                 trigger OnAfterGetRecord() // sales invoice line
@@ -170,6 +171,7 @@ report 50100 "Tax Invoice Report"
                         Commodity := HSNTable.Description;
                     DetailedGSTLedgerEntry.Reset();
                     DetailedGSTLedgerEntry.SetRange("Document No.", "Sales Invoice Line"."Document No.");
+                    DetailedGSTLedgerEntry.SetRange("Document Line No.", "Sales Invoice Line"."Line No.");
                     DetailedGSTLedgerEntry.SetRange("Entry Type", DetailedGSTLedgerEntry."Entry Type"::"Initial Entry");
                     if DetailedGSTLedgerEntry.FindSet() then
                         repeat
@@ -211,7 +213,7 @@ report 50100 "Tax Invoice Report"
                                     CessPer := DetailedGSTLedgerEntry."GST %";
                                 end;
                         until DetailedGSTLedgerEntry.Next() = 0;
-                    TextTotalAmount := "Line Amount" + SGSTAmt + CGSTAmt + IGSTAmt + CessAmt + TCSAmount;
+                    TextTotalAmount += "Line Amount" + SGSTAmt + CGSTAmt + IGSTAmt + CessAmt + TCSAmount;
 
                     Cheque.InitTextVariable();
                     Cheque.FormatNoText(AmountToText, TextTotalAmount, "Sales Invoice Header"."Currency Code");

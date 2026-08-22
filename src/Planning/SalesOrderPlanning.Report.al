@@ -77,13 +77,13 @@ report 50111 "Sales Order Planning"
                         ToolTip = 'Select the date for which you want to view the sales order planning.';
                         ApplicationArea = All;
                     }
-                    field(ItemNoFilter_; ItemNoFilter)
-                    {
-                        Caption = 'Item No. Filter';
-                        ToolTip = 'Select the item for which you want to view the sales order planning.';
-                        ApplicationArea = All;
-                        TableRelation = Item;
-                    }
+                    // field(ItemNoFilter_; ItemNoFilter)
+                    // {
+                    //     Caption = 'Item No. Filter';
+                    //     ToolTip = 'Select the item for which you want to view the sales order planning.';
+                    //     ApplicationArea = All;
+                    //     TableRelation = Item;
+                    // }
                     field(LocationFilter_; LocationFilter)
                     {
                         Caption = 'Location Filter';
@@ -138,10 +138,10 @@ report 50111 "Sales Order Planning"
             Item.FindFirst();
 
             if item."Assembly BOM" then
-                DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory"
+                DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory" + item."Minimum Order Quantity"
                     - (item."Qty. on Assembly Order" - item."Res. Qty. on Assembly Order")
             else
-                DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory"
+                DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory" + item."Minimum Order Quantity"
                     - (item."Qty. on Purch. Order" - item."Reserved Qty. on Purch. Orders");
             SOPlanningProcessing.Init();
             SOPlanningProcessing."Item No" := ItemNo;

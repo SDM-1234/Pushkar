@@ -6,7 +6,7 @@ using Microsoft.Sales.Receivables;
 page 50104 CustomerApplicationPosting
 {
     ApplicationArea = All;
-    Caption = 'CustomerApplicationPosting';
+    Caption = 'Customer Application Posting';
     PageType = List;
     SourceTable = DtldCustomerLedgerEntry;
     UsageCategory = Tasks;
@@ -121,149 +121,68 @@ page 50104 CustomerApplicationPosting
 
                 trigger OnAction()
                 var
-                    ApplyingCustLedgerEntry: Record "Cust. Ledger Entry";
                     DtldCustLedENtry2: Record DtldCustomerLedgerEntry;//Application
                     DtldCustLedENtry3: Record DtldCustomerLedgerEntry;//Invoice
                     DtldCustLedENtry: Record DtldCustomerLedgerEntry;
-                    NewApplyUnapplyParameters: Record "Apply Unapply Parameters";
-                    RecVLE: Record "Cust. Ledger Entry" temporary;
-
-                    CustomerLedgerEntry: Record "Cust. Ledger Entry";
-                    SingleInstanceCU: Codeunit SingleInstanceCU;
-                    CustEntryApplyPostedEntries: Codeunit "CustEntry-Apply Posted Entries";
+                    ApplicationPostingMgt: Codeunit ApplicationPostingMgt;
                     ApplicationPostingDate: Date;
-                    AppliedAmount: Decimal;
-                    ErrorText: Text[250];
-
+                    ProgressWindow: Dialog;
+                    TotalRecords: Integer;
+                    CurrentRecord: Integer;
+                    ProgressPercent: Integer;
+                    Text0001Tok: Label 'Posting Detailed Application...\\Processing Entry: #1###### of #2######)';
                 begin
+
+
                     DtldCustLedEntry.Reset();
                     DtldCustLedEntry.SetRange(Closed, false);
-                    DtldCustLedEntry.Setrange("Document Type", DtldCustLedEntry."Document Type"::Payment);
+                    DtldCustLedEntry.SetFilter("Document Type", '%1|%2', DtldCustLedEntry."Document Type"::Payment, DtldCustLedEntry."Document Type"::" ");
+
+                    TotalRecords := DtldCustLedEntry.Count();
+                    if TotalRecords = 0 then
+                        exit;
+                    ProgressWindow.Open(Text0001Tok);
                     if DtldCustLedEntry.FindSet() then
                         repeat
-
                             DtldCustLedEntry2.Reset();
                             DtldCustLedEntry2.SetRange(Closed, false);
                             DtldCustLedEntry2.SetRange("Applied Cust. Ledger Entry No.", DtldCustLedEntry."Customer Ledger Entry No.");
                             if DtldCustLedEntry2.FindSet() then
                                 repeat
-
                                     ApplicationPostingDate := DtldCustLedEntry2."Posting Date";
-
                                     DtldCustLedEntry3.Reset();
                                     DtldCustLedEntry3.SetRange(Closed, false);
                                     DtldCustLedEntry3.SetRange("Customer Ledger Entry No.", DtldCustLedENtry2."Customer Ledger Entry No.");
-                                    DtldCustLedEntry3.SetFilter("Document Type", '%1|%2', DtldCustLedEntry3."Document Type"::Invoice, DtldCustLedEntry3."Document Type"::"Credit Memo");
-                                    //DtldCustLedEntry3.Setrange("Document Type", DtldCustLedENtry3."Document Type"::Invoice, DtldCustLedENtry3."Document Type"::"Credit Memo");
+                                    DtldCustLedEntry3.Setrange("Document Type", DtldCustLedENtry3."Document Type"::Invoice);//, DtldCustLedENtry3."Document Type"::"Credit Memo");
                                     DtldCustLedEntry3.SetRange("Entry Type", 'Initial Entry');
                                     if DtldCustLedEntry3.findfirst() then
                                         if DtldCustLedENtry3."Customer Ledger Entry No." <> DtldCustLedENtry2."Applied Cust. Ledger Entry No." then begin
 
-                                            Clear(ErrorText);
+                                            CurrentRecord += 1;
 
-                                            CustomerLedgerEntry := GetCustomerLedgerEntry(DtldCustLedENtry3);
-                                            ApplyingCustLedgerEntry := GetApplyingCustomerLedgerEntry(DtldCustLedEntry);
+                                            if CurrentRecord mod 10 = 0 then begin
+                                                // 2. Update Window values
+                                                // Calculate percentage for progress bar (#3)
+                                                ProgressPercent := Round((CurrentRecord / TotalRecords) * 10000, 1, '>');
 
-                                            //RecVLE.Copy(CustomerLedgerEntry);
+                                                ProgressWindow.Update(1, CurrentRecord);
+                                                ProgressWindow.Update(2, TotalRecords);
+                                                ProgressWindow.Update(3, ProgressPercent);
+                                            end;
+                                            ApplicationPostingMgt.PostApplication(DtldCustLedENtry3,DtldCustLedEntry,ApplicationPostingDate);
 
-                                            SetApplyCustomerLedgerEntries(CustomerLedgerEntry);
-
-                                            SetSingleInstanceValues(ApplyingCustLedgerEntry);
-
-                                            CustEntryApplyPostedEntries.ApplyCustEntryFormEntry(ApplyingCustLedgerEntry);
-
-
-                                            if not applicationPosting(NewApplyUnapplyParameters, ApplyingCustLedgerEntry, ApplicationPostingDate) then begin
-
-                                                SingleInstanceCU.SetIsHandled(false);
-
-                                                ErrorText := CopyStr(GetLastErrorText(), 1, 250);
-                                                UpdateDetailedApplication(DtldCustLedEntry3, true, ErrorText, false);
-                                            end else
-                                                UpdateDetailedApplication(DtldCustLedEntry3, False, ErrorText, True);
+                                            ApplicationPostingMgt.Run() // 
                                         end;
                                 until DtldCustLedEntry2.Next() = 0;
 
                         until DtldCustLedENtry.Next() = 0;
 
+                    // 3. Close Progress Window
+                    ProgressWindow.Close();
+
+                    Message('Detailed application posting completed successfully.');
                 end;
             }
         }
     }
-
-
-    local procedure SetSingleInstanceValues(ApplyingCustLedgerEntry: Record "Cust. Ledger Entry")
-    var
-        SingleInstanceCU: Codeunit SingleInstanceCU;
-    begin
-        SingleInstanceCU.SetApplicationCustLedgerEntryParameters(ApplyingCustLedgerEntry);
-        SingleInstanceCU.SetIsHandled(true);
-    end;
-
-    local procedure SetApplyCustomerLedgerEntries(CustLedgEntry: Record "Cust. Ledger Entry")
-    var
-        ApplyCustEntries: Page "Apply Customer Entries";
-    begin
-
-        ApplyCustEntries.SetSelectionFilter(CustLedgEntry);
-        ApplyCustEntries.SetRecord(CustLedgEntry);
-
-        ApplyCustEntries.SetCustLedgEntry(CustLedgEntry);
-        ApplyCustEntries.SetApplyingCustLedgEntry();
-
-
-        ApplyCustEntries.SetAppliesToID(UserID());
-        ApplyCustEntries.SetCustApplId(false);
-
-    end;
-
-
-    local procedure UpdateDetailedApplication(DtldCustLedEntry: Record DtldCustomerLedgerEntry; Error: Boolean; ErrorText: Text[250]; Closed: Boolean)
-    begin
-        DtldCustLedEntry.Error := Error;
-        DtldCustLedEntry."Error Text" := ErrorText;
-        DtldCustLedEntry.Closed := Closed;
-        DtldCustLedEntry.Modify();
-    end;
-
-    [TryFunction]
-    local procedure ApplicationPosting(var NewApplyUnapplyParameters: Record "Apply Unapply Parameters"; ApplyingCustLedgerEntry: Record "Cust. Ledger Entry"; ApplicationPostingDate: Date)
-    var
-        ApplyUnapplyParameters: Record "Apply Unapply Parameters";
-        CustEntryApplyPostedEntries: Codeunit "CustEntry-Apply Posted Entries";
-        PostApplicationPage: Page "Post Application";
-    begin
-        ApplyUnapplyParameters.CopyFromCustLedgEntry(ApplyingCustLedgerEntry);
-        ApplyUnapplyParameters."Posting Date" := ApplicationPostingDate;
-        PostApplicationPage.SetParameters(ApplyUnapplyParameters);
-        PostApplicationPage.GetParameters(NewApplyUnapplyParameters);
-        CustEntryApplyPostedEntries.Apply(ApplyingCustLedgerEntry, NewApplyUnapplyParameters);
-    end;
-
-    local procedure GetApplyingCustomerLedgerEntry(DtldCustLedENtry: Record DtldCustomerLedgerEntry): Record "Cust. Ledger Entry"
-    var
-        ApplyingCustLedgerEntry: Record "Cust. Ledger Entry";
-    begin
-
-        ApplyingCustLedgerEntry.Reset();
-        ApplyingCustLedgerEntry.SetRange("Document No.", DtldCustLedEntry."Document No.");
-        ApplyingCustLedgerEntry.SetRange("Document Type", DtldCustLedEntry."Document Type");
-        ApplyingCustLedgerEntry.CalcFields("Remaining Amount", Amount);
-        if ApplyingCustLedgerEntry.findfirst() then
-            exit(ApplyingCustLedgerEntry);
-
-    end;
-
-
-    local procedure GetCustomerLedgerEntry(DtldCustLedENtry3: Record DtldCustomerLedgerEntry): Record "Cust. Ledger Entry"
-    var
-        CustomerLedgerEntry: Record "Cust. Ledger Entry";
-    begin
-        CustomerLedgerEntry.Reset();
-        CustomerLedgerEntry.SetRange("Document No.", DtldCustLedENtry3."Document No.");
-        CustomerLedgerEntry.SetRange("Document Type", DtldCustLedENtry3."Document Type");
-        CustomerLedgerEntry.CalcFields("Remaining Amount", Amount);
-        if CustomerLedgerEntry.findfirst() then
-            exit(CustomerLedgerEntry);
-    end;
 }

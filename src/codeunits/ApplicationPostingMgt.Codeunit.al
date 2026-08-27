@@ -103,6 +103,7 @@ codeunit 50108 ApplicationPostingMgt
     begin
 
         ApplyingCustLedgerEntry.Reset();
+        ApplyingCustLedgerEntry.SetRange("Customer No.", DtldCustLedEntry."Customer No.");
         ApplyingCustLedgerEntry.SetRange("Document No.", DtldCustLedEntry."Document No.");
         ApplyingCustLedgerEntry.SetRange("Document Type", DtldCustLedEntry."Document Type");
         ApplyingCustLedgerEntry.CalcFields("Remaining Amount", Amount);
@@ -117,6 +118,7 @@ codeunit 50108 ApplicationPostingMgt
         CustomerLedgerEntry: Record "Cust. Ledger Entry";
     begin
         CustomerLedgerEntry.Reset();
+        CustomerLedgerEntry.SetRange("Customer No.", DtldCustLedENtry3."Customer No.");
         CustomerLedgerEntry.SetRange("Document No.", DtldCustLedENtry3."Document No.");
         CustomerLedgerEntry.SetRange("Document Type", DtldCustLedENtry3."Document Type");
         CustomerLedgerEntry.CalcFields("Remaining Amount", Amount);

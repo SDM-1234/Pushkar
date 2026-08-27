@@ -123,11 +123,14 @@ page 50113 VendorAplicationPosting
                             DtldVendLedEntry2.Reset();
                             DtldVendLedEntry2.SetRange(Closed, false);
                             DtldVendLedEntry2.SetRange("Applied Vend. Ledger Entry No.", DtldVendLedEntry."Vendor Ledger Entry No.");
+                            DtldVendLedEntry2.SetRange("Vendor No.", DtldVendLedEntry."Vendor No.");
+
                             if DtldVendLedEntry2.FindSet() then
                                 repeat
                                     ApplicationPostingDate := DtldVendLedEntry2."Posting Date";
                                     DtldVendLedEntry3.Reset();
                                     DtldVendLedEntry3.SetRange(Closed, false);
+                                    DtldVendLedEntry3.SetRange("Vendor No.", DtldVendLedEntry2."Vendor No.");
                                     DtldVendLedEntry3.SetRange("Vendor Ledger Entry No.", DtldVendLedEntry2."Vendor Ledger Entry No.");
                                     DtldVendLedEntry3.Setrange("Document Type", DtldVendLedEntry3."Document Type"::Invoice);//, DtldVendLedEntry3."Document Type"::"Credit Memo");
                                     DtldVendLedEntry3.SetRange("Entry Type", 'Initial Entry');

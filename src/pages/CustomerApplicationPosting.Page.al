@@ -130,7 +130,7 @@ page 50104 CustomerApplicationPosting
                     TotalRecords: Integer;
                     CurrentRecord: Integer;
                     ProgressPercent: Integer;
-                    Text0001Tok: Label 'Posting Detailed Application...\\Processing Entry: #1###### of #2######)';
+                    Text0001Tok: Label 'Posting Detailed Application...\\Processing Entry: #1###### of #2###### of #3######)';
                 begin
 
 
@@ -146,13 +146,16 @@ page 50104 CustomerApplicationPosting
                         repeat
                             DtldCustLedEntry2.Reset();
                             DtldCustLedEntry2.SetRange(Closed, false);
+                            DtldCustLedEntry2.SetRange("Customer No.", DtldCustLedEntry."Customer No.");
                             DtldCustLedEntry2.SetRange("Applied Cust. Ledger Entry No.", DtldCustLedEntry."Customer Ledger Entry No.");
                             if DtldCustLedEntry2.FindSet() then
                                 repeat
                                     ApplicationPostingDate := DtldCustLedEntry2."Posting Date";
                                     DtldCustLedEntry3.Reset();
                                     DtldCustLedEntry3.SetRange(Closed, false);
+                                    DtldCustLedEntry3.SetRange("Customer No.", DtldCustLedENtry2."Customer No.");
                                     DtldCustLedEntry3.SetRange("Customer Ledger Entry No.", DtldCustLedENtry2."Customer Ledger Entry No.");
+                                    //DtldCustLedEntry3.SetFilter("Document Type",'%1|%2', DtldCustLedENtry3."Document Type"::Invoice,DtldCustLedENtry3."Document Type"::"Credit Memo");//, );
                                     DtldCustLedEntry3.Setrange("Document Type", DtldCustLedENtry3."Document Type"::Invoice);//, DtldCustLedENtry3."Document Type"::"Credit Memo");
                                     DtldCustLedEntry3.SetRange("Entry Type", 'Initial Entry');
                                     if DtldCustLedEntry3.findfirst() then

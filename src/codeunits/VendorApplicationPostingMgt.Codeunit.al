@@ -103,6 +103,7 @@ codeunit 50116 VendorApplicationPostingMgt
     begin
 
         ApplyingVendLedgerEntry.Reset();
+        ApplyingVendLedgerEntry.SetRange("Vendor No.", DtldVendLedEntry."Vendor No.");
         ApplyingVendLedgerEntry.SetRange("Document No.", DtldVendLedEntry."Document No.");
         ApplyingVendLedgerEntry.SetRange("Document Type", DtldVendLedEntry."Document Type");
         ApplyingVendLedgerEntry.CalcFields("Remaining Amount", Amount);
@@ -117,6 +118,7 @@ codeunit 50116 VendorApplicationPostingMgt
         VendorLedgerEntry: Record "Vendor Ledger Entry";
     begin
         VendorLedgerEntry.Reset();
+        VendorLedgerEntry.SetRange("Vendor No.", DtldVendLedENtry3."Vendor No.");
         VendorLedgerEntry.SetRange("Document No.", DtldVendLedENtry3."Document No.");
         VendorLedgerEntry.SetRange("Document Type", DtldVendLedENtry3."Document Type");
         VendorLedgerEntry.CalcFields("Remaining Amount", Amount);

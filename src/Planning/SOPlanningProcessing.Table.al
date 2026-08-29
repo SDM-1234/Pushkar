@@ -38,6 +38,11 @@ table 50102 "SO Planning Processing"
             DataClassification = ToBeClassified;
             Caption = 'Assembly Order Level';
         }
+        field(100; "Process Log Entry No"; Integer)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Process Log Entry No';
+        }
 
     }
 

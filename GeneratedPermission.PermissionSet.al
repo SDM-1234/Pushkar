@@ -61,5 +61,7 @@ permissionset 50100 GeneratedPermission
         codeunit VendorApplicationPostingMgt = X,
         codeunit VendorApprovalMgt = X,
         codeunit VendorWFResponseHandling = X,
-        query "Item By Sales Outs Qty" = X;
+        query "Item By Sales Outs Qty" = X,
+        tabledata "Planning Processing Log" = RIMD,
+        table "Planning Processing Log" = X;
 }

@@ -1,4 +1,4 @@
-codeunit 50117 "Sales Order Planning Handler"
+codeunit 50118 "Sales Order Planning Handler"
 {
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Req. Wksh.-Make Order", OnBeforeCheckRequsitionLineQuantity, '', false, false)]
     local procedure "Req. Wksh.-Make Order_OnBeforeCheckRequsitionLineQuantity"(var RequisitionLine: Record "Requisition Line"; var PurchOrderLine: Record "Purchase Line"; var SalesOrderLine: Record "Sales Line"; var IsHandled: Boolean)

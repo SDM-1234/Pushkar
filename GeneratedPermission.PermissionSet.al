@@ -50,5 +50,11 @@ permissionset 50100 GeneratedPermission
         report "Purchase Return Billing" = X,
         codeunit PurchaseHandler = X,
         page CustomerApplicationPosting = X,
-        page VendorAplicationPosting = X;
+        page VendorAplicationPosting = X,
+        tabledata "Planning Processing Log" = RIMD,
+        tabledata "SO Planning Processing" = RIMD,
+        table "Planning Processing Log" = X,
+        table "SO Planning Processing" = X,
+        page "Planning Processing Log" = X,
+        query "Item By Sales Outs Qty" = X;
 }

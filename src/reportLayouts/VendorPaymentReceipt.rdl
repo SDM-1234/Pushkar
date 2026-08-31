@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1815.334</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-04-07T07:35:55.6839807Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-07-18T06:35:19.2666179Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -2216,7 +2216,6 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <rd:Selected>true</rd:Selected>
                                           <Textbox Name="TDSAmount_VLE11">
                                             <rd:DefaultName>TDSAmount_VLE11</rd:DefaultName>
                                             <CanGrow>true</CanGrow>
@@ -2305,7 +2304,7 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                                 </Filter>
                               </Filters>
                               <Height>2.34285cm</Height>
-                              <Width>7.08165in</Width>
+                              <Width>7.08166in</Width>
                               <ZIndex>2</ZIndex>
                               <Visibility>
                                 <Hidden>=IIF(CountRows()&gt;0,False,True)</Hidden>
@@ -3290,7 +3289,7 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                               </Filters>
                               <Top>2.41284cm</Top>
                               <Height>1.58616cm</Height>
-                              <Width>7.08758in</Width>
+                              <Width>7.08761in</Width>
                               <ZIndex>3</ZIndex>
                               <Visibility>
                                 <Hidden>=IIF(CountRows()&gt;0,False,True)</Hidden>
@@ -5152,17 +5151,21 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value />
-                      <Style />
+                      <Value EvaluationMode="Constant">FROM :</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
               <Top>1.14166cm</Top>
-              <Left>10.60511cm</Left>
+              <Left>12.0074cm</Left>
               <Height>10pt</Height>
-              <Width>7.40486cm</Width>
+              <Width>6.00257cm</Width>
               <ZIndex>32</ZIndex>
               <Style>
                 <Border>
@@ -5322,6 +5325,35 @@ First(Fields!PymtDiscTitle.Value)+ Chr(177)+
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Top</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="VendAddr12">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value EvaluationMode="Constant">TO :</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.29533cm</Top>
+              <Left>0.07882cm</Left>
+              <Height>11pt</Height>
+              <Width>10.96251cm</Width>
+              <ZIndex>38</ZIndex>
+              <Style>
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </Textbox>

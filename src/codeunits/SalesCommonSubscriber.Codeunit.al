@@ -5,13 +5,10 @@ using Microsoft.Bank.Ledger;
 using Microsoft.Finance.Dimension;
 using Microsoft.Finance.GeneralLedger.Account;
 using Microsoft.Finance.GeneralLedger.Setup;
-using Microsoft.Finance.GeneralLedger.Posting;
 using Microsoft.Inventory.Item;
 using Microsoft.Inventory.Journal;
 using Microsoft.Inventory.Ledger;
-using Microsoft.Sales.Setup;
 using Microsoft.Inventory.Posting;
-using Microsoft.Inventory.Transfer;
 using Microsoft.Purchases.Payables;
 using Microsoft.Purchases.Vendor;
 using Microsoft.Sales.Customer;
@@ -21,8 +18,6 @@ using Microsoft.Sales.Posting;
 using Microsoft.Sales.Receivables;
 using Microsoft.Sales.Setup;
 using Microsoft.Warehouse.GateEntry;
-using Microsoft.Inventory.Posting;
-using Microsoft.Inventory.Journal;
 
 codeunit 50100 SalesCommonSubscriber
 {
@@ -266,22 +261,6 @@ codeunit 50100 SalesCommonSubscriber
 
     //
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"VendEntry-Apply Posted Entries", OnApplyVendEntryFormEntryOnAfterVendLedgEntrySetFilters, '', false, false)]
-    local procedure OnApplyVendEntryFormEntryOnAfterVendLedgEntrySetFilters(var IsHandled: Boolean);
-    var
-        SingleInstanceCU: Codeunit SingleInstanceCU;
-    begin
-        IsHandled := SingleInstanceCU.GetIsHandled();
-    end;
 
 
-
-
-    [EventSubscriber(ObjectType::Page, Page::"Apply Vendor Entries", OnBeforeSetApplyingVendLedgEntry, '', false, false)]
-    local procedure OnBeforeSetApplyingVendLedgEntry(var ApplyingVendLedgEntry: Record "Vendor Ledger Entry"; var CalcType: Enum "Vendor Apply Calculation Type");
-    var
-        SingleInstanceCU: Codeunit SingleInstanceCU;
-    begin
-        ApplyingVendLedgEntry := SingleInstanceCU.GetApplicationVendLedgerEntryParameters();
-    end;
 }

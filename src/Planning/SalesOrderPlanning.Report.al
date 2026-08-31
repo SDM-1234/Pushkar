@@ -6,62 +6,55 @@ report 50112 "Sales Order Planning"
 
     dataset
     {
-        dataitem(SalesLine; "Sales Line")
+        dataitem(Integer; Integer)
         {
-            DataItemTableView = where("Document Type" = filter(Order), "Outstanding Quantity" = filter(> 0),
-                Type = filter(Item));
-            RequestFilterFields = "Document No.", Type, "No.";
-            CalcFields = "Reserved Quantity";
+            DataItemTableView = sorting(Number);
             trigger OnPreDataItem()
             begin
-                SetFilter("Shipment Date", '<=%1', AsofDate);
+                ItemBySalesOutsQty.SetFilter(Shipment_Date, '<=%1', AsofDate);
+                if this.ItemNoFilter <> '' then
+                    ItemBySalesOutsQty.SetFilter(Item_No, '%1', ItemNoFilter);
+                if this.LocationFilter <> '' then
+                    ItemBySalesOutsQty.SetFilter(Location_Code, '%1', LocationFilter);
+                ItemBySalesOutsQty.Open();
             end;
 
             trigger OnAfterGetRecord()
             var
-                SalesSetup: Record "Sales & Receivables Setup";
                 Item: Record Item;
-                SalesHeader: Record "Sales Header";
-                AsmLine: Record "Assembly Line";
-                UnitOfMeasureMgt: Codeunit "Unit of Measure Management";
                 DemandQty: Decimal;
             begin
-                SalesSetup.Get();
-                SalesHeader.Get("Document Type", "Document No.");
-                // if not (SalesHeader.Status = SalesHeader.Status::Released) then
-                //     CurrReport.Skip();
-
-                if "Outstanding Quantity" = "Reserved Quantity" then
-                    CurrReport.Skip();
-
-                item.SetAutoCalcFields("Assembly BOM", Inventory, "Reserved Qty. on Inventory", "Qty. on Assembly Order", "Qty. on Purch. Order");
-                Item.SetRange("No.", "No.");
-                if "Location Code" <> '' then
-                    Item.SetRange("Location Filter", "Location Code");
-                Item.FindFirst();
-                if item."Assembly BOM" then
-                    DemandQty := "Outstanding Qty. (Base)" - Item.Inventory + item."Reserved Qty. on Inventory"
-                        - item."Qty. on Assembly Order"
-                else
-                    DemandQty := "Outstanding Qty. (Base)" - Item.Inventory + item."Reserved Qty. on Inventory"
-                        - item."Qty. on Purch. Order";
-
-                if demandQty <= 0 then
-                    CurrReport.Skip();
-                SalesLine.AutoReserve();
+                if not ItemBySalesOutsQty.Read() then
+                    CurrReport.Break();
+                item.get(ItemBySalesOutsQty.Item_No);
 
                 case Item."Replenishment System" of
                     Item."Replenishment System"::Purchase:
-                        CreateReqLine(0, SalesLine."No.", SalesLine."Location Code", SalesLine."Unit of Measure Code", DemandQty, AsmLine);
+                        FillProcessingTable(ItemBySalesOutsQty.Item_No, ItemBySalesOutsQty.Location_Code, ItemBySalesOutsQty.Unit_of_Measure_Code, ItemBySalesOutsQty.Outstanding_Quantity, 0, DemandQty);
                     Item."Replenishment System"::Assembly:
                         begin
-                            SalesLine.Validate("Qty. to Assemble to Order", UnitOfMeasureMgt.CalcQtyFromBase(DemandQty, SalesLine."Qty. per Unit of Measure"));
-                            SalesLine.Modify(true);
-                            ExplodeAssOrder();
-                            CreateReqFromAssemblyOrders();
+                            FillProcessingTable(ItemBySalesOutsQty.Item_No, ItemBySalesOutsQty.Location_Code, ItemBySalesOutsQty.Unit_of_Measure_Code, ItemBySalesOutsQty.Outstanding_Quantity, 0, DemandQty);
+                            ExplodeAssBom(ItemBySalesOutsQty.Item_No, ItemBySalesOutsQty.Location_Code, DemandQty, 1);
                         end;
                 end;
+            end;
 
+            trigger OnPostDataItem()
+            var
+                AsmLine: Record "Assembly Line";
+            begin
+                // Process the temporary table to create planned orders
+                SOPlanningProcessing.SetCurrentKey("Assembly Order Level");
+                SOPlanningProcessing.SetFilter("Demand Quantity", '>0');
+                if SOPlanningProcessing.FindSet() then
+                    repeat
+                        case SOPlanningProcessing."Replenishment System" of
+                            SOPlanningProcessing."Replenishment System"::Purchase:
+                                CreateReqLine(0, SOPlanningProcessing."Item No", SOPlanningProcessing."Location Code", SOPlanningProcessing."Unit of Measure Code", SOPlanningProcessing."Demand Quantity", AsmLine);
+                            SOPlanningProcessing."Replenishment System"::Assembly:
+                                CreateAssOrder(SOPlanningProcessing."Item No", SOPlanningProcessing."Location Code", SOPlanningProcessing."Unit of Measure Code", SOPlanningProcessing."Demand Quantity", SOPlanningProcessing."Process Log Entry No");
+                        end;
+                    until SOPlanningProcessing.Next() = 0;
             end;
         }
     }
@@ -82,64 +75,108 @@ report 50112 "Sales Order Planning"
                         ToolTip = 'Select the date for which you want to view the sales order planning.';
                         ApplicationArea = All;
                     }
+                    // field(ItemNoFilter_; ItemNoFilter)
+                    // {
+                    //     Caption = 'Item No. Filter';
+                    //     ToolTip = 'Select the item for which you want to view the sales order planning.';
+                    //     ApplicationArea = All;
+                    //     TableRelation = Item;
+                    // }
+                    field(LocationFilter_; LocationFilter)
+                    {
+                        Caption = 'Location Filter';
+                        ToolTip = 'Select the location for which you want to view the sales order planning.';
+                        ApplicationArea = All;
+                        TableRelation = Location;
+                    }
                 }
             }
         }
     }
 
     var
+        SOPlanningProcessing: Record "SO Planning Processing";
+        ItemBySalesOutsQty: Query "Item By Sales Outs Qty";
         AsofDate: Date;
+        ItemNoFilter, LocationFilter : Code[20];
 
-    local procedure ExplodeAssOrder()
+    local procedure ExplodeAssBom(ItemNo: Code[20]; locationCode: Code[10]; Qty: Decimal; Level: Integer)
     var
-        Item: Record Item;
-        ATOLink: Record "Assemble-to-Order Link";
-        AsmLine: Record "Assembly Line";
-    begin
-        SalesLine.TestField("Qty. to Asm. to Order (Base)");
-        if ATOLink.AsmExistsForSalesLine(SalesLine) then begin
-            AsmLine.SetRange("Document Type", ATOLink."Assembly Document Type");
-            AsmLine.SetRange("Document No.", ATOLink."Assembly Document No.");
-            AsmLine.SetRange(Type, AsmLine.Type::Item);
-            if AsmLine.FindSet(false) then
-                repeat
-                    Item.Get(AsmLine."No.");
-                    item.CalcFields("Assembly BOM");
-                    if Item."Assembly BOM" and (item."Replenishment System" = Item."Replenishment System"::Assembly) then begin
-                        AsmLine.ExplodeAssemblyList();
-                        ExplodeAssOrder();
-                    end;
-                until AsmLine.Next() = 0;
-        end;
-    end;
-
-    local procedure CreateReqFromAssemblyOrders()
-    var
-        Item: Record Item;
-        ATOLink: Record "Assemble-to-Order Link";
-        AsmLine: Record "Assembly Line";
+        BomComponent: Record "BOM Component";
         DemandQty: Decimal;
     begin
-        SalesLine.TestField("Qty. to Asm. to Order (Base)");
-        if ATOLink.AsmExistsForSalesLine(SalesLine) then begin
-            AsmLine.SetRange("Document Type", ATOLink."Assembly Document Type");
-            AsmLine.SetRange("Document No.", ATOLink."Assembly Document No.");
-            AsmLine.SetRange(Type, AsmLine.Type::Item);
-            if AsmLine.FindSet(false) then
-                repeat
-                    item.SetAutoCalcFields("Assembly BOM", Inventory, "Reserved Qty. on Inventory", "Qty. on Assembly Order", "Qty. on Purch. Order");
-                    Item.SetRange("No.", AsmLine."No.");
-                    if AsmLine."Location Code" <> '' then
-                        Item.SetRange("Location Filter", AsmLine."Location Code");
-                    Item.FindFirst();
-                    DemandQty := AsmLine."Remaining Quantity (Base)" - Item.Inventory + item."Reserved Qty. on Inventory"
-                        - item."Qty. on Purch. Order";
-                    if DemandQty <= 0 then
-                        continue;
-                    CreateReqLine(1, AsmLine."No.", AsmLine."Location Code", AsmLine."Unit of Measure Code", DemandQty, AsmLine);
+        if Qty <= 0 then
+            exit;
+        BomComponent.SetAutoCalcFields("Assembly BOM");
+        BomComponent.SetRange("Parent Item No.", ItemNo);
+        BomComponent.SetRange(Type, BomComponent.Type::Item);
+        if BomComponent.FindSet(false) then
+            repeat
+                DemandQty := 0;
+                FillProcessingTable(BomComponent."No.", locationCode, BomComponent."Unit of Measure Code", Qty * BomComponent."Quantity per", Level, DemandQty);
+                if BomComponent."Assembly BOM" then
+                    ExplodeAssBom(BomComponent."No.", locationCode, DemandQty, Level + 1);
+            until BomComponent.Next() = 0;
+    end;
 
-                until AsmLine.Next() = 0;
+    local procedure FillProcessingTable(ItemNo: Code[20]; locationCode: Code[10]; uom: Code[10]; Qty: Decimal; Level: Integer; var ActualQty: Decimal)
+    var
+        item: Record Item;
+        PlanningProcessingLog: Record "Planning Processing Log";
+        DemandQty: Decimal;
+    begin
+        if SOPlanningProcessing.Get(ItemNo, locationCode, uom) then begin
+            SOPlanningProcessing."Demand Quantity" := SOPlanningProcessing."Demand Quantity" + Qty;
+            SOPlanningProcessing.modify();
+        end else begin
+            item.SetAutoCalcFields("Assembly BOM", Inventory, "Reserved Qty. on Inventory", "Qty. on Assembly Order", "Qty. on Purch. Order"
+                    , "Res. Qty. on Assembly Order", "Reserved Qty. on Purch. Orders");
+            Item.SetRange("No.", ItemNo);
+            if locationCode <> '' then
+                Item.SetRange("Location Filter", locationCode);
+            Item.FindFirst();
+
+            if item."Assembly BOM" then
+                DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory" + item."Minimum Order Quantity"
+                    - (item."Qty. on Assembly Order" - item."Res. Qty. on Assembly Order")
+            else
+                DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory" + item."Minimum Order Quantity"
+                    - (item."Qty. on Purch. Order" - item."Reserved Qty. on Purch. Orders");
+
+            PlanningProcessingLog.InitializePlanningProcessingLog(locationCode, item.Description, Qty, Qty, 0D, WorkDate(), Item.Inventory, item."Qty. on Assembly Order", item."Qty. on Purch. Order", '', WorkDate(), '', WorkDate(), DemandQty, '', Item.Inventory, 0);
+            SOPlanningProcessing.Init();
+            SOPlanningProcessing."Item No" := ItemNo;
+            SOPlanningProcessing."Location Code" := locationCode;
+            SOPlanningProcessing."Unit of Measure Code" := uom;
+            SOPlanningProcessing."Demand Quantity" := DemandQty;
+            SOPlanningProcessing."Replenishment System" := item."Replenishment System";
+            SOPlanningProcessing."Assembly Order Level" := Level;
+            SOPlanningProcessing."Process Log Entry No" := PlanningProcessingLog."Entry No.";
+            SOPlanningProcessing.Insert();
         end;
+        ActualQty := SOPlanningProcessing."Demand Quantity";
+
+    end;
+
+    local procedure CreateAssOrder(ItemNo: Code[20]; locationCode: Code[10]; uom: Code[10]; Qty: Decimal; LogEntryNo: Integer)
+    var
+        AssHeader: Record "Assembly Header";
+        PlanningProcessingLog: Record "Planning Processing Log";
+        AssemblyLineMgt: Codeunit "Assembly Line Management";
+    begin
+        AssHeader.Init();
+        AssHeader.Validate("Document Type", AssHeader."Document Type"::Order);
+        AssHeader.Insert(true);
+        AssHeader.Validate("Item No.", ItemNo);
+        AssHeader.Validate("Location Code", locationCode);
+        AssHeader.Validate("Unit of Measure Code", uom);
+        AssHeader.Validate("Quantity (Base)", Qty);
+        AssHeader."Sales Order Planning" := true;
+        AssHeader.Modify(true);
+        AssemblyLineMgt.UpdateAssemblyLines(AssHeader, AssHeader, 0, true, 0, 0);
+        PlanningProcessingLog.Get(LogEntryNo);
+        PlanningProcessingLog."New Assembly Order No. Created" := AssHeader."No.";
+        PlanningProcessingLog.Modify();
     end;
 
     local procedure CreateReqLine(CreateFrom: Option Sales,Assembly; ItemNo: Code[20]; locationCode: Code[10]; uom: Code[10]
@@ -157,16 +194,16 @@ report 50112 "Sales Order Planning"
         Clear(ReqLine);
         ReqLine.Reset();
         ReqLine.SetCurrentKey(Type, "No.");
-        ReqLine.SetRange(Type, SalesLine.Type);
+        ReqLine.SetRange(Type, ReqLine.Type::Item);
         ReqLine.SetRange("No.", ItemNo);
         if CreateFrom = CreateFrom::Assembly then begin
-            ReqLine.validate("Variant Code", AsmLine."Variant Code");
             ReqLine.SetRange("Ref. Order Type", ReqLine."Ref. Order Type"::Assembly);
             ReqLine.SetRange("Ref. Order No.", AsmLine."Document No.");
             ReqLine.SetRange("Ref. Line No.", AsmLine."Line No.");
         end else begin
-            ReqLine.SetRange("Sales Order No.", SalesLine."Document No.");
-            ReqLine.SetRange("Sales Order Line No.", SalesLine."Line No.");
+            ReqLine.SetRange("Location Code", locationCode);
+            ReqLine.SetRange("Unit of Measure Code", uom);
+            ReqLine.SetRange("Quantity (Base)", Qty);
         end;
         if ReqLine.FindFirst() then
             exit;
@@ -177,22 +214,17 @@ report 50112 "Sales Order Planning"
         ReqLine."Worksheet Template Name" := SalesSetup."Req. Worksheet Template Name";
         ReqLine."Journal Batch Name" := SalesSetup."Req. Journal Batch Name";
         ReqLine."Line No." := LineNo;
-        ReqLine.Validate(Type, SalesLine.Type);
+        ReqLine.Validate(Type, ReqLine.Type::Item);
         ReqLine.Validate("No.", ItemNo);
         ReqLine.Validate("Location Code", locationCode);
         ReqLine.Validate("Unit of Measure Code", uom);
-        ReqLine.Validate("Quantity (Base)", Qty);
+        ReqLine.Validate("Quantity (Base)", Round(Qty, 1, '>'));
         if CreateFrom = CreateFrom::Assembly then begin
             ReqLine.Validate("Variant Code", AsmLine."Variant Code");
             ReqLine.Validate("Dimension Set ID", AsmLine."Dimension Set ID");
             ReqLine.Validate("Ref. Order Type", ReqLine."Ref. Order Type"::Assembly);
             ReqLine.Validate("Ref. Order No.", AsmLine."Document No.");
             ReqLine.Validate("Ref. Line No.", AsmLine."Line No.");
-        end else begin
-            ReqLine.Validate("Variant Code", SalesLine."Variant Code");
-            ReqLine.Validate("Dimension Set ID", SalesLine."Dimension Set ID");
-            ReqLine.Validate("Sales Order No.", SalesLine."Document No.");
-            ReqLine.Validate("Sales Order Line No.", SalesLine."Line No.");
         end;
         ReqLine."Sales Order Planning" := true;
         ReqLine.Insert(true);

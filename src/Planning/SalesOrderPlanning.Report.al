@@ -12,9 +12,9 @@ report 50111 "Sales Order Planning"
             trigger OnPreDataItem()
             begin
                 ItemBySalesOutsQty.SetFilter(Shipment_Date, '<=%1', AsofDate);
-                if ItemNoFilter <> '' then
+                if this.ItemNoFilter <> '' then
                     ItemBySalesOutsQty.SetFilter(Item_No, '%1', ItemNoFilter);
-                if LocationFilter <> '' then
+                if this.LocationFilter <> '' then
                     ItemBySalesOutsQty.SetFilter(Location_Code, '%1', LocationFilter);
                 ItemBySalesOutsQty.Open();
             end;
@@ -41,9 +41,7 @@ report 50111 "Sales Order Planning"
 
             trigger OnPostDataItem()
             var
-                Item: Record Item;
                 AsmLine: Record "Assembly Line";
-                DemandQty: Decimal;
             begin
                 // Process the temporary table to create planned orders
                 SOPlanningProcessing.SetCurrentKey("Assembly Order Level");
@@ -54,7 +52,7 @@ report 50111 "Sales Order Planning"
                             SOPlanningProcessing."Replenishment System"::Purchase:
                                 CreateReqLine(0, SOPlanningProcessing."Item No", SOPlanningProcessing."Location Code", SOPlanningProcessing."Unit of Measure Code", SOPlanningProcessing."Demand Quantity", AsmLine);
                             SOPlanningProcessing."Replenishment System"::Assembly:
-                                CreateAssOrder(SOPlanningProcessing."Item No", SOPlanningProcessing."Location Code", SOPlanningProcessing."Unit of Measure Code", SOPlanningProcessing."Demand Quantity");
+                                CreateAssOrder(SOPlanningProcessing."Item No", SOPlanningProcessing."Location Code", SOPlanningProcessing."Unit of Measure Code", SOPlanningProcessing."Demand Quantity", SOPlanningProcessing."Process Log Entry No");
                         end;
                     until SOPlanningProcessing.Next() = 0;
             end;
@@ -124,6 +122,7 @@ report 50111 "Sales Order Planning"
     local procedure FillProcessingTable(ItemNo: Code[20]; locationCode: Code[10]; uom: Code[10]; Qty: Decimal; Level: Integer; var ActualQty: Decimal)
     var
         item: Record Item;
+        PlanningProcessingLog: Record "Planning Processing Log";
         DemandQty: Decimal;
     begin
         if SOPlanningProcessing.Get(ItemNo, locationCode, uom) then begin
@@ -143,6 +142,8 @@ report 50111 "Sales Order Planning"
             else
                 DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory" + item."Minimum Order Quantity"
                     - (item."Qty. on Purch. Order" - item."Reserved Qty. on Purch. Orders");
+
+            PlanningProcessingLog.InitializePlanningProcessingLog(locationCode, item.Description, Qty, Qty, 0D, WorkDate(), Item.Inventory, item."Qty. on Assembly Order", item."Qty. on Purch. Order", '', WorkDate(), '', WorkDate(), DemandQty, '', Item.Inventory, 0);
             SOPlanningProcessing.Init();
             SOPlanningProcessing."Item No" := ItemNo;
             SOPlanningProcessing."Location Code" := locationCode;
@@ -150,14 +151,17 @@ report 50111 "Sales Order Planning"
             SOPlanningProcessing."Demand Quantity" := DemandQty;
             SOPlanningProcessing."Replenishment System" := item."Replenishment System";
             SOPlanningProcessing."Assembly Order Level" := Level;
+            SOPlanningProcessing."Process Log Entry No" := PlanningProcessingLog."Entry No.";
             SOPlanningProcessing.Insert();
         end;
         ActualQty := SOPlanningProcessing."Demand Quantity";
+
     end;
 
-    local procedure CreateAssOrder(ItemNo: Code[20]; locationCode: Code[10]; uom: Code[10]; Qty: Decimal)
+    local procedure CreateAssOrder(ItemNo: Code[20]; locationCode: Code[10]; uom: Code[10]; Qty: Decimal; LogEntryNo: Integer)
     var
         AssHeader: Record "Assembly Header";
+        PlanningProcessingLog: Record "Planning Processing Log";
         AssemblyLineMgt: Codeunit "Assembly Line Management";
     begin
         AssHeader.Init();
@@ -170,6 +174,9 @@ report 50111 "Sales Order Planning"
         AssHeader."Sales Order Planning" := true;
         AssHeader.Modify(true);
         AssemblyLineMgt.UpdateAssemblyLines(AssHeader, AssHeader, 0, true, 0, 0);
+        PlanningProcessingLog.Get(LogEntryNo);
+        PlanningProcessingLog."New Assembly Order No. Created" := AssHeader."No.";
+        PlanningProcessingLog.Modify();
     end;
 
     local procedure CreateReqLine(CreateFrom: Option Sales,Assembly; ItemNo: Code[20]; locationCode: Code[10]; uom: Code[10]

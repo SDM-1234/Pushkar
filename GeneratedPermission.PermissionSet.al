@@ -38,7 +38,6 @@ permissionset 50100 GeneratedPermission
         table DetailedVendorLedgerEntry = X,
         report DeleteSalesBlanketOrders = X,
         report "Sales Order Planning" = X,
-        codeunit "Sales Order Planning Handler" = X,
         tabledata DtldCustomerLedgerEntry = RIMD,
         table DtldCustomerLedgerEntry = X,
         report "Item Stock Report" = X,
@@ -63,5 +62,7 @@ permissionset 50100 GeneratedPermission
         codeunit VendorWFResponseHandling = X,
         query "Item By Sales Outs Qty" = X,
         tabledata "Planning Processing Log" = RIMD,
-        table "Planning Processing Log" = X;
+        table "Planning Processing Log" = X,
+        report "Debtors Payment Receipt Report" = X,
+        page "Planning Processing Log" = X;
 }

@@ -1,3 +1,11 @@
+namespace Pushkar.Pushkar;
+
+using Microsoft.Finance.GST.Base;
+using Microsoft.Foundation.Company;
+using Microsoft.Sales.History;
+using Microsoft.Sales.Receivables;
+using System.Utilities;
+
 codeunit 50102 CommProcess
 {
     trigger OnRun()
@@ -88,7 +96,7 @@ codeunit 50102 CommProcess
         else
             salejsonobj.Add('ForCur', recpostsale."Currency Code");
         salejsonobj.Add('Sup_Gstin', recCompinfo."GST Registration No.");
-        salejsonobj.Add('VehNo', recpostsale."Vehicle No.");
+        salejsonobj.Add('VehNo', recpostsale."PS Vehicle No.");
         salejsonobj.Add('Part_Rev', 'A');
         salejsonobj.Add('Buy_Gstin', recpostsale."Customer GST Reg. No.");
         salejsonobj.Add('Irn', recpostsale."IRN Hash");
@@ -124,9 +132,10 @@ codeunit 50102 CommProcess
         end;
         intCheck1 := StrPos(txtResult, ',');
         if (intCheck1 > 0) then txtResult := DelStr(txtResult, StrPos(txtResult, ','), 1);
+
+
+        if txtVal in ['0', '0.00', '0.000', '0.0000'] then
+            txtResult := '';
         exit(txtResult);
     end;
-
-    var
-        myInt: Integer;
 }

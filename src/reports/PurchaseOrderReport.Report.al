@@ -1,3 +1,13 @@
+namespace Pushkar.Pushkar;
+
+using Microsoft.Finance.GST.Base;
+using Microsoft.Finance.TaxBase;
+using Microsoft.Finance.TaxEngine.TaxTypeHandler;
+using Microsoft.Foundation.Address;
+using Microsoft.Foundation.Company;
+using Microsoft.Purchases.Comment;
+using Microsoft.Purchases.Document;
+
 report 50103 "Purchase Order Report"
 {
     UsageCategory = ReportsAndAnalysis;
@@ -128,6 +138,16 @@ report 50103 "Purchase Order Report"
                 column(Unit_of_Measure; "Unit of Measure Code")
                 {
                 }
+
+                column(Planned_Receipt_Date; "Planned Receipt Date")
+                {
+                }
+
+
+                column(PromisedReceiptDate; "Promised Receipt Date")
+                {
+                }
+
                 column(Direct_Unit_Cost; "Direct Unit Cost")
                 {
                 }

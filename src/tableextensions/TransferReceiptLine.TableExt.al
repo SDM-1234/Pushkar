@@ -10,6 +10,7 @@ tableextension 50106 TransferReceiptLine extends "Transfer Receipt Line"
         {
             Caption = 'Posted Transfer Shipment No.';
             DataClassification = CustomerContent;
+            ToolTip = 'Specifies the value of the Posted Transfer Shipment No. field.', Comment = '%';
         }
     }
 

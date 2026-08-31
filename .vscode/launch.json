@@ -2,11 +2,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Microsoft cloud sandbox",
+            "name": "snapshotInitialize: Microsoft production cloud",
+            "type": "al",
+            "request": "snapshotInitialize",
+            "environmentType": "Production",
+            "environmentName": "production",
+            "breakOnNext": "WebClient",
+                        "sessionId": 576709,
+            "executionContext": "DebugAndProfile"
+        },
+        {
+            "name": "ProdCopy",
             "request": "launch",
             "type": "al",
             "environmentType": "Sandbox",
-            "environmentName": "DEV",
+            "environmentName": "ProdCopy_050726",
             "startupObjectId": 22,
             "startupObjectType": "Page",
             "breakOnError": "All",
@@ -16,7 +26,7 @@
             "usePublicURLFromServer": true,
             "schemaUpdateMode": "ForceSync"
         },
-                {
+        {
             "name": "Pushkar_UAT",
             "request": "launch",
             "type": "al",
@@ -31,7 +41,7 @@
             "usePublicURLFromServer": true,
             "schemaUpdateMode": "Synchronize"
         },
-                        {
+        {
             "name": "Pushkar_UAT-ForceSync",
             "request": "launch",
             "type": "al",

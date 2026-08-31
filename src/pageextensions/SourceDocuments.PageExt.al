@@ -1,12 +1,12 @@
 namespace Pushkar.Pushkar;
 
-using Microsoft.Warehouse.Request;
-using Microsoft.Purchases.Vendor;
-using Microsoft.Inventory.Location;
-using Microsoft.Sales.Document;
-using Microsoft.Manufacturing.Family;
 using Microsoft.Inventory.Item;
+using Microsoft.Inventory.Location;
+using Microsoft.Manufacturing.Family;
+using Microsoft.Purchases.Vendor;
 using Microsoft.Sales.Customer;
+using Microsoft.Sales.Document;
+using Microsoft.Warehouse.Request;
 
 pageextension 50109 SourceDocuments extends "Source Documents"
 {

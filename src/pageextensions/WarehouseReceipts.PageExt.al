@@ -1,10 +1,10 @@
 namespace Pushkar.Pushkar;
 
-using Microsoft.Warehouse.Document;
 using Microsoft.Purchases.Document;
-using Microsoft.Sales.Document;
-using Microsoft.Sales.Customer;
 using Microsoft.Purchases.Vendor;
+using Microsoft.Sales.Customer;
+using Microsoft.Sales.Document;
+using Microsoft.Warehouse.Document;
 
 pageextension 50111 WarehouseReceipts extends "Warehouse Receipts"
 {

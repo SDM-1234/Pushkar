@@ -30,6 +30,7 @@ tableextension 50100 SalesHeader extends "Sales Header"
         {
             Caption = 'Vehicle Num';
             DataClassification = CustomerContent;
+            ToolTip = 'Specifies the value of the Vehicle Num field.', Comment = '%';
         }
     }
 }

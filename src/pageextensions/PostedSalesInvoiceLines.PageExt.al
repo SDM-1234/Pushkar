@@ -1,7 +1,7 @@
 namespace Pushkar.Pushkar;
 
-using Microsoft.Sales.History;
 using Microsoft.Sales.Customer;
+using Microsoft.Sales.History;
 
 pageextension 50115 PostedSalesInvoiceLines extends "Posted Sales Invoice Lines"
 {
@@ -16,7 +16,71 @@ pageextension 50115 PostedSalesInvoiceLines extends "Posted Sales Invoice Lines"
                 Caption = 'Customer Name';
                 Editable = false;
             }
+
+            field("GST Amount"; Rec."GST Amount")
+            {
+                ApplicationArea = All;
+            }
+            field("IGST Amount"; Rec."IGST Amount")
+            {
+                ApplicationArea = All;
+            }
+            field("SGST Amount"; Rec."SGST Amount")
+            {
+                ApplicationArea = All;
+            }
+            field("CGST Amount"; Rec."CGST Amount")
+            {
+                ApplicationArea = All;
+            }
+
+            field("Sales Account"; Rec."Sales Account")
+            {
+                ApplicationArea = All;
+            }
+            field("Sales Account Name"; Rec."Sales Account Name")
+            {
+                ApplicationArea = All;
+            }
+            field("TCS Amount"; Rec."TCS Amount")
+            {
+                ApplicationArea = All;
+            }
+            field("Invoice No."; Rec."Invoice No.")
+            {
+                ApplicationArea = All;
+            }
+            field("External Doc. No."; Rec."External Doc. No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the External Document No. field.', Comment = '%';
+            }
+
+            field("Posting Date"; Rec."Posting Date")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Posting Date field.', Comment = '%';
+            }
         }
+        addafter("No.")
+        {
+            field("HSN Code"; Rec."HSN Code")
+            {
+                ApplicationArea = All;
+            }
+
+        }
+        addafter("Amount Including VAT")
+        {
+            field("Total Bill Value"; Rec.Amount + Abs(Rec."GST Amount") + Rec."TCS Amount")
+            {
+                ApplicationArea = All;
+                Caption = 'Total Bill Value';
+                ToolTip = 'Specifies the value of the Total Bill Value field.';
+            }
+
+        }
+
     }
     trigger OnAfterGetRecord()
     begin

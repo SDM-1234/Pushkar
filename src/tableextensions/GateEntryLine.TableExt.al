@@ -1,7 +1,7 @@
 namespace Pushkar.Pushkar;
 
-using Microsoft.Warehouse.GateEntry;
 using Microsoft.Sales.History;
+using Microsoft.Warehouse.GateEntry;
 
 tableextension 50103 GateEntryLine extends "Gate Entry Line"
 {

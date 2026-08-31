@@ -1,3 +1,5 @@
+namespace Pushkar.Pushkar;
+
 table 50120 WorkOrderRegisterTmp
 {
     DataClassification = ToBeClassified;

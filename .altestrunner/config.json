@@ -11,6 +11,10 @@
   "dockerHost": "",
   "newPSSessionOptions": "",
   "testRunnerServiceUrl": "",
+<<<<<<< HEAD
+  "codeCoveragePath": ".altestrunner\\codecoverage.json",
+=======
   "codeCoveragePath": ".//.altestrunner//codecoverage.json",
+>>>>>>> 024b5637258df6e4e9ac19101bce6a4b8204a13f
   "culture": "en-US"
 }

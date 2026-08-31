@@ -1,4 +1,4 @@
-report 50112 "Sales Order Planning"
+report 50111 "Sales Order Planning"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;

@@ -125,7 +125,7 @@ report 50100 "Tax Invoice Report"
 
                 column(UOM; "Sales Invoice Line"."Unit of Measure Code") { }
                 column(Commodity; Commodity) { }
-                column(ItemName; "Sales Invoice Line".Description) { }
+                column(ItemName; "Sales Invoice Line".Description + "Sales Invoice Line"."Description 2") { }
                 column(No_; "No.") { }
                 column(UnitPrice; "Sales Invoice Line"."Unit Price") { }
                 column(LineAmount; "Sales Invoice Line"."Line Amount") { }
@@ -419,6 +419,7 @@ report 50100 "Tax Invoice Report"
     end;
 
 
+
     local procedure CustomQR()
     var
         Customer: Record Customer;
@@ -433,7 +434,7 @@ report 50100 "Tax Invoice Report"
         Customer.Get("Sales Invoice Header"."Sell-to Customer No.");
         SalesInvoiceLine.SetRange("Document No.", "Sales Invoice Header"."No.");
         SalesInvoiceLine.SetRange(Type, SalesInvoiceLine.Type::Item);
-        SalesInvoiceLine.FindFirst();
+        if SalesInvoiceLine.FindFirst() then;
         VarText1 := COPYSTR(FORMAT("Sales Invoice Header"."Posting Date"), 1, 2);
         VarText2 := COPYSTR(FORMAT("Sales Invoice Header"."Posting Date"), 4, 2);
         VarText3 := COPYSTR(FORMAT("Sales Invoice Header"."Posting Date"), 7, 2);

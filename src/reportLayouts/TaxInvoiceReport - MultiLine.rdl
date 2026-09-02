@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1815.334</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-07-08T12:45:15.9940090Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-09-02T06:28:35.7364665Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -4155,7 +4155,6 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <rd:Selected>true</rd:Selected>
                                           <Textbox Name="Textbox305">
                                             <rd:DefaultName>Textbox305</rd:DefaultName>
                                             <CanGrow>true</CanGrow>
@@ -4627,6 +4626,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
+                                          <rd:Selected>true</rd:Selected>
                                           <Textbox Name="UnitPrice4">
                                             <rd:DefaultName>UnitPrice</rd:DefaultName>
                                             <CanGrow>true</CanGrow>
@@ -6010,7 +6010,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>Total INR Excl. Taxes</Value>
+                                                    <Value>Taxable Amount</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
                                                       <FontFamily>Segoe UI</FontFamily>
@@ -6858,7 +6858,11 @@
                                   <TablixMember>
                                     <Group Name="Group1" />
                                   </TablixMember>
-                                  <TablixMember />
+                                  <TablixMember>
+                                    <Visibility>
+                                      <Hidden>true</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
                                   <TablixMember />
                                   <TablixMember />
                                   <TablixMember />

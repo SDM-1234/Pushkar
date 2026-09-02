@@ -427,17 +427,24 @@ report 50100 "Tax Invoice Report"
         QRGenerator: Codeunit "QR Generator";
         TempBlob: Codeunit "Temp Blob";
         RecRef: RecordRef;
-        VarText1, VarText2, VarText3, QRCodeInput : Text;
+        VarText1, VarText2, VarText3, VarText4, QRCodeInput : Text;
     begin
         IF not QRCodePrint THEN
             Exit;
         Customer.Get("Sales Invoice Header"."Sell-to Customer No.");
         SalesInvoiceLine.SetRange("Document No.", "Sales Invoice Header"."No.");
-        SalesInvoiceLine.SetRange(Type, SalesInvoiceLine.Type::Item);
-        if SalesInvoiceLine.FindFirst() then;
+        //SalesInvoiceLine.SetRange(Type, SalesInvoiceLine.Type::Item);
+        SalesInvoiceLine.FindFirst();
         VarText1 := COPYSTR(FORMAT("Sales Invoice Header"."Posting Date"), 1, 2);
         VarText2 := COPYSTR(FORMAT("Sales Invoice Header"."Posting Date"), 4, 2);
         VarText3 := COPYSTR(FORMAT("Sales Invoice Header"."Posting Date"), 7, 2);
+
+        if SalesInvoiceLine.Type = SalesInvoiceLine.Type::Item then
+            VarText4 := FORMAT("Sales Invoice Line"."No.")
+        else if SalesInvoiceLine.Type = SalesInvoiceLine.Type::"Charge (Item)" then
+            VarText4 := FORMAT("Sales Invoice Line".Description);
+
+
         //QR Code
         // Save a QR code image into a file in a temporary folder
         QRCodeInput := "Sales Invoice Header"."External Document No." + ',' +
@@ -447,7 +454,7 @@ report 50100 "Tax Invoice Report"
         VarText1 + '.' + VarText2 + '.20' + VarText3 + ',' +
         DELCHR(FORMAT(SalesInvoiceLine."Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
         DELCHR(FORMAT(SalesInvoiceLine."Unit Price", 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
-        Customer."Supplier Code" + ',' + SalesInvoiceLine."No." + ',' +
+        Customer."Supplier Code" + ',' + VarText4 + ',' +
         DELCHR(FORMAT(CGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
         DELCHR(FORMAT(SGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +
         DELCHR(FORMAT(IGSTAmt, 0, '<Integer Thousand><Decimals,3>'), '<=>', ',') + ',' +

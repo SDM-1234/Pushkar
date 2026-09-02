@@ -288,6 +288,8 @@ report 50100 "Tax Invoice Report"
 
                 Customers.Reset();
                 Customers.get("Sell-to Customer No.");
+
+
                 BillToName := "Sell-to Customer Name";
                 BillToAdd1 := Customers.Address;
                 BillToAdd2 := Customers."Address 2";
@@ -347,6 +349,23 @@ report 50100 "Tax Invoice Report"
                 TCSEntry.SetRange("Document No.", "No.");
                 if TCSEntry.FindFirst() then
                     TCSAmount := TCSEntry."TCS Amount Including Surcharge";
+
+
+
+                If "Bill-to Name" <> '' then begin
+                    BillToName := "Bill-to Name";
+                    BillToAdd1 := "Bill-to Address";
+                    BillToAdd2 := "Bill-to Address 2";
+                    BillToCity := "Bill-to City";
+                    BillToPin := "Bill-to Post Code";
+                    if States.Get("GST Bill-to State Code") then;
+                    BillToState := states.Description;
+                    BillToStateCode := states."State Code (GST Reg. No.)";
+                    if CountryRegion.Get("Bill-to Country/Region Code") then;
+                    BillToCountry := CountryRegion.Name;
+                    BillToGSTIN := Customers."GST Registration No.";
+
+                end;
             end;
         }
 

@@ -471,8 +471,6 @@ report 50100 "Tax Invoice Report"
         TempBlob.ToRecordRef(RecRef, "Sales Invoice Header".FieldNo("QR Code"));
         RecRef.SetTable("Sales Invoice Header");
     end;
-
-
     var
         CompanyInfo: Record "Company Information";
         CountryRegion: Record "Country/Region";

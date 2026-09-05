@@ -137,10 +137,10 @@ report 50111 "Sales Order Planning"
             Item.FindFirst();
 
             if item."Assembly BOM" then
-                DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory" + item."Minimum Order Quantity"
+                DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory" + item."Safety Stock Quantity"
                     - (item."Qty. on Assembly Order" - item."Res. Qty. on Assembly Order")
             else
-                DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory" + item."Minimum Order Quantity"
+                DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory" + item."Safety Stock Quantity"
                     - (item."Qty. on Purch. Order" - item."Reserved Qty. on Purch. Orders");
 
             PlanningProcessingLog.InitializePlanningProcessingLog(locationCode, item.Description, Qty, Qty, 0D, WorkDate(), Item.Inventory, item."Qty. on Assembly Order", item."Qty. on Purch. Order", '', WorkDate(), '', WorkDate(), DemandQty, '', Item.Inventory, 0);

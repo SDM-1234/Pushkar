@@ -1,4 +1,4 @@
-codeunit 50118 "Sales Order Planning Handler"
+codeunit 50117 "Sales Order Planning Handler"
 {
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Req. Wksh.-Make Order", OnBeforeCheckRequsitionLineQuantity, '', false, false)]
     local procedure "Req. Wksh.-Make Order_OnBeforeCheckRequsitionLineQuantity"(var RequisitionLine: Record "Requisition Line"; var PurchOrderLine: Record "Purchase Line"; var SalesOrderLine: Record "Sales Line"; var IsHandled: Boolean)
@@ -6,6 +6,8 @@ codeunit 50118 "Sales Order Planning Handler"
         if RequisitionLine."Sales Order Planning" then
             IsHandled := true;
     end;
+
+
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Req. Wksh.-Make Order", OnBeforePurchOrderLineInsert, '', false, false)]
     local procedure "Req. Wksh.-Make Order_OnBeforePurchOrderLineInsert"(var PurchOrderHeader: Record "Purchase Header"; var PurchOrderLine: Record "Purchase Line"; var ReqLine: Record "Requisition Line"; CommitIsSuppressed: Boolean)
@@ -98,4 +100,12 @@ codeunit 50118 "Sales Order Planning Handler"
             AssLine.Description, PurchOrderLine."Expected Receipt Date", AssLine."Due Date",
              0, ReservationStatus::Reservation);
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Assembly Line Management", OnPreCheckAndConfirmUpdateOnElseOnBeforeResetLinesConfirmDialog, '', false, false)]
+    local procedure "Assembly Line Management_OnPreCheckAndConfirmUpdateOnElseOnBeforeResetLinesConfirmDialog"(var AssemblyHeader: Record "Assembly Header"; OldAssemblyHeader: Record "Assembly Header"; FieldNum: Integer; var ReplaceLinesFromBOM: Boolean; var SkipReplaceLinesConfirmation: Boolean)
+    begin
+        if AssemblyHeader."Sales Order Planning" then
+            SkipReplaceLinesConfirmation := true;
+    end;
+
 }

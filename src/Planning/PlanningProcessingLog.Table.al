@@ -129,6 +129,14 @@ table 50103 "Planning Processing Log"
             Caption = 'Qty to Purchase';
             DataClassification = CustomerContent;
         }
+        field(21; "Safety Stock Quantity"; Decimal)
+        {
+            Caption = 'Safety Stock Quantity';
+            ToolTip = 'Specifies a quantity of stock to have in inventory to protect against supply-and-demand fluctuations during replenishment lead time.';
+            DecimalPlaces = 0 : 5;
+            MinValue = 0;
+            AutoFormatType = 0;
+        }
     }
 
     keys
@@ -164,11 +172,14 @@ table 50103 "Planning Processing Log"
 
     end;
 
-    procedure InitializePlanningProcessingLog(LocationCode: Code[20]; ItemDescription: Text[100]; OutstandingSOQty: Decimal; OutstandingAssConsQty: Decimal; ShipmentDate: Date; ConsumptionDate: Date; InventoryConsidered: Decimal; OutstandingAssemblyOrderQty: Decimal; OutstandingPurchaseOrderQty: Decimal; AssemblyOrderNoConsidered: Code[20]; AssemblyOrderDate: Date; PurchaseOrderNoConsidered: Code[20]; PurchaseOrderDate: Date; QtyToProduce: Decimal; NewAssemblyOrderNoCreated: Code[20]; MinimumInventory: Decimal; QtyToPurchase: Decimal)
+    procedure InitializePlanningProcessingLog(LocationCode: Code[20]; ItemNo: Code[20]; ItemDescription: Text[100]; OutstandingSOQty: Decimal; OutstandingAssConsQty: Decimal; ShipmentDate: Date; ConsumptionDate: Date;
+        InventoryConsidered: Decimal; OutstandingAssemblyOrderQty: Decimal; OutstandingPurchaseOrderQty: Decimal; AssemblyOrderNoConsidered: Code[20]; AssemblyOrderDate: Date; PurchaseOrderNoConsidered: Code[20];
+            PurchaseOrderDate: Date; QtyToProduce: Decimal; NewAssemblyOrderNoCreated: Code[20]; MinimumInventory: Decimal; QtyToPurchase: Decimal; SafetyStockQty: Decimal)
     begin
         Rec.Init();
         Rec."Planning Date" := WorkDate();
         Rec."Location Code" := LocationCode;
+        Rec."Item No." := ItemNo;
         Rec."Item Description" := ItemDescription;
         Rec."Outstanding SO Qty" := OutstandingSOQty;
         Rec."Outstanding Ass. Cons. Qty" := OutstandingAssConsQty;
@@ -185,6 +196,7 @@ table 50103 "Planning Processing Log"
         Rec."New Assembly Order No. Created" := NewAssemblyOrderNoCreated;
         Rec."Minimum Inventory" := MinimumInventory;
         Rec."Qty to Purchase" := QtyToPurchase;
+        Rec."Safety Stock Quantity" := SafetyStockQty;
         Rec.Insert();
     end;
 

@@ -143,7 +143,8 @@ report 50111 "Sales Order Planning"
                 DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory" + item."Safety Stock Quantity"
                     - (item."Qty. on Purch. Order" - item."Reserved Qty. on Purch. Orders");
 
-            PlanningProcessingLog.InitializePlanningProcessingLog(locationCode, item.Description, Qty, Qty, 0D, WorkDate(), Item.Inventory, item."Qty. on Assembly Order", item."Qty. on Purch. Order", '', WorkDate(), '', WorkDate(), DemandQty, '', Item.Inventory, 0);
+            PlanningProcessingLog.InitializePlanningProcessingLog(locationCode, ItemNo, item.Description, Qty, Qty, 0D, WorkDate(), Item.Inventory, item."Qty. on Assembly Order",
+                    item."Qty. on Purch. Order", '', WorkDate(), '', WorkDate(), DemandQty, '', Item.Inventory, 0, item."Safety Stock Quantity");
             SOPlanningProcessing.Init();
             SOPlanningProcessing."Item No" := ItemNo;
             SOPlanningProcessing."Location Code" := locationCode;

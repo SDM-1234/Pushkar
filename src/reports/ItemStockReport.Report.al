@@ -16,6 +16,7 @@ report 50115 "Item Stock Report"
             {
 
                 DataItemLink = "Item No." = field("No.");
+                DataItemTableView = sorting("Posting Date");
                 //PrintOnlyIfDetail = true;       // it links with current entry with item table
 
                 column(ItemNo; "Item No.") { }
@@ -28,22 +29,31 @@ report 50115 "Item Stock Report"
                 column(ClosingAmount; ClosingAmount) { }
 
                 column(PostingDate; "Posting Date") { }
+                column(LocationCode; "Location Code") { }
                 column(EntryType; "Entry Type") { }
                 column(Qty; Quantity) { }
                 column(Cost; "Cost Amount (Actual)") { }
 
                 column(RunningQty; RunningQty) { }
                 column(RunningAmount; RunningAmount) { }
-
+                column(FromDate; FromDate) { }
+                column(ToDate; ToDate) { }
                 trigger OnPreDataItem()
                 begin
                     //Item.GetFilters();
+                    // Mandatory Date Validation
+                    if (FromDate = 0D) or (ToDate = 0D) then
+                        Error('Please enter From Date and To Date to run the report.');
+
                     SetRange("Posting Date", FromDate, ToDate);
+                    if Item.GetFilter("Location Filter") <> '' then
+                        SetFilter("Location Code", Item.GetFilter("Location Filter"));
 
                 end;
 
                 trigger OnAfterGetRecord()
                 begin
+
                     RunningQty += Quantity;
                     RunningAmount += "Cost Amount (Actual)";
                 end;
@@ -53,12 +63,11 @@ report 50115 "Item Stock Report"
             var
                 ILE: Record "Item Ledger Entry";          // by the help of this it will reset all calculation
             begin
-
-
-
                 ILE.Reset();
                 ILE.SetRange("Item No.", "No.");
                 ILE.SetRange("Posting Date", FromDate, ToDate);
+                if GetFilter("Location Filter") <> '' then
+                    ILE.SetFilter("Location Code", GetFilter("Location Filter"));
                 if ILE.IsEmpty() then
                     CurrReport.Skip();
 
@@ -73,25 +82,28 @@ report 50115 "Item Stock Report"
                 ILE.Reset();
                 ILE.SetRange("Item No.", "No.");
                 ILE.SetRange("Posting Date", 0D, CalcDate('<-1D>', FromDate));
+                if GetFilter("Location Filter") <> '' then
+                    ILE.SetFilter("Location Code", GetFilter("Location Filter"));
                 if ILE.FindSet() then
-                    ILE.CalcFields("Cost Amount (Actual)");
+                    repeat
+                        ILE.CalcFields("Cost Amount (Actual)");
+                        OpeningQty += ILE.Quantity;
 
-                repeat
-                    OpeningQty += ILE.Quantity;
-
-                    if ILE."Cost Amount (Actual)" <> 0 then
-                        OpeningAmount += ILE."Cost Amount (Actual)";
-                until ILE.Next() = 0;
+                        if ILE."Cost Amount (Actual)" <> 0 then
+                            OpeningAmount += ILE."Cost Amount (Actual)";
+                    until ILE.Next() = 0;
 
 
 
                 ILE.Reset();
                 ILE.SetRange("Item No.", "No.");
                 ILE.SetRange("Posting Date", 0D, ToDate);
+                if GetFilter("Location Filter") <> '' then
+                    ILE.SetFilter("Location Code", GetFilter("Location Filter"));
                 if ILE.FindSet() then
+                    repeat
                     ILE.CalcFields("Cost Amount (Actual)");
 
-                repeat
                     ClosingQty += ILE.Quantity;
                     if ILE."Cost Amount (Actual)" <> 0 then
                         ClosingAmount += ILE."Cost Amount (Actual)";
@@ -105,6 +117,8 @@ report 50115 "Item Stock Report"
 
     requestpage
     {
+        SaveValues = true;
+
         layout
         {
             area(Content)

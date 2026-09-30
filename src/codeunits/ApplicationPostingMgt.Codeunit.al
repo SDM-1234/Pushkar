@@ -83,6 +83,12 @@ codeunit 50108 ApplicationPostingMgt
 
         CustomerLedgerEntry := GetCustomerLedgerEntry(DtldCustLedENtry3);
         ApplyingCustLedgerEntry := GetApplyingCustomerLedgerEntry(DtldCustLedEntry);
+
+        if (CustomerLedgerEntry."Entry No." = 0) then
+            error('Customer Ledger Entry not found for Document No. %1 and Document Type %2', DtldCustLedEntry3."Document No.", DtldCustLedEntry3."Document Type")
+        else if (ApplyingCustLedgerEntry."Entry No." = 0) then
+            error('Customer Ledger Entry not found for Document No. %1 and Document Type %2', DtldCustLedEntry."Document No.", DtldCustLedEntry."Document Type");
+
         SetApplyCustomerLedgerEntries(CustomerLedgerEntry);
 
         SetSingleInstanceValues(ApplyingCustLedgerEntry);
@@ -96,6 +102,7 @@ codeunit 50108 ApplicationPostingMgt
         PostApplicationPage.GetParameters(NewApplyUnapplyParameters);
         CustEntryApplyPostedEntries.Apply(ApplyingCustLedgerEntry, NewApplyUnapplyParameters);
     end;
+
 
     procedure GetApplyingCustomerLedgerEntry(DtldCustLedENtry: Record DtldCustomerLedgerEntry): Record "Cust. Ledger Entry"
     var

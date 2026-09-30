@@ -136,8 +136,10 @@ page 50104 CustomerApplicationPosting
 
                     DtldCustLedEntry.Reset();
                     DtldCustLedEntry.SetRange(Closed, false);
-                    DtldCustLedEntry.SetFilter("Document Type", '%1|%2', DtldCustLedEntry."Document Type"::Payment, DtldCustLedEntry."Document Type"::" ");
+                    DtldCustLedEntry.SetRange(Error, false);
 
+                    DtldCustLedEntry.SetFilter("Document Type", '%1|%2', DtldCustLedEntry."Document Type"::Payment, DtldCustLedEntry."Document Type"::" ");
+                    //DtldCustLedEntry.Setrange("Document No.", '2526P03664');
                     TotalRecords := DtldCustLedEntry.Count();
                     if TotalRecords = 0 then
                         exit;
@@ -146,17 +148,24 @@ page 50104 CustomerApplicationPosting
                         repeat
                             DtldCustLedEntry2.Reset();
                             DtldCustLedEntry2.SetRange(Closed, false);
+                            DtldCustLedEntry2.SetRange(Error, false);
                             DtldCustLedEntry2.SetRange("Customer No.", DtldCustLedEntry."Customer No.");
                             DtldCustLedEntry2.SetRange("Applied Cust. Ledger Entry No.", DtldCustLedEntry."Customer Ledger Entry No.");
                             if DtldCustLedEntry2.FindSet() then
                                 repeat
                                     ApplicationPostingDate := DtldCustLedEntry2."Posting Date";
                                     DtldCustLedEntry3.Reset();
+                                    DtldCustLedEntry3.SetRange(Error, false);
+
                                     DtldCustLedEntry3.SetRange(Closed, false);
-                                    DtldCustLedEntry3.SetRange("Customer No.", DtldCustLedENtry2."Customer No.");
-                                    DtldCustLedEntry3.SetRange("Customer Ledger Entry No.", DtldCustLedENtry2."Customer Ledger Entry No.");
-                                    //DtldCustLedEntry3.SetFilter("Document Type",'%1|%2', DtldCustLedENtry3."Document Type"::Invoice,DtldCustLedENtry3."Document Type"::"Credit Memo");//, );
-                                    DtldCustLedEntry3.Setrange("Document Type", DtldCustLedENtry3."Document Type"::Invoice);//, DtldCustLedENtry3."Document Type"::"Credit Memo");
+                                    DtldCustLedEntry3.SetRange("Customer No.", DtldCustLedEntry2."Customer No.");
+                                    DtldCustLedEntry3.SetRange(
+                                        "Customer Ledger Entry No.", DtldCustLedEntry2."Customer Ledger Entry No."
+                                        );
+                                    DtldCustLedEntry3.SetFilter(
+                                        "Document Type", '%1|%2', DtldCustLedEntry3."Document Type"::Invoice,
+                                         DtldCustLedEntry3."Document Type"::"Credit Memo"
+                                         );
                                     DtldCustLedEntry3.SetRange("Entry Type", 'Initial Entry');
                                     if DtldCustLedEntry3.findfirst() then
                                         if DtldCustLedENtry3."Customer Ledger Entry No." <> DtldCustLedENtry2."Applied Cust. Ledger Entry No." then begin

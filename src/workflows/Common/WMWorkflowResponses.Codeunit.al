@@ -1,3 +1,13 @@
+namespace SDM.Pushkar_BC_Template;
+
+using Microsoft.Foundation.Attachment;
+using Microsoft.Inventory.Transfer;
+using Microsoft.Purchases.Document;
+using Microsoft.Sales.Document;
+using Microsoft.Warehouse.Document;
+using System.Automation;
+using System.Reflection;
+
 
 Codeunit 50113 WMWorkflowResponses
 {

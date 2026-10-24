@@ -1,3 +1,8 @@
+namespace SDM.Pushkar_BC_Template;
+
+using Microsoft.Finance.TaxEngine.Core;
+using System.Reflection;
+
 
 page 50115 "WF Mandatory Fields List"
 {

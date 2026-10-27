@@ -39,7 +39,8 @@
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
             "usePublicURLFromServer": true,
-            "schemaUpdateMode": "Synchronize"
+            "schemaUpdateMode": "Synchronize",
+            "tenant": "55c71f3c-d6ec-4763-887c-b0e454f38312"
         },
         {
             "name": "Pushkar_UAT-ForceSync",

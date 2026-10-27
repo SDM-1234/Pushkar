@@ -1,3 +1,9 @@
+namespace SDM.Pushkar_BC_Template;
+using Microsoft.Inventory.Intrastat;
+using Planning;
+using Reminder;
+using pushkar.pushkar;
+
 permissionset 50100 GeneratedPermission
 {
     Assignable = true;
@@ -64,5 +70,13 @@ permissionset 50100 GeneratedPermission
         tabledata "Planning Processing Log" = RIMD,
         table "Planning Processing Log" = X,
         report "Debtors Payment Receipt Report" = X,
-        page "Planning Processing Log" = X;
+        page "Planning Processing Log" = X,
+        tabledata "Cust. Reminder History" = RIMD,
+        tabledata "Cust. Reminder Setup" = RIMD,
+        table "Cust. Reminder History" = X,
+        table "Cust. Reminder Setup" = X,
+        report "Outstanding Invoice Reminder" = X,
+        codeunit "Auto Customer Reminder" = X,
+        codeunit "Sales Order Planning Handler" = X,
+        page "Customer Reminder Setup" = X;
 }

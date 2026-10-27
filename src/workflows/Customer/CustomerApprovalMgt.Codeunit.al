@@ -1,3 +1,8 @@
+namespace SDM.Pushkar_BC_Template;
+
+using Microsoft.Sales.Customer;
+using System.Automation;
+
 codeunit 50139 CustomerApprovalMgt
 {
 

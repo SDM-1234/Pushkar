@@ -21,6 +21,10 @@ pageextension 50133 CustomerCardExtPTPL extends "Customer Card"
                 ApplicationArea = All;
                 Caption = 'Approval Status';
             }
+            field("TDS G/L Account"; Rec."TDS G/L Account")
+            {
+                ApplicationArea = All;
+            }
 
         }
 

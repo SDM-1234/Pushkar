@@ -100,6 +100,30 @@ page 50104 CustomerApplicationPosting
                     CustomerLedgerEntry.ModifyAll("Applies-to ID", '');
                 end;
             }
+            action(ClearErrors)
+            {
+                ApplicationArea = All;
+                Caption = 'Clear Errors';
+                Image = ClearLog;
+
+                trigger OnAction()
+                var
+                    DtldCustLedEntry: Record DtldCustomerLedgerEntry;
+                begin
+                    DtldCustLedEntry.Reset();
+                    DtldCustLedEntry.SetFilter("Error Text", '<>%1', '');
+
+                    if DtldCustLedEntry.FindSet() then
+                        repeat
+                            DtldCustLedEntry.Error := false;
+                            DtldCustLedEntry."Error Text" := '';
+                            DtldCustLedEntry.Modify();
+                        until DtldCustLedEntry.Next() = 0;
+
+                    CurrPage.Update(false);
+                end;
+
+            }
             action(EnableApplyLedgerEntriesPage)
             {
                 ApplicationArea = All;

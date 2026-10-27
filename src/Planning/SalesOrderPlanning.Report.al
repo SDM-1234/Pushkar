@@ -141,7 +141,7 @@ report 50111 "Sales Order Planning"
                 AssemblyLine.SetRange(Type, AssemblyLine.Type::Item);
                 AssemblyLine.SetRange("No.", ItemNo);
                 AssemblyLine.CalcSums("Quantity (Base)");
-                Qty := AssemblyLine."Quantity (Base)";
+                Qty := AssemblyLine."Quantity (Base)" + Qty;
             end;
             if item."Assembly BOM" then
                 DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory" + item."Safety Stock Quantity"

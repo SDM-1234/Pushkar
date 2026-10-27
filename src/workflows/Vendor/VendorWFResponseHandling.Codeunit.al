@@ -1,3 +1,7 @@
+namespace SDM.Pushkar_BC_Template;
+
+using Microsoft.Purchases.Vendor;
+using System.Automation;
 
 
 codeunit 50148 VendorWFResponseHandling

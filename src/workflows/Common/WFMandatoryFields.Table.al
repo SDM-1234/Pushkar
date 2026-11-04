@@ -1,3 +1,7 @@
+namespace SDM.Pushkar_BC_Template;
+
+using System.Reflection;
+
 
 table 50115 "WF Mandatory Fields"
 {

@@ -83,6 +83,19 @@ codeunit 50116 VendorApplicationPostingMgt
 
         VendorLedgerEntry := GetVendorLedgerEntry(DtldVendLedENtry3);
         ApplyingVendLedgerEntry := GetApplyingVendorLedgerEntry(DtldVendLedEntry);
+
+        if VendorLedgerEntry."Entry No." = 0 then
+            Error(
+                'Application Vendor Ledger Entry not found for Document No. %1 and Document Type %2 Vendor No. %3',
+                DtldVendLedEntry3."Document No.", DtldVendLedEntry3."Document Type", DtldVendLedEntry3."Vendor No."
+            )
+        else
+            if ApplyingVendLedgerEntry."Entry No." = 0 then
+                Error(
+                    'Applying Vendor Ledger Entry not found for Document No. %1 and Document Type %2 Vendor No. %3',
+                    DtldVendLedEntry."Document No.", DtldVendLedEntry."Document Type", DtldVendLedEntry."Vendor No."
+                );
+
         SetApplyVendorLedgerEntries(VendorLedgerEntry);
 
         SetSingleInstanceValues(ApplyingVendLedgerEntry);

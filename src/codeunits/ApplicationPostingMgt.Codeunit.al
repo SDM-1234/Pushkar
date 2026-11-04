@@ -85,9 +85,9 @@ codeunit 50108 ApplicationPostingMgt
         ApplyingCustLedgerEntry := GetApplyingCustomerLedgerEntry(DtldCustLedEntry);
 
         if (CustomerLedgerEntry."Entry No." = 0) then
-            error('Customer Ledger Entry not found for Document No. %1 and Document Type %2', DtldCustLedEntry3."Document No.", DtldCustLedEntry3."Document Type")
+            error('Application Customer Ledger Entry not found for Document No. %1 and Document Type %2  Customer No %3', DtldCustLedEntry3."Document No.", DtldCustLedEntry3."Document Type", DtldCustLedEntry3."Customer No.")
         else if (ApplyingCustLedgerEntry."Entry No." = 0) then
-            error('Customer Ledger Entry not found for Document No. %1 and Document Type %2', DtldCustLedEntry."Document No.", DtldCustLedEntry."Document Type");
+            error('Applying  Customer Ledger Entry not found for Document No. %1 and Document Type %2 Customer No %3', DtldCustLedEntry."Document No.", DtldCustLedEntry."Document Type", DtldCustLedEntry."Customer No.");
 
         SetApplyCustomerLedgerEntries(CustomerLedgerEntry);
 

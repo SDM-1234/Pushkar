@@ -1,5 +1,6 @@
 namespace Pushkar.Pushkar;
 
+using Microsoft.Finance.GeneralLedger.Account;
 using Microsoft.Sales.Customer;
 
 tableextension 50115 CustomerExtPTPL extends Customer
@@ -18,6 +19,11 @@ tableextension 50115 CustomerExtPTPL extends Customer
             Caption = 'Approval Status';
             DataClassification = CustomerContent;
             Editable = false;
+        }
+        field(50101; "TDS G/L Account"; Code[20])
+        {
+            Caption = 'TDS G/L Account';
+            TableRelation = "G/L Account"."No.";
         }
 
     }

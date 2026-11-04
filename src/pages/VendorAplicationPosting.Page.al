@@ -9,7 +9,7 @@ page 50113 VendorAplicationPosting
     Caption = 'Vendor Application Posting';
     PageType = List;
     SourceTable = DetailedVendorLedgerEntry;
-    UsageCategory = Lists;
+    UsageCategory = Tasks;
     Permissions = TableData "Vendor Ledger Entry" = rm;
 
     layout
@@ -18,33 +18,53 @@ page 50113 VendorAplicationPosting
         {
             repeater(General)
             {
+                field(Amount; Rec.Amount)
+                {
+                    ToolTip = 'Specifies the value of the Amount field.', Comment = '%';
+                }
+                field("Applied Vend. Ledger Entry No."; Rec."Applied Vend. Ledger Entry No.")
+                {
+                    ToolTip = 'Specifies the value of the Applied Vend. Ledger Entry No. field.', Comment = '%';
+                }
                 field(Closed; Rec.Closed)
                 {
                     ToolTip = 'Specifies the value of the Closed field.', Comment = '%';
                 }
-                field("Document Type"; Rec."Document Type")
-                {
-                }
-                field("Document No."; Rec."Document No.")
-                {
-                }
-                field("Vendor No."; Rec."Vendor No.")
-                {
-                }
-                field(Amount; Rec.Amount)
-                {
-                }
                 field("Credit Amount"; Rec."Credit Amount")
                 {
-                }
-                field("Debit Amount"; Rec."Debit Amount")
-                {
+                    ToolTip = 'Specifies the value of the Credit Amount field.', Comment = '%';
                 }
                 field("Vendor Ledger Entry No."; Rec."Vendor Ledger Entry No.")
                 {
+                    ToolTip = 'Specifies the value of the Vendor Ledger Entry No. field.', Comment = '%';
+                }
+                field("Vendor No."; Rec."Vendor No.")
+                {
+                    ToolTip = 'Specifies the value of the Vendor No. field.', Comment = '%';
+                }
+                field("Debit Amount"; Rec."Debit Amount")
+                {
+                    ToolTip = 'Specifies the value of the Debit Amount field.', Comment = '%';
+                }
+                field("Document No."; Rec."Document No.")
+                {
+                    ToolTip = 'Specifies the value of the Document No. field.', Comment = '%';
+                }
+                field("Document Type"; Rec."Document Type")
+                {
+                    ToolTip = 'Specifies the value of the Document Type field.', Comment = '%';
                 }
                 field("Dtld. Vendor Ledger Entry No."; Rec."Dtld. Vendor Ledger Entry No.")
                 {
+                    ToolTip = 'Specifies the value of the Dtld. Vendor Ledger Entry No. field.', Comment = '%';
+                }
+                field("Entry No."; Rec."Entry No.")
+                {
+                    ToolTip = 'Specifies the value of the Entry No. field.', Comment = '%';
+                }
+                field("Entry Type"; Rec."Entry Type")
+                {
+                    ToolTip = 'Specifies the value of the Entry Type field.', Comment = '%';
                 }
                 field(Error; Rec.Error)
                 {
@@ -53,6 +73,10 @@ page 50113 VendorAplicationPosting
                 field("Error Text"; Rec."Error Text")
                 {
                     ToolTip = 'Specifies the value of the Error Text field.', Comment = '%';
+                }
+                field("Posting Date"; Rec."Posting Date")
+                {
+                    ToolTip = 'Specifies the value of the Posting Date field.', Comment = '%';
                 }
             }
         }
@@ -73,6 +97,29 @@ page 50113 VendorAplicationPosting
                 begin
                     VendorLedgerEntry.SetRange("Applies-to ID", UserID());
                     VendorLedgerEntry.ModifyAll("Applies-to ID", '');
+                end;
+            }
+            action(ClearErrors)
+            {
+                ApplicationArea = All;
+                Caption = 'Clear Errors';
+                Image = ClearLog;
+
+                trigger OnAction()
+                var
+                    DtldVendLedEntry: Record DetailedVendorLedgerEntry;
+                begin
+                    DtldVendLedEntry.Reset();
+                    DtldVendLedEntry.SetFilter("Error Text", '<>%1', '');
+
+                    if DtldVendLedEntry.FindSet() then
+                        repeat
+                            DtldVendLedEntry.Error := false;
+                            DtldVendLedEntry."Error Text" := '';
+                            DtldVendLedEntry.Modify();
+                        until DtldVendLedEntry.Next() = 0;
+
+                    CurrPage.Update(false);
                 end;
             }
             action(EnableApplyLedgerEntriesPage)
@@ -105,13 +152,13 @@ page 50113 VendorAplicationPosting
                     CurrentRecord: Integer;
                     ProgressPercent: Integer;
                     TotalRecords: Integer;
-                    Text0001Tok: Label 'Posting Detailed Application...\\Processing Entry: #1###### of #2######)';
+                    Text0001Tok: Label 'Posting Detailed Application...\\Processing Entry: #1###### of #2###### of #3######)';
 
                 begin
 
-
                     DtldVendLedEntry.Reset();
                     DtldVendLedEntry.SetRange(Closed, false);
+                    DtldVendLedEntry.SetRange(Error, false);
                     DtldVendLedEntry.SetFilter("Document Type", '%1|%2', DtldVendLedEntry."Document Type"::Payment, DtldVendLedEntry."Document Type"::" ");
 
                     TotalRecords := DtldVendLedEntry.Count();
@@ -122,6 +169,7 @@ page 50113 VendorAplicationPosting
                         repeat
                             DtldVendLedEntry2.Reset();
                             DtldVendLedEntry2.SetRange(Closed, false);
+                            DtldVendLedEntry2.SetRange(Error, false);
                             DtldVendLedEntry2.SetRange("Applied Vend. Ledger Entry No.", DtldVendLedEntry."Vendor Ledger Entry No.");
                             DtldVendLedEntry2.SetRange("Vendor No.", DtldVendLedEntry."Vendor No.");
 
@@ -129,10 +177,14 @@ page 50113 VendorAplicationPosting
                                 repeat
                                     ApplicationPostingDate := DtldVendLedEntry2."Posting Date";
                                     DtldVendLedEntry3.Reset();
+                                    DtldVendLedEntry3.SetRange(Error, false);
                                     DtldVendLedEntry3.SetRange(Closed, false);
                                     DtldVendLedEntry3.SetRange("Vendor No.", DtldVendLedEntry2."Vendor No.");
                                     DtldVendLedEntry3.SetRange("Vendor Ledger Entry No.", DtldVendLedEntry2."Vendor Ledger Entry No.");
-                                    DtldVendLedEntry3.Setrange("Document Type", DtldVendLedEntry3."Document Type"::Invoice);//, DtldVendLedEntry3."Document Type"::"Credit Memo");
+                                    DtldVendLedEntry3.SetFilter(
+                                        "Document Type", '%1|%2', DtldVendLedEntry3."Document Type"::Invoice,
+                                        DtldVendLedEntry3."Document Type"::"Credit Memo"
+                                    );
                                     DtldVendLedEntry3.SetRange("Entry Type", 'Initial Entry');
                                     if DtldVendLedEntry3.findfirst() then
                                         if DtldVendLedEntry3."Vendor Ledger Entry No." <> DtldVendLedEntry2."Applied Vend. Ledger Entry No." then begin

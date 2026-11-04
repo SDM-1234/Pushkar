@@ -123,6 +123,7 @@ report 50111 "Sales Order Planning"
     var
         item: Record Item;
         PlanningProcessingLog: Record "Planning Processing Log";
+        AssemblyLine: Record "Assembly Line";
         DemandQty: Decimal;
     begin
         if SOPlanningProcessing.Get(ItemNo, locationCode, uom) then begin
@@ -136,6 +137,12 @@ report 50111 "Sales Order Planning"
                 Item.SetRange("Location Filter", locationCode);
             Item.FindFirst();
 
+            if Level > 0 then begin
+                AssemblyLine.SetRange(Type, AssemblyLine.Type::Item);
+                AssemblyLine.SetRange("No.", ItemNo);
+                AssemblyLine.CalcSums("Quantity (Base)");
+                Qty := AssemblyLine."Quantity (Base)";
+            end;
             if item."Assembly BOM" then
                 DemandQty := Qty - Item.Inventory + item."Reserved Qty. on Inventory" + item."Safety Stock Quantity"
                     - (item."Qty. on Assembly Order" - item."Res. Qty. on Assembly Order")

@@ -1,3 +1,7 @@
+namespace SDM.Pushkar_BC_Template;
+using Microsoft.Inventory.Item;
+using System.Automation;
+
 codeunit 50135 "ItemWorkflow Response Handling"
 {
 

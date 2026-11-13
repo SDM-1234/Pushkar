@@ -49,7 +49,7 @@ report 50105 "Work Order Report"
                     if "Transfer Receipt Line"."Posted Transfer Shipment Nos." <> '' then begin
                         ShipmentNoArray := "Transfer Receipt Line"."Posted Transfer Shipment Nos.".Split('|');
                         for i := 1 to ShipmentNoArray.Count do begin
-                            ShipmentNo := ShipmentNoArray.Get(i);
+                            ShipmentNo := CopyStr(ShipmentNoArray.Get(i), 1, 20);
 
                             if TransferShipmentHeader.Get(ShipmentNo) then begin
                                 TransferShipmentLine.Reset();

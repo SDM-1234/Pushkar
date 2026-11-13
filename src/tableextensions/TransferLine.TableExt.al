@@ -16,6 +16,24 @@ tableextension 50104 "TransferLine" extends "Transfer Line"
             begin
                 AssignPostedTransferShipments();
             end;
+
+            trigger OnValidate()
+            var
+                PostedShipmentNoList: List of [Text];
+                ShipmentNo: Text;
+                TransferShipmentHeader: Record "Transfer Shipment Header";
+            begin
+                if "Posted Transfer Shipment Nos." <> '' then begin
+                    PostedShipmentNoList := "Posted Transfer Shipment Nos.".Split('|');
+
+                    foreach ShipmentNo in PostedShipmentNoList do begin
+                        if ShipmentNo <> '' then begin
+                            if not TransferShipmentHeader.Get(ShipmentNo) then
+                                Error('The number %1 is not from a posted transfer shipment.', ShipmentNo);
+                        end;
+                    end;
+                end;
+            end;
         }
     }
 

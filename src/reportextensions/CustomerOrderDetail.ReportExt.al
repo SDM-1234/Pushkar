@@ -10,17 +10,17 @@ reportextension 50106 CustomerOrderDetail extends "Customer - Order Detail"
         {
             column(ExternalDocumentNo; "External Document No.")
             {
+                Caption = 'External Document No.';
             }
         }
         add("Sales Line")
         {
             column(PlannedDeliveryDate; "Planned Delivery Date")
             {
+                Caption = 'Planned Delivery Date.';
             }
         }
     }
-
-
 
     rendering
     {
@@ -29,6 +29,11 @@ reportextension 50106 CustomerOrderDetail extends "Customer - Order Detail"
             Type = RDLC;
             LayoutFile = 'src/reportlayouts/CustomerOrderDetail.rdl';
         }
-    }
 
+        layout(CustomerOrderDetailExcel)
+        {
+            Type = Excel;
+            LayoutFile = 'src/reportLayouts/CustomerOrderDetail.xlsx';
+        }
+    }
 }

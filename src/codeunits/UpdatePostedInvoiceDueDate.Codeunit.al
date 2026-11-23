@@ -3,9 +3,12 @@ namespace Pushkar.Pushkar;
 using Microsoft.Foundation.PaymentTerms;
 using Microsoft.Sales.History;
 using Microsoft.Sales.Receivables;
+using System.Threading;
 
 codeunit 50106 "Update Posted Invoice Due Date"
 {
+    TableNo = "Job Queue Entry";
+
     Permissions =
         tabledata "Sales Invoice Header" = RM,
         tabledata "Cust. Ledger Entry" = RM,

@@ -70,6 +70,7 @@ permissionset 50100 GeneratedPermission
         tabledata "Planning Processing Log" = RIMD,
         table "Planning Processing Log" = X,
         report "Debtors Payment Receipt Report" = X,
+        report "Cust. Ledger Invoice Details" = X,
         page "Planning Processing Log" = X,
         tabledata "Cust. Reminder History" = RIMD,
         tabledata "Cust. Reminder Setup" = RIMD,

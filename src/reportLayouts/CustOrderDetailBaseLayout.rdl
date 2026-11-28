@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="OrderNoCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>OrderNoCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>OrderNoCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DataRetrievedLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>DataRetrievedLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>DataRetrievedLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CustOrderDetailLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CustOrderDetailLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CustOrderDetailLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CustOrderDetailPrintLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CustOrderDetailPrintLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CustOrderDetailPrintLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CustOrderDetailAnalysisLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CustOrderDetailAnalysisLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CustOrderDetailAnalysisLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PostingDateFilterLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>PostingDateFilterLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>PostingDateFilterLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="AboutTheReportLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>AboutTheReportLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>AboutTheReportLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="EnvironmentLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>EnvironmentLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>EnvironmentLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CompanyLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CompanyLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CompanyLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="UserLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>UserLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>UserLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="RunOnLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>RunOnLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>RunOnLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ReportNameLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ReportNameLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ReportNameLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DocumentationLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>DocumentationLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>DocumentationLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="BackOrderQtyLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>BackOrderQtyLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>BackOrderQtyLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SalesOrderAmountLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>SalesOrderAmountLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>SalesOrderAmountLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CustomerNoLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CustomerNoLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CustomerNoLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="OrderNoLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>OrderNoLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>OrderNoLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ShipmentDateLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ShipmentDateLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ShipmentDateLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="TotalLbl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>TotalLbl</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>TotalLbl</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="No_CustomerCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>No_CustomerCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>No_CustomerCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Name_CustomerCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Name_CustomerCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Name_CustomerCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="No_Caption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>No_Caption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>No_Caption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SalesHeaderNoCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>SalesHeaderNoCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>SalesHeaderNoCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SalesHeaderOrderDateCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>SalesHeaderOrderDateCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>SalesHeaderOrderDateCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Description_SalesLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Description_SalesLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Description_SalesLineCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="No_SalesLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>No_SalesLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>No_SalesLineCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Type_SalesLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Type_SalesLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Type_SalesLineCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Quantity_SalesLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Quantity_SalesLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Quantity_SalesLineCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="OutStandingQty_SalesLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>OutStandingQty_SalesLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>OutStandingQty_SalesLineCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="UnitPrice_SalesLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>UnitPrice_SalesLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>UnitPrice_SalesLineCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LineDiscAmt_SalesLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LineDiscAmt_SalesLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LineDiscAmt_SalesLineCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="InvDiscAmt_SalesLineCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>InvDiscAmt_SalesLineCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>InvDiscAmt_SalesLineCaption</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="ShipmentPeriodDate">
+          <DataField>ShipmentPeriodDate</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="PageGroupNo">
+          <DataField>PageGroupNo</DataField>
+        </Field>
+        <Field Name="CustOrderDetailCaption">
+          <DataField>CustOrderDetailCaption</DataField>
+        </Field>
+        <Field Name="PageCaption">
+          <DataField>PageCaption</DataField>
+        </Field>
+        <Field Name="ShipmentDateCaption">
+          <DataField>ShipmentDateCaption</DataField>
+        </Field>
+        <Field Name="QtyOnBackOrderCaption">
+          <DataField>QtyOnBackOrderCaption</DataField>
+        </Field>
+        <Field Name="OutstandingOrdersCaption">
+          <DataField>OutstandingOrdersCaption</DataField>
+        </Field>
+        <Field Name="PrintAmountsInLCY">
+          <DataField>PrintAmountsInLCY</DataField>
+        </Field>
+        <Field Name="CustTableCapCustFilter">
+          <DataField>CustTableCapCustFilter</DataField>
+        </Field>
+        <Field Name="CustFilter">
+          <DataField>CustFilter</DataField>
+        </Field>
+        <Field Name="SalesOrderLineFilter">
+          <DataField>SalesOrderLineFilter</DataField>
+        </Field>
+        <Field Name="SalesLineFilter">
+          <DataField>SalesLineFilter</DataField>
+        </Field>
+        <Field Name="No_Customer">
+          <DataField>No_Customer</DataField>
+        </Field>
+        <Field Name="Name_Customer">
+          <DataField>Name_Customer</DataField>
+        </Field>
+        <Field Name="AllAmtAreInLCYCaption">
+          <DataField>AllAmtAreInLCYCaption</DataField>
+        </Field>
+        <Field Name="CustomerNoAndName">
+          <DataField>CustomerNoAndName</DataField>
+        </Field>
+        <Field Name="No_">
+          <DataField>No_</DataField>
+        </Field>
+        <Field Name="OrderNoAndDate">
+          <DataField>OrderNoAndDate</DataField>
+        </Field>
+        <Field Name="SalesHeaderNo">
+          <DataField>SalesHeaderNo</DataField>
+        </Field>
+        <Field Name="SalesHeaderOrderDate">
+          <DataField>SalesHeaderOrderDate</DataField>
+        </Field>
+        <Field Name="Description_SalesLine">
+          <DataField>Description_SalesLine</DataField>
+        </Field>
+        <Field Name="No_SalesLine">
+          <DataField>No_SalesLine</DataField>
+        </Field>
+        <Field Name="Type_SalesLine">
+          <DataField>Type_SalesLine</DataField>
+        </Field>
+        <Field Name="ShipmentDate_SalesLine">
+          <DataField>ShipmentDate_SalesLine</DataField>
+        </Field>
+        <Field Name="Quantity_SalesLine">
+          <DataField>Quantity_SalesLine</DataField>
+        </Field>
+        <Field Name="Quantity_SalesLineFormat">
+          <DataField>Quantity_SalesLineFormat</DataField>
+        </Field>
+        <Field Name="OutStandingQty_SalesLine">
+          <DataField>OutStandingQty_SalesLine</DataField>
+        </Field>
+        <Field Name="OutStandingQty_SalesLineFormat">
+          <DataField>OutStandingQty_SalesLineFormat</DataField>
+        </Field>
+        <Field Name="BackOrderQty">
+          <DataField>BackOrderQty</DataField>
+        </Field>
+        <Field Name="BackOrderQtyFormat">
+          <DataField>BackOrderQtyFormat</DataField>
+        </Field>
+        <Field Name="UnitPrice_SalesLine">
+          <DataField>UnitPrice_SalesLine</DataField>
+        </Field>
+        <Field Name="UnitPrice_SalesLineFormat">
+          <DataField>UnitPrice_SalesLineFormat</DataField>
+        </Field>
+        <Field Name="LineDiscAmt_SalesLine">
+          <DataField>LineDiscAmt_SalesLine</DataField>
+        </Field>
+        <Field Name="LineDiscAmt_SalesLineFormat">
+          <DataField>LineDiscAmt_SalesLineFormat</DataField>
+        </Field>
+        <Field Name="InvDiscAmt_SalesLine">
+          <DataField>InvDiscAmt_SalesLine</DataField>
+        </Field>
+        <Field Name="InvDiscAmt_SalesLineFormat">
+          <DataField>InvDiscAmt_SalesLineFormat</DataField>
+        </Field>
+        <Field Name="SalesOrderAmount">
+          <DataField>SalesOrderAmount</DataField>
+        </Field>
+        <Field Name="SalesOrderAmountFormat">
+          <DataField>SalesOrderAmountFormat</DataField>
+        </Field>
+        <Field Name="SalesHeaderCurrCode">
+          <DataField>SalesHeaderCurrCode</DataField>
+        </Field>
+        <Field Name="TotalAmt_CurrTotalBuff">
+          <DataField>TotalAmt_CurrTotalBuff</DataField>
+        </Field>
+        <Field Name="TotalAmt_CurrTotalBuffFormat">
+          <DataField>TotalAmt_CurrTotalBuffFormat</DataField>
+        </Field>
+        <Field Name="CurrCode_CurrTotalBuff">
+          <DataField>CurrCode_CurrTotalBuff</DataField>
+        </Field>
+        <Field Name="TotalAmt_CurrTotalBuff2">
+          <DataField>TotalAmt_CurrTotalBuff2</DataField>
+        </Field>
+        <Field Name="TotalAmt_CurrTotalBuff2Format">
+          <DataField>TotalAmt_CurrTotalBuff2Format</DataField>
+        </Field>
+        <Field Name="CurrCode_CurrTotalBuff2">
+          <DataField>CurrCode_CurrTotalBuff2</DataField>
+        </Field>
+        <Field Name="TotalCaption">
+          <DataField>TotalCaption</DataField>
+        </Field>
+        <Field Name="ExternalDocumentNo">
+          <DataField>ExternalDocumentNo</DataField>
+        </Field>
+        <Field Name="PlannedDeliveryDate">
+          <DataField>PlannedDeliveryDate</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

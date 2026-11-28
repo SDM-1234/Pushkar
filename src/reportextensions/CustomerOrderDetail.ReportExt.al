@@ -27,7 +27,7 @@ reportextension 50106 CustomerOrderDetail extends "Customer - Order Detail"
         layout(CustomerOrderDetail)
         {
             Type = RDLC;
-            LayoutFile = 'src/reportlayouts/CustomerOrderDetail.rdl';
+            LayoutFile = 'src/reportlayouts/CustOrderDetailBaseLayout.rdl';
         }
 
         layout(CustomerOrderDetailExcel)
